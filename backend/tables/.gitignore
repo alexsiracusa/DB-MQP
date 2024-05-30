@@ -1,4 +1,5 @@
 # ignore all files in this directory
 *
 !.gitignore
-!.README.md
+!README.md
+!tables.zip
