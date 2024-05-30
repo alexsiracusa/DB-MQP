@@ -10,6 +10,7 @@ python-dotenv = "*"
 psycopg2 = "*"
 django-cors-headers = "*"
 jsonfield = "*"
+psycopg = "*"
 
 [dev-packages]
 
