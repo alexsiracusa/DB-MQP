@@ -88,6 +88,7 @@ load_dotenv()
 db_name = os.getenv("DATABASE_NAME")
 db_user = os.getenv("DATABASE_USER")
 db_pass = os.getenv("DATABASE_PASSWORD")
+db_port = os.getenv("DATABASE_PORT")
 
 DATABASES = {
     'default': {
@@ -96,7 +97,7 @@ DATABASES = {
         'USER': db_user,
         'PASSWORD': db_pass,
         'HOST': '127.0.0.1',
-        'PORT': '5432',
+        'PORT': db_port,
     }
 }
 

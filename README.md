@@ -6,5 +6,6 @@
    DATABASE_NAME = 'postgres'
    DATABASE_USER = 'postgres'
    DATABASE_PASSWORD = 'postgres'
+   DATABASE_PORT = 5432
    ```
 5. to run the server `pipenv run python manage.py runserver`

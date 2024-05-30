@@ -20,7 +20,6 @@ DROP TABLE IF EXISTS Media_List_Group;
 DROP TABLE IF EXISTS Media_List;
 DROP TABLE IF EXISTS Media_List_Entry;
 DROP TABLE IF EXISTS Staff_Connection;
-DROP TABLE IF EXISTS Account;
 DROP TABLE IF EXISTS Media_Tag_Connection;
 DROP TABLE IF EXISTS Media_Tag;
 DROP TABLE IF EXISTS Media_Relation;
@@ -37,7 +36,7 @@ DROP TABLE IF EXISTS Genre;
 DROP TABLE IF EXISTS Character;
 DROP TABLE IF EXISTS Media;
 DROP TABLE IF EXISTS Staff;
-DROP TABLE IF EXISTS User;
+DROP TABLE IF EXISTS Anilist_User;
 
 
 
@@ -483,27 +482,49 @@ CREATE TABLE Media_Tag_Connection (
 
 
 
-CREATE TABLE Account (
-	id						SERIAL		Primary Key,		-- The id of the account
-	name					TEXT		Unique,				-- The name of the account
-	about					TEXT,							-- The bio written by account (Markdown)
-	
-														-- The account's avatar images
-	avatar_large			TEXT,							-- The avatar of account at its largest size
-	avatar_medium			TEXT,							-- The avatar of account at medium size
-	
-	banner_image			TEXT,							-- The account's banner images
-	site_url				TEXT							-- The url for the user page on the AniList website
-	
-	-- (!** will likely add user aggregate statistics in a seperate related table to be updated by triggers)
-	-- (!** may add user list settings for manga/anime list display if we have time)
+CREATE TABLE Anilist_User (
+	id								INT		Primary Key,		-- The id of the user
+	name							TEXT,						-- The name of the user
+	about							TEXT,						-- The bio written by user (Markdown)
+
+															-- The User's Profile Images
+	avatar_large					TEXT,						-- The avatar of user at its largest size
+	avatar_medium					TEXT,						-- The avatar of user at medium size
+	banner_image					TEXT,						-- The user's banner images
+
+															-- The User's Options/Settings
+	options_title_language			USER_TITLE_LANGUAGE,		-- The language the user wants to see media titles in
+	options_display_adult_content	BOOLEAN,					-- Whether the user has enabled viewing of 18+ content
+	options_airing_notifications	BOOLEAN,					-- Whether the user receives notifications when a show they are watching aires
+	options_profile_color			TEXT,						-- Profile highlight color (blue, purple, pink, orange, red, green, gray)
+	options_staff_name_language		USER_STAFF_NAME_LANGUAGE,	-- The language the user wants to see staff and character names in
+
+	score_format					TEXT,
+	site_url						TEXT,						-- The url for the user page on the AniList website
+	created_at						TIMESTAMP,					-- When the user's account was created.
+																-- (Does not exist for accounts created before 2020)
+	updated_at						TIMESTAMP,					-- When the user's data was last updated
+
+															-- Aggregate User Anime Stats
+	stats_anime_count				INT,						--
+	stats_anime_mean_score			INT,						--
+	stats_anime_standard_deviation	INT,						--
+	stats_anime_minutes_watched		INT,						--
+	stats_anime_episodes_watched	INT,						--
+
+															-- Aggregate User Manga Stats
+	stats_manga_count				INT,						--
+	stats_manga_mean_score			INT,						--
+	stats_manga_standard_deviation	INT,						--
+	stats_manga_chapters_read		INT,						--
+	stats_manga_volumes_read		INT							--
 );
 
 
 
 CREATE TABLE Media_List_Entry (
 	id						SERIAL 		Primary Key,				-- The id of the list entry
-	account_id				INT 		REFERENCES Account (id),	-- The id of the user owner of the list entry
+	account_id				INT 		REFERENCES Anilist_User (id),	-- The id of the user owner of the list entry
 	media_id				INT			REFERENCES Media (id),		-- The id of the media
 	status					MEDIA_LIST_ENTRY_STATUS,				-- The watching/reading status
 	score					INT,									-- The score of the entry [0,100]
@@ -525,7 +546,7 @@ CREATE TABLE Media_List_Entry (
 
 CREATE TABLE Media_List (
 	id						SERIAL		Primary Key,				-- The id of the list
-	account_id				INT 		REFERENCES Account (id),	-- The id of the user owner of the list
+	account_id				INT 		REFERENCES Anilist_User (id),	-- The id of the user owner of the list
 	list_type				MEDIA_LIST_TYPE,						-- The type of list this entry is a part of
 	list_name				TEXT									-- The name of the list
 );
@@ -545,7 +566,7 @@ CREATE TABLE Media_List_Group (
 
 CREATE TABLE Media_Review (
 	id					SERIAL	Primary Key,				-- The id of the review
-	account_id			INT		REFERENCES Account (id),	-- The id of the review's creator
+	account_id			INT		REFERENCES Anilist_User (id),	-- The id of the review's creator
 	media_id			INT		REFERENCES Media (id),		-- The id of the review's media
 	summary				TEXT,								-- A short summary of the review
 	body				TEXT,								-- The main review body text
@@ -579,45 +600,6 @@ CREATE TABLE Media_Statuses (
 															-- the given status
 															
 	Primary Key (media_id, status)
-);
-
-
-CREATE TABLE User (
-	id								INT		Primary Key,		-- The id of the user
-	name							TEXT,						-- The name of the user
-	about							TEXT,						-- The bio written by user (Markdown)
-
-															-- The User's Profile Images
-	avatar_large					TEXT,						-- The avatar of user at its largest size
-	avatar_medium					TEXT,						-- The avatar of user at medium size
-	banner_image					TEXT,						-- The user's banner images
-	
-															-- The User's Options/Settings
-	options_title_language			USER_TITLE_LANGUAGE,		-- The language the user wants to see media titles in
-	options_display_adult_content	BOOLEAN,					-- Whether the user has enabled viewing of 18+ content
-	options_airing_notifications	BOOLEAN,					-- Whether the user receives notifications when a show they are watching aires
-	options_profile_color			TEXT,						-- Profile highlight color (blue, purple, pink, orange, red, green, gray)
-	options_staff_name_language		USER_STAFF_NAME_LANGUAGE,	-- The language the user wants to see staff and character names in
-	
-	score_format					TEXT,
-	site_url						TEXT,						-- The url for the user page on the AniList website
-	created_at						TIMESTAMP,					-- When the user's account was created. 
-																-- (Does not exist for accounts created before 2020)
-	updated_at						TIMESTAMP,					-- When the user's data was last updated
-	
-															-- Aggregate User Anime Stats
-	stats_anime_count				INT,						-- 
-	stats_anime_mean_score			INT,						--
-	stats_anime_standard_deviation	INT,						--
-	stats_anime_minutes_watched		INT,						--
-	stats_anime_episodes_watched	INT,						--
-	
-															-- Aggregate User Manga Stats
-	stats_manga_count				INT,						-- 
-	stats_manga_mean_score			INT,						--
-	stats_manga_standard_deviation	INT,						--
-	stats_manga_chapters_read		INT,						--
-	stats_manga_volumes_read		INT							--
 );
 
 

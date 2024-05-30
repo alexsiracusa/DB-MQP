@@ -8,6 +8,9 @@ import sys
 # function to convert date string to integer
 def convert_date_to_int(date_str):
     try:
+        if type(date_str) == int:
+            return int(date_str)
+
         # Initialize default values for day, month, and year
         day, month, year = "00", "00", "0000"
 
@@ -32,6 +35,7 @@ def convert_date_to_int(date_str):
         return year + month + day
 
     except Exception as e:
+        return "00000000"
         print(f"Error parsing value: {date_str}, Type: {type(date_str)}, Error: {e}")
         sys.exit(1)  # Exit the program with an error code
 
@@ -41,7 +45,7 @@ def process_csv_file(file_path, target_directory):
     print(f"\nProcessing file: {os.path.basename(file_path)}")
     df = pd.read_csv(file_path)
 
-    target_columns = ["date_of_birth", "date_of_death", "start_date", "end_date"]
+    target_columns = ["date_of_birth", "date_of_death", "start_date", "end_date", "started_at", "completed_at"]
 
     # Check if none of the target columns are in the CSV file
     if not set(target_columns) & set(df.columns):

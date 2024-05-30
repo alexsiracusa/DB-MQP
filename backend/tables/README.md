@@ -3,6 +3,7 @@ this folder should be populated with the contents of Tables.zip
 folder found in the "Data" folder of our google drive.
 
 the file names should include:
+- Anilist_User.csv
 - Character.csv
 - Character_Cast.csv
 - Character_Cast_Voice.csv
@@ -22,4 +23,3 @@ the file names should include:
 - Stuff_Occupations.csv
 - Studio.csv
 - Studio_Connection.csv
-- User.csv
