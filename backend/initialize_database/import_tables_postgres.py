@@ -111,6 +111,10 @@ cur.execute(helper)
 
 schema = Path(sql_file_dir + "schema.sql").read_text()
 cur.execute(schema)
+
+views = Path(sql_file_dir + "views.sql").read_text()
+cur.execute(views)
+
 print("Refreshed database")
 
 
