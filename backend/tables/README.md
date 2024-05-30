@@ -1,6 +1,6 @@
 ### Instructions
-this folder should be populated with the contents of Tables.zip
-folder found in the "Data" folder of our google drive.
+this folder should be populated with the contents of tables.zip
+file found in this directory (don't keep the nested the folders).
 
 the file names should include:
 - Anilist_User.csv
