@@ -2,6 +2,8 @@ import pandas as pd
 import os
 import sys
 
+# MQP people, don't worry about this file
+
 
 # function to convert date string to integer
 def convert_date_to_int(date_str):
@@ -66,13 +68,11 @@ def process_csv_file(file_path, target_directory):
 
 
 def main():
-    repository_directory = 'C:/Github/CS542/'
-
     # directory that contains all the CSV files to process
-    input_directory = repository_directory + "Tables/"
+    input_directory = "../tables/"
 
     # directory to save the processed CSV files
-    target_directory = repository_directory + "processing_data/date_processed/"
+    target_directory = "../tables_tmp/"
 
     # Ensure the target directory exists
     if not os.path.exists(target_directory):

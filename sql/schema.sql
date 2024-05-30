@@ -37,7 +37,7 @@ DROP TABLE IF EXISTS Genre;
 DROP TABLE IF EXISTS Character;
 DROP TABLE IF EXISTS Media;
 DROP TABLE IF EXISTS Staff;
-DROP TABLE IF EXISTS Anilist_User;
+DROP TABLE IF EXISTS User;
 
 
 
@@ -582,7 +582,7 @@ CREATE TABLE Media_Statuses (
 );
 
 
-CREATE TABLE Anilist_User (
+CREATE TABLE User (
 	id								INT		Primary Key,		-- The id of the user
 	name							TEXT,						-- The name of the user
 	about							TEXT,						-- The bio written by user (Markdown)
