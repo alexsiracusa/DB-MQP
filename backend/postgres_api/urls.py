@@ -13,4 +13,5 @@ urlpatterns = [
     path('character/', views.get_character),
     path('user-stats/', views.get_user_stats),
     path('account/', views.get_account),
+    path('query/', views.run_query)
 ]
