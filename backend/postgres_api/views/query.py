@@ -26,12 +26,12 @@ def run_query(request):
         response_data = {
             'result': rows
         }
-        # Return custom response
+        # Return result of the query
         return Response(response_data, status=status.HTTP_200_OK)
     except Exception as error:
         # Construct custom response data
         response_data = {
             'error': f'{error}'
         }
-        # Return custom response
+        # Return error message
         return Response(response_data, status=status.HTTP_400_BAD_REQUEST)
