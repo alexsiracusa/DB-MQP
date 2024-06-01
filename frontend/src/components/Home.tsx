@@ -50,11 +50,12 @@ type Message = {
           ))}
         </div>
         <form className='input-form' onSubmit={handleSubmit}>
-          <input
-            type="text"
+          <textarea
             placeholder="Query goes here"
             value={inputCode}
             onChange={e => setInputCode(e.currentTarget.value)}
+            rows={5}
+            cols={70}
           />
           <input type='submit' value="Send" />
         </form>
