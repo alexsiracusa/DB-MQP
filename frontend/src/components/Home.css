@@ -46,6 +46,7 @@
 }
 
 .message.ai {
+  text-align: left;
   white-space: pre-wrap;
   background-color: var(--message-color-ai);
 }
