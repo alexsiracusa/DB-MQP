@@ -299,16 +299,6 @@ CREATE TABLE Media_Title_Synonyms (
 
 
 
-CREATE TABLE Media_Trailer (
-	id					INT		Primary Key,			-- The trailer video id
-	anilist_id			TEXT,							-- why is anilist's id a string???
-	site				TEXT,							-- The site the video is hosted by 
-														-- (Currently either youtube or dailymotion)
-	thumbnail			TEXT							-- The url for the thumbnail image of the video
-);
-
-
-
 CREATE TABLE Character (
 	id					INT		Primary Key,	-- The id of the character
 	
@@ -560,24 +550,6 @@ CREATE TABLE Media_List_Group (
 	media_id				INT			REFERENCES Media (id),				-- The id of the list entry media
 	
 	Primary Key (list_id, media_id)
-);
-
-
-
-CREATE TABLE Media_Review (
-	id					SERIAL	Primary Key,				-- The id of the review
-	account_id			INT		REFERENCES Anilist_User (id),	-- The id of the review's creator
-	media_id			INT		REFERENCES Media (id),		-- The id of the review's media
-	summary				TEXT,								-- A short summary of the review
-	body				TEXT,								-- The main review body text
-	rating				INT,								-- The total user rating of the review
-	rating_amount		INT,								-- The amount of user ratings of the review
-	score				INT,								-- The review score of the media
-	private				BOOLEAN,							-- If the review is not yet publicly published and is only
-															-- viewable by creator
-	site_url			TEXT,								-- The url for the review page on the AniList website
-	created_at			TIMESTAMP,							-- The time of the thread creation
-	updated_at			TIMESTAMP							-- The time of the thread last update
 );
 
 
