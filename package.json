@@ -1,0 +1,12 @@
+{
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "scripts": {
+    "build": "cd frontend && npm run build",
+    "dev": "npm run build && concurrently \"cd backend && pipenv run python manage.py runserver\" \"cd frontend && npm run dev\""
+  },
+  "dependencies": {
+    "react-router-dom": "^6.23.1"
+  }
+}
