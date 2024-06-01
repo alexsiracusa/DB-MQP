@@ -1,5 +1,5 @@
 {
-  "name": "untitled",
+  "name": "frontend",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -24,5 +24,6 @@
     "eslint-plugin-react-refresh": "^0.4.6",
     "typescript": "^5.2.2",
     "vite": "^5.2.0"
-  }
+  },
+  "proxy": "http://localhost:8000"
 }

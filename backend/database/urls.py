@@ -20,4 +20,5 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('postgres/', include('postgres_api.urls')),
+    path('', include('models.urls')),  # Including URLs from the 'models' app
 ]
