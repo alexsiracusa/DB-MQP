@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
 import geminiInst from '../geminiInst';
-
-// interface ConversionResult {
-//   inputCode: string;
-//   outputCode: string;
-// }
+import './Home.css'
 
 const Home: React.FC = () => {
   const [inputCode, setInputCode] = useState('');
@@ -16,14 +12,24 @@ const Home: React.FC = () => {
   };
 
   return (
+    
     <div>
-      <h1>Convert Oracle to MongoDB</h1>
+      <h1>Database MQP</h1>
+
+      <div>
+    <p className="message ai">
+        Input a SQL (Oracle) Query and I will translate it to a NOSQL (MongoDB) Query
+      </p>
+      <p className="message user">
+        {inputCode}
+      </p>
+      
+    </div>
+      <p className="message ai">{outputCode}</p>
       <textarea
         value={inputCode}
         onChange={(e) => setInputCode(e.target.value)}
-      />
-      <button onClick={handleConvert}>Convert</button>
-      <pre>{outputCode}</pre>
+      /><button onClick={handleConvert}>Submit</button>
     </div>
   );
 };
