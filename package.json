@@ -7,6 +7,7 @@
     "dev": "npm run build && concurrently \"cd backend && pipenv run python manage.py runserver\" \"cd frontend && npm run dev\""
   },
   "dependencies": {
+    "@google/generative-ai": "^0.12.0",
     "react-router-dom": "^6.23.1"
   }
 }

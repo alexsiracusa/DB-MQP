@@ -1,46 +1,31 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from 'react';
+import geminiInst from '../geminiInst';
 
-const Home = () => {
-    const [inputValue, setInputValue] = useState('');
-    const [submittedValue, setSubmittedValue] = useState('');
+// interface ConversionResult {
+//   inputCode: string;
+//   outputCode: string;
+// }
 
-    const handleInputChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-        setInputValue(event.target.value);
-    };
+const Home: React.FC = () => {
+  const [inputCode, setInputCode] = useState('');
+  const [outputCode, setOutputCode] = useState('');
 
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        setSubmittedValue(inputValue);
-    };
+  const handleConvert = async () => {
+    const result = await geminiInst(inputCode);
+    setOutputCode(result.outputCode);
+  };
 
-    return (
-        <>
-            <div className="App">
-                <header className="App-header">
-                    <h1>Database MQP</h1>
-                    <h2>Type SQL Query (Oracle) into textbox and return NOSQL Query (MongoDB)</h2>
-                    <h3>**Prototype**</h3>
-                    {/* Form element */}
-                    <form onSubmit={handleSubmit} className="form-container">
-                        {/* Textbox input */}
-                        <textarea
-                            value={inputValue}
-                            onChange={handleInputChange}
-                            placeholder="Type something..."
-                            rows={10}
-                            cols={50}
-                            style={{ width: '80%', height: '200px', boxSizing: 'border-box' }} // Ensure padding doesn't affect width/height
-                        />
-                        {/* Submit button */}
-                        <button type="submit" className="submit-button">Submit</button>
-                    </form>
-                    {/* Display the submitted value */}
-                    {submittedValue && <p>The NOSQL Query is: {submittedValue}</p>}
-                </header>
-            </div>
-        </>
-    )
-}
+  return (
+    <div>
+      <h1>Convert Oracle to MongoDB</h1>
+      <textarea
+        value={inputCode}
+        onChange={(e) => setInputCode(e.target.value)}
+      />
+      <button onClick={handleConvert}>Convert</button>
+      <pre>{outputCode}</pre>
+    </div>
+  );
+};
 
 export default Home;
