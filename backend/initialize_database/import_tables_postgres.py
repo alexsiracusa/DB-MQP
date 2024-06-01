@@ -71,7 +71,6 @@ media_list_entry = media_list_entry[media_list_entry["media_id"].isin(
 # media_list_entry.to_csv("../tables_tmp/Media_List_Entry.csv", index=False)
 
 
-
 # relation tables
 character_cast = pd.read_csv(tables_dir + "Character_Cast.csv")\
     .drop_duplicates(['id', 'media_id', 'character_id'], keep='first')
@@ -114,6 +113,9 @@ cur.execute(schema)
 
 views = Path(sql_file_dir + "views.sql").read_text()
 cur.execute(views)
+
+triggers = Path(sql_file_dir + "triggers.sql").read_text()
+cur.execute(triggers)
 
 print("Refreshed database")
 
