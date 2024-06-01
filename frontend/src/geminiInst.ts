@@ -43,7 +43,8 @@ import {
   
     const result = await chatSession.sendMessage(inputCode);
     const outputCode = result.response.text();
-  
+    console.log(inputCode);
+    console.log(outputCode);
     return {
       inputCode,
       outputCode,

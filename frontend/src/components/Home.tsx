@@ -2,36 +2,64 @@ import React, { useState } from 'react';
 import geminiInst from '../geminiInst';
 import './Home.css'
 
-const Home: React.FC = () => {
-  const [inputCode, setInputCode] = useState('');
-  const [outputCode, setOutputCode] = useState('');
-
-  const handleConvert = async () => {
-    const result = await geminiInst(inputCode);
-    setOutputCode(result.outputCode);
-  };
-
-  return (
-    
-    <div>
-      <h1>Database MQP</h1>
-
+type Message = {
+    text: string,
+    sender: 'ai' | 'user'
+  }
+  
+  const Home: React.FC = () => {
+    const [inputCode, setInputCode] = useState('');
+    const [messages, setMessages] = useState<Message[]>([]);
+  
+    const handleConvert = async (input: string) => {
+      const result = await geminiInst(input);
+      return result.outputCode;
+    };
+  
+    const handleSubmit: React.FormEventHandler = async (e) => {
+      e.preventDefault();
+      const userMessage: Message = {
+        text: inputCode,
+        sender: 'user'
+      };
+  
+      setMessages(prevMessages => [...prevMessages, userMessage]);
+      setInputCode('');
+  
+      const aiResponse = await handleConvert(inputCode);
+  
+      const aiMessage: Message = {
+        text: aiResponse,
+        sender: 'ai'
+      };
+  
+      setMessages(prevMessages => [...prevMessages, aiMessage]);
+    };
+  
+    return (
       <div>
-    <p className="message ai">
-        Input a SQL (Oracle) Query and I will translate it to a NOSQL (MongoDB) Query
-      </p>
-      <p className="message user">
-        {inputCode}
-      </p>
-      
-    </div>
-      <p className="message ai">{outputCode}</p>
-      <textarea
-        value={inputCode}
-        onChange={(e) => setInputCode(e.target.value)}
-      /><button onClick={handleConvert}>Submit</button>
-    </div>
-  );
-};
-
-export default Home;
+        <h1>Database MQP</h1>
+        <div>
+          <p className="message ai">
+            Input a SQL (Oracle) Query and I will translate it to a NOSQL (MongoDB) Query
+          </p>
+          {messages.map((message, index) => (
+            <p key={index} className={"message " + message.sender}>
+              {message.text}
+            </p>
+          ))}
+        </div>
+        <form className='input-form' onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Query goes here"
+            value={inputCode}
+            onChange={e => setInputCode(e.currentTarget.value)}
+          />
+          <input type='submit' value="Send" />
+        </form>
+      </div>
+    );
+  };
+  
+  export default Home;
