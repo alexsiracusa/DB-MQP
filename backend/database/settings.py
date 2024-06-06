@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
 
     "postgres_api",
+    "mongodb_api",
     "models",
     "rest_framework",
     "corsheaders",
@@ -81,6 +82,7 @@ WSGI_APPLICATION = "database.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
+DATABASE_ROUTERS = ('database.routers.DBRouter',)
 
 # load .env file
 load_dotenv()
@@ -91,7 +93,8 @@ db_pass = os.getenv("DATABASE_PASSWORD")
 db_port = os.getenv("DATABASE_PORT")
 
 DATABASES = {
-    'default': {
+    'default': {},
+    'postgres': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': db_name,
         'USER': db_user,

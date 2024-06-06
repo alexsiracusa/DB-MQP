@@ -1,7 +1,7 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-from django.db import connection
+from django.db import connections
 
 
 def dictfetchall(cursor):
@@ -18,7 +18,7 @@ def run_query(request):
     query = request.data.get('query')
 
     try:
-        cursor = connection.cursor()
+        cursor = connections['postgres'].cursor()
         cursor.execute(query)
         rows = list(dictfetchall(cursor))
 
