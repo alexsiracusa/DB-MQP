@@ -5,23 +5,11 @@
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -45,24 +33,24 @@
   padding: 10px;
   font-size: 16px;
   margin-top: 20px;
-  resize: both; 
-  max-width: 90%; 
-  box-sizing: border-box; 
-  overflow-y: auto; 
-  vertical-align: top; 
-  line-height: 1.5; 
-  width: 80%; 
-  height: 200px; 
+  resize: both;
+  max-width: 90%;
+  box-sizing: border-box;
+  overflow-y: auto;
+  vertical-align: top;
+  line-height: 1.5;
+  width: 80%;
+  height: 200px;
 }
 
 .submit-button {
-  display: block; 
-  width: 100%; 
+  display: block;
+  width: 100%;
   margin-top: 20px;
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
-  box-sizing: border-box; 
+  box-sizing: border-box;
 }
 
 .form-container {
