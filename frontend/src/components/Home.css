@@ -69,3 +69,13 @@
   flex-grow: 1;
   line-height: 2;
 }
+
+.pre{
+  white-space: pre-wrap;
+  text-align: left;
+}
+
+.p{
+  white-space: pre-wrap;
+  text-align: left;
+}

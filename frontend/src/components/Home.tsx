@@ -2,15 +2,12 @@ import React, { useState } from 'react';
 import geminiInst from '../geminiInst';
 import './Home.css'
 
-type Message = {
-    text: string,
-    sender: 'ai' | 'user'
-  }
+
   
   const Home: React.FC = () => {
     const [inputCode, setInputCode] = useState('');
-    const [messages, setMessages] = useState<Message[]>([]);
-  
+    const [outputCode, setOutputCode] = useState('');
+
     const handleConvert = async (input: string) => {
       const result = await geminiInst(input);
       return result.outputCode;
@@ -18,36 +15,17 @@ type Message = {
   
     const handleSubmit: React.FormEventHandler = async (e) => {
       e.preventDefault();
-      const userMessage: Message = {
-        text: inputCode,
-        sender: 'user'
-      };
-  
-      setMessages(prevMessages => [...prevMessages, userMessage]);
-      setInputCode('');
-  
       const aiResponse = await handleConvert(inputCode);
-  
-      const aiMessage: Message = {
-        text: aiResponse,
-        sender: 'ai'
-      };
-  
-      setMessages(prevMessages => [...prevMessages, aiMessage]);
+      setOutputCode(aiResponse);
     };
   
     return (
       <div>
         <h1>Database MQP</h1>
         <div>
-          <p className="message ai">
+          <p>
             Input a SQL (Oracle) Query and I will translate it to a NOSQL (MongoDB) Query
           </p>
-          {messages.map((message, index) => (
-            <p key={index} className={"message " + message.sender}>
-              {message.text}
-            </p>
-          ))}
         </div>
         <form className='input-form' onSubmit={handleSubmit}>
           <textarea
@@ -59,6 +37,9 @@ type Message = {
           />
           <input type='submit' value="Send" />
         </form>
+        <pre>
+            {outputCode}
+        </pre>
       </div>
     );
   };
