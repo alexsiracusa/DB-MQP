@@ -8,12 +8,15 @@ import json
 
 @api_view(['POST'])
 def run_raw_query(request):
+    # get and parse query if necessary
     query = request.data.get('query')
+    if isinstance(query, str):
+        query = json.loads(query)
 
     try:
         # Old code using PyMongo
         client, db = get_connection()
-        result = db.command(json.loads(query))
+        result = db.command(query)
 
         # Construct custom response data
         response_data = {
