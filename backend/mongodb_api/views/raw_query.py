@@ -14,7 +14,7 @@ def run_raw_query(request):
         query = json.loads(query)
 
     try:
-        # Old code using PyMongo
+        # using PyMongo to execute raw query
         client, db = get_connection()
         result = db.command(query)
 

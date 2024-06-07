@@ -13,6 +13,7 @@ def run_query(request):
     query = request.data.get('query')
 
     try:
+        # use command line to run mongosh terminal command
         cmd = ["mongosh", "mongodb", "--eval", f"'{query}.pretty()'"]
         result = subprocess.check_output(cmd).decode('utf-8')
 
