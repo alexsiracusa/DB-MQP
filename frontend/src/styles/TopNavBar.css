@@ -1,0 +1,7 @@
+.topNavBar {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 5vh;
+    background-color: #022f50;
+}

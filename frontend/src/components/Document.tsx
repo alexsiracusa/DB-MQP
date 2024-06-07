@@ -1,10 +1,9 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/Document.css";
-import "../styles/Global.css";
 
 const Document = () => {
     return (
-        <div className={"full-screen"}>
+        <div className={""}>
             <div className={"justify-content-center"}>
                 <h1>This is the document page!</h1>
             </div>
