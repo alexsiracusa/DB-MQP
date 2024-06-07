@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import geminiInst from '../geminiInst';
 import { Light as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
-import './Home.css'
+import '../styles/Home.css'
 
 
   
