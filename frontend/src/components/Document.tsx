@@ -3,7 +3,7 @@ import "../styles/Document.css";
 
 const Document = () => {
     return (
-        <div className={""}>
+        <div className={"pageContainer"}>
             <div className={"justify-content-center"}>
                 <h1>This is the document page!</h1>
             </div>

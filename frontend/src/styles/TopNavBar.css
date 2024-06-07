@@ -5,3 +5,12 @@
     height: 5vh;
     background-color: #022f50;
 }
+
+.navbar-custom {
+    background-color: #022f50;
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .nav-link {
+    color: #f5f5f5;
+}
