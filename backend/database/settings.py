@@ -40,9 +40,9 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 
+    "general_api",
     "postgres_api",
     "mongodb_api",
-    "models",
     "rest_framework",
     "corsheaders",
     "django.contrib.postgres",

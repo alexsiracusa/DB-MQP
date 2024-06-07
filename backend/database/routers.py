@@ -1,7 +1,7 @@
 import inspect
 import sys
 
-postgres_models = [cls_name for cls_name, cls_obj in inspect.getmembers(sys.modules['models.models']) if inspect.isclass(cls_obj)]
+postgres_models = [cls_name for cls_name, cls_obj in inspect.getmembers(sys.modules['postgres_api.models']) if inspect.isclass(cls_obj)]
 
 class DBRouter(object):
     def db_for_read(self, model, **hints):
