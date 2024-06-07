@@ -11,6 +11,7 @@ psycopg2 = "*"
 django-cors-headers = "*"
 jsonfield = "*"
 psycopg = "*"
+pymongo = "*"
 
 [dev-packages]
 

@@ -87,10 +87,11 @@ DATABASE_ROUTERS = ('database.routers.DBRouter',)
 # load .env file
 load_dotenv()
 
-db_name = os.getenv("DATABASE_NAME")
-db_user = os.getenv("DATABASE_USER")
-db_pass = os.getenv("DATABASE_PASSWORD")
-db_port = os.getenv("DATABASE_PORT")
+db_host = os.getenv("POSTGRES_HOST")
+db_name = os.getenv("POSTGRES_DB_NAME")
+db_user = os.getenv("POSTGRES_USER")
+db_pass = os.getenv("POSTGRES_PASSWORD")
+db_port = os.getenv("POSTGRES_PORT")
 
 DATABASES = {
     'default': {},
@@ -99,7 +100,7 @@ DATABASES = {
         'NAME': db_name,
         'USER': db_user,
         'PASSWORD': db_pass,
-        'HOST': '127.0.0.1',
+        'HOST': db_host,
         'PORT': db_port,
     }
 }

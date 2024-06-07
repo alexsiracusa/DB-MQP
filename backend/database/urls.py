@@ -20,5 +20,6 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('postgres/', include('postgres_api.urls')),
-    path('', include('general_api.urls')),  # Including URLs from the 'models' app
+    path('mongodb/', include('mongodb_api.urls')),
+    path('', include('general_api.urls')),
 ]
