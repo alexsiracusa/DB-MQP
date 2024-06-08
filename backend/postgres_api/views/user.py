@@ -1,9 +1,7 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from models.models import *
-from postgres_api.serializers import *
+from ..serializers import *
 from rest_framework.exceptions import ValidationError
-from models.custom_types import *
 
 # "/user-stats/" parameters
 

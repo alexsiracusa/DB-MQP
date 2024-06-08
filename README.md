@@ -3,10 +3,15 @@
 2. `cd backend` then `pipenv install`
 3. create a .env file at `backend/.env` with the following variables set to whatever postgres db you have running:
    ```
-   DATABASE_NAME = 'postgres'
-   DATABASE_USER = 'postgres'
-   DATABASE_PASSWORD = 'postgres'
-   DATABASE_PORT = 5432
+   POSTGRES_DB_NAME = 'postgres'
+   POSTGRES_USER = 'postgres'
+   POSTGRES_PASSWORD = 'postgres'
+   POSTGRES_PORT = 5432
+
+   MONGODB_NAME = 'mongodb'
+   MONGODB_USER = 'n/a'
+   MONGODB_PASSWORD = 'n/a'
+   MONGODB_PORT = 27027
    ```
 5. to run the server use `pipenv run python manage.py runserver`
 

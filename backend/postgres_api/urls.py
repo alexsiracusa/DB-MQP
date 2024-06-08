@@ -2,6 +2,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
+    path('query/', views.run_query),
     path('media/', views.get_media),
     path('media-list-entry/', views.create_media_list_entry, name='create_media_list_entry'),
     path('media-list-entry/<int:entry_id>/', views.update_media_list_entry, name='update_media_list_entry'),
@@ -12,6 +13,5 @@ urlpatterns = [
     path('staff/', views.get_staff),
     path('character/', views.get_character),
     path('user-stats/', views.get_user_stats),
-    path('account/', views.get_account),
-    path('query/', views.run_query)
+    path('account/', views.get_account)
 ]

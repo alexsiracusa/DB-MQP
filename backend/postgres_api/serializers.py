@@ -1,6 +1,5 @@
 from rest_framework import serializers
-from models.models import Media, MediaListEntry, MediaList, MediaInfo, UserList, UserListEntries, Studio, Staff, Character, UserAnimeStats, UserMangaStats, Account
-import json
+from .models import Media, MediaListEntry, MediaList, MediaInfo, UserList, UserListEntries, Studio, Staff, Character, UserAnimeStats, UserMangaStats, Account
 
 
 class MediaSerializer(serializers.ModelSerializer):
