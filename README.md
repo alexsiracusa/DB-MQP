@@ -13,7 +13,7 @@
    MONGODB_PASSWORD = 'n/a'
    MONGODB_PORT = 27027
    ```
-5. to run the server use `pipenv run python manage.py runserver`
+4. to run the server use `pipenv run python manage.py runserver`
 
 ## To Initialize The Database
 1. Make sure you have the .env file made from the "To Run Backend" Section
