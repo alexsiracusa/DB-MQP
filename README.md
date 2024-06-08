@@ -9,8 +9,8 @@
    POSTGRES_PORT = 5432
 
    MONGODB_NAME = 'mongodb'
-   MONGODB_USER = 'n/a'
-   MONGODB_PASSWORD = 'n/a'
+   MONGODB_USER = ''
+   MONGODB_PASSWORD = ''
    MONGODB_PORT = 27027
    ```
 4. to run the server use `pipenv run python manage.py runserver`
