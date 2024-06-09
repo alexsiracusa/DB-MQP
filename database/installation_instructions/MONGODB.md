@@ -2,7 +2,7 @@
 
 This guide explains how to set up a MongoDB cluster to run on MacOS without homebrew or other installers.  
 
-While MacOS specifically is used, the only things that would change for other operating systems are which files to download from the mongodb website and file path names.
+While MacOS specifically is used, the only things that would change for unix/linux based operating systems are which files to download from the mongodb website and file path names.
 
 The official installation instructions for any OS can be found on https://mongodb.com, specifically [here](https://www.mongodb.com/docs/manual/administration/install-community/)
 
@@ -64,7 +64,7 @@ In order to run a MongoDB cluster, a minimum of three servers are required, henc
 
 The `query router` server must be set up, which handles and routes queries to the cluster. This is what other applications will interact with.
 
-One or more `shard` servers are required, which manage and access the database directly. Multiple shards can be created to improve performance through horizontal scaling More details can be found [here](https://www.mongodb.com/docs/manual/sharding/#sharding-procedure-config-server)
+One or more `shard` servers are required, which manage and access the database directly. Multiple shards can be created to improve performance through horizontal scaling. More details can be found [here](https://www.mongodb.com/docs/manual/sharding/#sharding-procedure-config-server)
 
 The `config` server interacts with both the `shard` and `query router` servers. Three are recommended for production, however only one is required for development and testing. I honestly have no clue what it does, but it needs to be there or the whole thing won't run :)
 
@@ -115,6 +115,8 @@ net:
 storage:
     dbPath: /usr/local/mongodb_7.0.11/data/configdb
 ```
+
+Documentation on the above and all other `config` file options can be found [here](https://www.mongodb.com/docs/v3.0/reference/configuration-options/) if you wish to understand or further customize your cluster.
 
 
 ## Step 4 - Create Data Directories
@@ -180,6 +182,8 @@ mongosh --port 27017
 
 
 ## Step 7 - Create a Database
+With all the servers up and running, we now need to create a database instance which can be used to store data. In MongoDB, a database is only created once an initial collection is created with data stored within it.
+
 Within the same `mongosh` shell connected to the query router as above, run the following:
 
 ```shell
