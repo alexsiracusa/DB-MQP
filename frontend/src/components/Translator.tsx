@@ -3,7 +3,7 @@ import geminiInst from '../geminiInst';
 import { Light as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import './Translator.css'
-
+import Navbar from './Navbar';
 
   
   const Translator: React.FC = () => {
@@ -47,6 +47,8 @@ import './Translator.css'
 
       const hasContent = outputCode || explanation || keyDifferences;
     return (
+      <div className='Translator'>
+        <Navbar></Navbar>
       <div>
         <h1>Database MQP</h1>
         <div>
@@ -92,6 +94,7 @@ import './Translator.css'
           )}
         </div>
       )}
+    </div>
     </div>
     );
   };
