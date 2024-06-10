@@ -1,8 +1,13 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/Document.css";
+import DocumentQueryContainer from "./DocumentQueryContainer";
 
 const Document = () => {
     return (
+        <>
+            <div>
+            <DocumentQueryContainer />
+
         <div className={"pageContainer"}>
             <div className={"justify-content-center"}>
                 <h1>This is the document page!</h1>
@@ -13,6 +18,8 @@ const Document = () => {
 
             </div>
         </div>
+            </div>
+        </>
     );
 }
 
