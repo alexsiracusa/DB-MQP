@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import geminiInst from '../geminiInst';
 import { Light as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
-import './Home.css'
-
+import './Translator.css'
+import Navbar from './Navbar';
 
   
-  const Home: React.FC = () => {
+  const Translator: React.FC = () => {
     const [inputCode, setInputCode] = useState('');
     const [outputCode, setOutputCode] = useState('');
     const [explanation, setExplanation] = useState('');
@@ -47,6 +47,12 @@ import './Home.css'
 
       const hasContent = outputCode || explanation || keyDifferences;
     return (
+      <div>
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </head>
+      <div className='Translator'>
+        <Navbar></Navbar>
       <div>
         <h1>Database MQP</h1>
         <div>
@@ -93,7 +99,9 @@ import './Home.css'
         </div>
       )}
     </div>
+    </div>
+    </div>
     );
   };
   
-  export default Home;
+  export default Translator;
