@@ -6,16 +6,17 @@ const Document = () => {
     return (
         <>
             <div>
-            <DocumentQueryContainer />
 
         <div className={styles.pageContainer}>
             <div className={"justify-content-center"}>
                 <h1>This is the document page!</h1>
             </div>
             <div className={"mt-5"}>
-                <p>This is some content in the lower part of the page.</p>
-                <p>It spans the entirety of the webpage.</p>
+                <p> just some example text here</p>
 
+            </div>
+            <div className={"px-5 py-5"}>
+                <DocumentQueryContainer />
             </div>
         </div>
             </div>

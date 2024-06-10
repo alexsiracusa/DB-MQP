@@ -1,3 +1,21 @@
+.pageContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    background-color: #E0EEFF;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 70px;
+    width: 100%;
+    padding: 2vh 2vw;
+}
+
 .fixedTop {
     position: fixed;
     top: 0;
@@ -13,8 +31,9 @@
     border-top-right-radius: 5px;
 }
 .queryContainerBody {
+    font-family: 'Courier New', Consolas, Monaco, 'Lucida Console', monospace;
     font-size: 1em;
-    background-color: #3f3f3f;
+    background-color: #1d1d1d;
     color: #f1f1f1;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
