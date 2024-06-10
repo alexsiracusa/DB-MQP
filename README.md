@@ -9,7 +9,7 @@ There are two `.env` files in the repository. In order to not push changed to ei
 ## To Run Backend
 1. Install `pipenv` globally, on mac do `sudo -H pip install -U pipenv`
 2. `cd backend` then `pipenv install`
-3to run the server use `pipenv run python manage.py runserver`
+3. to run the server use `pipenv run python manage.py runserver`
 
 ## To Initialize The Database
 1. Make sure you have the .env file made from the "To Run Backend" Section
