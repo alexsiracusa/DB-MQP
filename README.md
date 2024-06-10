@@ -1,19 +1,15 @@
+## Ignore env files
+There are two `.env` files in the repository. In order to not push changed to either, please run the following two commands:
+
+```shell
+> git update-index --assume-unchanged backend/.env
+> git update-index --assume-unchanged database/.env
+```
+
 ## To Run Backend
 1. Install `pipenv` globally, on mac do `sudo -H pip install -U pipenv`
 2. `cd backend` then `pipenv install`
-3. create a .env file at `backend/.env` with the following variables set to whatever postgres db you have running:
-   ```
-   POSTGRES_DB_NAME = 'postgres'
-   POSTGRES_USER = 'postgres'
-   POSTGRES_PASSWORD = 'postgres'
-   POSTGRES_PORT = 5432
-
-   MONGODB_NAME = 'mongodb'
-   MONGODB_USER = ''
-   MONGODB_PASSWORD = ''
-   MONGODB_PORT = 27027
-   ```
-4. to run the server use `pipenv run python manage.py runserver`
+3. to run the server use `pipenv run python manage.py runserver`
 
 ## To Initialize The Database
 1. Make sure you have the .env file made from the "To Run Backend" Section
