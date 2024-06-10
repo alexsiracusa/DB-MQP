@@ -47,6 +47,10 @@ import Navbar from './Navbar';
 
       const hasContent = outputCode || explanation || keyDifferences;
     return (
+      <div>
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </head>
       <div className='Translator'>
         <Navbar></Navbar>
       <div>
@@ -94,6 +98,7 @@ import Navbar from './Navbar';
           )}
         </div>
       )}
+    </div>
     </div>
     </div>
     );
