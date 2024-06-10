@@ -1,0 +1,43 @@
+{
+  "Media": {
+    "bsonType": "object",
+    "required": [
+    ],
+    "properties": {
+
+      "title": {
+        "bsonType": "object",
+        "properties": {
+          "romanji": {
+            "bsonType": "string",
+            "description": "must be a string"
+          },
+          "english": {
+            "bsonType": "string",
+            "description": "must be a string"
+          },
+          "native": {
+            "bsonType": "string",
+            "description": "must be a string"
+          }
+        }
+      },
+
+      "type": {
+        "enum": [
+          "ANIME",
+          "MANGA"
+        ],
+        "description": "can only be one of the enum values"
+      },
+
+      "average_score": {
+        "bsonType": "int",
+        "minimum": 0,
+        "maximum": 100,
+        "description": "must be an integer in [ 0, 100 ]"
+      }
+    }
+  }
+}
+
