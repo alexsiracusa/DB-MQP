@@ -1,5 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../styles/Document.css";
+import styles from "../styles/Document.module.css";
 import {Nav} from "react-bootstrap";
 import {useState} from "react";
 
@@ -16,14 +16,14 @@ const DocumentQueryContainer = () => {
 
     return (
         <>
-            <div className={"queryContainerHead"}>
+            <div className={styles.queryContainerHead}>
                 <Nav className="justify-content-around flex w-100">
                             {languages.map((language, index) => (
                                 <Nav.Link key={index} style={{color: index === currIndex ? "green" : "black"}} onClick={() => handleCodeChange(index)}>{language}</Nav.Link>
                             ))}
                         </Nav>
             </div>
-            <div className={"queryContainerBody"}>
+            <div className={styles.queryContainerBody}>
                 <p>{code}</p>
             </div>
         </>
