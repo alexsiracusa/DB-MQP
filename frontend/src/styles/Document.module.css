@@ -1,0 +1,31 @@
+.pageContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    min-height: calc(100vh - 5vh);
+    background-color: #E0EEFF;
+}
+
+.fixedTop {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.queryContainerHead {
+    font-size: 1em;
+    color: #000000;
+    background-color: #f5f5f5;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.queryContainerBody {
+    font-family: 'Courier New', Consolas, Monaco, 'Lucida Console', monospace;
+    font-size: 1em;
+    background-color: #1d1d1d;
+    color: #f1f1f1;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 5px 10px;
+}

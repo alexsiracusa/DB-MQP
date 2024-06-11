@@ -1,0 +1,14 @@
+.pageContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 70px;
+    width: 100%;
+    padding: 2vh 2vw;
+}
