@@ -1,12 +1,13 @@
-import "bootstrap/dist/css/bootstrap.min.css";
-import "../styles/LandingPage.css";
+import Navbar from './Navbar';
+
 
 const LandingPage = () => {
     return (
-        <div className={"pageContainer"}>
-            <div className={"header"}>
-                <h1>This is the landing page</h1>
-            </div>
+        <div className='LandingPage'>
+        <Navbar></Navbar>
+        <div>
+            <h1 className="text-red-500">This is the landing page!</h1>
+        </div>
         </div>
     );
 }
