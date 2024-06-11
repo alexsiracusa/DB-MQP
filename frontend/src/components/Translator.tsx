@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 import geminiInst from '../geminiInst';
 import { Light as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
-import './Translator.css'
-import Navbar from './Navbar';
-
+import styles from '../styles/Translator.module.css';
   
   const Translator: React.FC = () => {
     const [inputCode, setInputCode] = useState('');
@@ -51,8 +49,7 @@ import Navbar from './Navbar';
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
-      <div className='Translator'>
-        <Navbar></Navbar>
+      <div className={styles.root}>
       <div>
         <h1>Database MQP</h1>
         <div>
@@ -60,7 +57,7 @@ import Navbar from './Navbar';
             Input a SQL (Oracle) Query and I will translate it to a NOSQL (MongoDB) Query
           </p>
         </div>
-        <form className='input-form' onSubmit={handleSubmit}>
+        <form className={styles.inputForm} onSubmit={handleSubmit}>
           <textarea
             placeholder="Query goes here"
             value={inputCode}
@@ -71,7 +68,7 @@ import Navbar from './Navbar';
           <input type='submit' value="Send" />
         </form>
         {hasContent && (
-        <div className="result-section">
+        <div className={styles.resultSection}>
           {outputCode && (
             <div>
               <h2>Converted Code</h2>
@@ -83,7 +80,7 @@ import Navbar from './Navbar';
           {explanation && (
             <div>
               <h2>Explanation</h2>
-              <pre className="explanation-text">
+              <pre className={styles.explanationText}>
                 {explanation}
               </pre>
             </div>
@@ -91,7 +88,7 @@ import Navbar from './Navbar';
           {keyDifferences && (
             <div>
               <h2>Key Differences</h2>
-              <pre className="explanation-text">
+              <pre className={styles.explanationText}>
                 {keyDifferences}
               </pre>
             </div>
