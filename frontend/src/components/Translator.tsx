@@ -23,7 +23,7 @@ import styles from '../styles/Translator.module.css';
       setExplanation(parsedResult.explanation);
       setKeyDifferences(parsedResult.keyDifferences);
     };
-  
+  // comment
     const parseResponse = (response: string) => {
         const codeMarker = '```javascript';
         const explanationMarker = '```Explanation';
