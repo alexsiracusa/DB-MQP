@@ -27,11 +27,11 @@ import Navbar from './Navbar';
     };
   
     const parseResponse = (response: string) => {
-        const javascriptMarker = '```';
+        const codeMarker = '```javascript';
         const explanationMarker = '```Explanation';
         const keyDifferencesMarker = '```Key Differences';
     
-        const codeStart = response.indexOf(javascriptMarker) + javascriptMarker.length;
+        const codeStart = response.indexOf(codeMarker) + codeMarker.length;
         const codeEnd = response.indexOf('```', codeStart);
         const explanationStart = response.indexOf(explanationMarker) + explanationMarker.length;
         const explanationEnd = response.indexOf('```', explanationStart);
@@ -45,14 +45,14 @@ import Navbar from './Navbar';
         return { outputCode, explanation, keyDifferences };
       };
 
-
+      const hasContent = outputCode || explanation || keyDifferences;
     return (
       <div>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <div className='Translator'>
-        <Navbar/>
+        <Navbar></Navbar>
       <div>
         <h1>Database MQP</h1>
         <div>
@@ -70,33 +70,16 @@ import Navbar from './Navbar';
           />
           <input type='submit' value="Send" />
         </form>
-        {outputCode.startsWith('sql') ? (
-          <div className="result-section">
-            <div className="code-block">
-              <h2>SQL Code</h2>
-              <SyntaxHighlighter language="sql" style={docco}>
-                {outputCode.substring(4).trim()} {/* Trim the first 5 characters (```sql) */}
-              </SyntaxHighlighter>
-            </div>
-          </div>
-        )
-      : (
-        (outputCode && (
-            <div className="result-section">
-            <div className="code-container">
-              <div className="code-block">
-                <h2>Input Code</h2>
-                <SyntaxHighlighter language="sql" style={docco}>
-                  {inputCode}
-                </SyntaxHighlighter>
-              </div>
+        {hasContent && (
+        <div className="result-section">
+          {outputCode && (
             <div>
               <h2>Converted Code</h2>
               <SyntaxHighlighter language="javascript" style={docco}>
                 {outputCode}
               </SyntaxHighlighter>
             </div>
-            </div>      
+          )}
           {explanation && (
             <div>
               <h2>Explanation</h2>
@@ -113,12 +96,12 @@ import Navbar from './Navbar';
               </pre>
             </div>
           )}
-          </div>
-          )))
-        }
         </div>
-        </div>
-        </div>
-        )};
+      )}
+    </div>
+    </div>
+    </div>
+    );
+  };
   
   export default Translator;
