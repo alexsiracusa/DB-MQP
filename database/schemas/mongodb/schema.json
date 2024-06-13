@@ -61,14 +61,100 @@
       "site_url": { "bsonType": "string" },
       "mod_notes": { "bsonType": "string" },
 
+
       "related_media": {
         "bsonType": "array",
-        "title": "media relations",
         "items": {
           "bsonType": "object",
           "properties": {
             "media_id": { "bsonType": "int" },
             "relation_type": { "bsonType": "string" }
+          }
+        }
+      },
+      "studios": {
+        "bsonType": "array",
+        "items": {
+          "bsonType": "object",
+          "properties": {
+            "studio_id": { "bsonType": "int" },
+            "is_main": { "bsonType": "bool" }
+          }
+        }
+      },
+      "staff": {
+        "bsonType": "array",
+        "items": {
+          "bsonType": "object",
+          "properties": {
+            "staff_id": { "bsonType": "int" },
+            "role": { "bsonType": "string" }
+          }
+        }
+      },
+      "tags": {
+        "bsonType": "array",
+        "items": {
+          "bsonType": "object",
+          "properties": {
+            "tag_id": { "bsonType": "int" },
+            "rank": { "bsonType": "int" },
+            "is_media_spoiler": { "bsonType": "bool" }
+          }
+        }
+      },
+      "genres": {
+        "bsonType": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "title_synonyms": {
+        "bsonType": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "scores": {
+        "bsonType": "array",
+        "items": {
+          "bsonType": "object",
+          "properties": {
+            "score": { "bsonType": "int" },
+            "amount": { "bsonType": "int" }
+          }
+        }
+      },
+      "statuses": {
+        "bsonType": "array",
+        "items": {
+          "bsonType": "object",
+          "properties": {
+            "status": { "bsonType": "string" },
+            "amount": { "bsonType": "int" }
+          }
+        }
+      },
+      "characters": {
+        "bsonType": "array",
+        "items": {
+          "bsonType": "object",
+          "properties": {
+            "character_id": { "bsonType": "int" },
+            "character_name": { "bsonType": "string" },
+            "character_role": { "bsonType": "string" },
+            "character_voices": {
+              "bsonType": "array",
+              "items": {
+                "bsonType": "object",
+                "properties": {
+                  "voice_actor_id": { "bsonType": "int" },
+                  "voice_actor_language": { "bsonType": "string" },
+                  "role_notes": { "bsonType": "string" },
+                  "dub_group": { "bsonType": "string" }
+                }
+              }
+            }
           }
         }
       }
