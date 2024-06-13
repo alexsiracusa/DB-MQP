@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import geminiInst from '../geminiInst';
 import { Light as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
-import './Translator.css'
+import '.././styles/Translator.css'
 import Navbar from './Navbar';
 
   
   const Translator: React.FC = () => {
     const [inputCode, setInputCode] = useState('');
+    const [writtenCode, setWrittenCode] = useState('');
     const [outputCode, setOutputCode] = useState('');
     const [explanation, setExplanation] = useState('');
     const [keyDifferences, setKeyDifferences] = useState('');
@@ -19,6 +20,7 @@ import Navbar from './Navbar';
   
     const handleSubmit: React.FormEventHandler = async (e) => {
       e.preventDefault();
+      setInputCode(writtenCode);
       const aiResponse = await handleConvert(inputCode);
       const parsedResult = parseResponse(aiResponse);
       setOutputCode(parsedResult.outputCode);
@@ -27,11 +29,11 @@ import Navbar from './Navbar';
     };
   
     const parseResponse = (response: string) => {
-        const codeMarker = '```javascript';
+        const javascriptMarker = '```';
         const explanationMarker = '```Explanation';
         const keyDifferencesMarker = '```Key Differences';
     
-        const codeStart = response.indexOf(codeMarker) + codeMarker.length;
+        const codeStart = response.indexOf(javascriptMarker) + javascriptMarker.length;
         const codeEnd = response.indexOf('```', codeStart);
         const explanationStart = response.indexOf(explanationMarker) + explanationMarker.length;
         const explanationEnd = response.indexOf('```', explanationStart);
@@ -45,16 +47,16 @@ import Navbar from './Navbar';
         return { outputCode, explanation, keyDifferences };
       };
 
-      const hasContent = outputCode || explanation || keyDifferences;
+
     return (
       <div>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <div className='Translator'>
-        <Navbar></Navbar>
+        <Navbar/>
       <div>
-        <h1>Database MQP</h1>
+        <h1>Translator</h1>
         <div>
           <p>
             Input a SQL (Oracle) Query and I will translate it to a NOSQL (MongoDB) Query
@@ -63,23 +65,40 @@ import Navbar from './Navbar';
         <form className='input-form' onSubmit={handleSubmit}>
           <textarea
             placeholder="Query goes here"
-            value={inputCode}
-            onChange={e => setInputCode(e.currentTarget.value)}
+            value={writtenCode}
+            onChange={e => setWrittenCode(e.currentTarget.value)}
             rows={5}
             cols={70}
           />
           <input type='submit' value="Send" />
         </form>
-        {hasContent && (
-        <div className="result-section">
-          {outputCode && (
+        {outputCode.startsWith('sql') ? (
+          <div className="result-section">
+            <div className="code-block">
+              <h2>SQL Code</h2>
+              <SyntaxHighlighter language="sql" style={docco}>
+                {outputCode.substring(4).trim()} {/* Trim the first 5 characters (```sql) */}
+              </SyntaxHighlighter>
+            </div>
+          </div>
+        )
+      : (
+        (outputCode && (
+            <div className="result-section">
+            <div className="code-container">
+              <div className="code-block">
+                <h2>Input Code</h2>
+                <SyntaxHighlighter language="sql" style={docco}>
+                  {inputCode}
+                </SyntaxHighlighter>
+              </div>
             <div>
               <h2>Converted Code</h2>
               <SyntaxHighlighter language="javascript" style={docco}>
                 {outputCode}
               </SyntaxHighlighter>
             </div>
-          )}
+            </div>      
           {explanation && (
             <div>
               <h2>Explanation</h2>
@@ -96,12 +115,12 @@ import Navbar from './Navbar';
               </pre>
             </div>
           )}
+          </div>
+          )))
+        }
         </div>
-      )}
-    </div>
-    </div>
-    </div>
-    );
-  };
+        </div>
+        </div>
+        )};
   
   export default Translator;
