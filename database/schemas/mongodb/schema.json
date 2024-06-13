@@ -38,10 +38,16 @@
       "trailer_id": { "bsonType": "string" },
       "updated_at": { "bsonType":  "timestamp" },
 
-      "cover_image_extra_large": { "bsonType": "string" },
-      "cover_image_large": { "bsonType": "string" },
-      "cover_image_medium": { "bsonType": "string" },
-      "cover_image_color": { "bsonType": "string" },
+      "cover_image": {
+        "bsonType": "object",
+        "properties": {
+          "extra_large": { "bsonType": "string" },
+          "large": { "bsonType": "string" },
+          "medium": { "bsonType": "string" },
+          "color": { "bsonType": "string" }
+        }
+      },
+
       "banner_image": { "bsonType": "string" },
 
       "average_score": {
@@ -232,8 +238,14 @@
         }
       },
 
-      "image_large": { "bsonType": "string" },
-      "image_medium": { "bsonType": "string" },
+      "image": {
+        "bsonType": "object",
+        "properties": {
+          "large": { "bsonType": "string" },
+          "medium": { "bsonType": "string" }
+        }
+      },
+
       "description": { "bsonType": "string" },
       "gender": { "bsonType": "string" },
       "date_of_birth": { "bsonType": "int" },
@@ -279,6 +291,108 @@
       "is_general_spoiler": { "bsonType": "bool" },
       "is_adult": { "bsonType": "bool" }
     }
+  },
+
+  "Anilist_User": {
+    "bsonType": "object",
+    "title": "Anilist_User",
+    "required": ["id"],
+
+    "properties": {
+      "id": { "bsonType": "int" },
+      "name": { "bsonType": "string" },
+      "about": { "bsonType": "string" },
+
+      "avatar": {
+        "bsonType": "object",
+        "properties": {
+          "large": { "bsonType": "string" },
+          "medium": { "bsonType": "string" }
+        }
+      },
+
+      "banner_image": { "bsonType": "string" },
+
+      "options": {
+        "bsonType": "object",
+        "properties": {
+          "title_language": { "bsonType": "string" },
+          "display_adult_content": { "bsonType": "bool" },
+          "airing_notifications": { "bsonType": "bool" },
+          "profile_color": { "bsonType": "string" },
+          "staff_name_language": { "bsonType": "string" }
+        }
+      },
+
+      "score_format": { "bsonType": "string" },
+      "site_url": { "bsonType": "string" },
+      "created_at": { "bsonType":  "timestamp" },
+      "updated_at": { "bsonType":  "timestamp" },
+
+      "stats": {
+        "bsonType": "object",
+        "properties": {
+          "anime": {
+            "bsonType": "object",
+            "properties": {
+              "count": { "bsonType": "int" },
+              "mean_score": { "bsonType": "int" },
+              "standard_deviation": { "bsonType": "int" },
+              "minutes_watched": { "bsonType": "int" },
+              "episodes_watched": { "bsonType": "int" }
+            }
+          },
+          "manga": {
+            "bsonType": "object",
+            "properties": {
+              "count": { "bsonType": "int" },
+              "mean_score": { "bsonType": "int" },
+              "standard_deviation": { "bsonType": "int" },
+              "chapters_read": { "bsonType": "int" },
+              "volumes_read": { "bsonType": "int" }
+            }
+          }
+        }
+      },
+
+      "media_list_entries": {
+        "bsonType": "array",
+        "items": {
+          "bsonType": "object",
+          "properties": {
+            "media_id": { "bsonType": "int" },
+            "status": { "bsonType": "string" },
+            "score": { "bsonType": "int" },
+            "progress": { "bsonType": "int" },
+            "progress_volumes": { "bsonType": "int" },
+            "repeat": { "bsonType": "int" },
+            "priority": { "bsonType": "int" },
+            "private": { "bsonType": "bool" },
+            "notes": { "bsonType": "string" },
+            "started_at": { "bsonType": "int" },
+            "completed_at": { "bsonType": "int" },
+            "updated_at": { "bsonType":  "timestamp" },
+            "created_at": { "bsonType":  "timestamp" }
+          }
+        }
+      },
+
+      "media_lists": {
+        "bsonType": "array",
+        "items": {
+          "bsonType": "object",
+          "properties": {
+            "entries": {
+              "bsonType": "array",
+              "items": {
+                "bsonType": "int"
+              }
+            }
+          }
+        }
+      }
+    }
   }
+
 }
 
