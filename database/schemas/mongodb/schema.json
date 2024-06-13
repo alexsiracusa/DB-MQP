@@ -1,42 +1,67 @@
 {
   "Media": {
     "bsonType": "object",
-    "required": [
-    ],
-    "properties": {
+    "title": "Media",
+    "required": ["id"],
 
+    "properties": {
+      "id": { "bsonType": "int" },
       "title": {
         "bsonType": "object",
         "properties": {
-          "romanji": {
-            "bsonType": "string",
-            "description": "must be a string"
-          },
-          "english": {
-            "bsonType": "string",
-            "description": "must be a string"
-          },
-          "native": {
-            "bsonType": "string",
-            "description": "must be a string"
-          }
+          "romanji": { "bsonType": "string" },
+          "english": { "bsonType": "string" },
+          "native": { "bsonType": "string" }
         }
       },
+      "type": { "enum": ["ANIME", "MANGA"] },
+      "format": { "bsonType": "string" },
+      "status": { "bsonType": "string" },
+      "description": { "bsonType": "string" },
+      "start_date": { "bsonType": "int" },
+      "end_date": { "bsonType": "int" },
+      "season": { "bsonType": "string" },
+      "season_year": { "bsonType": "int" },
+      "season_int": { "bsonType": "int" },
 
-      "type": {
-        "enum": [
-          "ANIME",
-          "MANGA"
-        ],
-        "description": "can only be one of the enum values"
-      },
+      "episodes": { "bsonType": "int" },
+      "episode_duration": { "bsonType": "int" },
+      "chapters": { "bsonType": "int" },
+      "volumes": { "bsonType": "int" },
+
+      "country_if_origin": { "bsonType": "string" },
+      "is_licensed": { "bsonType": "bool" },
+      "source": { "bsonType": "string" },
+      "hashtag": { "bsonType": "string" },
+      "trailer_id": { "bsonType": "string" },
+      "updated_at": { "bsonType":  "timestamp" },
+
+      "cover_image_extra_large": { "bsonType": "string" },
+      "cover_image_large": { "bsonType": "string" },
+      "cover_image_medium": { "bsonType": "string" },
+      "cover_image_color": { "bsonType": "string" },
+
+      "banner_image": { "bsonType": "string" },
 
       "average_score": {
         "bsonType": "int",
         "minimum": 0,
         "maximum": 100,
         "description": "must be an integer in [ 0, 100 ]"
-      }
+      },
+      "mean_score": {
+        "bsonType": "int",
+        "minimum": 0,
+        "maximum": 100,
+        "description": "must be an integer in [ 0, 100 ]"
+      },
+      "popularity": { "bsonType": "int" },
+      "favourites": { "bsonType": "int" },
+      "is_adult": { "bsonType": "bool" },
+      "site_url": { "bsonType": "string" },
+      "mod_notes": { "bsonType": "string" }
+
+
     }
   }
 }
