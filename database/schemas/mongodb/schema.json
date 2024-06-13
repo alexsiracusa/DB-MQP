@@ -254,7 +254,7 @@
 
   "Studio": {
     "bsonType": "object",
-    "title": "Character",
+    "title": "Studio",
     "required": ["id"],
 
     "properties": {
@@ -268,7 +268,7 @@
 
   "Tag": {
     "bsonType": "object",
-    "title": "Character",
+    "title": "Tag",
     "required": ["id"],
 
     "properties": {
