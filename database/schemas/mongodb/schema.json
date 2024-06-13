@@ -59,7 +59,19 @@
       "favourites": { "bsonType": "int" },
       "is_adult": { "bsonType": "bool" },
       "site_url": { "bsonType": "string" },
-      "mod_notes": { "bsonType": "string" }
+      "mod_notes": { "bsonType": "string" },
+
+      "related_media": {
+        "bsonType": "array",
+        "title": "media relations",
+        "items": {
+          "bsonType": "object",
+          "properties": {
+            "media_id": { "bsonType": "int" },
+            "relation_type": { "bsonType": "string" }
+          }
+        }
+      }
 
 
     }
