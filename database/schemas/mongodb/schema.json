@@ -1,5 +1,5 @@
-{
-  "Media": {
+[
+  {
     "bsonType": "object",
     "title": "Media",
     "required": ["id"],
@@ -168,7 +168,7 @@
     }
   },
 
-  "Staff": {
+  {
     "bsonType": "object",
     "title": "Staff",
     "required": ["id"],
@@ -219,7 +219,7 @@
     }
   },
 
-  "Character": {
+  {
     "bsonType": "object",
     "title": "Character",
     "required": ["id"],
@@ -264,7 +264,7 @@
     }
   },
 
-  "Studio": {
+  {
     "bsonType": "object",
     "title": "Studio",
     "required": ["id"],
@@ -278,7 +278,7 @@
     }
   },
 
-  "Tag": {
+  {
     "bsonType": "object",
     "title": "Tag",
     "required": ["id"],
@@ -293,7 +293,7 @@
     }
   },
 
-  "Anilist_User": {
+  {
     "bsonType": "object",
     "title": "Anilist_User",
     "required": ["id"],
@@ -394,5 +394,5 @@
     }
   }
 
-}
+]
 
