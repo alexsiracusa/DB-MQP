@@ -6,6 +6,7 @@
 
     "properties": {
       "id": { "bsonType": "int" },
+
       "title": {
         "bsonType": "object",
         "properties": {
@@ -14,6 +15,7 @@
           "native": { "bsonType": "string" }
         }
       },
+
       "type": { "enum": ["ANIME", "MANGA"] },
       "format": { "bsonType": "string" },
       "status": { "bsonType": "string" },
@@ -40,7 +42,6 @@
       "cover_image_large": { "bsonType": "string" },
       "cover_image_medium": { "bsonType": "string" },
       "cover_image_color": { "bsonType": "string" },
-
       "banner_image": { "bsonType": "string" },
 
       "average_score": {
@@ -158,8 +159,125 @@
           }
         }
       }
+    }
+  },
 
+  "Staff": {
+    "bsonType": "object",
+    "title": "Staff",
+    "required": ["id"],
 
+    "properties": {
+      "id": { "bsonType": "int" },
+
+      "name": {
+        "bsonType": "object",
+        "properties": {
+          "first": { "bsonType": "string" },
+          "middle": { "bsonType": "string" },
+          "last": { "bsonType": "string" },
+          "full": { "bsonType": "string" },
+          "native": { "bsonType": "string" }
+        }
+      },
+
+      "language": { "bsonType": "string" },
+
+      "image_large": { "bsonType": "string" },
+      "image_medium": { "bsonType": "string" },
+
+      "description": { "bsonType": "string" },
+      "gender": { "bsonType": "string" },
+      "date_of_birth": { "bsonType": "int" },
+      "date_of_death": { "bsonType": "int" },
+      "active_from": { "bsonType": "int" },
+      "active_to": { "bsonType": "int" },
+      "home_town": { "bsonType": "string" },
+      "blood_type": { "bsonType": "string" },
+      "site_url": { "bsonType": "string" },
+      "favorites": { "bsonType": "int" },
+      "mod_notes": { "bsonType": "string" },
+
+      "name_alternatives": {
+        "bsonType": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "occupations": {
+        "bsonType": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    }
+  },
+
+  "Character": {
+    "bsonType": "object",
+    "title": "Character",
+    "required": ["id"],
+
+    "properties": {
+      "id": { "bsonType": "int" },
+
+      "name": {
+        "bsonType": "object",
+        "properties": {
+          "first": { "bsonType": "string" },
+          "middle": { "bsonType": "string" },
+          "last": { "bsonType": "string" },
+          "full": { "bsonType": "string" },
+          "native": { "bsonType": "string" }
+        }
+      },
+
+      "image_large": { "bsonType": "string" },
+      "image_medium": { "bsonType": "string" },
+      "description": { "bsonType": "string" },
+      "gender": { "bsonType": "string" },
+      "date_of_birth": { "bsonType": "int" },
+      "age": { "bsonType": "string" },
+      "blood_type": { "bsonType": "string" },
+      "site_url": { "bsonType": "string" },
+      "favorites": { "bsonType": "int" },
+      "mod_notes": { "bsonType": "string" },
+
+      "name_alternatives": {
+        "bsonType": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    }
+  },
+
+  "Studio": {
+    "bsonType": "object",
+    "title": "Character",
+    "required": ["id"],
+
+    "properties": {
+      "id": { "bsonType": "int" },
+      "name": { "bsonType": "string" },
+      "is_animation_studio": { "bsonType": "bool" },
+      "site_url": { "bsonType": "string" },
+      "favorites": { "bsonType": "int" }
+    }
+  },
+
+  "Tag": {
+    "bsonType": "object",
+    "title": "Character",
+    "required": ["id"],
+
+    "properties": {
+      "id": { "bsonType": "int" },
+      "name": { "bsonType": "string" },
+      "description": { "bsonType": "string" },
+      "category": { "bsonType": "string" },
+      "is_general_spoiler": { "bsonType": "bool" },
+      "is_adult": { "bsonType": "bool" }
     }
   }
 }
