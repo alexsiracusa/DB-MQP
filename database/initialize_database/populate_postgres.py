@@ -109,7 +109,7 @@ print("Loaded and cleaned all data")
 
 
 # refresh database
-sql_file_dir = "../../sql/"
+sql_file_dir = "../schemas/postgres/"
 
 helper = Path(sql_file_dir + "helper.sql").read_text()
 cur.execute(helper)
