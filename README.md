@@ -3,7 +3,7 @@ Within the top level directory for this project:
 ```shell
 > npm run dev
 ```
-> **NOTE 1:** this requires that all dependencies are already installed. Following the instructions on how to run just frontend/backend to do so.
+> **NOTE 1:** this requires that all dependencies are already installed. Follow the instructions on how to run just frontend/backend to do so.
 
 > **NOTE 2:** For the project to work fully, you must connect and possibly setup a Postgres and MongoDB server. Read the "Backend Setup" section for more.
 
