@@ -6,11 +6,11 @@
     background-color: #022f50;
 }
 
-.navbar-custom {
+.navbarCustom {
     background-color: #022f50;
 }
 
-.navbar-custom .navbar-brand,
-.navbar-custom .nav-link {
+.navbarCustom .navbarBrand,
+.navbarCustom .navLink {
     color: #f5f5f5;
 }
