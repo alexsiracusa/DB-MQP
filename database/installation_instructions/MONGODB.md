@@ -130,7 +130,7 @@ The resulting file system should look like this:
 └── data/
     ├── configdb/
     └── db/
-└── etc.
+└── etc/
     ├── configsvr.conf
     ├── shard.conf
     └── mongos.conf
