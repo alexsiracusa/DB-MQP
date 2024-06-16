@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import geminiInst from '../geminiInst';
+import geminiInst from '../geminiInst.ts';
 import { Light as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
-import '.././styles/Translator.css'
-import Navbar from './Navbar';
+import '../styles/Translator.css'
+import Navbar from '../components/Navbar.tsx';
 
   
   const Translator: React.FC = () => {
