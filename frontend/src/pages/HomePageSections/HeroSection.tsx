@@ -5,7 +5,9 @@ const HeroSection: React.FC = () => {
 
     return (
         <div className="hero">
-            <h2>Hero Section</h2>
+            <div className="content">
+                <h2>Hero Section</h2>
+            </div>
         </div>
     );
 }

@@ -1,0 +1,28 @@
+
+.person-card-container {
+    display: flex;
+    flex-direction: row;
+    column-gap: 6px;
+    align-items: flex-start;
+}
+
+.person-card-container img {
+    object-fit: contain;
+    width: 40%;
+    border-radius: 5%;
+}
+
+.about {
+    display: flex;
+    flex-direction: column;
+    column-gap: 6px;
+    width: 60%;
+}
+
+.about p {
+    text-align: left;
+}
+
+.about h3 {
+    text-align: left;
+}
