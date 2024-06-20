@@ -5,7 +5,9 @@ const ReportSection: React.FC = () => {
 
     return (
         <div className="report">
-            <h2>Report Section</h2>
+            <div className="content">
+                <h2>Report Section</h2>
+            </div>
         </div>
     );
 }
