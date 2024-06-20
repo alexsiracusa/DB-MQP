@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import geminiInst from '../geminiInst.ts';
+import SQLRequest from '../geminiInst.ts';
 import { Light as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import '../styles/Translator.css'
@@ -27,6 +28,19 @@ import Navbar from '../components/Navbar.tsx';
       setExplanation(parsedResult.explanation);
       setKeyDifferences(parsedResult.keyDifferences);
     };
+
+    const handleSQLRequest = async() => {
+      const result = await SQLRequest(inputCode);
+      return result.outputCode;
+
+    }
+
+    const handleSubmitQuery: React.FormEventHandler = async (e) => {
+      e.preventDefault();
+      const aiResponse = await handleSQLRequest();
+      const parsedResult = parseResponse(aiResponse);
+      setOutputCode(parsedResult.outputCode);
+    }
   
     const parseResponse = (response: string) => {
         const javascriptMarker = '```';
@@ -72,6 +86,10 @@ import Navbar from '../components/Navbar.tsx';
           />
           <input type='submit' value="Send" />
         </form>
+        <form className='input-form' onSubmit={handleSubmitQuery}>
+          <input type='submit' value="Sample SQL Query" />
+        </form>
+        
         {outputCode.startsWith('sql') ? (
           <div className="result-section">
             <div className="code-block">
