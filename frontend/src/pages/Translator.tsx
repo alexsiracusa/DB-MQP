@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, ChangeEvent } from 'react';
 import geminiInst from '../geminiInst.ts';
 import { Light as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
@@ -12,20 +12,31 @@ import Navbar from '../components/Navbar.tsx';
     const [outputCode, setOutputCode] = useState('');
     const [explanation, setExplanation] = useState('');
     const [keyDifferences, setKeyDifferences] = useState('');
+    const [originTech, setOriginTech] = useState<string>("");
+    const [destTech, setDestTech] = useState<string>("");
+    const [outputLang, setOutputLang] = useState<string>("");
 
     const handleConvert = async (input: string) => {
-      const result = await geminiInst(input);
+      const result = await geminiInst(input, originTech, destTech);
       return result.outputCode;
     };
   
     const handleSubmit: React.FormEventHandler = async (e) => {
-      e.preventDefault();
       setInputCode(writtenCode);
+      e.preventDefault();
       const aiResponse = await handleConvert(inputCode);
       const parsedResult = parseResponse(aiResponse);
       setOutputCode(parsedResult.outputCode);
       setExplanation(parsedResult.explanation);
       setKeyDifferences(parsedResult.keyDifferences);
+    };
+
+    const handleOriginChange = (event: ChangeEvent<HTMLSelectElement>) => {
+      setOriginTech(event.target.value);
+    };
+
+    const handleDestChange = (event: ChangeEvent<HTMLSelectElement>) => {
+      setDestTech(event.target.value);
     };
   
     const parseResponse = (response: string) => {
@@ -63,6 +74,22 @@ import Navbar from '../components/Navbar.tsx';
           </p>
         </div>
         <form className='input-form' onSubmit={handleSubmit}>
+        <label>
+        Choose an option:
+        <select value={originTech} onChange={handleOriginChange}>
+          <option value="" disabled>Translate from:</option>
+          <option value="option1">Oracle (SQL)</option>
+          <option value="option2">MongoDB (NOSQL)</option>
+        </select>
+      </label>
+      <label>
+        Choose an option:
+        <select value={destTech} onChange={handleDestChange}>
+          <option value="" disabled>Translate to:</option>
+          <option value="option1">Oracle (SQL)</option>
+          <option value="option2">MongoDB (NOSQL)</option>
+        </select>
+      </label>
           <textarea
             placeholder="Query goes here"
             value={writtenCode}
@@ -74,13 +101,37 @@ import Navbar from '../components/Navbar.tsx';
         </form>
         {outputCode.startsWith('sql') ? (
           <div className="result-section">
+          <div className="code-container">
             <div className="code-block">
-              <h2>SQL Code</h2>
-              <SyntaxHighlighter language="sql" style={docco}>
-                {outputCode.substring(4).trim()} {/* Trim the first 5 characters (```sql) */}
+              <h2>Input Code</h2>
+              <SyntaxHighlighter language="javascript" style={docco}>
+                {inputCode}
               </SyntaxHighlighter>
             </div>
+          <div>
+            <h2>Converted Code</h2>
+            <SyntaxHighlighter language="sql" style={docco}>
+              {outputCode}
+            </SyntaxHighlighter>
           </div>
+          </div>      
+        {explanation && (
+          <div>
+            <h2>Explanation</h2>
+            <pre className="explanation-text">
+              {explanation}
+            </pre>
+          </div>
+        )}
+        {keyDifferences && (
+          <div>
+            <h2>Key Differences</h2>
+            <pre className="explanation-text">
+              {keyDifferences}
+            </pre>
+          </div>
+        )}
+        </div>
         )
       : (
         (outputCode && (
