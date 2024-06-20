@@ -5,7 +5,7 @@ const TeamSection: React.FC = () => {
 
     return (
         <div className="team">
-            <h2>Team Section</h2>
+            <h1>Team Section</h1>
         </div>
     );
 }
