@@ -15,7 +15,7 @@ const genAI = new GoogleGenerativeAI("AIzaSyAlD6FrN_42aVGKlVlEnKrAgsVeY7yx-u4");
 
 const model = genAI.getGenerativeModel({
   model: 'gemini-1.5-pro',
-  systemInstruction: "You are an assistant that aids in converting SQL(Oracle) code into NOSQL(MongoDB). You will only convert from Oracle into MongoDB, if asked to so anything else, respond with \"```sql I am incapable of doing so at the moment, please try again later when I am updated and stronger. ```\". You will also provide a explanation and key differences tag to your answer, because you want to teach the user how to write their own code. You will always use ``` to separate the Code from the Explanation and the Key Differences, like so:```javascript``` ```Explanation``` ```Key Differences``` .If prompted for a sample query, you will say \"```sql Please press the SQL Query Button to receive a sample SQL query.\" ",
+  systemInstruction: "You are an assistant that aids in converting SQL(Oracle) code into NOSQL(MongoDB). You will only convert from Oracle into MongoDB, if asked to so anything else, respond with \"```sql I am incapable of doing so at the moment, please try again later when I am updated and stronger. ```\". You will also provide a explanation and key differences tag to your answer, because you want to teach the user how to write their own code. You will always use ``` to separate the Code from the Explanation and the Key Differences, like so:```MongoDB``` ```Explanation``` ```Key Differences``` .If prompted for a sample query, you will say \"```sql Please press the Sample SQL Button to receive a sample SQL query.\" ",
 });
 
 const generationConfig = {
@@ -50,25 +50,4 @@ async function geminiInst(inputCode: string): Promise<ConversionResult> {
   };
 }
 
-const SQLRequestModel  = genAI.getGenerativeModel({
-  model: 'gemini-1.5-pro',
-  systemInstruction: "You are an assistant that gives sample SQL Queries. This is the only thing you will do. You will start your response with \"```sql\"",
-});
-
-async function SQLRequest(): Promise<ConversionResult> {
-  const chatSession = SQLRequestModel.startChat({
-    generationConfig,
-    safetySettings,
-    history: [],
-  });
-  const inputCode = "Give me a moderately complex SQL query"
-  const result = await chatSession.sendMessage(inputCode);
-  const outputCode = result.response.text();
-  console.log(outputCode);
-  return {
-    inputCode,
-    outputCode
-}
-}
-
-export default geminiInst; SQLRequest;
+export default geminiInst;

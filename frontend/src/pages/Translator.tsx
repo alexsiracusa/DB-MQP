@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import geminiInst from '../geminiInst.ts';
-import SQLRequest from '../geminiInst.ts';
+import SQLRequest from '../sqlSampleRequest.ts';
 import { Light as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import '../styles/Translator.css'
@@ -30,16 +30,16 @@ import Navbar from '../components/Navbar.tsx';
     };
 
     const handleSQLRequest = async() => {
-      const result = await SQLRequest(inputCode);
-      return result.outputCode;
+      const result = await SQLRequest();
+      return result;
 
     }
 
     const handleSubmitQuery: React.FormEventHandler = async (e) => {
       e.preventDefault();
       const aiResponse = await handleSQLRequest();
-      const parsedResult = parseResponse(aiResponse);
-      setOutputCode(parsedResult.outputCode);
+      const parsedResponse = parseResponse(aiResponse);
+      setOutputCode(parsedResponse.outputCode);
     }
   
     const parseResponse = (response: string) => {
