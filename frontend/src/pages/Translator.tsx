@@ -75,7 +75,7 @@ import Navbar from '../components/Navbar.tsx';
         </div>
         <form className='input-form' onSubmit={handleSubmit}>
         <label>
-        Choose an option:
+        Translate from:
         <select value={originTech} onChange={handleOriginChange}>
           <option value="" disabled>Translate from:</option>
           <option value="Oracle(SQL)">SQL</option>
@@ -83,7 +83,7 @@ import Navbar from '../components/Navbar.tsx';
         </select>
       </label>
       <label>
-        Choose an option:
+      Translate to:
         <select value={destTech} onChange={handleDestChange}>
           <option value="" disabled>Translate to:</option>
           <option value="Oracle(SQL)">SQL</option>
