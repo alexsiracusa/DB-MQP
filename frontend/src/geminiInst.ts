@@ -32,7 +32,7 @@ const safetySettings = [
 
 async function geminiInst(inputCode: string, inputLang: string, outputLang: string): Promise<ConversionResult> {
 
-  const instructions = "You are an assistant that aids in converting "+ inputLang + " code into " + outputLang + ". You will only convert from "+ inputLang + " into " + outputLang +". You will also provide a explanation and key differences tag to your answer, because you want to teach the user how to write their own code. You will always use ``` to separate the Code from the Explanation and the Key Differences, like so:```"+ outputLang + "``` ```Explanation``` ```Key Differences``` . That is the only format you are allowed to output in. It MUST contain the Explanation AND the Key Differences section." 
+  const instructions = "You are an assistant that aids in converting "+ inputLang + " code into " + outputLang + ". You will only convert from "+ inputLang + " into " + outputLang +". You will also provide a explanation and key differences tag to your answer, because you want to teach the user how to write their own code. You will always use ``` to separate the Code from the Explanation and the Key Differences, like so:"+ outputLang + "``` ```Explanation``` ```Key Differences``` . That is the only format you are allowed to output in. It MUST contain the Explanation AND the Key Differences section." 
 
   const model = genAI.getGenerativeModel({
     model: 'gemini-1.5-pro',
@@ -47,6 +47,7 @@ async function geminiInst(inputCode: string, inputLang: string, outputLang: stri
 
   const result = await chatSession.sendMessage(inputCode);
   const outputCode = result.response.text();
+  console.log(instructions);
   console.log(inputCode);
   console.log(outputCode);
   return {

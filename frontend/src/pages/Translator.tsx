@@ -14,7 +14,7 @@ import Navbar from '../components/Navbar.tsx';
     const [keyDifferences, setKeyDifferences] = useState('');
     const [originTech, setOriginTech] = useState<string>("");
     const [destTech, setDestTech] = useState<string>("");
-    const [outputLang, setOutputLang] = useState<string>("");
+    //const [outputLang, setOutputLang] = useState<string>("");
 
     const handleConvert = async (input: string) => {
       const result = await geminiInst(input, originTech, destTech);
@@ -78,16 +78,16 @@ import Navbar from '../components/Navbar.tsx';
         Choose an option:
         <select value={originTech} onChange={handleOriginChange}>
           <option value="" disabled>Translate from:</option>
-          <option value="option1">Oracle (SQL)</option>
-          <option value="option2">MongoDB (NOSQL)</option>
+          <option value="Oracle(SQL)">SQL</option>
+          <option value="MongoDB (NOSQL)">MongoDB</option>
         </select>
       </label>
       <label>
         Choose an option:
         <select value={destTech} onChange={handleDestChange}>
           <option value="" disabled>Translate to:</option>
-          <option value="option1">Oracle (SQL)</option>
-          <option value="option2">MongoDB (NOSQL)</option>
+          <option value="Oracle(SQL)">SQL</option>
+          <option value="MongoDB (NOSQL)">MongoDB</option>
         </select>
       </label>
           <textarea
