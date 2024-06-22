@@ -58,10 +58,12 @@
     padding: 3% 0;
 }
 
-@media (max-width: 45rem) {
+@media (max-width: 60rem) {
     .team .card-container {
-        display: block;
+        display: flex;
+        flex-direction: column;
         width: 100%;
+        gap: 1.5rem;
     }
 }
 
