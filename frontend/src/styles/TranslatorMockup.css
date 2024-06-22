@@ -25,6 +25,7 @@
 
     height: 100%;
     width: 250px;
+    resize: horizontal;
 
     background-color: #F6F6F6;
 }
@@ -65,5 +66,25 @@
 
     height: 200px;
     background-color: #ffffff;
+}
+
+
+/*Split resizing css*/
+/*github: https://github.com/nathancahill/split/tree/master/packages/splitjs*/
+.gutter {
+    background-repeat: no-repeat;
+    background-position: 50%;
+}
+
+.gutter.gutter-horizontal {
+    background-color: #F6F6F6;
+    background-image: url('../assets/grips/vertical.png');
+    cursor: col-resize;
+}
+
+.gutter.gutter-vertical {
+    background-color: #ffffff;
+    background-image: url('../assets/grips/horizontal.png');
+    cursor: row-resize;
 }
 

@@ -1,6 +1,7 @@
 import '.././styles/TranslatorMockup.css'
 import Navbar from '../components/Navbar.tsx'
 import React from "react";
+import Split from 'react-split'
 
 const TranslatorMockup: React.FC = () => {
 
@@ -10,12 +11,25 @@ const TranslatorMockup: React.FC = () => {
                 <meta name="viewport" content="width=device-width, initial-scale=1"/>
             </head>
             <Navbar/>
-            <div className='page-content'>
+            <Split
+                className="page-content"
+                direction="horizontal"
+                gutterAlign="start"
+                sizes={[20, 80]}
+                minSize={6}
+                gutterSize={6}
+            >
                 <div className='sidebar'>
                     <text>sidebar</text>
                 </div>
-                <div className='code-content'>
-
+                <Split
+                    className="code-content"
+                    direction="vertical"
+                    gutterAlign="end"
+                    sizes={[70, 30]}
+                    minSize={6}
+                    gutterSize={6}
+                >
                     <div className='tab-container'>
                         <div className='tab-content'>
                             <text>tab1</text>
@@ -28,8 +42,8 @@ const TranslatorMockup: React.FC = () => {
                     <div className='console'>
                         <text>console</text>
                     </div>
-                </div>
-            </div>
+                </Split>
+            </Split>
         </div>
     );
 }
