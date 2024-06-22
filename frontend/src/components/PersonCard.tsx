@@ -1,18 +1,22 @@
-import React from "react";
 import '../styles/PersonCard.css'
-import profilePicture from '../assets/ProfileImages/Wong.png'
 
-const PersonCard: React.FC = () => {
+type PersonCardProps = {
+    name: string;
+    description: string;
+    image: string;
+}
+
+function PersonCard(props: PersonCardProps) {
 
     return (
         <div className="person-card-container">
-            <img src={profilePicture} />
+            <img src={props.image} />
             <div className="about">
-                <h3>Professor Wong</h3>
+                <h3>
+                    {props.name}
+                </h3>
                 <p>
-                    Destroyer of worlds, advisor of our mqp, and much more.
-                    Wong strikes fear into the hearts of his enemies wherever
-                    he goes.
+                    {props.description}
                 </p>
             </div>
         </div>
