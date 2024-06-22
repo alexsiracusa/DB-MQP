@@ -39,9 +39,11 @@ import Navbar from '../components/Navbar.tsx';
     const handleDestChange = (event: ChangeEvent<HTMLSelectElement>) => {
       setDestTech(event.target.value);
     };
-    
+
     const handleSQLRequest = async() => {
       const result = await SQLRequest();
+      setExplanation("");
+      setKeyDifferences("");
       return result;
 
     }
