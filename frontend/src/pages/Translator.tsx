@@ -44,6 +44,7 @@ import Navbar from '../components/Navbar.tsx';
       const result = await SQLRequest();
       setExplanation("");
       setKeyDifferences("");
+      setInputCode("");
       return result;
 
     }
@@ -122,12 +123,13 @@ import Navbar from '../components/Navbar.tsx';
         {outputCode.startsWith('sql') ? (
           <div className="result-section">
           <div className="code-container">
-            <div className="code-block">
+            {inputCode && (<div className="code-block">
               <h2>Input Code</h2>
               <SyntaxHighlighter language="javascript" style={docco}>
                 {inputCode}
               </SyntaxHighlighter>
             </div>
+            )}
           <div>
             <h2>Converted Code</h2>
             <SyntaxHighlighter language="sql" style={docco}>
