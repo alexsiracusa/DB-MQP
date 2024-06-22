@@ -7,14 +7,18 @@ export default {
   theme: {
     extend: {
       colors: {
-        'dark-blue': '#022F50',
-        'light-blue': '#BDE3FF',
-        'baby-blue': '#0D99FF',
+        'bgP': '#E0EEFF',
+        'bgS': '#BDE3FF',
+        'bgT': '#F6F6F6',
+        'txtP': '#000000',
+        'txtS': '#FFFFFF',
+        'accP': '#022F50',
+        'accS': '#0D99FF',
+        'accT': '#FF962C',
       },
       fontFamily: {
-        raleway: ['Raleway', 'sans-serif'],
-        userInput: ['DM Mono', 'sans-serif'],
-        caption: ['Inter', 'sans-serif'],
+        Raleway: ['Raleway', 'sans-serif'],
+        Inter: ['Inter', 'sans-serif'],
       },
     }
   },
