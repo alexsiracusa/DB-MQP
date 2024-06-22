@@ -5,7 +5,9 @@ const QueriesSection: React.FC = () => {
 
     return (
         <div className="queries">
-            <h2>Queries Section</h2>
+            <div className="content">
+                <h2>Queries Section</h2>
+            </div>
         </div>
     );
 }
