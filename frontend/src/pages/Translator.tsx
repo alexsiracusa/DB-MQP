@@ -22,7 +22,7 @@ import Navbar from '../components/Navbar.tsx';
     const handleSubmit: React.FormEventHandler = async (e) => {
       e.preventDefault();
       setInputCode(writtenCode);
-      const aiResponse = await handleConvert(inputCode);
+      const aiResponse = await handleConvert(writtenCode);
       const parsedResult = parseResponse(aiResponse);
       setOutputCode(parsedResult.outputCode);
       setExplanation(parsedResult.explanation);
