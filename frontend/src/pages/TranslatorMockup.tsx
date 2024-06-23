@@ -13,8 +13,9 @@ const TranslatorMockup: React.FC = () => {
     const tabWindow1 = new TabWindow();
     const tabWindow2 = new TabWindow();
     const tabWindow3 = new TabWindow();
+    const tabWindow4 = new TabWindow();
 
-    tabGroup2.children = [tabWindow2, tabWindow3]
+    tabGroup2.children = [tabWindow2, tabWindow3, tabWindow4]
     tabGroup1.children = [tabWindow1, tabGroup2]
 
     return (
@@ -43,7 +44,10 @@ const TranslatorMockup: React.FC = () => {
                     gutterSize={6}
                 >
                     <div className={"tab-container"}>
-                        <TabMockup childObject={tabGroup1}/>
+                        <TabMockup
+                            childObject={tabGroup1}
+                            addSibling={() => {}}
+                        />
                     </div>
 
                     <div className='console'>

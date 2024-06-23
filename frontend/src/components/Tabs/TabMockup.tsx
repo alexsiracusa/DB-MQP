@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import TabWindowBar from "./TabWindowBar.tsx";
 import Split from "react-split";
 import '../../styles/TranslatorMockup.css'
 
+export type Direction = "horizontal" | "vertical" | undefined;
+export type Position = "before" | "after" | undefined;
 
 class TabContent {
     name: string
@@ -18,6 +20,7 @@ class TabContent {
 
 export abstract class TabObject {
     abstract equal(other: TabObject): boolean;
+    id: number = Math.floor(Math.random() * 99);
 }
 
 export class TabWindow extends TabObject {
@@ -47,7 +50,7 @@ export class TabWindow extends TabObject {
 
 export class TabWindowGroup extends TabObject {
     children: TabObject[]
-    direction: "horizontal" | "vertical" | undefined
+    direction: Direction
 
     constructor(direction: "horizontal" | "vertical" | undefined) {
         super();
@@ -74,52 +77,100 @@ export class TabWindowGroup extends TabObject {
 
 type TabMockupProps = {
     childObject: TabObject
+    addSibling: (self: TabWindow, direction: Direction, position: Position) => void;
 }
 
+// const TabMockup = React.memo((props: TabMockupProps) => {
+const TabMockup = (props: TabMockupProps) => {
+    const [i, updateState] = React.useState(0);
+    const forceUpdate = React.useCallback(() => updateState(Math.random()), []);
 
-const TabMockup = React.memo((props: TabMockupProps) => {
-        console.log('content rendered');
-        const tabObject = props.childObject
+    const [tabObject, setTabObject] = useState(props.childObject)
 
-        if (tabObject instanceof TabWindow) {
-            return (
-                <div className={"tab-content"}>
-                    <TabWindowBar/>
-                </div>
-            );
-        }
-        else if (tabObject instanceof TabWindowGroup) {
-            return (
-                <Split
-                    className={"tab-split-container-" + tabObject.direction}
-                    direction={tabObject.direction}
-                    gutterAlign="start"
-                    sizes={[50, 50]}
-                    minSize={6}
-                    gutterSize={6}
-                >
-                    {
-                        tabObject.children.map((childObject, i) => {
-                            return (
-                                <React.Fragment key={i}>
-                                    <TabMockup childObject={childObject}/>
-                                </React.Fragment>
-                            )
-                        })
-                    }
-                </Split>
-            )
-        }
-        else {
-            console.log("oops")
-        }
+    // const tabObject = props.childObject
 
-    }, (prevProps, nextProps) => {
-        if (prevProps !== nextProps) {
-            return false; // props are not equal -> update the component
+    function addSibling(self: TabWindow, direction: Direction, position: Position) {
+        const tabWindowGroup = tabObject as TabWindowGroup;
+
+        if (tabWindowGroup.direction != null) {
+            console.log("added sibling")
+
+            // const newTabWindowGroup: TabWindowGroup = {
+            //     ...tabWindowGroup,
+            //     equal: tabObject.equal
+            // }
+            const newTabWindowGroup = Object.create(tabObject);
+
+            const newTab = new TabWindow();
+            const index = newTabWindowGroup.children.indexOf(self);
+
+            if (newTabWindowGroup.direction === direction) {
+                newTabWindowGroup.children.push(newTab)
+            } else {
+                const newGroup = new TabWindowGroup(direction);
+                newGroup.children = [self, newTab];
+                newTabWindowGroup.children[index] = newGroup;
+            }
+            setTabObject(newTabWindowGroup);
+            forceUpdate()
+            console.log(tabObject)
+        } else {
+            console.log("not a tab window")
         }
-        return prevProps.childObject.equal(nextProps.childObject);
     }
-);
+
+    // console.log("tabObject type = " + tabObject.constructor.name);
+    // const tabWindowGroup = tabObject as TabWindowGroup;
+    // const tabWindow = tabObject as TabWindow;
+
+    // if (tabWindow.contents != null) {
+    // if (tabObject.constructor.name == "TabWindow") {
+    if (tabObject instanceof TabWindow) {
+        console.log('rendered tabWindow ' + tabObject.id);
+        return (
+            <div className={"tab-content"}>
+                <TabWindowBar
+                    self={tabObject}
+                    addSibling={props.addSibling}
+                />
+            </div>
+        );
+    }
+    // else if (tabWindowGroup != null) {
+    // else if (tabObject.constructor.name == "TabWindowGroup") {
+    else if (tabObject instanceof TabWindowGroup) {
+        console.log('rendered tabWindowGroup ' + tabObject.id);
+        return (
+            <Split
+                className={"tab-split-container-" + tabObject.direction}
+                direction={tabObject.direction}
+                gutterAlign="start"
+                minSize={6}
+                gutterSize={6}
+            >
+                {
+                    tabObject.children.map((childObject, i) => {
+                        return (
+                            <TabMockup
+                                key={i}
+                                childObject={childObject}
+                                addSibling={addSibling}
+                            />
+                        )
+                    })
+                }
+            </Split>
+        )
+    } else {
+        console.log("failed to render")
+    }
+};
+//     }, (prevProps, nextProps) => {
+//         if (prevProps !== nextProps) {
+//             return false; // props are not equal -> update the component
+//         }
+//         return prevProps.childObject.equal(nextProps.childObject);
+//     }
+// );
 
 export default TabMockup;
