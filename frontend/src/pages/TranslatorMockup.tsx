@@ -30,13 +30,22 @@ const TranslatorMockup: React.FC = () => {
                     minSize={6}
                     gutterSize={6}
                 >
-                    <div className='tab-container'>
-                        <div className='tab-content'>
-                            <text>tab1</text>
-                        </div>
-                        <div className='tab-content'>
-                            <text>tab2</text>
-                        </div>
+                    <div className={"tab-container"}>
+                        <Split
+                            className="tab-split-container"
+                            direction="horizontal"
+                            gutterAlign="start"
+                            sizes={[50, 50]}
+                            minSize={6}
+                            gutterSize={6}
+                        >
+                            <div className='tab-content'>
+                                <text>tab1</text>
+                            </div>
+                            <div className='tab-content'>
+                                <text>tab2</text>
+                            </div>
+                        </Split>
                     </div>
 
                     <div className='console'>
