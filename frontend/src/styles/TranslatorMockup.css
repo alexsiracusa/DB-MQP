@@ -50,9 +50,15 @@
     background-color: #E0EEFF;
 }
 
-.tab-split-container {
+.tab-split-container-horizontal {
     display: flex;
     flex-direction: row;
+    flex-grow: 1;
+}
+
+.tab-split-container-vertical {
+    display: flex;
+    flex-direction: column;
     flex-grow: 1;
 }
 
