@@ -116,12 +116,9 @@ const TabMockup = React.memo((props: TabMockupProps) => {
 
     }, (prevProps, nextProps) => {
         if (prevProps !== nextProps) {
-            return false;
+            return false; // props are not equal -> update the component
         }
-        if (prevProps instanceof TabObject && nextProps instanceof TabObject) {
-            return prevProps.equal(nextProps);
-        }
-        return false; // props are not equal -> update the component
+        return prevProps.childObject.equal(nextProps.childObject);
     }
 );
 
