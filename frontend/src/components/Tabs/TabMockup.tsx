@@ -1,5 +1,6 @@
 // @ts-nocheck
 
+import React from 'react';
 import TabWindowBar from "./TabWindowBar.tsx";
 import Split from "react-split";
 import '../../styles/TranslatorMockup.css'
