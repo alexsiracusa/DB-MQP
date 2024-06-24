@@ -1,0 +1,18 @@
+
+.gutter {
+    background-repeat: no-repeat;
+    background-position: 50%;
+}
+
+/*Set Gutter Images*/
+.gutter.gutter-horizontal {
+    background-image: url('../assets/grips/vertical.png');
+    cursor: col-resize;
+    width: 6px;
+}
+
+.gutter.gutter-vertical {
+    background-image: url('../assets/grips/horizontal.png');
+    cursor: row-resize;
+    height: 6px;
+}

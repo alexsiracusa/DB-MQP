@@ -1,4 +1,6 @@
-import '.././styles/TranslatorMockup.css'
+import '../styles/TranslatorMockup.css'
+import '../styles/Gutters.css'
+
 import Navbar from '../components/Navbar.tsx'
 import React from "react";
 import TabContainer from "../components/Tabs/TabContainer.tsx";

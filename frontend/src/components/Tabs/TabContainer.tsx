@@ -1,10 +1,12 @@
+import '../../styles/TabContainer.css'
+import '../../styles/Gutters.css'
+
 import {Panel, PanelGroup, PanelResizeHandle} from "react-resizable-panels";
 import React from 'react';
 import TabWindowBar from "./TabWindowBar.tsx";
 import TabObject from "./TabObject.tsx";
 import TabWindowGroup from "./TabWindowGroup.tsx";
 import TabWindow from "./TabWindow.tsx";
-import '../../styles/TranslatorMockup.css'
 
 export type Direction = "horizontal" | "vertical";
 export type Position = "before" | "after";
