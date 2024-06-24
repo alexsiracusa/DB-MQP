@@ -44,6 +44,7 @@ type TabMockupProps = {
     childObject: TabObject;
     addSibling: (self: TabWindow, direction: Direction, position: Position) => void;
     deleteSelf: (self: TabWindow) => void;
+    flattenSelf: (self: TabWindowGroup) => void;
 }
 
 // const TabMockup = React.memo((props: TabMockupProps) => {
@@ -53,7 +54,7 @@ const TabMockup = (props: TabMockupProps) => {
     const tabObject = props.childObject
 
     function addSibling(self: TabWindow, direction: Direction, position: Position) {
-        if (tabObject instanceof TabWindowGroup && tabObject.direction != null) {
+        if (tabObject instanceof TabWindowGroup) {
             console.log("added sibling")
 
             const newTab = new TabWindow();
@@ -74,18 +75,36 @@ const TabMockup = (props: TabMockupProps) => {
     }
 
     function deleteSelf(self: TabWindow) {
-        if (tabObject instanceof TabWindowGroup && tabObject.direction != null) {
+        if (tabObject instanceof TabWindowGroup) {
             console.log("deleting " + self.id)
 
             const index = tabObject.children.indexOf(self);
             tabObject.children.splice(index, 1)
-            if (tabObject.children.length === 1) {
-
+            if (tabObject.children.length <= 1) {
+                props.flattenSelf(tabObject);
             }
 
             forceUpdate()
         } else {
             console.log("not a tab window")
+        }
+    }
+
+    function flattenSelf(self: TabWindowGroup) {
+        if (tabObject instanceof TabWindowGroup) {
+            console.log("flattening " + self.id + " into " + tabObject.id)
+
+            const index = tabObject.children.indexOf(self);
+            tabObject.children.splice(index, 1);
+            for (const child: TabObject of self.children.reverse()) {
+                tabObject.children.splice(index, 0, child)
+                console.log("add child " + child.id)
+            }
+
+            forceUpdate()
+        }
+        else {
+            console.log("not a tab window group")
         }
     }
 
@@ -113,10 +132,10 @@ const TabMockup = (props: TabMockupProps) => {
                                     childObject={childObject}
                                     addSibling={addSibling}
                                     deleteSelf={deleteSelf}
+                                    flattenSelf={flattenSelf}
                                 />
                             </Panel>
                         )
-                        console.log(i, tabObject.children.length)
                         if (i === tabObject.children.length - 1) {
                             return content
                         }

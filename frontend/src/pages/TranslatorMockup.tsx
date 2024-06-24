@@ -48,6 +48,7 @@ const TranslatorMockup: React.FC = () => {
                             childObject={tabGroup1}
                             addSibling={() => {}}
                             deleteSelf={() => {}}
+                            flattenSelf={() => {}}
                         />
                     </div>
 
