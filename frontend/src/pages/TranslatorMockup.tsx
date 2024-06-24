@@ -3,7 +3,8 @@ import Navbar from '../components/Navbar.tsx'
 import React from "react";
 import Split from 'react-split'
 import TabMockup from "../components/Tabs/TabMockup.tsx";
-import {TabWindow, TabWindowGroup} from "../components/Tabs/TabMockup.tsx";
+import TabWindow from "../components/Tabs/TabWindow.tsx";
+import TabWindowGroup from "../components/Tabs/TabWindowGroup.tsx";
 
 const TranslatorMockup: React.FC = () => {
 

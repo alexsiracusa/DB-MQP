@@ -1,4 +1,4 @@
-import {TabWindow} from "./TabMockup.tsx";
+import TabWindow from "./TabWindow.tsx";
 import {Direction, Position} from "./TabMockup.tsx";
 
 type TabWindowBarProps = {

@@ -3,42 +3,15 @@
 import {Panel, PanelGroup, PanelResizeHandle} from "react-resizable-panels";
 import React from 'react';
 import TabWindowBar from "./TabWindowBar.tsx";
+import TabObject from "./TabObject.tsx";
+import TabWindowGroup from "./TabWindowGroup.tsx";
+import TabWindow from "./TabWindow.tsx";
 import '../../styles/TranslatorMockup.css'
 
 export type Direction = "horizontal" | "vertical" | undefined;
 export type Position = "before" | "after" | undefined;
 
-class TabContent {
-    name: string
 
-    constructor(name: string) {
-        this.name = name
-    }
-}
-
-export abstract class TabObject {
-    id: number = Math.floor(Math.random() * 99);
-}
-
-export class TabWindow extends TabObject {
-    contents: TabContent[]
-
-    constructor() {
-        super();
-        this.contents = []
-    }
-}
-
-export class TabWindowGroup extends TabObject {
-    children: TabObject[]
-    direction: Direction
-
-    constructor(direction: "horizontal" | "vertical" | undefined) {
-        super();
-        this.children = []
-        this.direction = direction
-    }
-}
 
 type TabMockupProps = {
     childObject: TabObject;
