@@ -47,6 +47,7 @@ const TranslatorMockup: React.FC = () => {
                         <TabMockup
                             childObject={tabGroup1}
                             addSibling={() => {}}
+                            deleteSelf={() => {}}
                         />
                     </div>
 

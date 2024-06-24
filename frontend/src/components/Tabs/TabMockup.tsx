@@ -14,15 +14,9 @@ class TabContent {
     constructor(name: string) {
         this.name = name
     }
-
-    equal(other: TabContent) {
-        return this.name === other.name;
-    }
 }
 
 export abstract class TabObject {
-    abstract equal(other: TabObject): boolean;
-
     id: number = Math.floor(Math.random() * 99);
 }
 
@@ -32,22 +26,6 @@ export class TabWindow extends TabObject {
     constructor() {
         super();
         this.contents = []
-    }
-
-    equal(other: TabObject) {
-        if (other instanceof TabWindow) {
-            if (this.contents.length != other.contents.length) {
-                return false;
-            }
-            this.contents.forEach((content, index) => {
-                const otherContent = other.contents[index]
-                if (!content.equal(otherContent)) {
-                    return false
-                }
-            });
-            return true;
-        }
-        return false;
     }
 }
 
@@ -60,27 +38,12 @@ export class TabWindowGroup extends TabObject {
         this.children = []
         this.direction = direction
     }
-
-    equal(other: TabObject): boolean {
-        if (other instanceof TabWindowGroup) {
-            if (this.children.length != other.children.length) {
-                return false;
-            }
-            this.children.forEach((child, index) => {
-                const otherChild = other.children[index]
-                if (!child.equal(otherChild)) {
-                    return false
-                }
-            });
-            return true;
-        }
-        return false;
-    }
 }
 
 type TabMockupProps = {
-    childObject: TabObject
+    childObject: TabObject;
     addSibling: (self: TabWindow, direction: Direction, position: Position) => void;
+    deleteSelf: (self: TabWindow) => void;
 }
 
 // const TabMockup = React.memo((props: TabMockupProps) => {
@@ -109,15 +72,31 @@ const TabMockup = (props: TabMockupProps) => {
         }
     }
 
+    function deleteSelf(self: TabWindow) {
+        if (tabObject instanceof TabWindowGroup && tabObject.direction != null) {
+            console.log("deleting " + self.id)
+
+            const index = tabObject.children.indexOf(self);
+            tabObject.children.splice(index, 1)
+            if (tabObject.children.length === 1) {
+
+            }
+
+            forceUpdate()
+        } else {
+            console.log("not a tab window")
+        }
+    }
+
     console.log(tabObject)
 
     if (tabObject instanceof TabWindow) {
-        // console.log('rendered tabWindow ' + tabObject.id);
         return (
             <div className={"tab-content"}>
                 <TabWindowBar
                     self={tabObject}
                     addSibling={props.addSibling}
+                    deleteSelf={props.deleteSelf}
                 />
             </div>
         );
@@ -127,16 +106,17 @@ const TabMockup = (props: TabMockupProps) => {
                 {
                     tabObject.children.map((childObject, i) => {
                         const content = (
-                            <Panel className={"tab-content"}>
+                            <Panel className={"tab-content"} id={i}>
                                 <TabMockup
                                     key={i}
                                     childObject={childObject}
                                     addSibling={addSibling}
+                                    deleteSelf={deleteSelf}
                                 />
                             </Panel>
                         )
                         console.log(i, tabObject.children.length)
-                        if (i == tabObject.children.length - 1) {
+                        if (i === tabObject.children.length - 1) {
                             return content
                         }
                         else {
