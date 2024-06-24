@@ -14,6 +14,9 @@ const QueriesSection: React.FC = () => {
                         <button className="translate">translate</button>
                         <button className="documentation">documentation</button>
                 </div>
+                <div className="images">
+                    <img src="https://via.placeholder.com/250" alt="IDE"/>
+                </div>
             </div>
         </div>
     );
