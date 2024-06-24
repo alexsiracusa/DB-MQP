@@ -1,4 +1,7 @@
+import "../../styles/TabWindowBar.css"
+
 import TabWindow from "./TabWindow.tsx";
+import TabDropdown from "./TabDropdown.tsx"
 import {Direction, Position} from "./TabContainer.tsx";
 
 type TabWindowBarProps = {
@@ -10,43 +13,13 @@ type TabWindowBarProps = {
 const TabWindowBar = (props: TabWindowBarProps) => {
 
     return (
-        <div>
-            <button
-                onClick={() => {
-                    props.addSibling(props.self, "horizontal", "after")
-                }}
-            >
-                Add Right
-            </button>
-            <button
-                onClick={() => {
-                    props.addSibling(props.self, "horizontal", "before")
-                }}
-            >
-                Add Left
-            </button>
-            <button
-                onClick={() => {
-                    props.addSibling(props.self, "vertical", "before")
-                }}
-            >
-                Add Up
-            </button>
-            <button
-                onClick={() => {
-                    props.addSibling(props.self, "vertical", "after")
-                }}
-            >
-                Add Down
-            </button>
-            <button
-                onClick={() => {
-                    props.deleteSelf(props.self);
-                }}
-            >
-                Delete
-            </button>
-            {props.self.id}
+        <div className="tab-window-bar">
+            <div className="buttons">
+                {props.self.id.slice(0,6)}
+            </div>
+            <div className="tabs">
+                <TabDropdown {...props}/>
+            </div>
         </div>
     )
 }

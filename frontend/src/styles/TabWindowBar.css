@@ -1,0 +1,20 @@
+
+.tab-window-bar {
+    display: flex;
+    flex-direction: row;
+
+    height: 30px;
+    width: 100%;
+    background-color: #F6F6F6;
+}
+
+.tab-window-bar .buttons {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+}
+
+.tab-window-bar .tabs {
+    display: flex;
+    flex-direction: row;
+}

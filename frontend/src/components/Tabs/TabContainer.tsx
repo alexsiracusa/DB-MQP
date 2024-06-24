@@ -38,7 +38,7 @@ const TabContainer = (props: TabMockupProps) => {
                 tabObject.children.splice(index + offset, 0, newTab)
             } else {
                 const newGroup = new TabWindowGroup(direction);
-                newGroup.children = (position === "before") ? [self, newTab] : [newTab, self];
+                newGroup.children = (position === "before") ? [newTab, self] : [self, newTab];
                 tabObject.children[index] = newGroup;
             }
             forceUpdate()
