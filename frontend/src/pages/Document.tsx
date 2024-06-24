@@ -1,7 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import DocumentQueryContainer from "./DocumentQueryContainer";
+import DocumentQueryContainer from "../components/DocumentQueryContainer.tsx";
 import styles from "../styles/Document.module.css";
-import DocumentCodeSnippet from "./DocumentCodeSnippet";
+import DocumentCodeSnippet from "../components/DocumentCodeSnippet.tsx";
 
 const Document = () => {
     return (
