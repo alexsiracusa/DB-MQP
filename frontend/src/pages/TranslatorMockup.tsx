@@ -1,10 +1,11 @@
 import '.././styles/TranslatorMockup.css'
 import Navbar from '../components/Navbar.tsx'
 import React from "react";
-import Split from 'react-split'
 import TabMockup from "../components/Tabs/TabMockup.tsx";
 import TabWindow from "../components/Tabs/TabWindow.tsx";
 import TabWindowGroup from "../components/Tabs/TabWindowGroup.tsx";
+import {Panel, PanelGroup, PanelResizeHandle} from "react-resizable-panels";
+
 
 const TranslatorMockup: React.FC = () => {
 
@@ -24,40 +25,54 @@ const TranslatorMockup: React.FC = () => {
             <head>
                 <meta name="viewport" content="width=device-width, initial-scale=1"/>
             </head>
-            <Navbar/>
-            <Split
-                className="page-content"
-                direction="horizontal"
-                gutterAlign="start"
-                sizes={[20, 80]}
-                minSize={6}
-                gutterSize={6}
-            >
-                <div className='sidebar'>
-                    <text>sidebar</text>
-                </div>
-                <Split
-                    className="code-content"
-                    direction="vertical"
-                    gutterAlign="end"
-                    sizes={[70, 30]}
-                    minSize={6}
-                    gutterSize={6}
-                >
-                    <div className={"tab-container"}>
-                        <TabMockup
-                            childObject={tabGroup1}
-                            addSibling={() => {}}
-                            deleteSelf={() => {}}
-                            flattenSelf={() => {}}
-                        />
-                    </div>
 
-                    <div className='console'>
-                        <text>console</text>
+            <Navbar/>
+
+            <PanelGroup
+                className="page-content"
+                direction={"horizontal"}
+            >
+                <Panel
+                    defaultSize={20}
+                >
+                    <div className='sidebar'>
+                        <text>sidebar</text>
                     </div>
-                </Split>
-            </Split>
+                </Panel>
+
+                <PanelResizeHandle className={"gutter gutter-horizontal"}/>
+
+                <Panel>
+                    <PanelGroup
+                        className="code-content"
+                        direction={"vertical"}
+                    >
+                        <Panel
+                            defaultSize={70}
+                        >
+                            <div className={"tab-container"}>
+                                <TabMockup
+                                    childObject={tabGroup1}
+                                    addSibling={() => {
+                                    }}
+                                    deleteSelf={() => {
+                                    }}
+                                    flattenSelf={() => {
+                                    }}
+                                />
+                            </div>
+                        </Panel>
+
+                        <PanelResizeHandle className={"gutter gutter-vertical"}/>
+
+                        <Panel>
+                            <div className='console'>
+                                console
+                            </div>
+                        </Panel>
+                    </PanelGroup>
+                </Panel>
+            </PanelGroup>
         </div>
     );
 }

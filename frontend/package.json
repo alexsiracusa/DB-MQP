@@ -15,7 +15,6 @@
     "react-bootstrap": "^2.10.2",
     "react-dom": "^18.2.0",
     "react-resizable-panels": "^2.0.19",
-    "react-split": "^2.0.14",
     "react-syntax-highlighter": "^15.5.0",
     "uuid": "^10.0.0"
   },
