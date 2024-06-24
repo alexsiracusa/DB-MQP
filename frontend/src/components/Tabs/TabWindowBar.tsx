@@ -13,17 +13,31 @@ const TabWindowBar = (props: TabWindowBarProps) => {
         <div>
             <button
                 onClick={() => {
+                    props.addSibling(props.self, "horizontal", "after")
+                }}
+            >
+                Add Right
+            </button>
+            <button
+                onClick={() => {
                     props.addSibling(props.self, "horizontal", "before")
                 }}
             >
-                Add Horizontal
+                Add Left
             </button>
             <button
                 onClick={() => {
                     props.addSibling(props.self, "vertical", "before")
                 }}
             >
-                Add Vertical
+                Add Up
+            </button>
+            <button
+                onClick={() => {
+                    props.addSibling(props.self, "vertical", "after")
+                }}
+            >
+                Add Down
             </button>
             <button
                 onClick={() => {
