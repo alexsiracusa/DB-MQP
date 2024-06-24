@@ -19,7 +19,7 @@ type TabMockupProps = {
 }
 
 // const TabMockup = React.memo((props: TabMockupProps) => {
-const TabMockup = (props: TabMockupProps) => {
+const TabContainer = (props: TabMockupProps) => {
     const [, updateState] = React.useState({});
     const forceUpdate = React.useCallback(() => updateState({}), []);
     const tabObject = props.childObject
@@ -104,7 +104,7 @@ const TabMockup = (props: TabMockupProps) => {
                                 id={i.toString()}
                                 order={i}
                             >
-                                <TabMockup
+                                <TabContainer
                                     key={i}
                                     childObject={childObject}
                                     addSibling={addSibling}
@@ -133,4 +133,4 @@ const TabMockup = (props: TabMockupProps) => {
     }
 };
 
-export default TabMockup;
+export default TabContainer;

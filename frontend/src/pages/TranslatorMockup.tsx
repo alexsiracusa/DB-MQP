@@ -1,7 +1,7 @@
 import '.././styles/TranslatorMockup.css'
 import Navbar from '../components/Navbar.tsx'
 import React from "react";
-import TabMockup from "../components/Tabs/TabMockup.tsx";
+import TabContainer from "../components/Tabs/TabContainer.tsx";
 import TabWindow from "../components/Tabs/TabWindow.tsx";
 import TabWindowGroup from "../components/Tabs/TabWindowGroup.tsx";
 import {Panel, PanelGroup, PanelResizeHandle} from "react-resizable-panels";
@@ -51,7 +51,7 @@ const TranslatorMockup: React.FC = () => {
                             defaultSize={70}
                         >
                             <div className={"tab-container"}>
-                                <TabMockup
+                                <TabContainer
                                     childObject={tabGroup1}
                                     addSibling={() => {
                                     }}

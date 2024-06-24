@@ -1,5 +1,5 @@
 import TabWindow from "./TabWindow.tsx";
-import {Direction, Position} from "./TabMockup.tsx";
+import {Direction, Position} from "./TabContainer.tsx";
 
 type TabWindowBarProps = {
     self: TabWindow;
