@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 import {Panel, PanelGroup, PanelResizeHandle} from "react-resizable-panels";
 import React from 'react';
 import TabWindowBar from "./TabWindowBar.tsx";
@@ -8,8 +6,8 @@ import TabWindowGroup from "./TabWindowGroup.tsx";
 import TabWindow from "./TabWindow.tsx";
 import '../../styles/TranslatorMockup.css'
 
-export type Direction = "horizontal" | "vertical" | undefined;
-export type Position = "before" | "after" | undefined;
+export type Direction = "horizontal" | "vertical";
+export type Position = "before" | "after";
 
 
 
@@ -22,7 +20,7 @@ type TabMockupProps = {
 
 // const TabMockup = React.memo((props: TabMockupProps) => {
 const TabMockup = (props: TabMockupProps) => {
-    const [, updateState] = React.useState();
+    const [, updateState] = React.useState({});
     const forceUpdate = React.useCallback(() => updateState({}), []);
     const tabObject = props.childObject
 
@@ -69,7 +67,7 @@ const TabMockup = (props: TabMockupProps) => {
 
             const index = tabObject.children.indexOf(self);
             tabObject.children.splice(index, 1);
-            for (const child: TabObject of self.children.reverse()) {
+            for (const child of self.children.reverse()) {
                 tabObject.children.splice(index, 0, child)
                 console.log("add child " + child.id)
             }
@@ -95,11 +93,17 @@ const TabMockup = (props: TabMockupProps) => {
         );
     } else if (tabObject instanceof TabWindowGroup) {
         return (
-            <PanelGroup direction={tabObject.direction}>
+            <PanelGroup
+                direction={tabObject.direction}
+            >
                 {
                     tabObject.children.map((childObject, i) => {
                         const content = (
-                            <Panel className={"tab-content"} id={i}>
+                            <Panel
+                                className={"tab-content"}
+                                id={i.toString()}
+                                order={i}
+                            >
                                 <TabMockup
                                     key={i}
                                     childObject={childObject}
