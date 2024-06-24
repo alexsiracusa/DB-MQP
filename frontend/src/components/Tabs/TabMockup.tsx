@@ -1,8 +1,8 @@
 // @ts-nocheck
 
+import {Panel, PanelGroup, PanelResizeHandle} from "react-resizable-panels";
 import React from 'react';
 import TabWindowBar from "./TabWindowBar.tsx";
-import Split from "react-split";
 import '../../styles/TranslatorMockup.css'
 
 export type Direction = "horizontal" | "vertical" | undefined;
@@ -22,6 +22,7 @@ class TabContent {
 
 export abstract class TabObject {
     abstract equal(other: TabObject): boolean;
+
     id: number = Math.floor(Math.random() * 99);
 }
 
@@ -120,29 +121,35 @@ const TabMockup = (props: TabMockupProps) => {
                 />
             </div>
         );
-    }
-    else if (tabObject instanceof TabWindowGroup) {
-        // console.log('rendered tabWindowGroup ' + tabObject.id);
+    } else if (tabObject instanceof TabWindowGroup) {
         return (
-            <Split
-                className={"tab-split-container-" + tabObject.direction}
-                direction={tabObject.direction}
-                gutterAlign="start"
-                minSize={6}
-                gutterSize={6}
-            >
+            <PanelGroup direction={tabObject.direction}>
                 {
                     tabObject.children.map((childObject, i) => {
-                        return (
-                            <TabMockup
-                                key={i}
-                                childObject={childObject}
-                                addSibling={addSibling}
-                            />
+                        const content = (
+                            <Panel className={"tab-content"}>
+                                <TabMockup
+                                    key={i}
+                                    childObject={childObject}
+                                    addSibling={addSibling}
+                                />
+                            </Panel>
                         )
+                        console.log(i, tabObject.children.length)
+                        if (i == tabObject.children.length - 1) {
+                            return content
+                        }
+                        else {
+                            return (
+                                <>
+                                    {content}
+                                    <PanelResizeHandle className={"gutter gutter-" + tabObject.direction}/>
+                                </>
+                            )
+                        }
                     })
                 }
-            </Split>
+            </PanelGroup>
         )
     } else {
         console.log("failed to render")

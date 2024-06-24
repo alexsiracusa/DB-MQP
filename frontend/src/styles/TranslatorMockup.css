@@ -54,12 +54,22 @@
     display: flex;
     flex-direction: row;
     flex-grow: 1;
+
+    min-height: 6px;
+    min-width: 6px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .tab-split-container-vertical {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
+
+    min-height: 0;
+    min-width: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .tab-content {
@@ -69,6 +79,11 @@
 
     background-color: #ffffff;
     border-radius: 6px;
+
+    min-height: 0;
+    min-width: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .console {
@@ -95,11 +110,13 @@
 .gutter.gutter-horizontal {
     background-image: url('../assets/grips/vertical.png');
     cursor: col-resize;
+    width: 6px;
 }
 
 .gutter.gutter-vertical {
     background-image: url('../assets/grips/horizontal.png');
     cursor: row-resize;
+    height: 6px;
 }
 
 /*Set Gutter Colors*/
