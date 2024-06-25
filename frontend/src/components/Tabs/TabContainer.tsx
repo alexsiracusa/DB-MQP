@@ -95,6 +95,10 @@ const TabContainer = (props: TabMockupProps) => {
         return (
             <PanelGroup
                 direction={tabObject.direction}
+                style={{
+                    minWidth: 0,
+                    minHeight: 0
+                }}
             >
                 {
                     tabObject.children.map((childObject, i) => {
@@ -104,6 +108,10 @@ const TabContainer = (props: TabMockupProps) => {
                                     className={"tab-content"}
                                     id={i.toString()}
                                     order={i}
+                                    style={{
+                                        minWidth: 0,
+                                        minHeight: 0
+                                    }}
                                 >
                                     <TabContainer
                                         key={i}
