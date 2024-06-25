@@ -11,8 +11,8 @@
 }
 
 .sections .queries {
-    background-color: #ffffff;
-    height: 30vh
+    background-color: #151720;
+    min-height: 30vh
 }
 
 
@@ -40,7 +40,7 @@
 }
 
 .sections .gradient.queries-report {
-    background-image: linear-gradient(#ffffff 0%, #FFEFD0 23%, #FFC34E, 60%, #FF962C 100%);
+    background-image: linear-gradient(#151720, #FF962C);
 }
 
 .sections .gradient.report-team {
@@ -71,4 +71,52 @@
     flex-direction: column;
 
     gap: 1.5rem;
+}
+
+.queries .content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.queries .content .top-text {
+    padding-bottom: 10px;
+}
+
+.queries .content .buttons {
+    display: flex;
+    justify-content: space-around;
+    width: 400px;
+    gap: 40px;
+    font-size: 10px;
+}
+
+.queries .content .buttons .translate,
+.queries .content .buttons .documentation {
+    flex:1;
+    padding: 5px 0;
+    text-align: center;
+    border-radius: 100px;
+}
+
+.queries .content .buttons .translate {
+    background-color: #FF962C;
+    color: #ffffff;
+}
+
+.queries .content .buttons .documentation {
+    background-color: #EAEAEA;
+    color: #000000;
+}
+
+.queries .content .images {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    padding-top: 20px;
 }
