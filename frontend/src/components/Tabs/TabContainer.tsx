@@ -12,7 +12,6 @@ export type Direction = "horizontal" | "vertical";
 export type Position = "before" | "after";
 
 
-
 type TabMockupProps = {
     childObject: TabObject;
     addSibling: (self: TabWindow, direction: Direction, position: Position) => void;
@@ -75,8 +74,7 @@ const TabContainer = (props: TabMockupProps) => {
             }
 
             forceUpdate()
-        }
-        else {
+        } else {
             console.log("not a tab window group")
         }
     }
@@ -100,32 +98,27 @@ const TabContainer = (props: TabMockupProps) => {
             >
                 {
                     tabObject.children.map((childObject, i) => {
-                        const content = (
-                            <Panel
-                                className={"tab-content"}
-                                id={i.toString()}
-                                order={i}
-                            >
-                                <TabContainer
-                                    key={i}
-                                    childObject={childObject}
-                                    addSibling={addSibling}
-                                    deleteSelf={deleteSelf}
-                                    flattenSelf={flattenSelf}
-                                />
-                            </Panel>
-                        )
-                        if (i === tabObject.children.length - 1) {
-                            return content
-                        }
-                        else {
-                            return (
-                                <>
-                                    {content}
+                        return (
+                            <>
+                                <Panel
+                                    className={"tab-content"}
+                                    id={i.toString()}
+                                    order={i}
+                                >
+                                    <TabContainer
+                                        key={i}
+                                        childObject={childObject}
+                                        addSibling={addSibling}
+                                        deleteSelf={deleteSelf}
+                                        flattenSelf={flattenSelf}
+                                    />
+                                </Panel>
+
+                                {i < tabObject.children.length - 1 &&
                                     <PanelResizeHandle className={"gutter gutter-" + tabObject.direction}/>
-                                </>
-                            )
-                        }
+                                }
+                            </>
+                        )
                     })
                 }
             </PanelGroup>
