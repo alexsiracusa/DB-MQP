@@ -47,7 +47,7 @@ const TabDropdown = (props: TabDropdownProps) => {
                         }}>
                             <div className="row">
                                 <img src={PaneRight}/>
-                                Insert Right
+                                <p>Insert Right</p>
                             </div>
                         </button>
 
@@ -57,7 +57,7 @@ const TabDropdown = (props: TabDropdownProps) => {
                         }}>
                             <div className="row">
                                 <img src={PaneLeft}/>
-                                Insert Left
+                                <p>Insert Left</p>
                             </div>
                         </button>
 
@@ -67,7 +67,7 @@ const TabDropdown = (props: TabDropdownProps) => {
                         }}>
                             <div className="row">
                                 <img src={PaneUp}/>
-                                Insert Up
+                                <p>Insert Up</p>
                             </div>
                         </button>
 
@@ -77,7 +77,7 @@ const TabDropdown = (props: TabDropdownProps) => {
                         }}>
                             <div className="row">
                                 <img src={PaneDown}/>
-                                Insert Down
+                                <p>Insert Down</p>
                             </div>
                         </button>
                         <button onClick={() => {
@@ -85,7 +85,7 @@ const TabDropdown = (props: TabDropdownProps) => {
                             setIsVisible(false)
                         }}>
                             <div className="row">
-                                Delete
+                                <p>Delete</p>
                             </div>
                         </button>
                     </div>
