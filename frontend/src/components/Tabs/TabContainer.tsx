@@ -1,0 +1,139 @@
+import '../../styles/TabContainer.css'
+import '../../styles/Gutters.css'
+
+import {Panel, PanelGroup, PanelResizeHandle} from "react-resizable-panels";
+import React from 'react';
+import TabWindowBar from "./TabWindowBar.tsx";
+import TabObject from "./TabObject.tsx";
+import TabWindowGroup from "./TabWindowGroup.tsx";
+import TabWindow from "./TabWindow.tsx";
+
+export type Direction = "horizontal" | "vertical";
+export type Position = "before" | "after";
+
+
+type TabMockupProps = {
+    childObject: TabObject;
+    addSibling: (self: TabWindow, direction: Direction, position: Position) => void;
+    deleteSelf: (self: TabWindow) => void;
+    flattenSelf: (self: TabWindowGroup) => void;
+}
+
+// const TabMockup = React.memo((props: TabMockupProps) => {
+const TabContainer = (props: TabMockupProps) => {
+    const [, updateState] = React.useState({});
+    const forceUpdate = React.useCallback(() => updateState({}), []);
+    const tabObject = props.childObject
+
+    function addSibling(self: TabWindow, direction: Direction, position: Position) {
+        if (tabObject instanceof TabWindowGroup) {
+            console.log("added sibling")
+
+            const newTab = new TabWindow();
+            const index = tabObject.children.indexOf(self);
+
+            if (tabObject.direction === direction) {
+                const offset = (position === "before") ? 0 : 1;
+                tabObject.children.splice(index + offset, 0, newTab)
+            } else {
+                const newGroup = new TabWindowGroup(direction);
+                newGroup.children = (position === "before") ? [newTab, self] : [self, newTab];
+                tabObject.children[index] = newGroup;
+            }
+            forceUpdate()
+        } else {
+            console.log("not a tab window")
+        }
+    }
+
+    function deleteSelf(self: TabWindow) {
+        if (tabObject instanceof TabWindowGroup) {
+            console.log("deleting " + self.id)
+
+            const index = tabObject.children.indexOf(self);
+            tabObject.children.splice(index, 1)
+            if (tabObject.children.length <= 1) {
+                props.flattenSelf(tabObject);
+            }
+
+            forceUpdate()
+        } else {
+            console.log("not a tab window")
+        }
+    }
+
+    function flattenSelf(self: TabWindowGroup) {
+        if (tabObject instanceof TabWindowGroup) {
+            console.log("flattening " + self.id + " into " + tabObject.id)
+
+            const index = tabObject.children.indexOf(self);
+            tabObject.children.splice(index, 1);
+            for (const child of self.children.reverse()) {
+                tabObject.children.splice(index, 0, child)
+                console.log("add child " + child.id)
+            }
+
+            forceUpdate()
+        } else {
+            console.log("not a tab window group")
+        }
+    }
+
+    console.log(tabObject)
+
+    if (tabObject instanceof TabWindow) {
+        return (
+            <div className={"tab-content"}>
+                <TabWindowBar
+                    self={tabObject}
+                    addSibling={props.addSibling}
+                    deleteSelf={props.deleteSelf}
+                />
+            </div>
+        );
+    } else if (tabObject instanceof TabWindowGroup) {
+        return (
+            <PanelGroup
+                direction={tabObject.direction}
+                style={{
+                    minWidth: 0,
+                    minHeight: 0
+                }}
+            >
+                {
+                    tabObject.children.map((childObject, i) => {
+                        return (
+                            <>
+                                <Panel
+                                    className={"tab-content"}
+                                    id={i.toString()}
+                                    order={i}
+                                    style={{
+                                        minWidth: 0,
+                                        minHeight: 0
+                                    }}
+                                >
+                                    <TabContainer
+                                        key={i}
+                                        childObject={childObject}
+                                        addSibling={addSibling}
+                                        deleteSelf={deleteSelf}
+                                        flattenSelf={flattenSelf}
+                                    />
+                                </Panel>
+
+                                {i < tabObject.children.length - 1 &&
+                                    <PanelResizeHandle className={"gutter gutter-" + tabObject.direction}/>
+                                }
+                            </>
+                        )
+                    })
+                }
+            </PanelGroup>
+        )
+    } else {
+        console.log("failed to render")
+    }
+};
+
+export default TabContainer;

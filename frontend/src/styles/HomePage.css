@@ -1,4 +1,3 @@
-
 .sections {
     display: flex;
     flex-direction: column;
@@ -8,8 +7,7 @@
 
 
 .sections .hero {
-    background-color: #E0EEFF;
-    height: 30vh
+    background-color: #BAD7FB;
 }
 
 .sections .queries {
@@ -38,16 +36,12 @@
 }
 
 .sections .gradient.hero-queries {
-    background-image: linear-gradient(#E0EEFF, #151720);
+    background-image: linear-gradient(#BAD7FB, #ffffff);
 }
 
-.sections .gradient.queries-report { /* Lazy version of the commented out one below but this one has the right colors */
+.sections .gradient.queries-report {
     background-image: linear-gradient(#151720, #FF962C);
 }
-
-/*.sections .gradient.queries-report {*/
-/*    background-image: linear-gradient(#ffffff 0%, #FFEFD0 23%, #FFC34E, 60%, #FF962C 100%);*/
-/*}*/
 
 .sections .gradient.report-team {
     background-image: linear-gradient(0deg, #ffffff 0%, #FFEFD0 23%, #FFC34E, 60%, #FF962C 100%);
