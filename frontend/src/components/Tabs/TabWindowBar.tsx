@@ -14,10 +14,10 @@ const TabWindowBar = (props: TabWindowBarProps) => {
 
     return (
         <div className="tab-window-bar">
-            <div className="buttons">
+            <div className="tabs">
                 {props.self.id.slice(0,6)}
             </div>
-            <div className="tabs">
+            <div className="buttons">
                 <TabDropdown {...props}/>
             </div>
         </div>

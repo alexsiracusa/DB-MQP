@@ -8,13 +8,16 @@
     background-color: #F6F6F6;
 }
 
-.tab-window-bar .buttons {
-    display: flex;
-    flex-direction: row;
-    flex-grow: 1;
-}
-
 .tab-window-bar .tabs {
     display: flex;
     flex-direction: row;
+    justify-content: left;
+    min-width: 0;
+}
+
+.tab-window-bar .buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    flex-grow: 1;
 }
