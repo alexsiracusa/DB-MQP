@@ -32,11 +32,11 @@
 
 .sections .gradient {
     width: 100%;
-    height: 20vh;
+    height: 10vh;
 }
 
 .sections .gradient.hero-queries {
-    background-image: linear-gradient(#BAD7FB, #ffffff);
+    background-image: linear-gradient(#BAD7FB, #151720);
 }
 
 .sections .gradient.queries-report {
