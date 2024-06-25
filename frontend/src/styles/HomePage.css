@@ -1,4 +1,3 @@
-
 .sections {
     display: flex;
     flex-direction: column;
@@ -8,8 +7,7 @@
 
 
 .sections .hero {
-    background-color: #E0EEFF;
-    height: 30vh
+    background-color: #BAD7FB;
 }
 
 .sections .queries {
@@ -38,7 +36,7 @@
 }
 
 .sections .gradient.hero-queries {
-    background-image: linear-gradient(#E0EEFF, #ffffff);
+    background-image: linear-gradient(#BAD7FB, #ffffff);
 }
 
 .sections .gradient.queries-report {
