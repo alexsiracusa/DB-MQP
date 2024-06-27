@@ -1,0 +1,27 @@
+
+.tab-button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    height: 100%;
+    width: fit-content;
+}
+
+.tab-button-container button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    height: 100%;
+    width: fit-content;
+
+    padding: 0 4px;
+    border-radius: 0;
+}
+
+.tab-button-container p {
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: 0.8em;
+}

@@ -10,7 +10,7 @@ const TabWindowComponent = (props: NewTabComponentProps) => {
     const self = props.self;
 
     return (
-        <div className="content">
+        <div className="tab-content">
             {self.name}
         </div>
     )

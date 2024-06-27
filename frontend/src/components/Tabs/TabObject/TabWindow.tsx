@@ -13,7 +13,7 @@ export default class TabWindow extends TabObject {
         forceUpdate: () => void = () => {},
     ) {
         super(parent, forceUpdate);
-        const tab = new NewTab("New Tab");
+        const tab = new NewTab("New Tab", this);
 
         this.contents = [tab];
         this.selected = tab;

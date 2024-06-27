@@ -19,7 +19,7 @@ const TabWindowComponent = (props: TabWindowGroupComponentProps) => {
     }
 
     return (
-        <div className={"tab-content"}>
+        <div className={"tab-window-container"}>
             <TabWindowBar
                 self={self}
             />
