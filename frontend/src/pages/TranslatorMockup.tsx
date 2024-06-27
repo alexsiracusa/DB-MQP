@@ -11,13 +11,13 @@ import {Panel, PanelGroup, PanelResizeHandle} from "react-resizable-panels";
 
 const TranslatorMockup: React.FC = () => {
 
-    const tabGroup1 = new TabWindowGroup("horizontal");
-    const tabGroup2 = new TabWindowGroup("vertical");
+    const tabGroup1 = new TabWindowGroup(null, "horizontal")
+    const tabGroup2 = new TabWindowGroup(tabGroup1, "vertical");
 
-    const tabWindow1 = new TabWindow();
-    const tabWindow2 = new TabWindow();
-    const tabWindow3 = new TabWindow();
-    const tabWindow4 = new TabWindow();
+    const tabWindow1 = new TabWindow(tabGroup1);
+    const tabWindow2 = new TabWindow(tabGroup2);
+    const tabWindow3 = new TabWindow(tabGroup2);
+    const tabWindow4 = new TabWindow(tabGroup2);
 
     tabGroup2.children = [tabWindow2, tabWindow3, tabWindow4]
     tabGroup1.children = [tabWindow1, tabGroup2]
@@ -38,7 +38,7 @@ const TranslatorMockup: React.FC = () => {
                     defaultSize={20}
                 >
                     <div className='sidebar'>
-                        <text>sidebar</text>
+                        sidebar
                     </div>
                 </Panel>
 
@@ -54,13 +54,7 @@ const TranslatorMockup: React.FC = () => {
                         >
                             <div className={"tab-container"}>
                                 <TabContainer
-                                    childObject={tabGroup1}
-                                    addSibling={() => {
-                                    }}
-                                    deleteSelf={() => {
-                                    }}
-                                    flattenSelf={() => {
-                                    }}
+                                    self={tabGroup1}
                                 />
                             </div>
                         </Panel>

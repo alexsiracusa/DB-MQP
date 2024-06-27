@@ -3,7 +3,6 @@ import '../../styles/TabDropdown.css'
 import React from "react";
 import { useDetectClickOutside } from 'react-detect-click-outside';
 import TabWindow from "./TabWindow.tsx";
-import {Direction, Position} from "./TabContainer.tsx";
 import MenuIcon from "../../assets/Icons/MenuIcon.svg";
 import PaneRight from "../../assets/Icons/PaneRight.svg";
 import PaneLeft from "../../assets/Icons/PaneLeft.svg";
@@ -14,8 +13,6 @@ import PaneDown from "../../assets/Icons/PaneDown.svg";
 
 type TabDropdownProps = {
     self: TabWindow;
-    addSibling: (self: TabWindow, direction: Direction, position: Position) => void;
-    deleteSelf: (self: TabWindow) => void;
 }
 
 const TabDropdown = (props: TabDropdownProps) => {
@@ -42,7 +39,7 @@ const TabDropdown = (props: TabDropdownProps) => {
                 <div className="dropdown-container">
                     <div className="dropdown-content">
                         <button onClick={() => {
-                            props.addSibling(props.self, "horizontal", "after")
+                            props.self.addSibling("horizontal", "after")
                             setIsVisible(false)
                         }}>
                             <div className="row">
@@ -52,7 +49,7 @@ const TabDropdown = (props: TabDropdownProps) => {
                         </button>
 
                         <button onClick={() => {
-                            props.addSibling(props.self, "horizontal", "before")
+                            props.self.addSibling("horizontal", "before")
                             setIsVisible(false)
                         }}>
                             <div className="row">
@@ -62,7 +59,7 @@ const TabDropdown = (props: TabDropdownProps) => {
                         </button>
 
                         <button onClick={() => {
-                            props.addSibling(props.self, "vertical", "before")
+                            props.self.addSibling("vertical", "before")
                             setIsVisible(false)
                         }}>
                             <div className="row">
@@ -72,7 +69,7 @@ const TabDropdown = (props: TabDropdownProps) => {
                         </button>
 
                         <button onClick={() => {
-                            props.addSibling(props.self, "vertical", "after")
+                            props.self.addSibling("vertical", "after")
                             setIsVisible(false)
                         }}>
                             <div className="row">
@@ -81,7 +78,7 @@ const TabDropdown = (props: TabDropdownProps) => {
                             </div>
                         </button>
                         <button onClick={() => {
-                            props.deleteSelf(props.self)
+                            props.self.deleteSelf()
                             setIsVisible(false)
                         }}>
                             <div className="row">
