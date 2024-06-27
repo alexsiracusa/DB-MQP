@@ -4,8 +4,8 @@ import '../styles/Gutters.css'
 import Navbar from '../components/Navbar.tsx'
 import React from "react";
 import TabContainer from "../components/Tabs/TabContainer.tsx";
-import TabWindow from "../components/Tabs/TabWindow.tsx";
-import TabWindowGroup from "../components/Tabs/TabWindowGroup.tsx";
+import TabWindow from "../components/Tabs/TabObject/TabWindow.tsx";
+import TabWindowGroup from "../components/Tabs/TabObject/TabWindowGroup.tsx";
 import {Panel, PanelGroup, PanelResizeHandle} from "react-resizable-panels";
 
 

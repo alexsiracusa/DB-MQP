@@ -2,12 +2,12 @@ import '../../styles/TabContainer.css'
 import '../../styles/Gutters.css'
 
 import React from 'react';
-import TabObject from "./TabObject.tsx";
-import TabWindowGroup from "./TabWindowGroup.tsx";
-import TabWindow from "./TabWindow.tsx";
+import TabObject from "./TabObject/TabObject.tsx";
+import TabWindowGroup from "./TabObject/TabWindowGroup.tsx";
+import TabWindow from "./TabObject/TabWindow.tsx";
 
-import TabWindowGroupComponent from "./TabWindowGroupComponent.tsx"
-import TabWindowComponent from "./TabWindowComponent.tsx";
+import TabWindowGroupComponent from "./TabObject/TabWindowGroupComponent.tsx"
+import TabWindowComponent from "./TabObject/TabWindowComponent.tsx";
 
 export type Direction = "horizontal" | "vertical";
 export type Position = "before" | "after";

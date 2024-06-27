@@ -1,6 +1,6 @@
-import "../../styles/TabWindowBar.css"
+import "../../../styles/TabWindowBar.css"
 
-import TabWindow from "./TabWindow.tsx";
+import TabWindow from "../TabObject/TabWindow.tsx";
 import TabDropdown from "./TabDropdown.tsx"
 
 type TabWindowBarProps = {

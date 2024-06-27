@@ -1,5 +1,5 @@
 import TabObject from "./TabObject.tsx";
-import {Direction} from "./TabContainer.tsx";
+import {Direction} from "../TabContainer.tsx";
 
 export default class TabWindowGroup extends TabObject {
     public children: TabObject[];

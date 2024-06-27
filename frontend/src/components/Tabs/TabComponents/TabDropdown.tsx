@@ -1,13 +1,13 @@
-import '../../styles/TabDropdown.css'
+import '../../../styles/TabDropdown.css'
 
 import React from "react";
 import { useDetectClickOutside } from 'react-detect-click-outside';
-import TabWindow from "./TabWindow.tsx";
-import MenuIcon from "../../assets/Icons/MenuIcon.svg";
-import PaneRight from "../../assets/Icons/PaneRight.svg";
-import PaneLeft from "../../assets/Icons/PaneLeft.svg";
-import PaneUp from "../../assets/Icons/PaneUp.svg";
-import PaneDown from "../../assets/Icons/PaneDown.svg";
+import TabWindow from "../TabObject/TabWindow.tsx";
+import MenuIcon from "../../../assets/Icons/MenuIcon.svg";
+import PaneRight from "../../../assets/Icons/PaneRight.svg";
+import PaneLeft from "../../../assets/Icons/PaneLeft.svg";
+import PaneUp from "../../../assets/Icons/PaneUp.svg";
+import PaneDown from "../../../assets/Icons/PaneDown.svg";
 
 
 

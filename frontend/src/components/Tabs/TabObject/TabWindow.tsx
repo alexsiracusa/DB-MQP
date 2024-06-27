@@ -1,7 +1,7 @@
 import TabObject from "./TabObject.tsx";
-import TabContent from "./TabContent.tsx";
+import TabContent from "../TabContent/TabContent.tsx";
 import TabWindowGroup from "./TabWindowGroup.tsx";
-import {Direction, Position} from "./TabContainer.tsx";
+import {Direction, Position} from "../TabContainer.tsx";
 
 export default class TabWindow extends TabObject {
     contents: TabContent[]

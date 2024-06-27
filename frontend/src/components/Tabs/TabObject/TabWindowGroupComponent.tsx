@@ -1,5 +1,5 @@
 import TabWindowGroup from "./TabWindowGroup.tsx";
-import TabContainer from "./TabContainer.tsx";
+import TabContainer from "../TabContainer.tsx";
 import {Panel, PanelGroup, PanelResizeHandle} from "react-resizable-panels";
 import React from "react";
 
