@@ -24,10 +24,6 @@ const TranslatorMockup: React.FC = () => {
 
     return (
         <div className='translator-page'>
-            <head>
-                <meta name="viewport" content="width=device-width, initial-scale=1"/>
-            </head>
-
             <Navbar/>
 
             <PanelGroup
