@@ -2,16 +2,21 @@ import TabObject from "./TabObject.tsx";
 import TabContent from "../TabContent/TabContent.tsx";
 import TabWindowGroup from "./TabWindowGroup.tsx";
 import {Direction, Position} from "../TabContainer.tsx";
+import NewTab from "../TabContent/NewTab.tsx";
 
 export default class TabWindow extends TabObject {
-    contents: TabContent[]
+    contents: TabContent[];
+    selected: TabContent;
 
     constructor(
         parent: TabWindowGroup,
         forceUpdate: () => void = () => {},
     ) {
         super(parent, forceUpdate);
-        this.contents = [];
+        const tab = new NewTab("New Tab");
+
+        this.contents = [tab];
+        this.selected = tab;
     }
 
     addSibling(direction: Direction, position: Position) {
