@@ -1,7 +1,7 @@
 import {v4 as uuid} from 'uuid';
 import TabWindowGroup from "./TabWindowGroup.tsx";
 
-export default abstract class TabObject {
+abstract class TabObject {
     id: string = uuid();
     parent: TabWindowGroup | null;
     forceUpdate: () => void;
@@ -15,3 +15,5 @@ export default abstract class TabObject {
     }
 
 }
+
+export default TabObject;

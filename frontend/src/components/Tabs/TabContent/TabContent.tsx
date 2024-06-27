@@ -1,8 +1,10 @@
 
-export default class TabContent {
+ abstract class TabContent {
     name: string
 
-    constructor(name: string) {
+    protected constructor(name: string) {
         this.name = name
     }
 }
+
+export default TabContent;

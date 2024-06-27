@@ -1,7 +1,10 @@
+import "../../../styles/TabContainer.css"
+
 import TabWindowGroup from "./TabWindowGroup.tsx";
 import TabContainer from "../TabContainer.tsx";
 import {Panel, PanelGroup, PanelResizeHandle} from "react-resizable-panels";
 import React from "react";
+
 
 type TabWindowGroupComponentProps = {
     self: TabWindowGroup
@@ -22,7 +25,7 @@ const TabWindowGroupComponent = (props: TabWindowGroupComponentProps) => {
                     return (
                         <React.Fragment key={i}>
                             <Panel
-                                className={"tab-content"}
+                                className={"tab-window"}
                                 id={i.toString()}
                                 order={i}
                                 style={{

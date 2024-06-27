@@ -1,5 +1,8 @@
+import "../../../styles/TabContainer.css"
+
 import TabWindow from "./TabWindow.tsx";
 import TabWindowBar from "../TabComponents/TabWindowBar.tsx";
+
 
 type TabWindowGroupComponentProps = {
     self: TabWindow
