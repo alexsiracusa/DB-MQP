@@ -30,7 +30,7 @@ const TabContainer = (props: TabMockupProps) => {
             return;
         }
 
-        self.forceUpdate = self.parent.forceUpdate;
+        self.forceUpdate = forceUpdate;
 
         return (
             <TabWindowComponent

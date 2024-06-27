@@ -22,22 +22,23 @@ export default class TabWindow extends TabObject {
 
         console.log("added sibling for " + this.id)
 
-        const newTab = new TabWindow(this.parent, this.forceUpdate);
+        const newTab = new TabWindow(this.parent);
         const index = this.parent.children.indexOf(this);
 
         if (this.parent.direction === direction) {
             const offset = (position === "before") ? 0 : 1;
             this.parent.children.splice(index + offset, 0, newTab)
+
+            this.parent.forceUpdate()
         } else {
             const newGroup = new TabWindowGroup(this.parent, direction);
             newGroup.children = (position === "before") ? [newTab, this] : [this, newTab];
             this.parent.children[index] = newGroup;
 
+            this.parent.forceUpdate()
             this.parent = newGroup;
             newTab.parent = newGroup;
         }
-
-        this.forceUpdate()
     }
 
     deleteSelf() {
@@ -47,8 +48,6 @@ export default class TabWindow extends TabObject {
         }
 
         console.log("deleting " + this.id)
-        // console.log(this.parent)
-        // console.log(this)
 
         const index = this.parent.children.indexOf(this);
         this.parent.children.splice(index, 1)
@@ -57,8 +56,6 @@ export default class TabWindow extends TabObject {
             this.parent.flattenSelf();
         }
 
-        console.log(this.parent)
-
-        this.forceUpdate()
+        this.parent.forceUpdate()
     }
 }

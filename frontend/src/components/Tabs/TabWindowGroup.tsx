@@ -27,8 +27,9 @@ export default class TabWindowGroup extends TabObject {
         this.parent.children.splice(index, 1);
 
         for (const child of this.children.reverse()) {
-            this.parent.children.splice(index, 0, child)
-            console.log("add child " + child.id)
+            this.parent.children.splice(index, 0, child);
+            child.parent = this.parent;
+            console.log("add child " + child.id);
         }
 
         this.parent.forceUpdate()
