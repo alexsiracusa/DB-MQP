@@ -146,8 +146,8 @@
 
 .report .container .image {
     width: 100%;
-    max-width: 500px; /* Adjust max-width as needed */
-    height: auto; /* Maintain aspect ratio */
+    max-width: 500px;
+    height: auto; 
     border-radius: 8px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
