@@ -13,10 +13,11 @@ export default class TabWindow extends TabObject {
         forceUpdate: () => void = () => {},
     ) {
         super(parent, forceUpdate);
-        const tab = new NewTab("New Tab", this);
+        const tab1 = new NewTab("Tab 1", this);
+        const tab2 = new NewTab("Tab 2", this);
 
-        this.contents = [tab];
-        this.selected = tab;
+        this.contents = [tab1, tab2];
+        this.selected = tab1;
     }
 
     addSibling(direction: Direction, position: Position) {

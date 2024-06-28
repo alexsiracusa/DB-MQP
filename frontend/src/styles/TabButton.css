@@ -19,6 +19,16 @@
 
     padding: 0 4px;
     border-radius: 0;
+    border: none;
+}
+
+.tab-button-container button:hover {
+    background-color: #ffffff;
+}
+
+.tab-button-container button:focus,
+.tab-button-container button:focus-visible {
+    outline: none;
 }
 
 .tab-button-container p {

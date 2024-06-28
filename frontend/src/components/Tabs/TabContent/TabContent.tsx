@@ -8,6 +8,12 @@ abstract class TabContent {
         this.name = name;
         this.parent = parent;
     }
+
+    select() {
+        this.parent.selected = this;
+        this.parent.forceUpdate();
+        console.log("selected " + this.name)
+    }
 }
 
 export default TabContent;

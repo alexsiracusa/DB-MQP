@@ -12,7 +12,9 @@ const TabButton = (props: TabButtonProps) => {
     return (
         <div className="tab-button-container">
             <button
-                onClick={() => {}}
+                onClick={() => {
+                    self.select()
+                }}
             >
                 <p>{self.name}</p>
             </button>
