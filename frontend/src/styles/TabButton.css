@@ -1,11 +1,13 @@
 
 .tab-button-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: flex-start;
 
     height: 100%;
     width: fit-content;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .tab-button-container button {
@@ -18,9 +20,16 @@
     height: 100%;
     width: fit-content;
 
-    padding: 0 4px;
     border-radius: 0;
     border: none;
+}
+
+.tab-button-container .tab-name {
+    padding: 0 4px;
+}
+
+.tab-button-container .x-button {
+    padding: 0 0;
 }
 
 .tab-button-container button:hover {
@@ -35,4 +44,9 @@
 .tab-button-container p {
     font-family: "IBM Plex Sans", sans-serif;
     font-size: 0.8em;
+}
+
+.tab-button-container img {
+    height: 60%;
+    width: 100%;
 }
