@@ -9,8 +9,15 @@ type TabButtonProps = {
 const TabButton = (props: TabButtonProps) => {
     const self  = props.self;
 
+    function isSelected(): boolean {
+        return self.parent.selected == self;
+    }
+
     return (
-        <div className="tab-button-container">
+        <div
+            className="tab-button-container"
+            style={{backgroundColor: isSelected() ? "#ffffff" : "transparent"}}
+        >
             <button
                 onClick={() => {
                     self.select()

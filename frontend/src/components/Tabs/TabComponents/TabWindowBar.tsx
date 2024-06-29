@@ -23,6 +23,8 @@ const TabWindowBar = (props: TabWindowBarProps) => {
                                 <TabButton
                                     self={tab}
                                 />
+
+                                <div className={"divider"}/>
                             </React.Fragment>
                         )
                     })

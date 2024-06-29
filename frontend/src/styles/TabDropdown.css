@@ -2,10 +2,18 @@
 .tab-dropdown {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
-    /*justify-content: center;*/
+    align-items: center;
+    justify-content: center;
 
     height: 100%
+}
+
+.tab-dropdown .content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    height: 70%
 }
 
 .tab-dropdown button {

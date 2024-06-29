@@ -1,14 +1,13 @@
 import '../../../styles/TabDropdown.css'
 
 import React from "react";
-import { useDetectClickOutside } from 'react-detect-click-outside';
+import {useDetectClickOutside} from 'react-detect-click-outside';
 import TabWindow from "../TabObject/TabWindow.tsx";
 import MenuIcon from "../../../assets/Icons/MenuIcon.svg";
 import PaneRight from "../../../assets/Icons/PaneRight.svg";
 import PaneLeft from "../../../assets/Icons/PaneLeft.svg";
 import PaneUp from "../../../assets/Icons/PaneUp.svg";
 import PaneDown from "../../../assets/Icons/PaneDown.svg";
-
 
 
 type TabDropdownProps = {
@@ -23,71 +22,73 @@ const TabDropdown = (props: TabDropdownProps) => {
             setIsVisible(false);
         }
     }
-    const ref = useDetectClickOutside({ onTriggered: closeDropdown });
+    const ref = useDetectClickOutside({onTriggered: closeDropdown});
 
     return (
         <div className="tab-dropdown" ref={ref}>
-            <button
-                onClick={() => {
-                    setIsVisible(!isVisible)
-                }}
-            >
-                <img src={MenuIcon}/>
-            </button>
+            <div className={"content"}>
+                <button
+                    onClick={() => {
+                        setIsVisible(!isVisible)
+                    }}
+                >
+                    <img src={MenuIcon}/>
+                </button>
 
-            {isVisible ? (
-                <div className="dropdown-container">
-                    <div className="dropdown-content">
-                        <button onClick={() => {
-                            props.self.addSibling("horizontal", "after")
-                            setIsVisible(false)
-                        }}>
-                            <div className="row">
-                                <img src={PaneRight}/>
-                                <p>Insert Right</p>
-                            </div>
-                        </button>
+                {isVisible ? (
+                    <div className="dropdown-container">
+                        <div className="dropdown-content">
+                            <button onClick={() => {
+                                props.self.addSibling("horizontal", "after")
+                                setIsVisible(false)
+                            }}>
+                                <div className="row">
+                                    <img src={PaneRight}/>
+                                    <p>Insert Right</p>
+                                </div>
+                            </button>
 
-                        <button onClick={() => {
-                            props.self.addSibling("horizontal", "before")
-                            setIsVisible(false)
-                        }}>
-                            <div className="row">
-                                <img src={PaneLeft}/>
-                                <p>Insert Left</p>
-                            </div>
-                        </button>
+                            <button onClick={() => {
+                                props.self.addSibling("horizontal", "before")
+                                setIsVisible(false)
+                            }}>
+                                <div className="row">
+                                    <img src={PaneLeft}/>
+                                    <p>Insert Left</p>
+                                </div>
+                            </button>
 
-                        <button onClick={() => {
-                            props.self.addSibling("vertical", "before")
-                            setIsVisible(false)
-                        }}>
-                            <div className="row">
-                                <img src={PaneUp}/>
-                                <p>Insert Up</p>
-                            </div>
-                        </button>
+                            <button onClick={() => {
+                                props.self.addSibling("vertical", "before")
+                                setIsVisible(false)
+                            }}>
+                                <div className="row">
+                                    <img src={PaneUp}/>
+                                    <p>Insert Up</p>
+                                </div>
+                            </button>
 
-                        <button onClick={() => {
-                            props.self.addSibling("vertical", "after")
-                            setIsVisible(false)
-                        }}>
-                            <div className="row">
-                                <img src={PaneDown}/>
-                                <p>Insert Down</p>
-                            </div>
-                        </button>
-                        <button onClick={() => {
-                            props.self.deleteSelf()
-                            setIsVisible(false)
-                        }}>
-                            <div className="row">
-                                <p>Delete</p>
-                            </div>
-                        </button>
+                            <button onClick={() => {
+                                props.self.addSibling("vertical", "after")
+                                setIsVisible(false)
+                            }}>
+                                <div className="row">
+                                    <img src={PaneDown}/>
+                                    <p>Insert Down</p>
+                                </div>
+                            </button>
+                            <button onClick={() => {
+                                props.self.deleteSelf()
+                                setIsVisible(false)
+                            }}>
+                                <div className="row">
+                                    <p>Delete</p>
+                                </div>
+                            </button>
+                        </div>
                     </div>
-                </div>
-            ) : null}
+                ) : null}
+            </div>
         </div>
     )
 }

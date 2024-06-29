@@ -13,6 +13,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+    background-color: transparent;
 
     height: 100%;
     width: fit-content;
