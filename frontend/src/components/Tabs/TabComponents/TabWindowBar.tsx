@@ -2,8 +2,10 @@ import "../../../styles/TabWindowBar.css"
 
 import TabWindow from "../TabObject/TabWindow.tsx";
 import TabDropdown from "./TabDropdown.tsx"
-import React from "react";
 import TabButton from "./TabButton.tsx";
+import PlusButton from "./PlusButton.tsx";
+import React from "react";
+
 
 type TabWindowBarProps = {
     self: TabWindow;
@@ -15,7 +17,6 @@ const TabWindowBar = (props: TabWindowBarProps) => {
     return (
         <div className="tab-window-bar">
             <div className="tabs">
-                {/*{props.self.id.slice(0,6)}*/}
                 {
                     self.contents.map((tab, i) => {
                         return (
@@ -31,7 +32,13 @@ const TabWindowBar = (props: TabWindowBarProps) => {
                 }
             </div>
             <div className="buttons">
-                <TabDropdown {...props}/>
+                <div className="buttons-left">
+                    <PlusButton self={self}/>
+                </div>
+
+                <div className="buttons-right">
+                    <TabDropdown self={self}/>
+                </div>
             </div>
         </div>
     )

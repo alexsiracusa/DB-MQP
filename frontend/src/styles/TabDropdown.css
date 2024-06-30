@@ -22,23 +22,11 @@
 
     padding: 0;
     border-radius: 5px;
-    border: none;
-
-    background-color: transparent;
 }
 
 .tab-dropdown button img {
     height: 80%;
     width: 100%;
-}
-
-.tab-dropdown button:hover {
-    background-color: #ffffff;
-}
-
-.tab-dropdown button:focus,
-.tab-dropdown button:focus-visible {
-    outline: none;
 }
 
 .dropdown-container {
@@ -64,6 +52,7 @@
 
 .dropdown-content button {
     aspect-ratio: auto;
+    border-radius: 0;
 }
 
 .dropdown-content button img {

@@ -20,6 +20,13 @@ export default class TabWindow extends TabObject {
         this.selected = tab1;
     }
 
+    addTab(tab: TabContent = new NewTab("New Tab", this)) {
+        tab.parent = this;
+        this.contents.push(tab);
+        this.selected = tab;
+        this.parent?.forceUpdate();
+    }
+
     addSibling(direction: Direction, position: Position) {
         if (this.parent === null) {
             console.log("addSibling cannot find its parent: " + this.id)
