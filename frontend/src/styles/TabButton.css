@@ -23,7 +23,8 @@
 }
 
 .tab-button-container .tab-name {
-    padding: 0 4px;
+    padding-left: 4px;
+    padding-right: 15px;
 }
 
 .tab-button-container .x-button {
