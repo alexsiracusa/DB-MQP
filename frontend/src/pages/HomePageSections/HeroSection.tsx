@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import '../../styles/HomePage.css'
 import dbOrange from "../../assets/HomePage/db_orange.png";
 import dbWhite from "../../assets/HomePage/db_white.png";
