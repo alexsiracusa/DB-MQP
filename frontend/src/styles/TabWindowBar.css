@@ -15,10 +15,19 @@
     display: flex;
     flex-direction: row;
     justify-content: left;
-    overflow: hidden;
+
+    overflow-y: hidden;
+    overflow-x: scroll;
+
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 
     min-width: 0;
     height: 100%;
+}
+
+.tab-window-bar .tabs::-webkit-scrollbar {
+    display: none;
 }
 
 .tab-window-bar .tabs .divider {
@@ -34,8 +43,12 @@
 
     height: 100%;
 
-    border-bottom: inset #D8D8D8;
+    border-bottom: #D8D8D8;
     border-bottom-width: 1px;
+    border-left: #D8D8D8;
+    border-left-width: 1px;
+
+    border-style: solid;
 }
 
 .tab-window-bar .buttons .buttons-left {

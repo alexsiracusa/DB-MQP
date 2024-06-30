@@ -6,6 +6,8 @@
 
     height: 100%;
     width: fit-content;
+    min-width: fit-content;
+
     overflow: hidden;
     white-space: nowrap;
 }
