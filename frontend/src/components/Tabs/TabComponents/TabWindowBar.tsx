@@ -30,8 +30,8 @@ const TabWindowBar = (props: TabWindowBarProps) => {
                             return (
                                 <TabButton
                                     self={tab}
+                                    key={tab.id}
                                     index={i}
-                                    key={i}
                                 />
                             )
                         })}

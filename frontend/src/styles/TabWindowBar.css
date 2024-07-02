@@ -43,6 +43,8 @@
     border-left-width: 1px;
 
     border-style: solid;
+
+    margin-left: -1px;
 }
 
 .tab-window-bar .buttons .buttons-left {

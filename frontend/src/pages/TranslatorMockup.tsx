@@ -7,24 +7,85 @@ import TabContainer from "../components/Tabs/TabContainer.tsx";
 import TabWindow from "../components/Tabs/TabObject/TabWindow.tsx";
 import TabWindowGroup from "../components/Tabs/TabObject/TabWindowGroup.tsx";
 import {Panel, PanelGroup, PanelResizeHandle} from "react-resizable-panels";
-import {DragDropContext, Droppable, Draggable} from "@hello-pangea/dnd";
+import {DragDropContext} from "@hello-pangea/dnd";
 
 
 const TranslatorMockup: React.FC = () => {
 
-    const tabGroup1 = new TabWindowGroup(null, "horizontal")
-    const tabGroup2 = new TabWindowGroup(tabGroup1, "vertical");
+    const root = new TabWindowGroup(null, "horizontal")
+    const tabGroup2 = new TabWindowGroup(root, "vertical");
 
-    const tabWindow1 = new TabWindow(tabGroup1);
+    const tabWindow1 = new TabWindow(root);
     const tabWindow2 = new TabWindow(tabGroup2);
     const tabWindow3 = new TabWindow(tabGroup2);
     const tabWindow4 = new TabWindow(tabGroup2);
 
     tabGroup2.children = [tabWindow2, tabWindow3, tabWindow4]
-    tabGroup1.children = [tabWindow1, tabGroup2]
+    root.children = [tabWindow1, tabGroup2]
 
-    function onDragEnd(result) {
+    function getWindow(id: string): TabWindow | null {
+        function getWindowFrom(from: TabWindowGroup, id: string): TabWindow | null {
+            for (const tabObject of from.children) {
+                if (tabObject instanceof TabWindowGroup) {
+                    const result = getWindowFrom(tabObject, id);
+                    if (result) {
+                        return result;
+                    }
+                }
+                else if (tabObject instanceof TabWindow && tabObject.id == id) {
+                    return tabObject
+                }
+            }
+            return null;
+        }
+
+        return getWindowFrom(root, id);
+    }
+
+    function onDragEnd(result): void {
         const { source, destination } = result;
+
+        // dropped outside the list
+        if (!destination) {
+            return;
+        }
+
+        const sourceWindow = getWindow(source.droppableId);
+        const destinationWindow = getWindow(destination.droppableId);
+
+        if (sourceWindow === null) {
+            console.log("could not find source window");
+            return;
+        }
+        if (destinationWindow === null) {
+            console.log("could not find destination window");
+            return;
+        }
+
+        // move window
+        if (source.droppableId === destination.droppableId) {
+            const [removed] = sourceWindow.contents.splice(source.index, 1);
+            sourceWindow.contents.splice(destination.index, 0, removed);
+        } else {
+            // remove from old window
+            const [removed] = sourceWindow.contents.splice(source.index, 1);
+            const selected = sourceWindow.selected === removed;
+            if (sourceWindow.contents.length === 0) {
+                sourceWindow.deleteSelf();
+            }
+            else if (selected) {
+                sourceWindow.selected = sourceWindow.contents[Math.max(0, source.index - 1)];
+                sourceWindow.forceUpdate()
+            }
+
+            // add to new window
+            destinationWindow.contents.splice(destination.index, 0, removed);
+            removed.parent = destinationWindow;
+            if (selected) {
+                destinationWindow.selected = removed;
+                destinationWindow.forceUpdate()
+            }
+        }
     }
 
     return (
@@ -56,7 +117,7 @@ const TranslatorMockup: React.FC = () => {
                             <div className={"tab-container"}>
                                 <DragDropContext onDragEnd={onDragEnd}>
                                     <TabContainer
-                                        self={tabGroup1}
+                                        self={root}
                                     />
                                 </DragDropContext>
                             </div>

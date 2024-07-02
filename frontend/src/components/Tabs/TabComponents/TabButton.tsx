@@ -25,6 +25,7 @@ const TabButton = (props: TabButtonProps) => {
         >
             {(provided) => (
                 <div
+                    className="draggable-container"
                     ref={provided.innerRef}
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}
