@@ -11,6 +11,7 @@
     "build:css": "tailwindcss -i src/styles/index.css -o ./dist/output.css"
   },
   "dependencies": {
+    "@hello-pangea/dnd": "^16.6.0",
     "@types/react-syntax-highlighter": "^15.5.13",
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.2",

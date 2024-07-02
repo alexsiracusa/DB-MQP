@@ -8,8 +8,15 @@
     width: fit-content;
     min-width: fit-content;
 
+    border-right: inset #D8D8D8;
+    border-right-width: 1px;
+
     overflow: hidden;
     white-space: nowrap;
+}
+
+.tab-button-container:last-child {
+    border-right: none;
 }
 
 .tab-button-container button {

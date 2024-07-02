@@ -7,6 +7,7 @@ import TabContainer from "../components/Tabs/TabContainer.tsx";
 import TabWindow from "../components/Tabs/TabObject/TabWindow.tsx";
 import TabWindowGroup from "../components/Tabs/TabObject/TabWindowGroup.tsx";
 import {Panel, PanelGroup, PanelResizeHandle} from "react-resizable-panels";
+import {DragDropContext, Droppable, Draggable} from "@hello-pangea/dnd";
 
 
 const TranslatorMockup: React.FC = () => {
@@ -21,6 +22,10 @@ const TranslatorMockup: React.FC = () => {
 
     tabGroup2.children = [tabWindow2, tabWindow3, tabWindow4]
     tabGroup1.children = [tabWindow1, tabGroup2]
+
+    function onDragEnd(result) {
+        const { source, destination } = result;
+    }
 
     return (
         <div className='translator-page'>
@@ -49,9 +54,11 @@ const TranslatorMockup: React.FC = () => {
                             defaultSize={70}
                         >
                             <div className={"tab-container"}>
-                                <TabContainer
-                                    self={tabGroup1}
-                                />
+                                <DragDropContext onDragEnd={onDragEnd}>
+                                    <TabContainer
+                                        self={tabGroup1}
+                                    />
+                                </DragDropContext>
                             </div>
                         </Panel>
 
