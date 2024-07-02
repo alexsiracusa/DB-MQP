@@ -42,7 +42,7 @@ const TranslatorMockup: React.FC = () => {
         return getWindowFrom(root, id);
     }
 
-    function onDragEnd(result): void {
+    function onDragEnd(result: any): void { // eslint-disable-line
         const { source, destination } = result;
 
         // dropped outside the list
