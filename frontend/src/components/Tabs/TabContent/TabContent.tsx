@@ -1,6 +1,9 @@
 import TabWindow from "../TabObject/TabWindow.tsx";
+import {v4 as uuid} from "uuid";
 
 abstract class TabContent {
+    id: string = uuid();
+
     name: string;
     parent: TabWindow;
 

@@ -4,7 +4,7 @@ import TabWindow from "../TabObject/TabWindow.tsx";
 import TabDropdown from "./TabDropdown.tsx"
 import TabButton from "./TabButton.tsx";
 import PlusButton from "./PlusButton.tsx";
-import React from "react";
+import {Droppable} from "@hello-pangea/dnd";
 
 
 type TabWindowBarProps = {
@@ -16,19 +16,30 @@ const TabWindowBar = (props: TabWindowBarProps) => {
 
     return (
         <div className="tab-window-bar">
-            <div className="tabs">
-                {
-                    self.contents.map((tab, i) => {
-                        return (
-                            <React.Fragment key={i}>
+            <Droppable
+                droppableId={self.id}
+                direction="horizontal"
+            >
+                {provided => (
+                    <div
+                        ref={provided.innerRef}
+                        className="tabs"
+                        {...provided.droppableProps}
+                    >
+                        {self.contents.map((tab, i) => {
+                            return (
                                 <TabButton
                                     self={tab}
+                                    index={i}
+                                    key={i}
                                 />
-                            </React.Fragment>
-                        )
-                    })
-                }
-            </div>
+                            )
+                        })}
+                        {provided.placeholder}
+                    </div>
+                )}
+            </Droppable>
+
             <div className="buttons">
                 <div className="buttons-left">
                     <PlusButton self={self}/>
