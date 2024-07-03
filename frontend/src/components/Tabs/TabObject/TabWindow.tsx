@@ -2,7 +2,9 @@ import TabObject from "./TabObject.tsx";
 import TabContent from "../TabContent/TabContent.tsx";
 import TabWindowGroup from "./TabWindowGroup.tsx";
 import {Direction, Position} from "../TabContainer.tsx";
+
 import NewTab from "../TabContent/NewTab.tsx";
+import QueryTab from "../TabContent/QueryTab.tsx";
 
 export default class TabWindow extends TabObject {
     contents: TabContent[];
@@ -13,11 +15,11 @@ export default class TabWindow extends TabObject {
         forceUpdate: () => void = () => {},
     ) {
         super(parent, forceUpdate);
-        const tab1 = new NewTab("Tab 1", this);
-        const tab2 = new NewTab("Tab 2", this);
+        const tab1 = new NewTab("New Tab", this);
+        const tab2 = new QueryTab("Query Tab", this);
 
         this.contents = [tab1, tab2];
-        this.selected = tab1;
+        this.selected = tab2;
     }
 
     addTab(tab: TabContent = new NewTab("New Tab", this)) {
