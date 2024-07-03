@@ -22,8 +22,8 @@ const TabWindowBar = (props: TabWindowBarProps) => {
             >
                 {provided => (
                     <div
-                        ref={provided.innerRef}
                         className="tabs"
+                        ref={provided.innerRef}
                         {...provided.droppableProps}
                     >
                         {self.contents.map((tab, i) => {

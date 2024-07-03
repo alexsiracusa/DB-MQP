@@ -1,4 +1,4 @@
-import '../../../styles/TabContent.css'
+import '../../../../styles/TabContent.css'
 
 import NewTab from "./NewTab.tsx";
 

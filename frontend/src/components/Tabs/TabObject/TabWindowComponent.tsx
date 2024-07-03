@@ -2,10 +2,10 @@ import "../../../styles/TabContainer.css"
 
 import TabWindow from "./TabWindow.tsx";
 import TabWindowBar from "../TabComponents/TabWindowBar.tsx";
-import NewTab from "../TabContent/NewTab.tsx";
-import NewTabComponent from "../TabContent/NewTabComponent.tsx";
-import QueryTab from "../TabContent/QueryTab.tsx";
-import QueryTabComponent from "../TabContent/QueryTabComponent.tsx";
+import NewTab from "../TabContent/NewTab/NewTab.tsx";
+import NewTabComponent from "../TabContent/NewTab/NewTabComponent.tsx";
+import QueryTab from "../TabContent/QueryTab/QueryTab.tsx";
+import QueryTabComponent from "../TabContent/QueryTab/QueryTabComponent.tsx";
 
 
 type TabWindowGroupComponentProps = {

@@ -1,5 +1,5 @@
-import TabContent from "./TabContent.tsx";
-import TabWindow from "../TabObject/TabWindow.tsx";
+import TabContent from "../TabContent.tsx";
+import TabWindow from "../../TabObject/TabWindow.tsx";
 
 class NewTab extends TabContent {
 

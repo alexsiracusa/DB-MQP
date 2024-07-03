@@ -1,9 +1,10 @@
-import '../../../styles/TabContent.css'
+import '../../../../styles/TabContent.css'
 
-import NewTab from "./NewTab.tsx";
+import QueryTab from "./QueryTab.tsx";
+import QueryTabToolbar from "./QueryTabToolbar.tsx";
 
 type QueryTabComponentProps = {
-    self: NewTab
+    self: QueryTab
 }
 
 const QueryTabComponent = (props: QueryTabComponentProps) => {
@@ -11,9 +12,7 @@ const QueryTabComponent = (props: QueryTabComponentProps) => {
 
     return (
         <div className="tab-content-container">
-            <div className="tab-toolbar">
-
-            </div>
+            <QueryTabToolbar self={self}/>
 
             <div className="tab-content">
                 {self.name}
