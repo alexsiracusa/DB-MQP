@@ -7,8 +7,6 @@
     height: 1.5em;
     min-height: 1.5em;
 
-    overflow: hidden;
-
     border-bottom: #f2f3f4;
     border-bottom-width: 1px;
     border-style: inset;
@@ -24,26 +22,32 @@
 
 .tab-toolbar .buttons {
     display: flex;
-    flex-direction: row;
+    flex-direction: row-reverse;
     flex-grow: 1;
+    gap: 0.2em;
 
     align-items: center;
-    justify-content: flex-end;
+    justify-content: flex-start;
 
     height: 100%;
     padding: 0 0.15em;
 }
 
-.tab-toolbar button {
+.tab-toolbar .toolbar-button {
     display: flex;
     flex-direction: row;
-
     align-items: center;
 
-    border: none;
-    border-radius: 0.15em;
-
     height: 80%;
+    border-radius: 0.15em;
+}
+
+.tab-toolbar button {
+    border-radius: 0;
+    padding: 0;
+    border: none;
+
+    background-color: transparent;
 }
 
 .tab-toolbar button:hover {
@@ -61,6 +65,10 @@
 }
 
 .tab-toolbar .run-button {
+    background-color: #8FD38E;
+}
+
+.tab-toolbar .translate-button {
     background-color: #8FD38E;
 }
 

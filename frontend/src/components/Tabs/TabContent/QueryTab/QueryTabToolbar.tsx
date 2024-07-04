@@ -2,6 +2,7 @@ import '../../../../styles/TabToolbar.css'
 
 import QueryTab from "./QueryTab.tsx";
 import RunButton from "./RunButton.tsx";
+import TranslateButton from "./TranslateButton.tsx";
 
 type QueryTabToolbarProps = {
     self: QueryTab
@@ -17,6 +18,7 @@ const QueryTabToolbar = (props: QueryTabToolbarProps) => {
             </div>
             <div className="buttons">
                 <RunButton self={self}/>
+                <TranslateButton self={self}/>
             </div>
         </div>
     )

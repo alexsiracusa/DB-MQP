@@ -11,7 +11,7 @@ const RunButton = (props: RunButtonProps) => {
 
     return (
         <button
-            className="run-button"
+            className="run-button toolbar-button"
             onClick={() => {
                 console.log(self.id)
             }}

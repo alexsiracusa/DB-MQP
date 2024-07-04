@@ -19,38 +19,36 @@ const Dropdown = (props: PropsWithChildren<DropdownProps>) => {
 
     return (
         <div className="dropdown" ref={ref}>
-            <div className={"content"}>
-                <button
-                    onClick={() => {
-                        setIsVisible(!isVisible)
-                    }}
-                >
-                    {props.icon}
-                </button>
+            <button className="dropdown-button"
+                onClick={() => {
+                    setIsVisible(!isVisible)
+                }}
+            >
+                {props.icon}
+            </button>
 
-                {isVisible && (
-                    <div className="dropdown-container">
-                        <div className="dropdown-content">
-                            {Children.map(props.children, child => {
-                                if (!React.isValidElement(child)) {
-                                    return
-                                }
+            {isVisible && (
+                <div className="dropdown-container">
+                    <div className="dropdown-content">
+                        {Children.map(props.children, child => {
+                            if (!React.isValidElement(child)) {
+                                return
+                            }
 
-                                return (
-                                    <button
-                                        onClick={() => {
-                                            props.onChange(child.props.value)
-                                            closeDropdown()
-                                        }}
-                                    >
-                                        {child}
-                                    </button>
-                                )
-                            })}
-                        </div>
+                            return (
+                                <button
+                                    onClick={() => {
+                                        props.onChange(child.props.value)
+                                        closeDropdown()
+                                    }}
+                                >
+                                    {child}
+                                </button>
+                            )
+                        })}
                     </div>
-                )}
-            </div>
+                </div>
+            )}
         </div>
     )
 }

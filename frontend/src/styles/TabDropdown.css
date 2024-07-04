@@ -1,0 +1,25 @@
+
+.tab-dropdown {
+    height: 70%;
+}
+
+.tab-dropdown .tab-dropdown-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 100%;
+    aspect-ratio: 1.0;
+
+    padding: 0;
+    border-radius: 5px;
+}
+
+.tab-dropdown .tab-dropdown-icon img {
+    height: 80%;
+    width: 100%;
+}
+
+.tab-dropdown .dropdown-button {
+    border-radius: 5px;
+}
