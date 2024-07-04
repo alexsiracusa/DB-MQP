@@ -1,7 +1,7 @@
-import "../../../styles/PlusButton.css"
+import "../../../../styles/PlusButton.css"
 
-import TabWindow from "../TabObject/TabWindow.tsx";
-import PlusButtonIcon from "../../../assets/Icons/PlusButton.svg";
+import TabWindow from "../TabWindow.tsx";
+import PlusButtonIcon from "../../../../assets/Icons/PlusButton.svg";
 
 
 type TabButtonProps = {

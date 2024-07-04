@@ -1,13 +1,13 @@
-import '../../../styles/TabDropdown.css'
+import '../../../../styles/TabDropdown.css'
 
 import React from "react";
 import {useDetectClickOutside} from 'react-detect-click-outside';
-import TabWindow from "../TabObject/TabWindow.tsx";
-import MenuIcon from "../../../assets/Icons/MenuIcon.svg";
-import PaneRight from "../../../assets/Icons/PaneRight.svg";
-import PaneLeft from "../../../assets/Icons/PaneLeft.svg";
-import PaneUp from "../../../assets/Icons/PaneUp.svg";
-import PaneDown from "../../../assets/Icons/PaneDown.svg";
+import TabWindow from "../TabWindow.tsx";
+import MenuIcon from "../../../../assets/Icons/MenuIcon.svg";
+import PaneRight from "../../../../assets/Icons/PaneRight.svg";
+import PaneLeft from "../../../../assets/Icons/PaneLeft.svg";
+import PaneUp from "../../../../assets/Icons/PaneUp.svg";
+import PaneDown from "../../../../assets/Icons/PaneDown.svg";
 
 
 type TabDropdownProps = {
@@ -18,10 +18,9 @@ const TabDropdown = (props: TabDropdownProps) => {
     const [isVisible, setIsVisible] = React.useState(false);
 
     const closeDropdown = () => {
-        if (isVisible) {
-            setIsVisible(false);
-        }
+        setIsVisible(false);
     }
+
     const ref = useDetectClickOutside({onTriggered: closeDropdown});
 
     return (
@@ -35,7 +34,7 @@ const TabDropdown = (props: TabDropdownProps) => {
                     <img src={MenuIcon}/>
                 </button>
 
-                {isVisible ? (
+                {isVisible && (
                     <div className="dropdown-container">
                         <div className="dropdown-content">
                             <button onClick={() => {
@@ -87,7 +86,7 @@ const TabDropdown = (props: TabDropdownProps) => {
                             </button>
                         </div>
                     </div>
-                ) : null}
+                )}
             </div>
         </div>
     )

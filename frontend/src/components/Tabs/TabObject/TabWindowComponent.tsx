@@ -1,7 +1,7 @@
-import "../../../styles/TabContainer.css"
+import "../../../styles/TabToolbar.css"
 
 import TabWindow from "./TabWindow.tsx";
-import TabWindowBar from "../TabComponents/TabWindowBar.tsx";
+import TabWindowBar from "./TabWindowBar/TabWindowBar.tsx";
 import NewTab from "../TabContent/NewTab/NewTab.tsx";
 import NewTabComponent from "../TabContent/NewTab/NewTabComponent.tsx";
 import QueryTab from "../TabContent/QueryTab/QueryTab.tsx";

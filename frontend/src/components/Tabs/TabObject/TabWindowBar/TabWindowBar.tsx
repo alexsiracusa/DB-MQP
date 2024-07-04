@@ -1,6 +1,6 @@
-import "../../../styles/TabWindowBar.css"
+import "../../../../styles/TabWindowBar.css"
 
-import TabWindow from "../TabObject/TabWindow.tsx";
+import TabWindow from "../TabWindow.tsx";
 import TabDropdown from "./TabDropdown.tsx"
 import TabButton from "./TabButton.tsx";
 import PlusButton from "./PlusButton.tsx";

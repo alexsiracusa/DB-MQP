@@ -1,7 +1,7 @@
-import "../../../styles/TabButton.css"
+import "../../../../styles/TabButton.css"
 
-import TabContent from "../TabContent/TabContent.tsx";
-import XButton from "../../../assets/Icons/XButton.svg";
+import TabContent from "../../TabContent/TabContent.tsx";
+import XButton from "../../../../assets/Icons/XButton.svg";
 import {Draggable} from "@hello-pangea/dnd";
 
 

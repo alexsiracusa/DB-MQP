@@ -1,0 +1,66 @@
+
+.tab-toolbar {
+    display: flex;
+    flex-direction: row;
+
+    width: 100%;
+    height: 1.5em;
+    min-height: 1.5em;
+
+    overflow: hidden;
+
+    border-bottom: #f2f3f4;
+    border-bottom-width: 1px;
+    border-style: inset;
+}
+
+.tab-toolbar .file-path {
+    display: flex;
+    flex-direction: row;
+
+    min-width: 0;
+    height: 100%;
+}
+
+.tab-toolbar .buttons {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+
+    align-items: center;
+    justify-content: flex-end;
+
+    height: 100%;
+    padding: 0 0.15em;
+}
+
+.tab-toolbar button {
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+
+    border: none;
+    border-radius: 0.15em;
+
+    height: 80%;
+}
+
+.tab-toolbar button:hover {
+    background-color: #747bff;
+}
+
+.tab-toolbar button:focus,
+.tab-toolbar button:focus-visible {
+    outline: none;
+}
+
+.tab-toolbar p {
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: 0.7em;
+}
+
+.tab-toolbar .run-button {
+    background-color: #8FD38E;
+}
+
