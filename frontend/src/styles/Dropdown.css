@@ -1,5 +1,5 @@
 
-.tab-dropdown {
+.dropdown {
     position: relative;
 
     display: flex;
@@ -10,7 +10,7 @@
     height: 100%
 }
 
-.tab-dropdown .content {
+.dropdown .content {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -18,7 +18,7 @@
     height: 70%
 }
 
-.tab-dropdown button {
+.dropdown button {
     height: 100%;
     aspect-ratio: 1.0;
 
@@ -26,7 +26,7 @@
     border-radius: 5px;
 }
 
-.tab-dropdown button img {
+.dropdown button img {
     height: 80%;
     width: 100%;
 }
