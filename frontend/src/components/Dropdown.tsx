@@ -5,6 +5,7 @@ import {useDetectClickOutside} from 'react-detect-click-outside';
 
 type DropdownProps = {
     icon: JSX.Element
+    className: string
     onChange: (arg0: any) => void
 }
 
@@ -19,7 +20,7 @@ const Dropdown = (props: PropsWithChildren<DropdownProps>) => {
 
     return (
         <div className="dropdown" ref={ref}>
-            <button className="dropdown-button"
+            <button className={props.className}
                 onClick={() => {
                     setIsVisible(!isVisible)
                 }}

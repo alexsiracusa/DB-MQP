@@ -9,25 +9,16 @@
     height: 100%
 }
 
-.dropdown button {
-    height: 100%;
-    padding: 0;
-    border-radius: 0;
-
-    background-color: transparent;
-}
-
 .dropdown-container {
     position: absolute;
     top: 100%;
-    padding-top: 5px;
+    margin-top: 5px;
     z-index: 1;
 }
 
 .dropdown-content {
     display: flex;
     flex-direction: column;
-    min-width: 150px;
 
     border-radius: 6px;
     overflow: hidden;
@@ -39,21 +30,14 @@
 
 .dropdown-content button {
     aspect-ratio: auto;
+    height: 100%;
+
     border-radius: 0;
+    padding: 0;
+
+    background-color: transparent;
 }
 
-.dropdown-content button img {
-    height: 1em;
-    width: 1em;
-}
-
-.dropdown-content .row {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 5px;
-    padding: 0 15px;
-
-    height: 2em;
+.dropdown-content button:hover {
+    background-color: #ffffff;
 }

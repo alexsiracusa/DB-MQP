@@ -30,7 +30,6 @@
     justify-content: flex-start;
 
     height: 100%;
-    padding: 0 0.15em;
 }
 
 .tab-toolbar .toolbar-button {
@@ -42,9 +41,19 @@
     border-radius: 0.15em;
 }
 
+.tab-toolbar .toolbar-button .row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 15px;
+
+    height: 1.5em;
+}
+
 .tab-toolbar button {
     border-radius: 0;
-    padding: 0;
+    padding: 0 0.5em;
     border: none;
 
     background-color: transparent;
@@ -70,5 +79,11 @@
 
 .tab-toolbar .translate-button {
     background-color: #8FD38E;
+}
+
+.tab-toolbar .translate-button-icon {
+    height: 100%;
+    border-radius: 0.15em;
+    padding: 0 0.5em;
 }
 

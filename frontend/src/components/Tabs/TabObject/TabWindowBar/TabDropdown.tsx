@@ -49,29 +49,30 @@ const TabDropdown = (props: TabDropdownProps) => {
                         <img src={MenuIcon}/>
                     </div>
                 }
+                className="tab-dropdown-button"
                 onChange={setValue}
             >
-                <DropDownRow value={"pane-right"}>
+                <DropDownRow value={"pane-right"} className="row">
                     <img src={PaneRight}/>
                     <p>Insert Right</p>
                 </DropDownRow>
 
-                <DropDownRow value={"pane-left"}>
+                <DropDownRow value={"pane-left"} className="row">
                     <img src={PaneLeft}/>
                     <p>Insert Left</p>
                 </DropDownRow>
 
-                <DropDownRow value={"pane-up"}>
+                <DropDownRow value={"pane-up"} className="row">
                     <img src={PaneUp}/>
                     <p>Insert Up</p>
                 </DropDownRow>
 
-                <DropDownRow value={"pane-down"}>
+                <DropDownRow value={"pane-down"} className="row">
                     <img src={PaneDown}/>
                     <p>Insert Down</p>
                 </DropDownRow>
 
-                <DropDownRow value={"delete"}>
+                <DropDownRow value={"delete"} className="row">
                     <p>Delete</p>
                 </DropDownRow>
             </Dropdown>

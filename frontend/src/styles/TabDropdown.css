@@ -20,6 +20,27 @@
     width: 100%;
 }
 
-.tab-dropdown .dropdown-button {
+.tab-dropdown .tab-dropdown-button {
     border-radius: 5px;
+    height: 100%;
+    padding: 0;
+
+    background-color: transparent;
+}
+
+.tab-dropdown .row img {
+    height: 1em;
+    width: 1em;
+}
+
+.tab-dropdown .row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5px;
+    padding: 0 15px;
+
+    height: 2em;
+    min-width: 150px;
 }

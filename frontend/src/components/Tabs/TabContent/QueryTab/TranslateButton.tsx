@@ -1,8 +1,5 @@
-import MenuIcon from "../../../../assets/Icons/MenuIcon.svg";
-import PaneRight from "../../../../assets/Icons/PaneRight.svg";
-import PaneLeft from "../../../../assets/Icons/PaneLeft.svg";
-import PaneUp from "../../../../assets/Icons/PaneUp.svg";
-import PaneDown from "../../../../assets/Icons/PaneDown.svg";
+import '../../../../styles/TabToolbar.css';
+
 import QueryTab from "./QueryTab.tsx";
 import Dropdown from "../../../Dropdown.tsx";
 import DropDownRow from "../../../DropDownRow.tsx";
@@ -22,15 +19,17 @@ const TranslateButton = (props: TranslateButtonProps) => {
         <div className="translate-button toolbar-button">
             <Dropdown
                 icon={
-                    <div className="tab-dropdown-icon">
-                        <p>Translate</p>
-                    </div>
+                    <p>Translate</p>
                 }
+                className="translate-button-icon"
                 onChange={setValue}
             >
-                <DropDownRow value={"pane-right"}>
-                    <img src={PaneRight}/>
-                    <p>Insert Right</p>
+                <DropDownRow value={"pgSQL"} className="row">
+                    <p>pgSQL</p>
+                </DropDownRow>
+
+                <DropDownRow value={"MongoDB"} className="row">
+                    <p>MongoDB</p>
                 </DropDownRow>
             </Dropdown>
         </div>
