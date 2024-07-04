@@ -22,12 +22,12 @@
 
 .tab-toolbar .buttons {
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     flex-grow: 1;
     gap: 0.2em;
 
     align-items: center;
-    justify-content: flex-start;
+    justify-content: flex-end;
 
     height: 100%;
 }
@@ -78,10 +78,14 @@
 }
 
 .tab-toolbar .translate-button {
-    background-color: #8FD38E;
+    background-color: #D9B968;
 }
 
-.tab-toolbar .translate-button-icon {
+.tab-toolbar .file-type-button {
+    background-color: #87BEFF;
+}
+
+.tab-toolbar .dropdown-icon {
     height: 100%;
     border-radius: 0.15em;
     padding: 0 0.5em;

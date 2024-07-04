@@ -3,32 +3,36 @@ import '../../../../styles/TabToolbar.css';
 import QueryTab from "./QueryTab.tsx";
 import Dropdown from "../../../Dropdown.tsx";
 import DropDownRow from "../../../DropDownRow.tsx";
+import {useState} from "react";
 
 
-type TranslateButtonProps = {
+type FileTypeButtonProps = {
     self: QueryTab;
 }
 
-const TranslateButton = (props: TranslateButtonProps) => {
+const FileTypeButton = (props: FileTypeButtonProps) => {
+    const [fileType, setFileType] = useState(props.self.fileType)
 
     function setValue(newValue: string) {
         switch (newValue) {
             case "pgSQL": {
-                console.log(props.self.id)
+                props.self.fileType = newValue;
+                setFileType(newValue);
                 break;
             }
             case "MongoDB": {
-                console.log(props.self.id)
+                props.self.fileType = newValue;
+                setFileType(newValue);
                 break;
             }
         }
     }
 
     return (
-        <div className="translate-button toolbar-button">
+        <div className="file-type-button toolbar-button">
             <Dropdown
                 icon={
-                    <p>Translate</p>
+                    <p>{fileType}</p>
                 }
                 className="dropdown-icon"
                 onChange={setValue}
@@ -45,4 +49,4 @@ const TranslateButton = (props: TranslateButtonProps) => {
     )
 }
 
-export default TranslateButton;
+export default FileTypeButton;
