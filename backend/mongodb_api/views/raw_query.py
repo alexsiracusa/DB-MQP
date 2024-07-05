@@ -17,6 +17,7 @@ def run_raw_query(request):
         # using PyMongo to execute raw query
         client, db = get_connection()
         result = db.command(query)
+        client.close()
 
         # Construct custom response data
         response_data = {
@@ -25,6 +26,12 @@ def run_raw_query(request):
         # Return result of the query
         return Response(response_data, status=status.HTTP_200_OK)
     except Exception as error:
+        # close client if necessary
+        try:
+            client.close()
+        except:
+            pass
+
         # Construct custom response data
         response_data = {
             'error': f'{error}'

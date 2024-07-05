@@ -2,13 +2,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import {useState} from "react";
 
-const DocumentCodeSnippet = ({ codeArr }: {codeArr: string[]}) => {
+const DocumentCodeSnippet = ({codeArr}: { codeArr: string[] }) => {
     const [linesOfCode] = useState(codeArr);
     return (
         <>
-                {linesOfCode.map((line) => (
-                    <p>{line}</p>
-                ))}
+            {linesOfCode.map((line) => (
+                <p>{line}</p>
+            ))}
         </>
     );
 }

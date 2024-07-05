@@ -1,0 +1,57 @@
+
+.draggable-container {
+    min-width: fit-content;
+}
+
+.tab-button-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+
+    height: 100%;
+    width: fit-content;
+
+    border-right: inset #d2d4d6;
+    border-right-width: 1px;
+
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.tab-button-container button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    height: 100%;
+    width: fit-content;
+}
+
+.tab-button-container .tab-name {
+    padding-left: 4px;
+    padding-right: 15px;
+}
+
+.tab-button-container .x-button {
+    padding: 0 0;
+}
+
+.tab-button-container button:hover {
+    background-color: #ffffff;
+}
+
+.tab-button-container button:focus,
+.tab-button-container button:focus-visible {
+    outline: none;
+}
+
+.tab-button-container p {
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: 0.8em;
+}
+
+.tab-button-container img {
+    height: 60%;
+    width: 100%;
+}

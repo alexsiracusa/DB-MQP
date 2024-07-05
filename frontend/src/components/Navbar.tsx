@@ -10,7 +10,7 @@ const Navbar: React.FC = () => {
   };
 
     return(
-      <nav className="flex items-center bg-gray-800 p-3 flex-wrap">
+      <nav className="flex items-center bg-blue-800 p-3 flex-wrap">
       <a href="#" className="p-2 mr-4 inline-flex items-center">
         <svg
           viewBox="0 0 24 24"
@@ -22,13 +22,13 @@ const Navbar: React.FC = () => {
           />
         </svg>
         <span className="text-xl text-white font-bold uppercase tracking-wide" onClick={() => handleNavigation('/')}
-          >Database MQP</span>
+          >Relational Remodel MQP</span>
       </a>
       <button
         className="text-white inline-flex p-3 hover:bg-gray-900 rounded lg:hidden ml-auto hover:text-white outline-none nav-toggler"
         data-target="#navigation"
       >
-        <i className="material-icons">menu</i>
+        <i className="material-icons">Menu</i>
       </button>
       <div
         className="hidden top-navbar w-full lg:inline-flex lg:flex-grow lg:w-auto"
@@ -61,7 +61,7 @@ const Navbar: React.FC = () => {
               href="#"
               className="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-gray-400 items-center justify-center hover:bg-gray-900 hover:text-white"
           >
-            <span>About</span>
+            <span>Documentation</span>
           </a>
           <a
               href="#"

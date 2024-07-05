@@ -1,0 +1,17 @@
+
+.tab-content-container {
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+}
+
+.tab-content {
+    width: 100%;
+    height: 100%;
+
+    overflow-y: scroll;
+
+    align-items: center;
+    justify-content: center;
+}

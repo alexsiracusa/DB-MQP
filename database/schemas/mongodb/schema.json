@@ -1,0 +1,398 @@
+[
+  {
+    "bsonType": "object",
+    "title": "Media",
+    "required": ["id"],
+
+    "properties": {
+      "id": { "bsonType": "int" },
+
+      "title": {
+        "bsonType": "object",
+        "properties": {
+          "romanji": { "bsonType": "string" },
+          "english": { "bsonType": "string" },
+          "native": { "bsonType": "string" }
+        }
+      },
+
+      "type": { "enum": ["ANIME", "MANGA"] },
+      "format": { "bsonType": "string" },
+      "status": { "bsonType": "string" },
+      "description": { "bsonType": "string" },
+      "start_date": { "bsonType": "int" },
+      "end_date": { "bsonType": "int" },
+      "season": { "bsonType": "string" },
+      "season_year": { "bsonType": "int" },
+      "season_int": { "bsonType": "int" },
+
+      "episodes": { "bsonType": "int" },
+      "episode_duration": { "bsonType": "int" },
+      "chapters": { "bsonType": "int" },
+      "volumes": { "bsonType": "int" },
+
+      "country_if_origin": { "bsonType": "string" },
+      "is_licensed": { "bsonType": "bool" },
+      "source": { "bsonType": "string" },
+      "hashtag": { "bsonType": "string" },
+      "trailer_id": { "bsonType": "string" },
+      "updated_at": { "bsonType":  "timestamp" },
+
+      "cover_image": {
+        "bsonType": "object",
+        "properties": {
+          "extra_large": { "bsonType": "string" },
+          "large": { "bsonType": "string" },
+          "medium": { "bsonType": "string" },
+          "color": { "bsonType": "string" }
+        }
+      },
+
+      "banner_image": { "bsonType": "string" },
+
+      "average_score": {
+        "bsonType": "int",
+        "minimum": 0,
+        "maximum": 100,
+        "description": "must be an integer in [ 0, 100 ]"
+      },
+      "mean_score": {
+        "bsonType": "int",
+        "minimum": 0,
+        "maximum": 100,
+        "description": "must be an integer in [ 0, 100 ]"
+      },
+      "popularity": { "bsonType": "int" },
+      "favourites": { "bsonType": "int" },
+      "is_adult": { "bsonType": "bool" },
+      "site_url": { "bsonType": "string" },
+      "mod_notes": { "bsonType": "string" },
+
+
+      "related_media": {
+        "bsonType": "array",
+        "items": {
+          "bsonType": "object",
+          "properties": {
+            "media_id": { "bsonType": "int" },
+            "relation_type": { "bsonType": "string" }
+          }
+        }
+      },
+      "studios": {
+        "bsonType": "array",
+        "items": {
+          "bsonType": "object",
+          "properties": {
+            "studio_id": { "bsonType": "int" },
+            "is_main": { "bsonType": "bool" }
+          }
+        }
+      },
+      "staff": {
+        "bsonType": "array",
+        "items": {
+          "bsonType": "object",
+          "properties": {
+            "staff_id": { "bsonType": "int" },
+            "role": { "bsonType": "string" }
+          }
+        }
+      },
+      "tags": {
+        "bsonType": "array",
+        "items": {
+          "bsonType": "object",
+          "properties": {
+            "tag_id": { "bsonType": "int" },
+            "rank": { "bsonType": "int" },
+            "is_media_spoiler": { "bsonType": "bool" }
+          }
+        }
+      },
+      "genres": {
+        "bsonType": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "title_synonyms": {
+        "bsonType": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "scores": {
+        "bsonType": "array",
+        "items": {
+          "bsonType": "object",
+          "properties": {
+            "score": { "bsonType": "int" },
+            "amount": { "bsonType": "int" }
+          }
+        }
+      },
+      "statuses": {
+        "bsonType": "array",
+        "items": {
+          "bsonType": "object",
+          "properties": {
+            "status": { "bsonType": "string" },
+            "amount": { "bsonType": "int" }
+          }
+        }
+      },
+      "characters": {
+        "bsonType": "array",
+        "items": {
+          "bsonType": "object",
+          "properties": {
+            "character_id": { "bsonType": "int" },
+            "character_name": { "bsonType": "string" },
+            "character_role": { "bsonType": "string" },
+            "character_voices": {
+              "bsonType": "array",
+              "items": {
+                "bsonType": "object",
+                "properties": {
+                  "voice_actor_id": { "bsonType": "int" },
+                  "voice_actor_language": { "bsonType": "string" },
+                  "role_notes": { "bsonType": "string" },
+                  "dub_group": { "bsonType": "string" }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  {
+    "bsonType": "object",
+    "title": "Staff",
+    "required": ["id"],
+
+    "properties": {
+      "id": { "bsonType": "int" },
+
+      "name": {
+        "bsonType": "object",
+        "properties": {
+          "first": { "bsonType": "string" },
+          "middle": { "bsonType": "string" },
+          "last": { "bsonType": "string" },
+          "full": { "bsonType": "string" },
+          "native": { "bsonType": "string" }
+        }
+      },
+
+      "language": { "bsonType": "string" },
+
+      "image_large": { "bsonType": "string" },
+      "image_medium": { "bsonType": "string" },
+
+      "description": { "bsonType": "string" },
+      "gender": { "bsonType": "string" },
+      "date_of_birth": { "bsonType": "int" },
+      "date_of_death": { "bsonType": "int" },
+      "active_from": { "bsonType": "int" },
+      "active_to": { "bsonType": "int" },
+      "home_town": { "bsonType": "string" },
+      "blood_type": { "bsonType": "string" },
+      "site_url": { "bsonType": "string" },
+      "favorites": { "bsonType": "int" },
+      "mod_notes": { "bsonType": "string" },
+
+      "name_alternatives": {
+        "bsonType": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "occupations": {
+        "bsonType": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    }
+  },
+
+  {
+    "bsonType": "object",
+    "title": "Character",
+    "required": ["id"],
+
+    "properties": {
+      "id": { "bsonType": "int" },
+
+      "name": {
+        "bsonType": "object",
+        "properties": {
+          "first": { "bsonType": "string" },
+          "middle": { "bsonType": "string" },
+          "last": { "bsonType": "string" },
+          "full": { "bsonType": "string" },
+          "native": { "bsonType": "string" }
+        }
+      },
+
+      "image": {
+        "bsonType": "object",
+        "properties": {
+          "large": { "bsonType": "string" },
+          "medium": { "bsonType": "string" }
+        }
+      },
+
+      "description": { "bsonType": "string" },
+      "gender": { "bsonType": "string" },
+      "date_of_birth": { "bsonType": "int" },
+      "age": { "bsonType": "string" },
+      "blood_type": { "bsonType": "string" },
+      "site_url": { "bsonType": "string" },
+      "favorites": { "bsonType": "int" },
+      "mod_notes": { "bsonType": "string" },
+
+      "name_alternatives": {
+        "bsonType": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    }
+  },
+
+  {
+    "bsonType": "object",
+    "title": "Studio",
+    "required": ["id"],
+
+    "properties": {
+      "id": { "bsonType": "int" },
+      "name": { "bsonType": "string" },
+      "is_animation_studio": { "bsonType": "bool" },
+      "site_url": { "bsonType": "string" },
+      "favorites": { "bsonType": "int" }
+    }
+  },
+
+  {
+    "bsonType": "object",
+    "title": "Tag",
+    "required": ["id"],
+
+    "properties": {
+      "id": { "bsonType": "int" },
+      "name": { "bsonType": "string" },
+      "description": { "bsonType": "string" },
+      "category": { "bsonType": "string" },
+      "is_general_spoiler": { "bsonType": "bool" },
+      "is_adult": { "bsonType": "bool" }
+    }
+  },
+
+  {
+    "bsonType": "object",
+    "title": "Anilist_User",
+    "required": ["id"],
+
+    "properties": {
+      "id": { "bsonType": "int" },
+      "name": { "bsonType": "string" },
+      "about": { "bsonType": "string" },
+
+      "avatar": {
+        "bsonType": "object",
+        "properties": {
+          "large": { "bsonType": "string" },
+          "medium": { "bsonType": "string" }
+        }
+      },
+
+      "banner_image": { "bsonType": "string" },
+
+      "options": {
+        "bsonType": "object",
+        "properties": {
+          "title_language": { "bsonType": "string" },
+          "display_adult_content": { "bsonType": "bool" },
+          "airing_notifications": { "bsonType": "bool" },
+          "profile_color": { "bsonType": "string" },
+          "staff_name_language": { "bsonType": "string" }
+        }
+      },
+
+      "score_format": { "bsonType": "string" },
+      "site_url": { "bsonType": "string" },
+      "created_at": { "bsonType":  "timestamp" },
+      "updated_at": { "bsonType":  "timestamp" },
+
+      "stats": {
+        "bsonType": "object",
+        "properties": {
+          "anime": {
+            "bsonType": "object",
+            "properties": {
+              "count": { "bsonType": "int" },
+              "mean_score": { "bsonType": "int" },
+              "standard_deviation": { "bsonType": "int" },
+              "minutes_watched": { "bsonType": "int" },
+              "episodes_watched": { "bsonType": "int" }
+            }
+          },
+          "manga": {
+            "bsonType": "object",
+            "properties": {
+              "count": { "bsonType": "int" },
+              "mean_score": { "bsonType": "int" },
+              "standard_deviation": { "bsonType": "int" },
+              "chapters_read": { "bsonType": "int" },
+              "volumes_read": { "bsonType": "int" }
+            }
+          }
+        }
+      },
+
+      "media_list_entries": {
+        "bsonType": "array",
+        "items": {
+          "bsonType": "object",
+          "properties": {
+            "media_id": { "bsonType": "int" },
+            "status": { "bsonType": "string" },
+            "score": { "bsonType": "int" },
+            "progress": { "bsonType": "int" },
+            "progress_volumes": { "bsonType": "int" },
+            "repeat": { "bsonType": "int" },
+            "priority": { "bsonType": "int" },
+            "private": { "bsonType": "bool" },
+            "notes": { "bsonType": "string" },
+            "started_at": { "bsonType": "int" },
+            "completed_at": { "bsonType": "int" },
+            "updated_at": { "bsonType":  "timestamp" },
+            "created_at": { "bsonType":  "timestamp" }
+          }
+        }
+      },
+
+      "media_lists": {
+        "bsonType": "array",
+        "items": {
+          "bsonType": "object",
+          "properties": {
+            "entries": {
+              "bsonType": "array",
+              "items": {
+                "bsonType": "int"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+]
+

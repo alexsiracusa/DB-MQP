@@ -1,23 +1,18 @@
-import { Route, Routes } from 'react-router-dom';
+import {Route, Routes} from 'react-router-dom';
+import './styles/App.css'
 
-import Navbar from './components/Navbar';
-import TopNavBar from "./components/TopNavBar";
-import Translator from './components/Translator';
-import LandingPage from './components/LandingPage';
-import Document from "./components/Document";
+import Translator from './pages/Translator.tsx';
+import TranslatorMockup from "./pages/TranslatorMockup.tsx";
+import HomePage from './pages/HomePage.tsx';
 
 function App() {
-  return (
-      <>
-      <Navbar />
-        <TopNavBar />
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/translator" element={<Translator />} />
-          <Route path="/document" element={<Document />} />
-      </Routes>
-      </>
-  );
+    return (
+        <Routes>
+            <Route path="/" element={<HomePage/>}/>
+            <Route path="/translator" element={<Translator/>}/>
+            <Route path="/mockup" element={<TranslatorMockup/>}/>
+        </Routes>
+    );
 }
 
 export default App

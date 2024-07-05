@@ -1,8 +1,8 @@
 # Set-up Instructions for MongoDB Community Edition
 
-This guide explains how to set up a MongoDB cluster to run on MacOS without homebrew or other installers.  
+This guide explains how to set up a MongoDB cluster to run on macOS without homebrew or other installers.  
 
-While MacOS specifically is used, the only things that would change for unix/linux based operating systems are which files to download from the mongodb website and file path names.
+While macOS specifically is used, the only things that would change for unix/linux based operating systems are which files to download from the mongodb website and file path names.
 
 The official installation instructions for any OS can be found on https://mongodb.com, specifically [here](https://www.mongodb.com/docs/manual/administration/install-community/)
 
@@ -28,7 +28,7 @@ The resulting file structure should look like this:
 └── ...more files
 ```
 
-For convenience, add `/usr/local/mongodb_7.0.11/bin` to your `PATH` environment variable. This will allow you to run `mongod` and `mongos` from anywhere in the terminal. 
+For convenience, add `/usr/local/mongodb_7.0.11/bin` to your `$PATH` environment variable. This will allow you to run `mongod` and `mongos` from anywhere in the terminal. 
 
 If you don't want to do this, whenever either is run in a terminal in this tutorial, replace `mongod` with `/usr/local/mongodb_7.0.11/bin/mongod` and it will work the same way.
 
@@ -130,7 +130,7 @@ The resulting file system should look like this:
 └── data/
     ├── configdb/
     └── db/
-└── etc.
+└── etc/
     ├── configsvr.conf
     ├── shard.conf
     └── mongos.conf

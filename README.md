@@ -1,3 +1,28 @@
+## To Run The Project Frontend
+Within the top level directory for this project:
+```shell
+> npm run dev
+```
+> **NOTE 1:** this requires that all dependencies are already installed. Follow the instructions on how to run just frontend/backend to do so.
+
+> **NOTE 2:** For the project to work fully, you must connect and possibly setup a Postgres and MongoDB server. Read the "Backend Setup" section for more.
+
+
+### To Run Just Frontend
+Within the `frontend/` directory:
+```shell
+> npm install
+> npm run dev
+```
+
+### To Run Just Backend
+1. Install `pipenv` globally, on mac do `sudo -H pip install -U pipenv`
+2. Within `backend/`
+```shell
+> pipenv install
+> pipenv run python manage.py runserver
+```
+
 ## Ignore env files
 There are two `.env` files in the repository. In order to not push changed to either, please run the following two commands:
 
@@ -6,10 +31,12 @@ There are two `.env` files in the repository. In order to not push changed to ei
 > git update-index --assume-unchanged database/.env
 ```
 
-## To Run Backend
-1. Install `pipenv` globally, on mac do `sudo -H pip install -U pipenv`
-2. `cd backend` then `pipenv install`
-3. to run the server use `pipenv run python manage.py runserver`
+## Backend Setup
+This project requires Postgres and MongoDB Servers to be setup and running. Connection parameters to the servers must be specified in the `backend/.env` and `database.env` files. They are both initially set to connect to local database servers on their default ports. If you already have servers running, simply modify these `.env` files.
+
+Otherwise, instructions are provided on how to set up Postgres and MongoDB servers locally on macOS in `backend/installation_instructions/`.
+
+Further instructions to populate these databases can be found below:
 
 ## To Initialize The Database
 1. Make sure you have the .env file made from the "To Run Backend" Section
