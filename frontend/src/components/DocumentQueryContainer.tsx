@@ -1,17 +1,11 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import styles from "../styles/Document.module.css";
 import {Nav} from "react-bootstrap";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 
-const DocumentQueryContainer = ({ languagesArr, codeOptionsArr }: { languagesArr: string[], codeOptionsArr: JSX.Element[] }) => {
+const DocumentQueryContainer = ({ languagesArr, codeOptionsArr }: { languagesArr: string[], codeOptionsArr: string[][] }) => {
     const [languages] = useState(languagesArr);
-    const [codeOptions] = useState<JSX.Element[]>(codeOptionsArr);
-    const [code, setCode] = useState(codeOptions[0]);
     const [currIndex, setCurrIndex] = useState(0);
-
-    useEffect(() => {
-        setCode(codeOptions[currIndex]);
-    }, [currIndex]);
 
     function handleCodeChange(index: number) {
         setCurrIndex(index);
@@ -27,7 +21,9 @@ const DocumentQueryContainer = ({ languagesArr, codeOptionsArr }: { languagesArr
                 </Nav>
             </div>
             <div className={styles.queryContainerBody}>
-                {code}
+                {codeOptionsArr[currIndex].map((line) => (
+                    <p className={styles.code}>{line}</p>
+                ))}
             </div>
         </>
     );

@@ -1,7 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import DocumentQueryContainer from "../components/DocumentQueryContainer.tsx";
 import styles from "../styles/Document.module.css";
-import DocumentCodeSnippet from "../components/DocumentCodeSnippet.tsx";
 
 const Document = () => {
     return (
@@ -18,15 +17,15 @@ const Document = () => {
                     </div>
                     <div className={"px-5 py-1"}>
                         <DocumentQueryContainer languagesArr={["SQL", "NoSQL"]} codeOptionsArr={[
-                            <DocumentCodeSnippet codeArr={["line 1", "line 2"]}/>,
-                            <DocumentCodeSnippet codeArr={["line 3", "line 4"]}/>
+                            ["line 1", "line 2"],
+                            ["line 3", "line 4"]
                         ]}/>
                     </div>
                     <div className={"px-5 py-1"}>
                         <DocumentQueryContainer languagesArr={["MySQL", "MongoDB", "PostgreSQL"]} codeOptionsArr={[
-                            <DocumentCodeSnippet codeArr={["line 1", "line 2"]}/>,
-                            <DocumentCodeSnippet codeArr={["line 3", "line 4"]}/>,
-                            <DocumentCodeSnippet codeArr={["line 3", "line 4", "line 4", "line 4", "line 4"]}/>
+                            ["line 1", "line 2"],
+                            ["line 3", "line 4"],
+                            ["line 3", "line 4", "line 4", "line 4", "line 4"]
                         ]}/>
                     </div>
                 </div>

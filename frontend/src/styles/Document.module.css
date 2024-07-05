@@ -20,12 +20,15 @@
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
+
 .queryContainerBody {
-    font-family: 'Courier New', Consolas, Monaco, 'Lucida Console', monospace;
-    font-size: 1em;
     background-color: #1d1d1d;
     color: #f1f1f1;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     padding: 5px 10px;
+}
+.queryContainerBody .code {
+    font-family: 'Courier New', Consolas, Monaco, 'Lucida Console', monospace;
+    font-size: 1.1em;
 }
