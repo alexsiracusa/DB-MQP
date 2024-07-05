@@ -14,6 +14,7 @@ const PlusButton = (props: TabButtonProps) => {
     return (
         <div className="plus-button">
             <button
+                title="New Tab"
                 onClick={() => {
                     self.addTab();
                 }}

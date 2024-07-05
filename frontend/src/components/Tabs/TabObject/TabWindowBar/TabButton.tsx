@@ -45,6 +45,7 @@ const TabButton = (props: TabButtonProps) => {
 
                         <button
                             className="x-button"
+                            title="Delete"
                             onClick={() => {
                                 self.delete();
                             }}

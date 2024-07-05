@@ -45,7 +45,10 @@ const TabDropdown = (props: TabDropdownProps) => {
         <div className="tab-dropdown">
             <Dropdown
                 icon={
-                    <div className="tab-dropdown-icon">
+                    <div
+                        className="tab-dropdown-icon"
+                        title="Menu"
+                    >
                         <img src={MenuIcon}/>
                     </div>
                 }
