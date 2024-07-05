@@ -1,9 +1,9 @@
 import "../../../../styles/TabWindowBar.css"
 
 import TabWindow from "../TabWindow.tsx";
-import TabDropdown from "./TabDropdown.tsx"
-import TabButton from "./TabButton.tsx";
-import PlusButton from "./PlusButton.tsx";
+import MenuButton from "./Buttons/MenuButton.tsx"
+import TabButton from "./Buttons/TabButton.tsx";
+import PlusButton from "./Buttons/PlusButton.tsx";
 import {Droppable} from "@hello-pangea/dnd";
 
 
@@ -46,7 +46,7 @@ const TabWindowBar = (props: TabWindowBarProps) => {
                 </div>
 
                 <div className="buttons-right">
-                    <TabDropdown self={self}/>
+                    <MenuButton self={self}/>
                 </div>
             </div>
         </div>

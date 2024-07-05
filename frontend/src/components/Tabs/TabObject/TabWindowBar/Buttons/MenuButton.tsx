@@ -1,20 +1,20 @@
-import '../../../../styles/TabDropdown.css'
+import '../../../../../styles/TabDropdown.css'
 
-import TabWindow from "../TabWindow.tsx";
-import MenuIcon from "../../../../assets/Icons/MenuIcon.svg";
-import PaneRight from "../../../../assets/Icons/PaneRight.svg";
-import PaneLeft from "../../../../assets/Icons/PaneLeft.svg";
-import PaneUp from "../../../../assets/Icons/PaneUp.svg";
-import PaneDown from "../../../../assets/Icons/PaneDown.svg";
-import Dropdown from "../../../Dropdown.tsx";
-import DropDownRow from "../../../DropDownRow.tsx";
+import TabWindow from "../../TabWindow.tsx";
+import MenuIcon from "../../../../../assets/Icons/MenuIcon.svg";
+import PaneRight from "../../../../../assets/Icons/PaneRight.svg";
+import PaneLeft from "../../../../../assets/Icons/PaneLeft.svg";
+import PaneUp from "../../../../../assets/Icons/PaneUp.svg";
+import PaneDown from "../../../../../assets/Icons/PaneDown.svg";
+import Dropdown from "../../../../Dropdown.tsx";
+import DropDownRow from "../../../../DropDownRow.tsx";
 
 
 type TabDropdownProps = {
     self: TabWindow;
 }
 
-const TabDropdown = (props: TabDropdownProps) => {
+const MenuButton = (props: TabDropdownProps) => {
 
     function setValue(newValue: string) {
         switch (newValue) {
@@ -83,4 +83,4 @@ const TabDropdown = (props: TabDropdownProps) => {
     )
 }
 
-export default TabDropdown;
+export default MenuButton;

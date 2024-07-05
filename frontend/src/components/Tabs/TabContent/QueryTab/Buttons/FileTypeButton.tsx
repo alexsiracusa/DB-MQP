@@ -1,10 +1,10 @@
-import '../../../../styles/TabToolbar.css';
+import '../../../../../styles/TabToolbar.css';
 
-import QueryTab from "./QueryTab.tsx";
-import Dropdown from "../../../Dropdown.tsx";
-import DropDownRow from "../../../DropDownRow.tsx";
+import QueryTab from "../QueryTab.tsx";
+import Dropdown from "../../../../Dropdown.tsx";
+import DropDownRow from "../../../../DropDownRow.tsx";
 import {useState} from "react";
-import TriangleDown from "../../../../assets/Icons/TriangleDown.svg";
+import TriangleDown from "../../../../../assets/Icons/TriangleDown.svg";
 
 
 type FileTypeButtonProps = {

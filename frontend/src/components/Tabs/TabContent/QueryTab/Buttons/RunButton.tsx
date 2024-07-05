@@ -1,7 +1,7 @@
-import '../../../../styles/TabToolbar.css'
+import '../../../../../styles/TabToolbar.css'
 
-import QueryTab from "./QueryTab.tsx";
-import TriangleRight from "../../../../assets/Icons/TriangleRight.svg";
+import QueryTab from "../QueryTab.tsx";
+import TriangleRight from "../../../../../assets/Icons/TriangleRight.svg";
 
 type RunButtonProps = {
     self: QueryTab

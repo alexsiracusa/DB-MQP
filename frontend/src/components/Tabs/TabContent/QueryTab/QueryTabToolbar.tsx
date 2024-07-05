@@ -1,10 +1,10 @@
 import '../../../../styles/TabToolbar.css'
 
 import QueryTab from "./QueryTab.tsx";
-import RunButton from "./RunButton.tsx";
-import TranslateButton from "./TranslateButton.tsx";
-import FileTypeButton from "./FileTypeButton.tsx";
-import LockButton from "./LockButton.tsx";
+import RunButton from "./Buttons/RunButton.tsx";
+import TranslateButton from "./Buttons/TranslateButton.tsx";
+import FileTypeButton from "./Buttons/FileTypeButton.tsx";
+import LockButton from "./Buttons/LockButton.tsx";
 
 type QueryTabToolbarProps = {
     self: QueryTab

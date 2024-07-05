@@ -1,9 +1,9 @@
-import '../../../../styles/TabToolbar.css';
+import '../../../../../styles/TabToolbar.css';
 
-import QueryTab from "./QueryTab.tsx";
-import Dropdown from "../../../Dropdown.tsx";
-import DropDownRow from "../../../DropDownRow.tsx";
-import TriangleDown from "../../../../assets/Icons/TriangleDown.svg";
+import QueryTab from "../QueryTab.tsx";
+import Dropdown from "../../../../Dropdown.tsx";
+import DropDownRow from "../../../../DropDownRow.tsx";
+import TriangleDown from "../../../../../assets/Icons/TriangleDown.svg";
 
 type TranslateButtonProps = {
     self: QueryTab;

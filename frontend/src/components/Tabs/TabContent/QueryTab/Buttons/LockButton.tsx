@@ -1,8 +1,8 @@
-import '../../../../styles/TabToolbar.css'
+import '../../../../../styles/TabToolbar.css'
 
-import QueryTab from "./QueryTab.tsx";
-import Locked from "../../../../assets/Icons/Locked.svg";
-import Unlocked from "../../../../assets/Icons/Unlocked.svg";
+import QueryTab from "../QueryTab.tsx";
+import Locked from "../../../../../assets/Icons/Locked.svg";
+import Unlocked from "../../../../../assets/Icons/Unlocked.svg";
 import {useState} from "react";
 
 type LockButtonProps = {
