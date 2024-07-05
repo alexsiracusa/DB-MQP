@@ -3,7 +3,7 @@ import '../../../../styles/TabToolbar.css';
 import QueryTab from "./QueryTab.tsx";
 import Dropdown from "../../../Dropdown.tsx";
 import DropDownRow from "../../../DropDownRow.tsx";
-
+import TriangleDown from "../../../../assets/Icons/TriangleDown.svg";
 
 type TranslateButtonProps = {
     self: QueryTab;
@@ -28,7 +28,10 @@ const TranslateButton = (props: TranslateButtonProps) => {
         <div className="translate-button toolbar-button">
             <Dropdown
                 icon={
-                    <p>Translate</p>
+                    <>
+                        <img src={TriangleDown}/>
+                        <p>Translate</p>
+                    </>
                 }
                 className="dropdown-icon"
                 onChange={setValue}

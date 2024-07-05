@@ -1,6 +1,7 @@
 import '../../../../styles/TabToolbar.css'
 
 import QueryTab from "./QueryTab.tsx";
+import TriangleRight from "../../../../assets/Icons/TriangleRight.svg";
 
 type RunButtonProps = {
     self: QueryTab
@@ -16,6 +17,7 @@ const RunButton = (props: RunButtonProps) => {
                 console.log(self.id)
             }}
         >
+            <img src={TriangleRight}/>
             <p>Run</p>
         </button>
     )

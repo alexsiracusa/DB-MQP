@@ -30,6 +30,7 @@
     justify-content: flex-end;
 
     height: 100%;
+    padding: 0 0.15em;
 }
 
 .tab-toolbar .toolbar-button {
@@ -39,6 +40,11 @@
 
     height: 80%;
     border-radius: 0.15em;
+}
+
+.tab-toolbar .toolbar-button img {
+    height: 60%;
+    width: 60%;
 }
 
 .tab-toolbar .toolbar-button .row {
@@ -53,7 +59,7 @@
 
 .tab-toolbar button {
     border-radius: 0;
-    padding: 0 0.5em;
+    padding: 0 0.3em;
     border: none;
 
     background-color: transparent;
@@ -85,9 +91,31 @@
     background-color: #87BEFF;
 }
 
+.tab-toolbar .lock-button {
+    aspect-ratio: 1.0;
+    justify-content: center;
+    padding: 0;
+
+    background-color: transparent;
+}
+
+.tab-toolbar .lock-button img {
+    height: 80%;
+    width: 80%;
+}
+
 .tab-toolbar .dropdown-icon {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
     height: 100%;
     border-radius: 0.15em;
-    padding: 0 0.5em;
+    padding: 0 0.3em;
+}
+
+.tab-toolbar .dropdown-icon img {
+    height: 60%;
+    width: 60%;
 }
 

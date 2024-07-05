@@ -4,6 +4,7 @@ import QueryTab from "./QueryTab.tsx";
 import Dropdown from "../../../Dropdown.tsx";
 import DropDownRow from "../../../DropDownRow.tsx";
 import {useState} from "react";
+import TriangleDown from "../../../../assets/Icons/TriangleDown.svg";
 
 
 type FileTypeButtonProps = {
@@ -32,7 +33,10 @@ const FileTypeButton = (props: FileTypeButtonProps) => {
         <div className="file-type-button toolbar-button">
             <Dropdown
                 icon={
-                    <p>{fileType}</p>
+                    <>
+                        <img src={TriangleDown}/>
+                        <p>{fileType}</p>
+                    </>
                 }
                 className="dropdown-icon"
                 onChange={setValue}
