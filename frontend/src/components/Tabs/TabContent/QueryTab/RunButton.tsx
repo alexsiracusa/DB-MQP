@@ -11,15 +11,16 @@ const RunButton = (props: RunButtonProps) => {
     const self = props.self;
 
     return (
-        <button
-            className="run-button toolbar-button"
-            onClick={() => {
-                console.log(self.id)
-            }}
-        >
-            <img src={TriangleRight}/>
-            <p>Run</p>
-        </button>
+        <div className="run-button toolbar-button">
+            <button
+                onClick={() => {
+                    console.log(self.id)
+                }}
+            >
+                <img src={TriangleRight}/>
+                <p>Run</p>
+            </button>
+        </div>
     )
 }
 

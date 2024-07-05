@@ -58,15 +58,21 @@
 }
 
 .tab-toolbar button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
     border-radius: 0;
     padding: 0 0.3em;
     border: none;
+
+    height: 100%;
 
     background-color: transparent;
 }
 
 .tab-toolbar button:hover {
-    background-color: #747bff;
+    background-color: #00000025;
 }
 
 .tab-toolbar button:focus,
