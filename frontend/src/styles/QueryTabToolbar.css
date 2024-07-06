@@ -2,14 +2,11 @@
 .tab-toolbar {
     display: flex;
     flex-direction: row;
+    justify-content: flex-end;
 
     width: 100%;
     height: 1.5em;
     min-height: 1.5em;
-
-    /*overflow-x: scroll;*/
-    /*-ms-overflow-style: none;*/
-    /*scrollbar-width: none;*/
 
     border-bottom: #f2f3f4;
     border-bottom-width: 1px;
