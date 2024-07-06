@@ -1,4 +1,4 @@
-import '../../../../../styles/TabToolbar.css';
+import '../../../../../styles/QueryTabToolbar.css';
 
 import QueryTab from "../QueryTab.tsx";
 import Dropdown from "../../../../Dropdown.tsx";

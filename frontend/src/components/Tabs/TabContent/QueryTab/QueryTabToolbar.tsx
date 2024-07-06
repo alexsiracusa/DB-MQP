@@ -1,4 +1,4 @@
-import '../../../../styles/TabToolbar.css'
+import '../../../../styles/QueryTabToolbar.css'
 
 import QueryTab from "./QueryTab.tsx";
 import RunButton from "./Buttons/RunButton.tsx";

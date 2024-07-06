@@ -1,4 +1,4 @@
-import "../../../styles/TabToolbar.css"
+import '../../../styles/TabContainer.css'
 
 import TabWindow from "./TabWindow.tsx";
 import TabWindowBar from "./TabWindowBar/TabWindowBar.tsx";

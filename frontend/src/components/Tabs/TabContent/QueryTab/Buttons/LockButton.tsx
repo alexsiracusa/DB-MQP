@@ -1,4 +1,4 @@
-import '../../../../../styles/TabToolbar.css'
+import '../../../../../styles/QueryTabToolbar.css'
 
 import QueryTab from "../QueryTab.tsx";
 import Locked from "../../../../../assets/Icons/Locked.svg";
