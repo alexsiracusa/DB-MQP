@@ -7,9 +7,9 @@
     height: 1.5em;
     min-height: 1.5em;
 
-    overflow-x: scroll;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+    /*overflow-x: scroll;*/
+    /*-ms-overflow-style: none;*/
+    /*scrollbar-width: none;*/
 
     border-bottom: #f2f3f4;
     border-bottom-width: 1px;

@@ -3,13 +3,18 @@ import {v4 as uuid} from "uuid";
 
 abstract class TabContent {
     id: string = uuid();
-
     name: string;
     parent: TabWindow;
+    forceUpdate: () => void;
 
-    protected constructor(name: string, parent: TabWindow) {
+    protected constructor(
+        name: string,
+        parent: TabWindow,
+        forceUpdate: () => void = () => {},
+    ) {
         this.name = name;
         this.parent = parent;
+        this.forceUpdate = forceUpdate
     }
 
     select() {

@@ -23,6 +23,7 @@ const TabContainer = (props: TabMockupProps) => {
     const self = props.self
 
     // console.log(self)
+    self.forceUpdate = forceUpdate
 
     if (self instanceof TabWindow) {
         if (self.parent == null) {
@@ -30,16 +31,12 @@ const TabContainer = (props: TabMockupProps) => {
             return;
         }
 
-        self.forceUpdate = forceUpdate;
-
         return (
             <TabWindowComponent
                 self={self}
             />
         );
     } else if (self instanceof TabWindowGroup) {
-        self.forceUpdate = forceUpdate;
-
         return (
             <TabWindowGroupComponent
                 self={self}

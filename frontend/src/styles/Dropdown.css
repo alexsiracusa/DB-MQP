@@ -10,6 +10,10 @@
 }
 
 .dropdown-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
     position: absolute;
     top: 100%;
     margin-top: 5px;
@@ -19,6 +23,7 @@
 .dropdown-content {
     display: flex;
     flex-direction: column;
+    position: fixed;
 
     border-radius: 6px;
     overflow: hidden;
