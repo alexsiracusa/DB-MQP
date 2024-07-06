@@ -3,11 +3,11 @@ import '../../styles/Gutters.css'
 
 import React from 'react';
 import TabObject from "./TabObject/TabObject.tsx";
-import TabWindowGroup from "./TabObject/TabWindowGroup.tsx";
-import TabWindow from "./TabObject/TabWindow.tsx";
+import TabWindowGroup from "./TabObject/TabWindowGroup/TabWindowGroup.tsx";
+import TabWindow from "./TabObject/TabWindow/TabWindow.tsx";
 
-import TabWindowGroupComponent from "./TabObject/TabWindowGroupComponent.tsx"
-import TabWindowComponent from "./TabObject/TabWindowComponent.tsx";
+import TabWindowGroupComponent from "./TabObject/TabWindowGroup/TabWindowGroupComponent.tsx"
+import TabWindowComponent from "./TabObject/TabWindow/TabWindowComponent.tsx";
 
 export type Direction = "horizontal" | "vertical";
 export type Position = "before" | "after";

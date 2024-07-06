@@ -1,5 +1,5 @@
 import TabContent from "../TabContent.tsx";
-import TabWindow from "../../TabObject/TabWindow.tsx";
+import TabWindow from "../../TabObject/TabWindow/TabWindow.tsx";
 
 type FileType = "pgSQL" | "MongoDB";
 
@@ -8,8 +8,16 @@ class QueryTab extends TabContent {
     locked: boolean = false;
     query: string = "--SQL Query"
 
-    constructor(name: string, parent: TabWindow) {
-        super(name, parent);
+    updateCode: () => void;
+
+    constructor(
+        name: string,
+        parent: TabWindow,
+        forceUpdate: () => void = () => {},
+        updateCode: () => void = () => {},
+    ) {
+        super(name, parent, forceUpdate);
+        this.updateCode = updateCode;
     }
 
 }

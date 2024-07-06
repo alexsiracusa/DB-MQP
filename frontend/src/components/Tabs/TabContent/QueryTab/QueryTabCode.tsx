@@ -19,7 +19,7 @@ const QueryTabCode = (props: QueryTabCodeProps) => {
         self.query = value ? value : "";
     }
 
-    self.forceUpdate = forceUpdate
+    self.updateCode = forceUpdate
 
     return (
         <div className="tab-content">
@@ -27,6 +27,7 @@ const QueryTabCode = (props: QueryTabCodeProps) => {
                 height="100%"
                 defaultLanguage="sql"
                 theme="light"
+                value={self.query}
                 defaultValue={self.query}
                 onChange={handleEditorChange}
                 options={{

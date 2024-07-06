@@ -1,10 +1,10 @@
-import TabObject from "./TabObject.tsx";
-import TabContent from "../TabContent/TabContent.tsx";
-import TabWindowGroup from "./TabWindowGroup.tsx";
-import {Direction, Position} from "../TabContainer.tsx";
+import TabObject from "../TabObject.tsx";
+import TabContent from "../../TabContent/TabContent.tsx";
+import TabWindowGroup from "../TabWindowGroup/TabWindowGroup.tsx";
+import {Direction, Position} from "../../TabContainer.tsx";
 
-import NewTab from "../TabContent/NewTab/NewTab.tsx";
-import QueryTab from "../TabContent/QueryTab/QueryTab.tsx";
+import NewTab from "../../TabContent/NewTab/NewTab.tsx";
+import QueryTab from "../../TabContent/QueryTab/QueryTab.tsx";
 
 export default class TabWindow extends TabObject {
     contents: TabContent[];

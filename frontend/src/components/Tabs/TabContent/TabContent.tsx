@@ -1,4 +1,4 @@
-import TabWindow from "../TabObject/TabWindow.tsx";
+import TabWindow from "../TabObject/TabWindow/TabWindow.tsx";
 import {v4 as uuid} from "uuid";
 
 abstract class TabContent {

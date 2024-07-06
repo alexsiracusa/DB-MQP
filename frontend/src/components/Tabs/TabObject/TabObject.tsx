@@ -1,5 +1,5 @@
 import {v4 as uuid} from 'uuid';
-import TabWindowGroup from "./TabWindowGroup.tsx";
+import TabWindowGroup from "./TabWindowGroup/TabWindowGroup.tsx";
 
 abstract class TabObject {
     id: string = uuid();

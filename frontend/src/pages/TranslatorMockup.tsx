@@ -4,8 +4,8 @@ import '../styles/Gutters.css'
 import Navbar from '../components/Navbar.tsx'
 import React from "react";
 import TabContainer from "../components/Tabs/TabContainer.tsx";
-import TabWindow from "../components/Tabs/TabObject/TabWindow.tsx";
-import TabWindowGroup from "../components/Tabs/TabObject/TabWindowGroup.tsx";
+import TabWindow from "../components/Tabs/TabObject/TabWindow/TabWindow.tsx";
+import TabWindowGroup from "../components/Tabs/TabObject/TabWindowGroup/TabWindowGroup.tsx";
 import {Panel, PanelGroup, PanelResizeHandle} from "react-resizable-panels";
 import {DragDropContext} from "@hello-pangea/dnd";
 
@@ -81,8 +81,7 @@ const TranslatorMockup: React.FC = () => {
             destinationWindow.contents.splice(destination.index, 0, removed);
             removed.parent = destinationWindow;
             if (selected) {
-                destinationWindow.selected = removed;
-                destinationWindow.forceUpdate()
+                removed.select()
             }
         }
     }

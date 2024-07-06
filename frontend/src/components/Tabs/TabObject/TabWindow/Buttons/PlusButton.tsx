@@ -1,6 +1,6 @@
 import "../../../../../styles/PlusButton.css"
 
-import TabWindow from "../../TabWindow.tsx";
+import TabWindow from "../TabWindow.tsx";
 import PlusButtonIcon from "../../../../../assets/Icons/PlusButton.svg";
 
 

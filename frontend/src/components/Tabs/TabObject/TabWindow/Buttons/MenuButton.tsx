@@ -1,6 +1,6 @@
 import '../../../../../styles/TabDropdown.css'
 
-import TabWindow from "../../TabWindow.tsx";
+import TabWindow from "../TabWindow.tsx";
 import MenuIcon from "../../../../../assets/Icons/MenuIcon.svg";
 import PaneRight from "../../../../../assets/Icons/PaneRight.svg";
 import PaneLeft from "../../../../../assets/Icons/PaneLeft.svg";

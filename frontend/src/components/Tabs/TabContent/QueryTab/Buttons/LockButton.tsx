@@ -17,7 +17,7 @@ const LockButton = (props: LockButtonProps) => {
         const newValue = !locked;
         setLocked(newValue);
         self.locked = newValue;
-        self.forceUpdate();
+        self.updateCode();
     }
 
     return (
