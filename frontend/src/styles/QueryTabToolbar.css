@@ -7,6 +7,10 @@
     height: 1.5em;
     min-height: 1.5em;
 
+    overflow-x: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
     border-bottom: #f2f3f4;
     border-bottom-width: 1px;
     border-style: inset;
@@ -30,6 +34,7 @@
     justify-content: flex-end;
 
     height: 100%;
+    min-width: max-content;
     padding: 0 0.15em;
 }
 
@@ -39,6 +44,7 @@
     align-items: center;
 
     height: 80%;
+    min-width: fit-content;
     border-radius: 0.15em;
 }
 
