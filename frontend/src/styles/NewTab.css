@@ -30,6 +30,10 @@
     align-items: center;
     gap: 0.4em;
 
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+
     flex-grow: 1;
 }
 
@@ -38,6 +42,8 @@
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
+
+    min-width: fit-content;
 }
 
 .new-tab-content button img {
