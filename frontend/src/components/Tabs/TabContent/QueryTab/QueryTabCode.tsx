@@ -15,8 +15,9 @@ const QueryTabCode = (props: QueryTabCodeProps) => {
     const self = props.self;
 
     // @ts-expect-error: doesn't like event not being used
-    function handleEditorChange(value: string | undefined, event: any) { // eslint-disable-line
+    function handleEditorChange(value: string | undefined, event) { // eslint-disable-line
         self.query = value ? value : "";
+        // console.log("set value of", self.id.slice(0,6), "to", value)
     }
 
     self.updateCode = forceUpdate
@@ -25,11 +26,12 @@ const QueryTabCode = (props: QueryTabCodeProps) => {
         <div className="tab-content">
             <Editor
                 height="100%"
-                defaultLanguage="sql"
                 theme="light"
-                value={self.query}
+                language={self.language()}
+                defaultLanguage={self.language()}
                 defaultValue={self.query}
                 onChange={handleEditorChange}
+                path={self.id} // needed for multi-editor functionality to work properly
                 options={{
                     minimap: {
                         enabled: false

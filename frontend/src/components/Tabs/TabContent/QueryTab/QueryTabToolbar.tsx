@@ -13,6 +13,8 @@ type QueryTabToolbarProps = {
 const QueryTabToolbar = (props: QueryTabToolbarProps) => {
     const self = props.self;
 
+    // console.log("rendered tab window: " + self.id.slice(0,6) + " " + self.fileType, self.locked )
+
     return (
         <div className="tab-toolbar">
             <div className="file-path">

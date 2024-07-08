@@ -20,7 +20,8 @@ abstract class TabContent {
     select() {
         this.parent.selected = this;
         this.parent.forceUpdate();
-        console.log("selected " + this.name);
+        // console.log("selected " + this.id.slice(0,6));
+        // console.log(this.query, this.locked, this.fileType)
     }
 
     delete() {

@@ -12,7 +12,13 @@ type FileTypeButtonProps = {
 }
 
 const FileTypeButton = (props: FileTypeButtonProps) => {
-    const [fileType, setFileType] = useState(props.self.fileType)
+    const self = props.self;
+    const [fileType, setFileType] = useState(self.fileType)
+
+    // needed when moving tabs between windows, no idea why
+    if (fileType != self.fileType) {
+        setFileType(self.fileType)
+    }
 
     function setValue(newValue: string) {
         switch (newValue) {
@@ -27,6 +33,7 @@ const FileTypeButton = (props: FileTypeButtonProps) => {
                 break;
             }
         }
+        self.updateCode();
     }
 
     return (

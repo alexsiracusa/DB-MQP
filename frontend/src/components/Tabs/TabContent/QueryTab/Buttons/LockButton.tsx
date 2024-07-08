@@ -11,7 +11,12 @@ type LockButtonProps = {
 
 const LockButton = (props: LockButtonProps) => {
     const self = props.self;
-    const [locked, setLocked] = useState(props.self.locked)
+    const [locked, setLocked] = useState(self.locked)
+
+    // needed when moving tabs between windows, no idea why
+    if (locked != self.locked) {
+        setLocked(self.locked)
+    }
 
     function toggle() {
         const newValue = !locked;
