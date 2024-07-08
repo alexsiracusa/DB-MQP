@@ -1,3 +1,5 @@
+import '../../../../styles/TabContent.css'
+
 import QueryTab from "./QueryTab.tsx";
 import QueryTabToolbar from "./QueryTabToolbar.tsx";
 import QueryTabCode from "./QueryTabCode.tsx";

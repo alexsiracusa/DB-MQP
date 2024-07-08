@@ -64,23 +64,14 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: start;
 
     border-radius: 0;
-    padding: 0 0.3em;
-    border: none;
-
     height: 100%;
-
-    background-color: transparent;
 }
 
 .tab-toolbar button:hover {
     background-color: #00000025;
-}
-
-.tab-toolbar button:focus,
-.tab-toolbar button:focus-visible {
-    outline: none;
 }
 
 .tab-toolbar p {

@@ -41,11 +41,6 @@
     background-color: #ffffff;
 }
 
-.tab-button-container button:focus,
-.tab-button-container button:focus-visible {
-    outline: none;
-}
-
 .tab-button-container p {
     font-family: "IBM Plex Sans", sans-serif;
     font-size: 0.8em;

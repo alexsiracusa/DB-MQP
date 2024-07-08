@@ -75,3 +75,24 @@
     background-color: #ffffff;
 }
 
+
+/*Default Button Settings*/
+.translator-page button {
+    font-family: "IBM Plex Sans", sans-serif;
+
+    border-radius: 5px;
+    padding: 0 0.5em;
+    border: none;
+
+    background-color: transparent;
+}
+
+.translator-page button:hover {
+    background-color: #F6F6F6;
+}
+
+.translator-page button:focus,
+.translator-page button:focus-visible {
+    outline: none;
+}
+
