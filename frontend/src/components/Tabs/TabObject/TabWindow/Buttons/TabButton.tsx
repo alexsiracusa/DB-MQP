@@ -40,7 +40,7 @@ const TabButton = (props: TabButtonProps) => {
                                 self.select();
                             }}
                         >
-                            <p>{self.name}</p>
+                            {self.name}
                         </button>
 
                         <button

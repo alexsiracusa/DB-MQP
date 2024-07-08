@@ -57,26 +57,26 @@ const MenuButton = (props: TabDropdownProps) => {
             >
                 <DropDownRow value={"pane-right"} className="row">
                     <img src={PaneRight}/>
-                    <p>Insert Right</p>
+                    Insert Right
                 </DropDownRow>
 
                 <DropDownRow value={"pane-left"} className="row">
                     <img src={PaneLeft}/>
-                    <p>Insert Left</p>
+                    Insert Left
                 </DropDownRow>
 
                 <DropDownRow value={"pane-up"} className="row">
                     <img src={PaneUp}/>
-                    <p>Insert Up</p>
+                    Insert Up
                 </DropDownRow>
 
                 <DropDownRow value={"pane-down"} className="row">
                     <img src={PaneDown}/>
-                    <p>Insert Down</p>
+                    Insert Down
                 </DropDownRow>
 
                 <DropDownRow value={"delete"} className="row">
-                    <p>Delete</p>
+                    Delete
                 </DropDownRow>
             </Dropdown>
         </div>
