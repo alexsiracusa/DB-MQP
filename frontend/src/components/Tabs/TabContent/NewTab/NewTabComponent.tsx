@@ -3,6 +3,7 @@ import '../../../../styles/NewTab.css'
 
 import NewTab from "./NewTab.tsx";
 import NewQueryButton from "./Buttons/NewQueryButton.tsx";
+import GenerateQueryButton from "./Buttons/GenerateQueryButton.tsx";
 
 type NewTabComponentProps = {
     self: NewTab
@@ -14,7 +15,7 @@ const TabWindowComponent = (props: NewTabComponentProps) => {
     return (
         <div className="tab-content new-tab-content">
             <NewQueryButton self={self}/>
-            <NewQueryButton self={self}/>
+            <GenerateQueryButton self={self}/>
         </div>
     )
 }

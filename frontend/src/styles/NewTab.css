@@ -19,6 +19,28 @@
 
     font-size: 0.9em;
 
-    height: 1.75em;
+    height: 2.1em;
     width: 100%;
+}
+
+.new-tab-content button .left {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.4em;
+
+    flex-grow: 1;
+}
+
+.new-tab-content button .right {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.new-tab-content button img {
+    aspect-ratio: 1.0;
+    height: 1.2em;
 }
