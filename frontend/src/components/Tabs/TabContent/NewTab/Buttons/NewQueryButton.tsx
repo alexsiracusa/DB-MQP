@@ -12,7 +12,7 @@ const NewQueryButton = (props: NewQueryButtonProps) => {
     const self = props.self;
 
     function makeQueryTab() {
-        console.log(self.id)
+        self.toQueryTab()
     }
 
     return (

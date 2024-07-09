@@ -17,11 +17,13 @@ abstract class TabContent {
         this.forceUpdate = forceUpdate
     }
 
+    protected index(): number {
+        return this.parent.contents.indexOf(this);
+    }
+
     select() {
         this.parent.selected = this;
         this.parent.forceUpdate();
-        // console.log("selected " + this.id.slice(0,6));
-        // console.log(this.query, this.locked, this.fileType)
     }
 
     delete() {
