@@ -5,6 +5,7 @@ import RunButton from "./Buttons/RunButton.tsx";
 import TranslateButton from "./Buttons/TranslateButton.tsx";
 import FileTypeButton from "./Buttons/FileTypeButton.tsx";
 import LockButton from "./Buttons/LockButton.tsx";
+import UserQueryTab from "./UserQueryTab.tsx";
 
 type QueryTabToolbarProps = {
     self: QueryTab
@@ -13,8 +14,6 @@ type QueryTabToolbarProps = {
 const QueryTabToolbar = (props: QueryTabToolbarProps) => {
     const self = props.self;
 
-    // console.log("rendered tab window: " + self.id.slice(0,6) + " " + self.fileType, self.locked )
-
     return (
         <div className="tab-toolbar">
             <div className="file-path">
@@ -22,7 +21,9 @@ const QueryTabToolbar = (props: QueryTabToolbarProps) => {
             </div>
             <div className="buttons">
                 <RunButton self={self}/>
-                <TranslateButton self={self}/>
+                { (self instanceof UserQueryTab) &&
+                    <TranslateButton self={self}/>
+                }
                 <FileTypeButton self={self}/>
                 <LockButton self={self}/>
             </div>

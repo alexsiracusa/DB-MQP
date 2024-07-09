@@ -62,12 +62,11 @@ const TranslatorMockup: React.FC = () => {
         }
 
         // move window
+        const [removed] = sourceWindow.contents.splice(source.index, 1);
         if (source.droppableId === destination.droppableId) {
-            const [removed] = sourceWindow.contents.splice(source.index, 1);
             sourceWindow.contents.splice(destination.index, 0, removed);
         } else {
             // remove from old window
-            const [removed] = sourceWindow.contents.splice(source.index, 1);
             const selected = sourceWindow.selected === removed;
             if (sourceWindow.contents.length === 0) {
                 sourceWindow.deleteSelf();
