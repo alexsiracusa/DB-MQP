@@ -32,7 +32,7 @@ class UserQueryTab extends QueryTab {
         // otherwise create translation
         let sibling = this.parent.sibling("horizontal", "after");
         if (!(sibling instanceof TabWindow)) {
-            sibling = this.parent.addSibling("horizontal", "after", false);
+            sibling = this.parent.addSibling("horizontal", "after", true);
             (sibling as TabWindow).contents = []
         }
         const window = (sibling as TabWindow);
