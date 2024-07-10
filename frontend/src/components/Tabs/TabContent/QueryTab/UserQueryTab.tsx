@@ -1,29 +1,30 @@
-import QueryTab, {FileType} from "./QueryTab.tsx";
+import {DatabaseLanguage} from "../../../../DatabaseLanguage.tsx";
+import QueryTab from "./QueryTab.tsx";
 import TabWindow from "../../TabObject/TabWindow/TabWindow.tsx";
 import TranslatedQueryTab from "./TranslatedQueryTab.tsx"
 
 class UserQueryTab extends QueryTab {
-    translations: Record<FileType, TranslatedQueryTab> = {} as Record<FileType, TranslatedQueryTab>;
+    translations: Record<DatabaseLanguage, TranslatedQueryTab> = {} as Record<DatabaseLanguage, TranslatedQueryTab>;
 
     constructor(
         name: string,
-        fileType: FileType,
+        language: DatabaseLanguage,
         parent: TabWindow,
         forceUpdate: () => void = () => {},
         updateCode: () => void = () => {},
     ) {
-        super(name, fileType, parent, forceUpdate, updateCode);
+        super(name, language, parent, forceUpdate, updateCode);
     }
 
-    createTranslationTab(fileType: FileType): TranslatedQueryTab {
-        const translationTab = new TranslatedQueryTab("Translation", fileType, this.parent, this);
-        this.translations[fileType] = translationTab;
+    createTranslationTab(language: DatabaseLanguage): TranslatedQueryTab {
+        const translationTab = new TranslatedQueryTab("Translation", language, this.parent, this);
+        this.translations[language] = translationTab;
         return translationTab;
     }
 
-    translate(fileType: FileType) {
+    translate(language: DatabaseLanguage) {
         // if translation already exists, don't make a new one
-        const existingTranslation = this.translations[fileType];
+        const existingTranslation = this.translations[language];
         if (existingTranslation !== undefined) {
             existingTranslation.select()
             return;
@@ -36,7 +37,7 @@ class UserQueryTab extends QueryTab {
             (sibling as TabWindow).contents = []
         }
         const window = (sibling as TabWindow);
-        const tab = this.createTranslationTab(fileType);
+        const tab = this.createTranslationTab(language);
         window.addTab(tab, true)
     }
 }

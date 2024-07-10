@@ -1,4 +1,5 @@
-import QueryTab, {FileType} from "./QueryTab.tsx";
+import {DatabaseLanguage} from "../../../../DatabaseLanguage.tsx";
+import QueryTab from "./QueryTab.tsx";
 import TabWindow from "../../TabObject/TabWindow/TabWindow.tsx";
 import UserQueryTab from "./UserQueryTab.tsx";
 
@@ -7,13 +8,13 @@ class TranslatedQueryTab extends QueryTab {
 
     constructor(
         name: string,
-        fileType: FileType,
+        language: DatabaseLanguage,
         parent: TabWindow,
         original: UserQueryTab,
         forceUpdate: () => void = () => {},
         updateCode: () => void = () => {},
     ) {
-        super(name, fileType, parent, forceUpdate, updateCode);
+        super(name, language, parent, forceUpdate, updateCode);
         this.original = original;
         this.locked = true;
     }
@@ -22,7 +23,7 @@ class TranslatedQueryTab extends QueryTab {
         update: boolean  = true
     ) {
         super.delete(update)
-        delete this.original.translations[this.fileType]
+        delete this.original.translations[this.language]
     }
 
 }

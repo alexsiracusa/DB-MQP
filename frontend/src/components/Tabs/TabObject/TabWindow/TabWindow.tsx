@@ -16,7 +16,7 @@ export default class TabWindow extends TabObject {
     ) {
         super(parent, forceUpdate);
         const tab1 = new NewTab("New Tab", this);
-        const tab2 = new UserQueryTab("Query Tab", "pgSQL", this);
+        const tab2 = new UserQueryTab("Query Tab", "PL/pgSQL", this);
 
         this.contents = [tab1, tab2];
         this.selected = tab2;

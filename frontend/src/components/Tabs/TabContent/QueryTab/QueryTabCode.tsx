@@ -26,8 +26,8 @@ const QueryTabCode = (props: QueryTabCodeProps) => {
             <Editor
                 height="100%"
                 theme="light"
-                language={self.language()}
-                defaultLanguage={self.language()}
+                language={self.editorLanguage()}
+                defaultLanguage={self.editorLanguage()}
                 defaultValue={self.query}
                 onChange={handleEditorChange}
                 path={self.id} // needed for multi-editor functionality to work properly

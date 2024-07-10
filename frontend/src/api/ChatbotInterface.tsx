@@ -1,8 +1,4 @@
-
-type DatabaseLanguage = "PL/pgSQL" | "PL/SQL" | "MQL" | "MongoDBCommand";
-
-// MongoDB Command docs:
-// https://www.mongodb.com/docs/manual/reference/command/#std-label-database-commands
+import {DatabaseLanguage} from "../DatabaseLanguage.tsx";
 
 type TranslationResult = {
     inputCode: string;

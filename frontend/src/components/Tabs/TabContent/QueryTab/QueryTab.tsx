@@ -1,10 +1,9 @@
 import TabContent from "../TabContent.tsx";
 import TabWindow from "../../TabObject/TabWindow/TabWindow.tsx";
-
-export type FileType = "pgSQL" | "MongoDB";
+import {DatabaseLanguage} from "../../../../DatabaseLanguage.tsx";
 
 abstract class QueryTab extends TabContent {
-    fileType: FileType = "pgSQL"
+    language: DatabaseLanguage = "PL/pgSQL"
     locked: boolean = false;
     query: string;
 
@@ -12,24 +11,28 @@ abstract class QueryTab extends TabContent {
 
     protected constructor(
         name: string,
-        fileType: FileType,
+        language: DatabaseLanguage,
         parent: TabWindow,
         forceUpdate: () => void = () => {},
         updateCode: () => void = () => {},
     ) {
         super(name, parent, forceUpdate);
-        this.fileType = fileType;
+        this.language = language;
         this.query = "--" + this.id.slice(0,6)
         this.updateCode = updateCode;
     }
 
-    language() {
-        switch (this.fileType) {
-            case "pgSQL": {
+    editorLanguage() {
+        switch (this.language) {
+            case "PL/SQL":
+            case "PL/pgSQL": {
                 return "sql"
             }
-            case "MongoDB": {
+            case "MQL": {
                 return "javascript"
+            }
+            case "MongoDBCommand": {
+                return "json"
             }
         }
     }

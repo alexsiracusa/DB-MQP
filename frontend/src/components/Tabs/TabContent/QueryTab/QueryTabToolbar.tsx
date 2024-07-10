@@ -3,7 +3,7 @@ import '../../../../styles/QueryTabToolbar.css'
 import QueryTab from "./QueryTab.tsx";
 import RunButton from "./Buttons/RunButton.tsx";
 import TranslateButton from "./Buttons/TranslateButton.tsx";
-import FileTypeButton from "./Buttons/FileTypeButton.tsx";
+import LanguageButton from "./Buttons/LanguageButton.tsx";
 import LockButton from "./Buttons/LockButton.tsx";
 import UserQueryTab from "./UserQueryTab.tsx";
 
@@ -24,7 +24,7 @@ const QueryTabToolbar = (props: QueryTabToolbarProps) => {
                 { (self instanceof UserQueryTab) &&
                     <TranslateButton self={self}/>
                 }
-                <FileTypeButton self={self}/>
+                <LanguageButton self={self}/>
                 <LockButton self={self}/>
             </div>
         </div>
