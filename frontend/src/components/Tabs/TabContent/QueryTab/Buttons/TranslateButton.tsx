@@ -4,6 +4,7 @@ import UserQueryTab from "../UserQueryTab.tsx";
 import Dropdown from "../../../../Dropdown.tsx";
 import DropDownRow from "../../../../DropDownRow.tsx";
 import TriangleDown from "../../../../../assets/Icons/TriangleDown.svg";
+import {databaseLanguages} from "../../../../../DatabaseLanguage.tsx";
 
 type TranslateButtonProps = {
     self: UserQueryTab;
@@ -13,18 +14,7 @@ const TranslateButton = (props: TranslateButtonProps) => {
     const self = props.self;
 
     function setValue(newValue: string) {
-        switch (newValue) {
-            case "pgSQL": {
-                console.log(props.self.id)
-                self.translate("pgSQL")
-                break;
-            }
-            case "MongoDB": {
-                console.log(props.self.id)
-                self.translate("MongoDB")
-                break;
-            }
-        }
+        self.translate(newValue)
     }
 
     return (
@@ -39,13 +29,11 @@ const TranslateButton = (props: TranslateButtonProps) => {
                 className="dropdown-icon"
                 onChange={setValue}
             >
-                <DropDownRow value={"pgSQL"} className="row">
-                    <p>pgSQL</p>
-                </DropDownRow>
-
-                <DropDownRow value={"MongoDB"} className="row">
-                    <p>MongoDB</p>
-                </DropDownRow>
+                { databaseLanguages.map((language: string) => (
+                    <DropDownRow value={language} className="row">
+                        <p>{language}</p>
+                    </DropDownRow>
+                ))}
             </Dropdown>
         </div>
     )
