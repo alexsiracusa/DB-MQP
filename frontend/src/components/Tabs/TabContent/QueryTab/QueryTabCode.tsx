@@ -1,6 +1,11 @@
 import '../../../../styles/TabContent.css'
 import '../../../../styles/QueryTabCode.css'
 
+// Monaco Editor docs:
+// npm: https://www.npmjs.com/package/@monaco-editor/react#usage
+// github: https://github.com/react-monaco-editor/react-monaco-editor?tab=readme-ov-file
+// settings: https://microsoft.github.io/monaco-editor/docs.html#interfaces/editor.IStandaloneEditorConstructionOptions.html
+
 import Editor from '@monaco-editor/react';
 import QueryTab from "./QueryTab.tsx";
 import React from "react";
