@@ -1,20 +1,20 @@
-import '../../../../styles/TabDropdown.css'
+import '../../../../../styles/TabDropdown.css'
 
 import TabWindow from "../TabWindow.tsx";
-import MenuIcon from "../../../../assets/Icons/MenuIcon.svg";
-import PaneRight from "../../../../assets/Icons/PaneRight.svg";
-import PaneLeft from "../../../../assets/Icons/PaneLeft.svg";
-import PaneUp from "../../../../assets/Icons/PaneUp.svg";
-import PaneDown from "../../../../assets/Icons/PaneDown.svg";
-import Dropdown from "../../../Dropdown.tsx";
-import DropDownRow from "../../../DropDownRow.tsx";
+import MenuIcon from "../../../../../assets/Icons/MenuIcon.svg";
+import PaneRight from "../../../../../assets/Icons/PaneRight.svg";
+import PaneLeft from "../../../../../assets/Icons/PaneLeft.svg";
+import PaneUp from "../../../../../assets/Icons/PaneUp.svg";
+import PaneDown from "../../../../../assets/Icons/PaneDown.svg";
+import Dropdown from "../../../../Dropdown.tsx";
+import DropDownRow from "../../../../DropDownRow.tsx";
 
 
 type TabDropdownProps = {
     self: TabWindow;
 }
 
-const TabDropdown = (props: TabDropdownProps) => {
+const MenuButton = (props: TabDropdownProps) => {
 
     function setValue(newValue: string) {
         switch (newValue) {
@@ -45,7 +45,10 @@ const TabDropdown = (props: TabDropdownProps) => {
         <div className="tab-dropdown">
             <Dropdown
                 icon={
-                    <div className="tab-dropdown-icon">
+                    <div
+                        className="tab-dropdown-icon"
+                        title="Menu"
+                    >
                         <img src={MenuIcon}/>
                     </div>
                 }
@@ -54,30 +57,30 @@ const TabDropdown = (props: TabDropdownProps) => {
             >
                 <DropDownRow value={"pane-right"} className="row">
                     <img src={PaneRight}/>
-                    <p>Insert Right</p>
+                    Insert Right
                 </DropDownRow>
 
                 <DropDownRow value={"pane-left"} className="row">
                     <img src={PaneLeft}/>
-                    <p>Insert Left</p>
+                    Insert Left
                 </DropDownRow>
 
                 <DropDownRow value={"pane-up"} className="row">
                     <img src={PaneUp}/>
-                    <p>Insert Up</p>
+                    Insert Up
                 </DropDownRow>
 
                 <DropDownRow value={"pane-down"} className="row">
                     <img src={PaneDown}/>
-                    <p>Insert Down</p>
+                    Insert Down
                 </DropDownRow>
 
                 <DropDownRow value={"delete"} className="row">
-                    <p>Delete</p>
+                    Delete
                 </DropDownRow>
             </Dropdown>
         </div>
     )
 }
 
-export default TabDropdown;
+export default MenuButton;

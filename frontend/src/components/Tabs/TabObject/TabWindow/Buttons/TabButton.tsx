@@ -1,7 +1,7 @@
-import "../../../../styles/TabButton.css"
+import "../../../../../styles/TabButton.css"
 
-import TabContent from "../../TabContent/TabContent.tsx";
-import XButton from "../../../../assets/Icons/XButton.svg";
+import TabContent from "../../../TabContent/TabContent.tsx";
+import XButton from "../../../../../assets/Icons/XButton.svg";
 import {Draggable} from "@hello-pangea/dnd";
 
 
@@ -40,11 +40,12 @@ const TabButton = (props: TabButtonProps) => {
                                 self.select();
                             }}
                         >
-                            <p>{self.name}</p>
+                            {self.name}
                         </button>
 
                         <button
                             className="x-button"
+                            title="Delete"
                             onClick={() => {
                                 self.delete();
                             }}

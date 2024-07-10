@@ -1,24 +1,27 @@
-import '../../../../styles/TabToolbar.css';
+import '../../../../../styles/QueryTabToolbar.css';
 
-import QueryTab from "./QueryTab.tsx";
-import Dropdown from "../../../Dropdown.tsx";
-import DropDownRow from "../../../DropDownRow.tsx";
-
+import UserQueryTab from "../UserQueryTab.tsx";
+import Dropdown from "../../../../Dropdown.tsx";
+import DropDownRow from "../../../../DropDownRow.tsx";
+import TriangleDown from "../../../../../assets/Icons/TriangleDown.svg";
 
 type TranslateButtonProps = {
-    self: QueryTab;
+    self: UserQueryTab;
 }
 
 const TranslateButton = (props: TranslateButtonProps) => {
+    const self = props.self;
 
     function setValue(newValue: string) {
         switch (newValue) {
             case "pgSQL": {
                 console.log(props.self.id)
+                self.translate("pgSQL")
                 break;
             }
             case "MongoDB": {
                 console.log(props.self.id)
+                self.translate("MongoDB")
                 break;
             }
         }
@@ -28,7 +31,10 @@ const TranslateButton = (props: TranslateButtonProps) => {
         <div className="translate-button toolbar-button">
             <Dropdown
                 icon={
-                    <p>Translate</p>
+                    <>
+                        <img src={TriangleDown}/>
+                        <p>Translate</p>
+                    </>
                 }
                 className="dropdown-icon"
                 onChange={setValue}

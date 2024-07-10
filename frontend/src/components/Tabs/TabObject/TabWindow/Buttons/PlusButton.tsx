@@ -1,7 +1,7 @@
-import "../../../../styles/PlusButton.css"
+import "../../../../../styles/PlusButton.css"
 
 import TabWindow from "../TabWindow.tsx";
-import PlusButtonIcon from "../../../../assets/Icons/PlusButton.svg";
+import PlusButtonIcon from "../../../../../assets/Icons/PlusButton.svg";
 
 
 type TabButtonProps = {
@@ -14,6 +14,7 @@ const PlusButton = (props: TabButtonProps) => {
     return (
         <div className="plus-button">
             <button
+                title="New Tab"
                 onClick={() => {
                     self.addTab();
                 }}

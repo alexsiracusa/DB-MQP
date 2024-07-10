@@ -4,8 +4,8 @@ import '../styles/Gutters.css'
 import Navbar from '../components/Navbar.tsx'
 import React from "react";
 import TabContainer from "../components/Tabs/TabContainer.tsx";
-import TabWindow from "../components/Tabs/TabObject/TabWindow.tsx";
-import TabWindowGroup from "../components/Tabs/TabObject/TabWindowGroup.tsx";
+import TabWindow from "../components/Tabs/TabObject/TabWindow/TabWindow.tsx";
+import TabWindowGroup from "../components/Tabs/TabObject/TabWindowGroup/TabWindowGroup.tsx";
 import {Panel, PanelGroup, PanelResizeHandle} from "react-resizable-panels";
 import {DragDropContext} from "@hello-pangea/dnd";
 
@@ -13,15 +13,14 @@ import {DragDropContext} from "@hello-pangea/dnd";
 const TranslatorMockup: React.FC = () => {
 
     const root = new TabWindowGroup(null, "horizontal")
-    const tabGroup2 = new TabWindowGroup(root, "vertical");
+    const tabGroup = new TabWindowGroup(root, "vertical");
 
     const tabWindow1 = new TabWindow(root);
-    const tabWindow2 = new TabWindow(tabGroup2);
-    const tabWindow3 = new TabWindow(tabGroup2);
-    const tabWindow4 = new TabWindow(tabGroup2);
+    const tabWindow2 = new TabWindow(tabGroup);
+    const tabWindow3 = new TabWindow(tabGroup);
 
-    tabGroup2.children = [tabWindow2, tabWindow3, tabWindow4]
-    root.children = [tabWindow1, tabGroup2]
+    tabGroup.children = [tabWindow2, tabWindow3]
+    root.children = [tabWindow1, tabGroup]
 
     function getWindow(id: string): TabWindow | null {
         function getWindowFrom(from: TabWindowGroup, id: string): TabWindow | null {
@@ -63,12 +62,11 @@ const TranslatorMockup: React.FC = () => {
         }
 
         // move window
+        const [removed] = sourceWindow.contents.splice(source.index, 1);
         if (source.droppableId === destination.droppableId) {
-            const [removed] = sourceWindow.contents.splice(source.index, 1);
             sourceWindow.contents.splice(destination.index, 0, removed);
         } else {
             // remove from old window
-            const [removed] = sourceWindow.contents.splice(source.index, 1);
             const selected = sourceWindow.selected === removed;
             if (sourceWindow.contents.length === 0) {
                 sourceWindow.deleteSelf();
@@ -82,8 +80,7 @@ const TranslatorMockup: React.FC = () => {
             destinationWindow.contents.splice(destination.index, 0, removed);
             removed.parent = destinationWindow;
             if (selected) {
-                destinationWindow.selected = removed;
-                destinationWindow.forceUpdate()
+                removed.select()
             }
         }
     }
