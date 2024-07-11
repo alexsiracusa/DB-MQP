@@ -1,8 +1,9 @@
 import {DatabaseLanguage} from "../DatabaseLanguage.tsx";
 
-type TranslationResult = {
-    inputCode: string;
-    outputCode: string;
+export type TranslationResult = {
+    code: string;
+    explanation: string;
+    keyDifferences: string;
 }
 
 interface ChatbotInterface {

@@ -1,7 +1,7 @@
-import {DatabaseLanguage} from "../../../../DatabaseLanguage.tsx";
-import QueryTab from "./QueryTab.tsx";
-import TabWindow from "../../Windows/TabWindow/TabWindow.tsx";
-import TranslatedQueryTab from "./TranslatedQueryTab.tsx"
+import {DatabaseLanguage} from "../../../../../DatabaseLanguage.tsx";
+import QueryTab from "../QueryTab.tsx";
+import TabWindow from "../../../Windows/TabWindow/TabWindow.tsx";
+import TranslatedQueryTab from "../TranslatedQueryTab/TranslatedQueryTab.tsx"
 
 class UserQueryTab extends QueryTab {
     translations: Record<DatabaseLanguage, TranslatedQueryTab> = {} as Record<DatabaseLanguage, TranslatedQueryTab>;

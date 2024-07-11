@@ -9,6 +9,7 @@ import '../../../../styles/QueryTabCode.css'
 import Editor from '@monaco-editor/react';
 import QueryTab from "./QueryTab.tsx";
 import React from "react";
+import type monaco from 'monaco-editor';
 
 type QueryTabCodeProps = {
     self: QueryTab
@@ -24,6 +25,11 @@ const QueryTabCode = (props: QueryTabCodeProps) => {
         self.query = value ? value : "";
     }
 
+    function handleEditorDidMount(editor: monaco.editor.IStandaloneCodeEditor) {
+        console.log("mounted", self.id.slice(0,6))
+        self.editor = editor;
+    }
+
     self.updateCode = forceUpdate
 
     return (
@@ -35,6 +41,7 @@ const QueryTabCode = (props: QueryTabCodeProps) => {
                 defaultLanguage={self.editorLanguage()}
                 defaultValue={self.query}
                 onChange={handleEditorChange}
+                onMount={handleEditorDidMount}
                 path={self.id} // needed for multi-editor functionality to work properly
                 options={{
                     minimap: {

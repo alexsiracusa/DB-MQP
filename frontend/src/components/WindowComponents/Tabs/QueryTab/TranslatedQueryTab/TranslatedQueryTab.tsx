@@ -1,10 +1,11 @@
-import {DatabaseLanguage} from "../../../../DatabaseLanguage.tsx";
-import QueryTab from "./QueryTab.tsx";
-import TabWindow from "../../Windows/TabWindow/TabWindow.tsx";
-import UserQueryTab from "./UserQueryTab.tsx";
+import {DatabaseLanguage} from "../../../../../DatabaseLanguage.tsx";
+import QueryTab from "../QueryTab.tsx";
+import TabWindow from "../../../Windows/TabWindow/TabWindow.tsx";
+import UserQueryTab from "../UserQueryTab/UserQueryTab.tsx";
 
 class TranslatedQueryTab extends QueryTab {
     original: UserQueryTab
+    loaded: boolean = false
 
     constructor(
         name: string,

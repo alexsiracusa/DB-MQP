@@ -1,8 +1,10 @@
 import Tab from "./Tab.tsx";
 import NewTab from "./NewTab/NewTab.tsx";
+import UserQueryTab from "./QueryTab/UserQueryTab/UserQueryTab.tsx";
+import TranslatedQueryTab from "./QueryTab/TranslatedQueryTab/TranslatedQueryTab.tsx";
 import NewTabComponent from "./NewTab/NewTabComponent.tsx";
-import QueryTab from "./QueryTab/QueryTab.tsx";
-import QueryTabComponent from "./QueryTab/QueryTabComponent.tsx";
+import UserQueryTabComponent from "./QueryTab/UserQueryTab/UserQueryTabComponent.tsx";
+import TranslatedQueryTabComponent from "./QueryTab/TranslatedQueryTab/TranslatedQueryTabComponent.tsx";
 import React from "react";
 
 type TabContentComponentProps = {
@@ -19,8 +21,10 @@ const TabComponent = (props: TabContentComponentProps) => {
 
     if (self instanceof NewTab) {
         return <NewTabComponent self={self}/>
-    } else if (self instanceof QueryTab) {
-        return <QueryTabComponent self={self}/>
+    } else if (self instanceof UserQueryTab) {
+        return <UserQueryTabComponent self={self}/>
+    } else if (self instanceof TranslatedQueryTab) {
+        return <TranslatedQueryTabComponent self={self}/>
     }
 }
 

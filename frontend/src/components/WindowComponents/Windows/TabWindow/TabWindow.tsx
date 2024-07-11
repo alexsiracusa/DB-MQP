@@ -4,7 +4,7 @@ import WindowGroup from "../WindowGroup/WindowGroup.tsx";
 import {Direction, Position} from "../../WindowContainer.tsx";
 
 import NewTab from "../../Tabs/NewTab/NewTab.tsx";
-import UserQueryTab from "../../Tabs/QueryTab/UserQueryTab.tsx";
+import UserQueryTab from "../../Tabs/QueryTab/UserQueryTab/UserQueryTab.tsx";
 
 export default class TabWindow extends Window {
     contents: Tab[];

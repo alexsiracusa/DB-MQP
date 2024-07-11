@@ -5,7 +5,7 @@ import RunButton from "./Buttons/RunButton.tsx";
 import TranslateButton from "./Buttons/TranslateButton.tsx";
 import LanguageButton from "./Buttons/LanguageButton.tsx";
 import LockButton from "./Buttons/LockButton.tsx";
-import UserQueryTab from "./UserQueryTab.tsx";
+import UserQueryTab from "./UserQueryTab/UserQueryTab.tsx";
 
 type QueryTabToolbarProps = {
     self: QueryTab

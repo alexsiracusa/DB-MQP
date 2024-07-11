@@ -40,7 +40,7 @@ const LanguageButton = (props: LanguageButtonProps) => {
                 onChange={setValue}
             >
                 { databaseLanguages.map((language: string) => (
-                    <DropDownRow value={language} className="row">
+                    <DropDownRow value={language} className="row" key={language}>
                         <p>{language}</p>
                     </DropDownRow>
                 ))}
