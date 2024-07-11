@@ -80,15 +80,41 @@
 }
 
 .tab-toolbar .run-button {
-    background-color: #8FD38E;
+    aspect-ratio: 1.0;
+    justify-content: center;
+    padding: 0;
+
+    background-color: transparent;
+}
+
+.tab-toolbar .run-button img {
+    height: 80%;
+    width: 80%;
 }
 
 .tab-toolbar .translate-button {
-    background-color: #D9B968;
+    background-color: transparent;
+}
+
+.tab-toolbar .translate-icon {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+
+    height: 100%;
+    border-radius: 0.15em;
+    padding: 0 0.3em;
+}
+
+.tab-toolbar .translate-icon img {
+    width: 80%;
+    height: 80%;
 }
 
 .tab-toolbar .language-button {
-    background-color: #87BEFF;
+    background-color: transparent;
 }
 
 .tab-toolbar .lock-button {

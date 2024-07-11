@@ -53,6 +53,7 @@
     flex-direction: row;
     justify-content: left;
     align-items: center;
+    gap: 4px;
 
     min-width: 0;
     height: 100%;
@@ -63,6 +64,7 @@
     flex-direction: row;
     justify-content: right;
     align-items: center;
+    gap: 4px;
 
     flex-grow: 1;
 

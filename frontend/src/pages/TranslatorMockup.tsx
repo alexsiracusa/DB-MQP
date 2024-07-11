@@ -3,29 +3,29 @@ import '../styles/Gutters.css'
 
 import Navbar from '../components/Navbar.tsx'
 import React from "react";
-import TabContainer from "../components/Tabs/TabContainer.tsx";
-import TabWindow from "../components/Tabs/TabObject/TabWindow/TabWindow.tsx";
-import TabWindowGroup from "../components/Tabs/TabObject/TabWindowGroup/TabWindowGroup.tsx";
+import WindowContainer from "../components/WindowComponents/WindowContainer.tsx";
+import TabWindow from "../components/WindowComponents/Windows/TabWindow/TabWindow.tsx";
+import WindowGroup from "../components/WindowComponents/Windows/WindowGroup/WindowGroup.tsx";
 import {Panel, PanelGroup, PanelResizeHandle} from "react-resizable-panels";
 import {DragDropContext} from "@hello-pangea/dnd";
 
 
 const TranslatorMockup: React.FC = () => {
 
-    const root = new TabWindowGroup(null, "horizontal")
-    const tabGroup = new TabWindowGroup(root, "vertical");
+    const root = new WindowGroup(null, "horizontal")
+    // const windowGroup = new WindowGroup(root, "vertical");
 
     const tabWindow1 = new TabWindow(root);
-    const tabWindow2 = new TabWindow(tabGroup);
-    const tabWindow3 = new TabWindow(tabGroup);
+    const tabWindow2 = new TabWindow(root);
+    // const tabWindow3 = new TabWindow(windowGroup);
 
-    tabGroup.children = [tabWindow2, tabWindow3]
-    root.children = [tabWindow1, tabGroup]
+    // windowGroup.children = [tabWindow2, tabWindow3]
+    root.children = [tabWindow1, tabWindow2]
 
     function getWindow(id: string): TabWindow | null {
-        function getWindowFrom(from: TabWindowGroup, id: string): TabWindow | null {
+        function getWindowFrom(from: WindowGroup, id: string): TabWindow | null {
             for (const tabObject of from.children) {
-                if (tabObject instanceof TabWindowGroup) {
+                if (tabObject instanceof WindowGroup) {
                     const result = getWindowFrom(tabObject, id);
                     if (result) {
                         return result;
@@ -113,7 +113,7 @@ const TranslatorMockup: React.FC = () => {
                         >
                             <div className={"tab-container"}>
                                 <DragDropContext onDragEnd={onDragEnd}>
-                                    <TabContainer
+                                    <WindowContainer
                                         self={root}
                                     />
                                 </DragDropContext>
