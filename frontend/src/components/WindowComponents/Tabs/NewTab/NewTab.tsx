@@ -1,7 +1,7 @@
 import Tab from "../Tab.tsx";
-import TabWindow from "../../TabObject/TabWindow/TabWindow.tsx";
+import TabWindow from "../../Windows/TabWindow/TabWindow.tsx";
 import UserQueryTab from "../QueryTab/UserQueryTab.tsx";
-import {FileType} from "../QueryTab/QueryTab.tsx";
+import {DatabaseLanguage} from "../../../../DatabaseLanguage.tsx";
 
 class NewTab extends Tab {
 
@@ -16,7 +16,7 @@ class NewTab extends Tab {
     }
 
     toQueryTab(
-        type: FileType = "pgSQL"
+        type: DatabaseLanguage = "PL/pgSQL"
     ) {
         const tab = new UserQueryTab("Query", type, this.parent);
         this.replaceWith(tab);

@@ -1,5 +1,5 @@
 import Tab from "../Tab.tsx";
-import TabWindow from "../../TabObject/TabWindow/TabWindow.tsx";
+import TabWindow from "../../Windows/TabWindow/TabWindow.tsx";
 import {DatabaseLanguage} from "../../../../DatabaseLanguage.tsx";
 
 abstract class QueryTab extends Tab {
