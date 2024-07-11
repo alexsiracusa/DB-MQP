@@ -18,11 +18,11 @@ const LockButton = (props: LockButtonProps) => {
         setLocked(self.locked)
     }
 
-    function toggle() {
+    async function toggle() {
         const newValue = !locked;
         setLocked(newValue);
         self.locked = newValue;
-        self.updateCode();
+        await self.updateCode();
     }
 
     return (

@@ -18,7 +18,7 @@ export default class TabWindow extends Window {
 
     constructor(
         parent: WindowGroup,
-        forceUpdate: () => void = () => {},
+        forceUpdate: () => Promise<void> = () => new Promise(() => {}),
     ) {
         super(parent, forceUpdate);
         const tab1 = new NewTab("New Tab", this);
@@ -28,7 +28,7 @@ export default class TabWindow extends Window {
         this.selected = tab2;
     }
 
-    addTab(
+    async addTab(
         tab: Tab = new NewTab("New Tab", this),
         update: boolean = true
     ) {
@@ -36,15 +36,15 @@ export default class TabWindow extends Window {
         this.contents.push(tab);
         this.selected = tab;
         if (update) {
-            this.parent?.forceUpdate();
+            await this.parent?.forceUpdate();
         }
     }
 
-    addSibling(
+    async addSibling(
         direction: Direction,
         position: Position,
         update: boolean = true
-    ): TabWindow {
+    ): Promise<TabWindow> {
         if (this.parent === null) {
             console.log("addSibling cannot find its parent: " + this.id)
             return this;
@@ -69,7 +69,7 @@ export default class TabWindow extends Window {
         }
 
         if (update) {
-            originalParent.forceUpdate()
+            await originalParent.forceUpdate()
         }
         return newWindow;
     }
@@ -96,7 +96,7 @@ export default class TabWindow extends Window {
         return this.parent.children[index]
     }
 
-    deleteSelf(
+    async deleteSelf(
         update: boolean = true
     ) {
         if (this.parent == null) {
@@ -114,7 +114,7 @@ export default class TabWindow extends Window {
         }
 
         if (update) {
-            this.parent.forceUpdate()
+            await this.parent.forceUpdate()
         }
     }
 }

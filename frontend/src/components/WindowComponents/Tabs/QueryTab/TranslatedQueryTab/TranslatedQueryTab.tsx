@@ -12,18 +12,18 @@ class TranslatedQueryTab extends QueryTab {
         language: DatabaseLanguage,
         parent: TabWindow,
         original: UserQueryTab,
-        forceUpdate: () => void = () => {},
-        updateCode: () => void = () => {},
+        forceUpdate: () => Promise<void> = () => new Promise(() => {}),
+        updateCode: () => Promise<void> = () => new Promise(() => {}),
     ) {
         super(name, language, parent, forceUpdate, updateCode);
         this.original = original;
         this.locked = true;
     }
 
-    override delete(
+    override async delete(
         update: boolean  = true
     ) {
-        super.delete(update)
+        await super.delete(update)
         delete this.original.translations[this.language]
     }
 

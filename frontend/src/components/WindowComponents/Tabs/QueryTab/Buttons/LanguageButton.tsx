@@ -21,10 +21,10 @@ const LanguageButton = (props: LanguageButtonProps) => {
         setLanguage(self.language)
     }
 
-    function setValue(newValue: string) {
+    async function setValue(newValue: string) {
         props.self.language = newValue
         setLanguage(newValue)
-        self.updateCode();
+        await self.updateCode();
     }
 
     return (

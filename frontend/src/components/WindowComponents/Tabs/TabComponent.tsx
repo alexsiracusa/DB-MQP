@@ -5,15 +5,22 @@ import TranslatedQueryTab from "./QueryTab/TranslatedQueryTab/TranslatedQueryTab
 import NewTabComponent from "./NewTab/NewTabComponent.tsx";
 import UserQueryTabComponent from "./QueryTab/UserQueryTab/UserQueryTabComponent.tsx";
 import TranslatedQueryTabComponent from "./QueryTab/TranslatedQueryTab/TranslatedQueryTabComponent.tsx";
-import React from "react";
+import useStateCallback from "../../../useStateCallback.tsx";
 
 type TabContentComponentProps = {
     self: Tab
 }
 
 const TabComponent = (props: TabContentComponentProps) => {
-    const [, updateState] = React.useState({});
-    const forceUpdate = React.useCallback(() => updateState({}), []);
+    const [, updateState] = useStateCallback({});
+    function forceUpdate(): Promise<void> {
+        return new Promise((resolve) => {
+            updateState({}, () => {
+                resolve()
+            })
+        })
+    }
+
     const self = props.self;
 
     // update entire tab content

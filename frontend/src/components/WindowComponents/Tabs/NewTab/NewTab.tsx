@@ -9,17 +9,17 @@ class NewTab extends Tab {
         super(name, parent);
     }
 
-    private replaceWith(tab: Tab) {
+    private async replaceWith(tab: Tab) {
         tab.parent = this.parent;
         this.parent.contents[this.index()] = tab;
-        tab.select()
+        await tab.select()
     }
 
-    toQueryTab(
+    async toQueryTab(
         type: DatabaseLanguage = "PL/pgSQL"
     ) {
         const tab = new UserQueryTab("Query", type, this.parent);
-        this.replaceWith(tab);
+        await this.replaceWith(tab);
     }
 
 }

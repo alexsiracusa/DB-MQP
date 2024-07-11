@@ -8,7 +8,7 @@ import '../../../../styles/QueryTabCode.css'
 
 import Editor from '@monaco-editor/react';
 import QueryTab from "./QueryTab.tsx";
-import React from "react";
+import useStateCallback from "../../../../useStateCallback.tsx";
 import type monaco from 'monaco-editor';
 
 type QueryTabCodeProps = {
@@ -16,8 +16,14 @@ type QueryTabCodeProps = {
 }
 
 const QueryTabCode = (props: QueryTabCodeProps) => {
-    const [, updateState] = React.useState({});
-    const forceUpdate = React.useCallback(() => updateState({}), []);
+    const [, updateState] = useStateCallback({});
+    function forceUpdate(): Promise<void> {
+        return new Promise((resolve) => {
+            updateState({}, () => {
+                resolve()
+            })
+        })
+    }
     const self = props.self;
 
     // @ts-expect-error: doesn't like event not being used

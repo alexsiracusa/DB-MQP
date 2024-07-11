@@ -10,7 +10,7 @@ class UserQueryTab extends QueryTab {
         name: string,
         language: DatabaseLanguage,
         parent: TabWindow,
-        forceUpdate: () => void = () => {},
+        forceUpdate: () => Promise<void> = () => new Promise(() => {}),
         updateCode: () => void = () => {},
     ) {
         super(name, language, parent, forceUpdate, updateCode);
@@ -22,23 +22,23 @@ class UserQueryTab extends QueryTab {
         return translationTab;
     }
 
-    translate(language: DatabaseLanguage) {
+    async translate(language: DatabaseLanguage) {
         // if translation already exists, don't make a new one
         const existingTranslation = this.translations[language];
         if (existingTranslation !== undefined) {
-            existingTranslation.select()
+            await existingTranslation.select()
             return;
         }
 
         // otherwise create translation
         let sibling = this.parent.sibling("horizontal", "after");
         if (!(sibling instanceof TabWindow)) {
-            sibling = this.parent.addSibling("horizontal", "after", true);
+            sibling = await this.parent.addSibling("horizontal", "after", true);
             (sibling as TabWindow).contents = []
         }
         const window = (sibling as TabWindow);
         const tab = this.createTranslationTab(language);
-        window.addTab(tab, true)
+        await window.addTab(tab, true)
     }
 }
 

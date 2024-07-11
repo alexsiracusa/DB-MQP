@@ -1,7 +1,7 @@
 import '../../styles/TabContainer.css'
 import '../../styles/Gutters.css'
 
-import React from 'react';
+import useStateCallback from "../../useStateCallback.tsx";
 import Window from "./Windows/Window.tsx";
 import WindowGroup from "./Windows/WindowGroup/WindowGroup.tsx";
 import TabWindow from "./Windows/TabWindow/TabWindow.tsx";
@@ -18,8 +18,14 @@ type TabMockupProps = {
 }
 
 const WindowContainer = (props: TabMockupProps) => {
-    const [, updateState] = React.useState({});
-    const forceUpdate = React.useCallback(() => updateState({}), []);
+    const [, updateState] = useStateCallback({});
+    function forceUpdate(): Promise<void> {
+        return new Promise((resolve) => {
+            updateState({}, () => {
+                resolve()
+            })
+        })
+    }
     const self = props.self
 
     // console.log(self)

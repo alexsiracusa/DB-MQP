@@ -9,14 +9,14 @@ abstract class QueryTab extends Tab {
     locked: boolean = false;
     query: string;
 
-    updateCode: () => void;
+    updateCode: () => Promise<void>;
 
     protected constructor(
         name: string,
         language: DatabaseLanguage,
         parent: TabWindow,
-        forceUpdate: () => void = () => {},
-        updateCode: () => void = () => {},
+        forceUpdate: () => Promise<void> = () => new Promise(() => {}),
+        updateCode: () => Promise<void> = () => new Promise(() => {})
     ) {
         super(name, parent, forceUpdate);
         this.language = language;
@@ -24,14 +24,13 @@ abstract class QueryTab extends Tab {
         this.updateCode = updateCode;
     }
 
-    // override select(update: boolean = true) {
-    //     super.select(update);
-    //     const editor = this.editor();
-    //     if (editor && editor.getValue() !== this.query) {
-    //         console.log("set editor value", this.query)
-    //         editor.setValue(this.query)
-    //     }
-    // }
+    override async select(update: boolean = true) {
+        await super.select(update);
+        const editor = this.editor();
+        if (editor && editor.getValue() !== this.query) {
+            editor.setValue(this.query)
+        }
+    }
 
     editor(): monaco.editor.IStandaloneCodeEditor | null {
         // only return the editor if it is the selected tab

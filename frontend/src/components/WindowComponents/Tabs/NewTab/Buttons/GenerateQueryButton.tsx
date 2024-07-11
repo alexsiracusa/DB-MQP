@@ -11,8 +11,8 @@ type GenerateQueryButtonProps = {
 const GenerateQueryButton = (props: GenerateQueryButtonProps) => {
     const self = props.self;
 
-    function generateQueryTab() {
-        self.toQueryTab()
+    async function generateQueryTab() {
+        await self.toQueryTab()
     }
 
     return (

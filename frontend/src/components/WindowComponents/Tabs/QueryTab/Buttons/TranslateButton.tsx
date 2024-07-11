@@ -14,8 +14,8 @@ type TranslateButtonProps = {
 const TranslateButton = (props: TranslateButtonProps) => {
     const self = props.self;
 
-    function setValue(newValue: string) {
-        self.translate(newValue)
+    async function setValue(newValue: string) {
+        await self.translate(newValue)
     }
 
     return (

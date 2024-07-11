@@ -5,12 +5,12 @@ abstract class Tab {
     id: string = uuid();
     name: string;
     parent: TabWindow;
-    forceUpdate: () => void;
+    forceUpdate: () => Promise<void>;
 
     protected constructor(
         name: string,
         parent: TabWindow,
-        forceUpdate: () => void = () => {},
+        forceUpdate: () => Promise<void> = () => new Promise(() => {}),
     ) {
         this.name = name;
         this.parent = parent;
@@ -21,16 +21,16 @@ abstract class Tab {
         return this.parent.contents.indexOf(this);
     }
 
-    select(
+    async select(
         update: boolean  = true
     ) {
         this.parent.selected = this;
         if (update) {
-            this.parent.forceUpdate();
+            await this.parent.forceUpdate();
         }
     }
 
-    delete(
+    async delete(
         update: boolean  = true
     ) {
         const index = this.parent.contents.indexOf(this);
@@ -38,7 +38,7 @@ abstract class Tab {
 
         // delete window if this is the last tab
         if (this.parent.contents.length === 0) {
-            this.parent.deleteSelf(update);
+            await this.parent.deleteSelf(update);
             return;
         }
 
@@ -48,7 +48,7 @@ abstract class Tab {
         }
 
         if (update) {
-            this.parent.forceUpdate();
+            await this.parent.forceUpdate();
         }
         console.log("deleted " + this.name);
     }

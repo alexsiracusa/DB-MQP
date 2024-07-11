@@ -11,8 +11,8 @@ type NewQueryButtonProps = {
 const NewQueryButton = (props: NewQueryButtonProps) => {
     const self = props.self;
 
-    function makeQueryTab() {
-        self.toQueryTab()
+    async function makeQueryTab() {
+        await self.toQueryTab()
     }
 
     return (
