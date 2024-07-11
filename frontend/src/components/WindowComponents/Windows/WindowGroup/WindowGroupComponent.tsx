@@ -1,15 +1,15 @@
 import "../../../../styles/TabContainer.css"
 
-import TabWindowGroup from "./TabWindowGroup.tsx";
-import TabContainer from "../../TabContainer.tsx";
+import WindowGroup from "./WindowGroup.tsx";
+import WindowContainer from "../../WindowContainer.tsx";
 import {Panel, PanelGroup, PanelResizeHandle} from "react-resizable-panels";
 import React from "react";
 
 
 type TabWindowGroupComponentProps = {
-    self: TabWindowGroup
+    self: WindowGroup
 }
-const TabWindowGroupComponent = (props: TabWindowGroupComponentProps) => {
+const WindowGroupComponent = (props: TabWindowGroupComponentProps) => {
     const self = props.self;
 
     return (
@@ -33,7 +33,7 @@ const TabWindowGroupComponent = (props: TabWindowGroupComponentProps) => {
                                     minHeight: 0
                                 }}
                             >
-                                <TabContainer
+                                <WindowContainer
                                     self={child}
                                 />
                             </Panel>
@@ -51,4 +51,4 @@ const TabWindowGroupComponent = (props: TabWindowGroupComponentProps) => {
     )
 }
 
-export default TabWindowGroupComponent;
+export default WindowGroupComponent;

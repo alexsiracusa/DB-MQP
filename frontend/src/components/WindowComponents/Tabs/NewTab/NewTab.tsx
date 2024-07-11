@@ -1,15 +1,15 @@
-import TabContent from "../TabContent.tsx";
+import Tab from "../Tab.tsx";
 import TabWindow from "../../TabObject/TabWindow/TabWindow.tsx";
 import UserQueryTab from "../QueryTab/UserQueryTab.tsx";
 import {FileType} from "../QueryTab/QueryTab.tsx";
 
-class NewTab extends TabContent {
+class NewTab extends Tab {
 
     constructor(name: string, parent: TabWindow) {
         super(name, parent);
     }
 
-    private replaceWith(tab: TabContent) {
+    private replaceWith(tab: Tab) {
         tab.parent = this.parent;
         this.parent.contents[this.index()] = tab;
         tab.select()

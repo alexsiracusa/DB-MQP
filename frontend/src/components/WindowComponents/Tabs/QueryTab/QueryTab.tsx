@@ -1,8 +1,8 @@
-import TabContent from "../TabContent.tsx";
+import Tab from "../Tab.tsx";
 import TabWindow from "../../TabObject/TabWindow/TabWindow.tsx";
 import {DatabaseLanguage} from "../../../../DatabaseLanguage.tsx";
 
-abstract class QueryTab extends TabContent {
+abstract class QueryTab extends Tab {
     language: DatabaseLanguage = "PL/pgSQL"
     locked: boolean = false;
     query: string;

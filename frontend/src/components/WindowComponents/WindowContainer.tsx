@@ -2,22 +2,22 @@ import '../../styles/TabContainer.css'
 import '../../styles/Gutters.css'
 
 import React from 'react';
-import TabObject from "./TabObject/TabObject.tsx";
-import TabWindowGroup from "./TabObject/TabWindowGroup/TabWindowGroup.tsx";
-import TabWindow from "./TabObject/TabWindow/TabWindow.tsx";
+import Window from "./Windows/Window.tsx";
+import WindowGroup from "./Windows/WindowGroup/WindowGroup.tsx";
+import TabWindow from "./Windows/TabWindow/TabWindow.tsx";
 
-import TabWindowGroupComponent from "./TabObject/TabWindowGroup/TabWindowGroupComponent.tsx"
-import TabWindowComponent from "./TabObject/TabWindow/TabWindowComponent.tsx";
+import WindowGroupComponent from "./Windows/WindowGroup/WindowGroupComponent.tsx"
+import TabWindowComponent from "./Windows/TabWindow/TabWindowComponent.tsx";
 
 export type Direction = "horizontal" | "vertical";
 export type Position = "before" | "after";
 
 
 type TabMockupProps = {
-    self: TabObject;
+    self: Window;
 }
 
-const TabContainer = (props: TabMockupProps) => {
+const WindowContainer = (props: TabMockupProps) => {
     const [, updateState] = React.useState({});
     const forceUpdate = React.useCallback(() => updateState({}), []);
     const self = props.self
@@ -36,9 +36,9 @@ const TabContainer = (props: TabMockupProps) => {
                 self={self}
             />
         );
-    } else if (self instanceof TabWindowGroup) {
+    } else if (self instanceof WindowGroup) {
         return (
-            <TabWindowGroupComponent
+            <WindowGroupComponent
                 self={self}
             />
         )
@@ -47,4 +47,4 @@ const TabContainer = (props: TabMockupProps) => {
     }
 };
 
-export default TabContainer;
+export default WindowContainer;

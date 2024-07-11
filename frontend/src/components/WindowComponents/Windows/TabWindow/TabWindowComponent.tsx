@@ -2,7 +2,7 @@ import '../../../../styles/TabContainer.css'
 
 import TabWindow from "./TabWindow.tsx";
 import TabWindowBar from "./TabWindowBar.tsx";
-import TabContentComponent from "../../TabContent/TabContentComponent.tsx";
+import TabComponent from "../../Tabs/TabComponent.tsx";
 
 
 type TabWindowGroupComponentProps = {
@@ -15,7 +15,7 @@ const TabWindowComponent = (props: TabWindowGroupComponentProps) => {
     return (
         <div className={"tab-window-container"}>
             <TabWindowBar self={self}/>
-            <TabContentComponent self={self.selected}/>
+            <TabComponent self={self.selected}/>
         </div>
     );
 }

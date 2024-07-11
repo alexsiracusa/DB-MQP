@@ -1,13 +1,13 @@
 import {v4 as uuid} from 'uuid';
-import TabWindowGroup from "./TabWindowGroup/TabWindowGroup.tsx";
+import WindowGroup from "./WindowGroup/WindowGroup.tsx";
 
-abstract class TabObject {
+abstract class Window {
     id: string = uuid();
-    parent: TabWindowGroup | null;
+    parent: WindowGroup | null;
     forceUpdate: () => void;
 
     protected constructor(
-        parent: TabWindowGroup | null,
+        parent: WindowGroup | null,
         forceUpdate: () => void,
     ) {
         this.parent = parent;
@@ -16,4 +16,4 @@ abstract class TabObject {
 
 }
 
-export default TabObject;
+export default Window;

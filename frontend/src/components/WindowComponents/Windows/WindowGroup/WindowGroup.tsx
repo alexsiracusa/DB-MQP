@@ -1,12 +1,12 @@
-import TabObject from "../TabObject.tsx";
-import {Direction} from "../../TabContainer.tsx";
+import Window from "../Window.tsx";
+import {Direction} from "../../WindowContainer.tsx";
 
-export default class TabWindowGroup extends TabObject {
-    public children: TabObject[];
+export default class WindowGroup extends Window {
+    public children: Window[];
     direction: Direction;
 
     constructor(
-        parent: TabWindowGroup | null,
+        parent: WindowGroup | null,
         direction: Direction,
         forceUpdate: () => void = () => {}
     ) {

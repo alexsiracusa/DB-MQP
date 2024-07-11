@@ -1,6 +1,6 @@
 import {DatabaseLanguage} from "../../../../DatabaseLanguage.tsx";
 import QueryTab from "./QueryTab.tsx";
-import TabWindow from "../../TabObject/TabWindow/TabWindow.tsx";
+import TabWindow from "../../Windows/TabWindow/TabWindow.tsx";
 import TranslatedQueryTab from "./TranslatedQueryTab.tsx"
 
 class UserQueryTab extends QueryTab {

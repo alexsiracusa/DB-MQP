@@ -1,4 +1,4 @@
-import TabContent from "./TabContent.tsx";
+import Tab from "./Tab.tsx";
 import NewTab from "./NewTab/NewTab.tsx";
 import NewTabComponent from "./NewTab/NewTabComponent.tsx";
 import QueryTab from "./QueryTab/QueryTab.tsx";
@@ -6,10 +6,10 @@ import QueryTabComponent from "./QueryTab/QueryTabComponent.tsx";
 import React from "react";
 
 type TabContentComponentProps = {
-    self: TabContent
+    self: Tab
 }
 
-const TabContentComponent = (props: TabContentComponentProps) => {
+const TabComponent = (props: TabContentComponentProps) => {
     const [, updateState] = React.useState({});
     const forceUpdate = React.useCallback(() => updateState({}), []);
     const self = props.self;
@@ -24,4 +24,4 @@ const TabContentComponent = (props: TabContentComponentProps) => {
     }
 }
 
-export default TabContentComponent;
+export default TabComponent;

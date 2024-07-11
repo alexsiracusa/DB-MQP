@@ -1,17 +1,17 @@
-import TabObject from "../TabObject.tsx";
-import TabContent from "../../TabContent/TabContent.tsx";
-import TabWindowGroup from "../TabWindowGroup/TabWindowGroup.tsx";
-import {Direction, Position} from "../../TabContainer.tsx";
+import Window from "../Window.tsx";
+import Tab from "../../Tabs/Tab.tsx";
+import WindowGroup from "../WindowGroup/WindowGroup.tsx";
+import {Direction, Position} from "../../WindowContainer.tsx";
 
-import NewTab from "../../TabContent/NewTab/NewTab.tsx";
-import UserQueryTab from "../../TabContent/QueryTab/UserQueryTab.tsx";
+import NewTab from "../../Tabs/NewTab/NewTab.tsx";
+import UserQueryTab from "../../Tabs/QueryTab/UserQueryTab.tsx";
 
-export default class TabWindow extends TabObject {
-    contents: TabContent[];
-    selected: TabContent;
+export default class TabWindow extends Window {
+    contents: Tab[];
+    selected: Tab;
 
     constructor(
-        parent: TabWindowGroup,
+        parent: WindowGroup,
         forceUpdate: () => void = () => {},
     ) {
         super(parent, forceUpdate);
@@ -23,7 +23,7 @@ export default class TabWindow extends TabObject {
     }
 
     addTab(
-        tab: TabContent = new NewTab("New Tab", this),
+        tab: Tab = new NewTab("New Tab", this),
         update: boolean = true
     ) {
         tab.parent = this;
@@ -54,7 +54,7 @@ export default class TabWindow extends TabObject {
             const offset = (position === "before") ? 0 : 1;
             this.parent.children.splice(index + offset, 0, newWindow)
         } else {
-            const newGroup = new TabWindowGroup(this.parent, direction);
+            const newGroup = new WindowGroup(this.parent, direction);
             newGroup.children = (position === "before") ? [newWindow, this] : [this, newWindow];
             this.parent.children[index] = newGroup;
 
@@ -71,7 +71,7 @@ export default class TabWindow extends TabObject {
     sibling(
         direction: Direction,
         position: Position,
-    ): TabObject | undefined {
+    ): Window | undefined {
         if (this.parent === null) {
             console.log("addSibling cannot find its parent: " + this.id)
             return undefined;

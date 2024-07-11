@@ -1,7 +1,7 @@
-import TabWindow from "../TabObject/TabWindow/TabWindow.tsx";
+import TabWindow from "../Windows/TabWindow/TabWindow.tsx";
 import {v4 as uuid} from "uuid";
 
-abstract class TabContent {
+abstract class Tab {
     id: string = uuid();
     name: string;
     parent: TabWindow;
@@ -54,4 +54,4 @@ abstract class TabContent {
     }
 }
 
-export default TabContent;
+export default Tab;

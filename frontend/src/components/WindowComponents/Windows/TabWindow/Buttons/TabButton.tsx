@@ -1,12 +1,12 @@
 import "../../../../../styles/TabButton.css"
 
-import TabContent from "../../../TabContent/TabContent.tsx";
+import Tab from "../../../Tabs/Tab.tsx";
 import XButton from "../../../../../assets/Icons/XButton.svg";
 import {Draggable} from "@hello-pangea/dnd";
 
 
 type TabButtonProps = {
-    self: TabContent;
+    self: Tab;
     index: number;
 }
 
