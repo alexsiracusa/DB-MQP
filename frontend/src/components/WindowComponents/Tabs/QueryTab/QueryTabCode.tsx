@@ -22,12 +22,11 @@ const QueryTabCode = (props: QueryTabCodeProps) => {
 
     // @ts-expect-error: doesn't like event not being used
     function handleEditorChange(value: string | undefined, event) { // eslint-disable-line
-        self.query = value ? value : "";
+        self.query = value ? value : self.query;
     }
 
     function handleEditorDidMount(editor: monaco.editor.IStandaloneCodeEditor) {
-        console.log("mounted", self.id.slice(0,6))
-        self.editor = editor;
+        self.parent.editor = editor;
     }
 
     self.updateCode = forceUpdate

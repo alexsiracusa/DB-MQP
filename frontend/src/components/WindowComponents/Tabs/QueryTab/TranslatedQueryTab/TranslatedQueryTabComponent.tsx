@@ -29,11 +29,9 @@ const TranslatedQueryTabComponent = (props: TranslatedQueryTabComponentProps) =>
             const result = await gemini.translate(inputCode, inputLang, outputLang)
 
             if (!self.loaded) {
-                console.log(result.code)
                 self.query = result.code
-                if (self.editor) {
-                    self.editor.setValue(result.code)
-                    console.log("set editor code")
+                if (self.parent.editor) {
+                    self.parent.editor.setValue(result.code)
                 }
                 self.loaded = true;
             }

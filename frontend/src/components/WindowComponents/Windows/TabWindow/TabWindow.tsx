@@ -5,10 +5,16 @@ import {Direction, Position} from "../../WindowContainer.tsx";
 
 import NewTab from "../../Tabs/NewTab/NewTab.tsx";
 import UserQueryTab from "../../Tabs/QueryTab/UserQueryTab/UserQueryTab.tsx";
+import type monaco from "monaco-editor";
 
 export default class TabWindow extends Window {
     contents: Tab[];
     selected: Tab;
+
+    // used for QueryTabs to update their code in special circumstances
+    // is done on a per-window basis because monaco seems to reuse stuff
+    // gets updated every time a new editor is mounted
+    editor: monaco.editor.IStandaloneCodeEditor | null = null
 
     constructor(
         parent: WindowGroup,

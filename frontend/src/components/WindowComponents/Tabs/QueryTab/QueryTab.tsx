@@ -1,14 +1,12 @@
 import Tab from "../Tab.tsx";
 import TabWindow from "../../Windows/TabWindow/TabWindow.tsx";
 import {DatabaseLanguage} from "../../../../DatabaseLanguage.tsx";
-import type monaco from 'monaco-editor';
 
 
 abstract class QueryTab extends Tab {
     language: DatabaseLanguage = "PL/pgSQL"
     locked: boolean = false;
     query: string;
-    editor: monaco.editor.IStandaloneCodeEditor | null = null
 
     updateCode: () => void;
 
@@ -21,7 +19,7 @@ abstract class QueryTab extends Tab {
     ) {
         super(name, parent, forceUpdate);
         this.language = language;
-        this.query = "--" + this.id.slice(0,6)
+        this.query = "";
         this.updateCode = updateCode;
     }
 
