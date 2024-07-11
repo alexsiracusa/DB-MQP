@@ -13,14 +13,14 @@ import {DragDropContext} from "@hello-pangea/dnd";
 const TranslatorMockup: React.FC = () => {
 
     const root = new WindowGroup(null, "horizontal")
-    const windowGroup = new WindowGroup(root, "vertical");
+    // const windowGroup = new WindowGroup(root, "vertical");
 
     const tabWindow1 = new TabWindow(root);
-    const tabWindow2 = new TabWindow(windowGroup);
-    const tabWindow3 = new TabWindow(windowGroup);
+    const tabWindow2 = new TabWindow(root);
+    // const tabWindow3 = new TabWindow(windowGroup);
 
-    windowGroup.children = [tabWindow2, tabWindow3]
-    root.children = [tabWindow1, windowGroup]
+    // windowGroup.children = [tabWindow2, tabWindow3]
+    root.children = [tabWindow1, tabWindow2]
 
     function getWindow(id: string): TabWindow | null {
         function getWindowFrom(from: WindowGroup, id: string): TabWindow | null {

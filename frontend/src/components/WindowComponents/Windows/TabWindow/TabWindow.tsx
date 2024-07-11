@@ -14,7 +14,7 @@ export default class TabWindow extends Window {
     // used for QueryTabs to update their code in special circumstances
     // is done on a per-window basis because monaco seems to reuse stuff
     // gets updated every time a new editor is mounted
-    editor: monaco.editor.IStandaloneCodeEditor | null = null
+    windowEditor: monaco.editor.IStandaloneCodeEditor | null = null
 
     constructor(
         parent: WindowGroup,
