@@ -15,27 +15,28 @@ type TabDropdownProps = {
 }
 
 const MenuButton = (props: TabDropdownProps) => {
+    const self = props.self;
 
     function setValue(newValue: string) {
         switch (newValue) {
             case "pane-right": {
-                props.self.addSibling("horizontal", "after")
+                self.addSibling("horizontal", "after")
                 break;
             }
             case "pane-left": {
-                props.self.addSibling("horizontal", "before")
+                self.addSibling("horizontal", "before")
                 break;
             }
             case "pane-up": {
-                props.self.addSibling("vertical", "before")
+                self.addSibling("vertical", "before")
                 break;
             }
             case "pane-down": {
-                props.self.addSibling("vertical", "after")
+                self.addSibling("vertical", "after")
                 break;
             }
             case "delete": {
-                props.self.deleteSelf()
+                self.deleteSelf()
                 break;
             }
         }

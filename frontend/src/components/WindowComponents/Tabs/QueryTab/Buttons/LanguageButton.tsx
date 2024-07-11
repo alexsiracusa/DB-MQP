@@ -8,11 +8,11 @@ import {useState} from "react";
 import TriangleDown from "../../../../../assets/Icons/TriangleDown.svg";
 
 
-type FileTypeButtonProps = {
+type LanguageButtonProps = {
     self: QueryTab;
 }
 
-const LanguageButton = (props: FileTypeButtonProps) => {
+const LanguageButton = (props: LanguageButtonProps) => {
     const self = props.self;
     const [language, setLanguage] = useState(self.language)
 
