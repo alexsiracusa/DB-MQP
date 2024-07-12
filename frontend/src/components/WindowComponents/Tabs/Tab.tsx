@@ -25,15 +25,17 @@ abstract class Tab {
         update: boolean  = true
     ) {
         this.parent.selected = this;
+        this.parent.editorOwner = null;
         if (update) {
             await this.parent.forceUpdate();
         }
+        this.parent.editorOwner = this;
     }
 
     async delete(
         update: boolean  = true
     ) {
-        const index = this.parent.contents.indexOf(this);
+        const index = this.index();
         this.parent.contents.splice(index, 1);
 
         // delete window if this is the last tab
@@ -50,7 +52,6 @@ abstract class Tab {
         if (update) {
             await this.parent.forceUpdate();
         }
-        console.log("deleted " + this.name);
     }
 }
 

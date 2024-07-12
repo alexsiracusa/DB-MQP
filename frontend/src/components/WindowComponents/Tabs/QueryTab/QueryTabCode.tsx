@@ -32,7 +32,7 @@ const QueryTabCode = (props: QueryTabCodeProps) => {
     }
 
     function handleEditorDidMount(editor: monaco.editor.IStandaloneCodeEditor) {
-        self.parent.windowEditor = editor;
+        self.parent.editor = editor;
     }
 
     self.updateCode = forceUpdate

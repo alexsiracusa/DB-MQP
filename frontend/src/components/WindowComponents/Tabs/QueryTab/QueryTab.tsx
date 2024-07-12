@@ -37,7 +37,7 @@ abstract class QueryTab extends Tab {
 
     editor(): monaco.editor.IStandaloneCodeEditor | null {
         // only return the editor if it is the selected tab
-        return (this.parent.selected === this) ? this.parent.windowEditor : null
+        return (this.parent.editorOwner === this) ? this.parent.editor : null
     }
 
     editorLanguage() {
