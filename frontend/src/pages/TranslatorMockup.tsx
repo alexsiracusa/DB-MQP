@@ -16,8 +16,7 @@ const TranslatorMockup: React.FC = () => {
 
     const tabWindow1 = new TabWindow(root);
     const tab = new UserQueryTab("Query Tab", "PL/pgSQL", tabWindow1);
-    tabWindow1.contents = [tab];
-    tabWindow1.selected = tab;
+    tabWindow1.setContent([tab])
 
     const tabWindow2 = new TabWindow(root);
 

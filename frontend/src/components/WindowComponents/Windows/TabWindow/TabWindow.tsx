@@ -24,6 +24,16 @@ export default class TabWindow extends Window {
         const tab = new NewTab("New Tab", this);
         this.contents = [tab];
         this.selected = tab;
+        this.editorOwner = tab;
+    }
+
+    setContent(content: Tab[], selected: Tab | null = null) {
+        if (content.length < 0) {
+            throw Error("can't set empty content")
+        }
+        this.contents = content
+        this.selected = (selected) ? selected : this.contents[0]
+        this.editorOwner = selected;
     }
 
     async addTab(
