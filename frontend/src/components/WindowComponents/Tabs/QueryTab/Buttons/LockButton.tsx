@@ -4,6 +4,7 @@ import QueryTab from "../QueryTab.tsx";
 import Locked from "../../../../../assets/Icons/Locked.svg";
 import Unlocked from "../../../../../assets/Icons/Unlocked.svg";
 import {useState} from "react";
+import TranslatedQueryTab from "../TranslatedQueryTab.tsx";
 
 type LockButtonProps = {
     self: QueryTab
@@ -26,7 +27,10 @@ const LockButton = (props: LockButtonProps) => {
     }
 
     function disabled(): boolean {
-        return !self.loaded;
+        return (
+            !self.loaded ||
+            (self instanceof TranslatedQueryTab)
+        );
     }
 
     return (

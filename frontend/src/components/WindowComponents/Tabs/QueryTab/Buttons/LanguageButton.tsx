@@ -6,6 +6,7 @@ import Dropdown from "../../../../Dropdown.tsx";
 import DropDownRow from "../../../../DropDownRow.tsx";
 import {useState} from "react";
 import TriangleDown from "../../../../../assets/Icons/TriangleDown.svg";
+import TranslatedQueryTab from "../TranslatedQueryTab.tsx";
 
 
 type LanguageButtonProps = {
@@ -28,7 +29,10 @@ const LanguageButton = (props: LanguageButtonProps) => {
     }
 
     function disabled(): boolean {
-        return !self.loaded;
+        return (
+            !self.loaded ||
+            (self instanceof TranslatedQueryTab)
+        );
     }
 
     return (
