@@ -9,6 +9,7 @@ import '../../../../styles/QueryTabCode.css'
 import Editor from '@monaco-editor/react';
 import QueryTab from "./QueryTab.tsx";
 import {useStateCallback, updateState} from "../../../../useStateCallback.tsx";
+import LoadingIcon from "../../../../assets/Icons/LoadingIcon.svg"
 import type monaco from 'monaco-editor';
 
 type QueryTabCodeProps = {
@@ -30,7 +31,12 @@ const QueryTabCode = (props: QueryTabCodeProps) => {
     }
 
     return (
-        <div className="tab-content">
+        <div className="tab-content editor-content">
+            {!self.loaded &&
+                // https://loading.io/
+                // Cool loading icon maker (have to make free account)
+                <img src={LoadingIcon}/>
+            }
             <Editor
                 height="100%"
                 theme="light"

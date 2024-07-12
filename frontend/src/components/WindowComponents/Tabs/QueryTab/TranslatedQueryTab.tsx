@@ -38,9 +38,9 @@ class TranslatedQueryTab extends QueryTab {
                 const editor = this.editor();
                 if (editor) {
                     editor.setValue(result.code);
+                    await this.updateToolbar();
+                    await this.updateCode();
                 }
-                await this.updateToolbar();
-                await this.updateCode();
             }
         } catch (error) {
             this.loaded = false;

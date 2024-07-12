@@ -38,9 +38,9 @@ class UserQueryTab extends QueryTab {
                 const editor = this.editor();
                 if (editor) {
                     editor.setValue(result)
+                    await this.updateToolbar();
+                    await this.updateCode();
                 }
-                await this.updateToolbar();
-                await this.updateCode();
             }
         }
         catch (error) {
