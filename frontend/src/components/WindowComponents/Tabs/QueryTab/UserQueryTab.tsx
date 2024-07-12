@@ -11,10 +11,8 @@ class UserQueryTab extends QueryTab {
         name:           string,
         language:       DatabaseLanguage,
         parent:         TabWindow,
-        forceUpdate:    () => Promise<void> = () => new Promise(() => {}),
-        updateCode:     () => Promise<void> = () => new Promise(() => {})
     ) {
-        super(name, language, parent, forceUpdate, updateCode);
+        super(name, language, parent);
     }
 
     static generatedQuery(language: DatabaseLanguage, parent: TabWindow): UserQueryTab {
@@ -41,6 +39,7 @@ class UserQueryTab extends QueryTab {
                 if (editor) {
                     editor.setValue(result)
                 }
+                await this.updateToolbar();
             }
         }
         catch (error) {

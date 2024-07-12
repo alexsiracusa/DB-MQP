@@ -30,15 +30,16 @@ class TranslatedQueryTab extends QueryTab {
                 const inputCode = this.original.query;
                 const inputLang = this.original.language;
                 const outputLang = this.language;
-                const result = await Chatbot.translate(inputCode, inputLang, outputLang)
+                const result = await Chatbot.translate(inputCode, inputLang, outputLang);
 
-                this.query = result.code
+                this.query = result.code;
 
                 // update UI if needed
                 const editor = this.editor();
                 if (editor) {
-                    editor.setValue(result.code)
+                    editor.setValue(result.code);
                 }
+                await this.updateToolbar();
             }
         } catch (error) {
             this.loaded = false;
