@@ -2,7 +2,7 @@ import {DatabaseLanguage} from "../../../../DatabaseLanguage.tsx";
 import QueryTab from "./QueryTab.tsx";
 import TabWindow from "../../Windows/TabWindow/TabWindow.tsx";
 import UserQueryTab from "./UserQueryTab.tsx";
-import Gemini from "../../../../api/Gemini/Gemini.ts";
+import Chatbot from "../../../../api/ChatbotInstance.ts";
 
 class TranslatedQueryTab extends QueryTab {
     original: UserQueryTab
@@ -28,12 +28,11 @@ class TranslatedQueryTab extends QueryTab {
             // variable (self.loaded) as a lock
             if (!this.loaded) {
                 this.loaded = true;
-                const gemini = new Gemini();
 
                 const inputCode = this.original.query;
                 const inputLang = this.original.language;
                 const outputLang = this.language;
-                const result = await gemini.translate(inputCode, inputLang, outputLang)
+                const result = await Chatbot.translate(inputCode, inputLang, outputLang)
 
                 this.query = result.code
 
