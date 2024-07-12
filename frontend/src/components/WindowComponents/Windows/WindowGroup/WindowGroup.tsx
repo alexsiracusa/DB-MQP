@@ -8,9 +8,8 @@ export default class WindowGroup extends Window {
     constructor(
         parent: WindowGroup | null,
         direction: Direction,
-        forceUpdate: () => void = () => {}
     ) {
-        super(parent, forceUpdate);
+        super(parent);
         this.children = [];
         this.direction = direction;
     }

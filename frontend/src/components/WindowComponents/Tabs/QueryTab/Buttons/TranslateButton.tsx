@@ -18,6 +18,10 @@ const TranslateButton = (props: TranslateButtonProps) => {
         await self.translate(newValue)
     }
 
+    function disabled(): boolean {
+        return !self.loaded;
+    }
+
     return (
         <div className="translate-button toolbar-button">
             <Dropdown
@@ -27,7 +31,9 @@ const TranslateButton = (props: TranslateButtonProps) => {
                         <p>Translate</p>
                     </>
                 }
+                title=""
                 className="translate-icon"
+                disabled={disabled()}
                 onChange={setValue}
             >
                 { databaseLanguages.map((language: string) => (

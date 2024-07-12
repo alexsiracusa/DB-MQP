@@ -10,11 +10,10 @@ abstract class Tab {
     protected constructor(
         name: string,
         parent: TabWindow,
-        forceUpdate: () => Promise<void> = () => new Promise(() => {}),
     ) {
         this.name = name;
         this.parent = parent;
-        this.forceUpdate = forceUpdate
+        this.forceUpdate = () => new Promise(() => {});
     }
 
     protected index(): number {

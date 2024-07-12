@@ -6,13 +6,16 @@ import TranslateButton from "./Buttons/TranslateButton.tsx";
 import LanguageButton from "./Buttons/LanguageButton.tsx";
 import LockButton from "./Buttons/LockButton.tsx";
 import UserQueryTab from "./UserQueryTab.tsx";
+import {updateState, useStateCallback} from "../../../../useStateCallback.tsx";
 
 type QueryTabToolbarProps = {
     self: QueryTab
 }
 
 const QueryTabToolbar = (props: QueryTabToolbarProps) => {
+    const [, setState] = useStateCallback({});
     const self = props.self;
+    self.updateToolbar = updateState(setState);
 
     return (
         <div className="tab-toolbar">

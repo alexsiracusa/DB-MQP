@@ -12,10 +12,8 @@ class TranslatedQueryTab extends QueryTab {
         language: DatabaseLanguage,
         parent: TabWindow,
         original: UserQueryTab,
-        forceUpdate: () => Promise<void> = () => new Promise(() => {}),
-        updateCode: () => Promise<void> = () => new Promise(() => {})
     ) {
-        super(name, language, parent, forceUpdate, updateCode);
+        super(name, language, parent);
         this.original = original;
         this.locked = true;
         this.loaded = false;

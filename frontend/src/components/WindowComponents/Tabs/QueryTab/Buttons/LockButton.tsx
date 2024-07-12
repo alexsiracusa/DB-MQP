@@ -25,11 +25,16 @@ const LockButton = (props: LockButtonProps) => {
         await self.updateCode();
     }
 
+    function disabled(): boolean {
+        return !self.loaded;
+    }
+
     return (
         <button
             className="lock-button toolbar-button"
             title={locked ? "Locked" : "Unlocked"}
             onClick={toggle}
+            disabled={disabled()}
         >
             {
                 locked ? <img src={Locked}/> : <img src={Unlocked}/>

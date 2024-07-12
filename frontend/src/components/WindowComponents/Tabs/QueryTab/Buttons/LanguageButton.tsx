@@ -27,6 +27,10 @@ const LanguageButton = (props: LanguageButtonProps) => {
         await self.updateCode();
     }
 
+    function disabled(): boolean {
+        return !self.loaded;
+    }
+
     return (
         <div className="language-button toolbar-button">
             <Dropdown
@@ -38,6 +42,7 @@ const LanguageButton = (props: LanguageButtonProps) => {
                 }
                 className="dropdown-icon"
                 title="Language"
+                disabled={disabled()}
                 onChange={setValue}
             >
                 { databaseLanguages.map((language: string) => (

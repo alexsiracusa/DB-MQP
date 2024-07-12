@@ -1,7 +1,7 @@
 import '../../styles/TabContainer.css'
 import '../../styles/Gutters.css'
 
-import useStateCallback from "../../useStateCallback.tsx";
+import {useStateCallback, updateState} from "../../useStateCallback.tsx";
 import Window from "./Windows/Window.tsx";
 import WindowGroup from "./Windows/WindowGroup/WindowGroup.tsx";
 import TabWindow from "./Windows/TabWindow/TabWindow.tsx";
@@ -18,17 +18,9 @@ type TabMockupProps = {
 }
 
 const WindowContainer = (props: TabMockupProps) => {
-    const [, updateState] = useStateCallback({});
-    function forceUpdate(): Promise<void> {
-        return new Promise((resolve) => {
-            updateState({}, () => {
-                resolve()
-            })
-        })
-    }
-    const self = props.self
-
-    self.forceUpdate = forceUpdate
+    const [, setState] = useStateCallback({});
+    const self = props.self;
+    self.forceUpdate = updateState(setState);
 
     if (self instanceof TabWindow) {
         if (self.parent == null) {
@@ -36,17 +28,9 @@ const WindowContainer = (props: TabMockupProps) => {
             return;
         }
 
-        return (
-            <TabWindowComponent
-                self={self}
-            />
-        );
+        return <TabWindowComponent self={self}/>;
     } else if (self instanceof WindowGroup) {
-        return (
-            <WindowGroupComponent
-                self={self}
-            />
-        )
+        return <WindowGroupComponent self={self}/>;
     } else {
         console.log("failed to render")
     }

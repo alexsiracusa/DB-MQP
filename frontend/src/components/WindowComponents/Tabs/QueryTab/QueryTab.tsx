@@ -10,18 +10,18 @@ abstract class QueryTab extends Tab {
     query: string = "";
     loaded: boolean = true;
 
+    updateToolbar: () => Promise<void>;
     updateCode: () => Promise<void>;
 
     protected constructor(
         name:           string,
         language:       DatabaseLanguage,
         parent:         TabWindow,
-        forceUpdate:    () => Promise<void> = () => new Promise(() => {}),
-        updateCode:     () => Promise<void> = () => new Promise(() => {})
     ) {
-        super(name, parent, forceUpdate);
+        super(name, parent);
         this.language = language;
-        this.updateCode = updateCode;
+        this.updateToolbar = () => new Promise(() => {})
+        this.updateCode = () => new Promise(() => {});
     }
 
     // can throw errors

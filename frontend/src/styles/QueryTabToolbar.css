@@ -74,6 +74,11 @@
     background-color: #00000025;
 }
 
+.tab-toolbar button:disabled p,
+.tab-toolbar button:disabled img {
+    opacity: 0.4;
+}
+
 .tab-toolbar p {
     font-family: "IBM Plex Sans", sans-serif;
     font-size: 0.7em;

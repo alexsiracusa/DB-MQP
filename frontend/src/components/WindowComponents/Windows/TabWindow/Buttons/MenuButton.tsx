@@ -50,6 +50,7 @@ const MenuButton = (props: TabDropdownProps) => {
                 }
                 className="menu-dropdown-button"
                 title={"Menu"}
+                disabled={false}
                 onChange={setValue}
             >
                 <DropDownRow value={"pane-right"} className="row">

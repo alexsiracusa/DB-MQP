@@ -7,6 +7,7 @@ type DropdownProps = {
     icon: JSX.Element
     className: string
     title: string
+    disabled: boolean
     onChange: (arg0: any) => void
 }
 
@@ -24,6 +25,7 @@ const Dropdown = (props: PropsWithChildren<DropdownProps>) => {
             <button
                 className={props.className}
                 title={props.title}
+                disabled={props.disabled}
                 onClick={() => {
                     setIsVisible(!isVisible)
                 }}

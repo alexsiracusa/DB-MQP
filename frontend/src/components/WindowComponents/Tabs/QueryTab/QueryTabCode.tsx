@@ -8,7 +8,7 @@ import '../../../../styles/QueryTabCode.css'
 
 import Editor from '@monaco-editor/react';
 import QueryTab from "./QueryTab.tsx";
-import useStateCallback from "../../../../useStateCallback.tsx";
+import {useStateCallback, updateState} from "../../../../useStateCallback.tsx";
 import type monaco from 'monaco-editor';
 
 type QueryTabCodeProps = {
@@ -16,15 +16,9 @@ type QueryTabCodeProps = {
 }
 
 const QueryTabCode = (props: QueryTabCodeProps) => {
-    const [, updateState] = useStateCallback({});
-    function forceUpdate(): Promise<void> {
-        return new Promise((resolve) => {
-            updateState({}, () => {
-                resolve()
-            })
-        })
-    }
+    const [, setState] = useStateCallback({});
     const self = props.self;
+    self.updateCode = updateState(setState);
 
     // @ts-expect-error: doesn't like event not being used
     function handleEditorChange(value: string | undefined, event) { // eslint-disable-line
@@ -34,8 +28,6 @@ const QueryTabCode = (props: QueryTabCodeProps) => {
     function handleEditorDidMount(editor: monaco.editor.IStandaloneCodeEditor) {
         self.parent.editor = editor;
     }
-
-    self.updateCode = forceUpdate
 
     return (
         <div className="tab-content">
