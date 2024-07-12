@@ -2,6 +2,7 @@ import {DatabaseLanguage} from "../../../../DatabaseLanguage.tsx";
 import QueryTab from "./QueryTab.tsx";
 import TabWindow from "../../Windows/TabWindow/TabWindow.tsx";
 import TranslatedQueryTab from "./TranslatedQueryTab.tsx"
+import Gemini from "../../../../api/Gemini/Gemini.ts";
 
 class UserQueryTab extends QueryTab {
     translations: Record<DatabaseLanguage, TranslatedQueryTab> = {} as Record<DatabaseLanguage, TranslatedQueryTab>;
@@ -16,8 +17,37 @@ class UserQueryTab extends QueryTab {
         super(name, language, parent, forceUpdate, updateCode);
     }
 
-    override async load() {
+    static generatedQuery(language: DatabaseLanguage, parent: TabWindow): UserQueryTab {
+        const userQueryTab = new UserQueryTab("AI Query", language, parent)
+        userQueryTab.loaded = false;
+        return userQueryTab;
+    }
 
+    // only used when an AI Query is generated using the query in NewTabs
+    override async load() {
+        try {
+            // this definitely has concurrency bugs trying to use a regular
+            // variable (self.loaded) as a lock
+            if (!this.loaded) {
+                this.loaded = true;
+                const gemini = new Gemini();
+
+                const language = this.language;
+                const result = await gemini.sampleQuery(language);
+
+                this.query = result
+
+                // update UI if needed
+                const editor = this.editor();
+                if (editor) {
+                    editor.setValue(result)
+                }
+            }
+        }
+        catch (error) {
+            this.loaded = false;
+            throw error
+        }
     }
 
     createTranslationTab(language: DatabaseLanguage): TranslatedQueryTab {

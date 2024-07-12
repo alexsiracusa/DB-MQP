@@ -15,10 +15,17 @@ class NewTab extends Tab {
         await tab.select()
     }
 
-    async toQueryTab(
+    async toBlankQueryTab(
         type: DatabaseLanguage = "PL/pgSQL"
     ) {
         const tab = new UserQueryTab("Query", type, this.parent);
+        await this.replaceWith(tab);
+    }
+
+    async toAIQueryTab(
+        type: DatabaseLanguage = "PL/pgSQL"
+    ) {
+        const tab = UserQueryTab.generatedQuery(type, this.parent);
         await this.replaceWith(tab);
     }
 

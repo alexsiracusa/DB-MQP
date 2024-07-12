@@ -18,7 +18,12 @@ const QueryTabComponent = (props: QueryTabComponentProps) => {
         // seem to exist anymore. See StackOverflow post below
         // https://stackoverflow.com/questions/72238175/why-useeffect-running-twice-and-how-to-handle-it-well-in-react
         (async () => {
-            await self.load();
+            try {
+                await self.load();
+            }
+            catch (error) {
+                console.log(error)
+            }
         })();
     });
 

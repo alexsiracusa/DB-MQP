@@ -44,8 +44,8 @@ class TranslatedQueryTab extends QueryTab {
                 }
             }
         } catch (error) {
-            console.log(error)
             this.loaded = false;
+            throw error;
         }
     }
 

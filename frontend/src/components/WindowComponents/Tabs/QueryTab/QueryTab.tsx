@@ -24,6 +24,7 @@ abstract class QueryTab extends Tab {
         this.updateCode = updateCode;
     }
 
+    // can throw errors
     abstract load(): Promise<void>;
 
     override async select(update: boolean = true) {
