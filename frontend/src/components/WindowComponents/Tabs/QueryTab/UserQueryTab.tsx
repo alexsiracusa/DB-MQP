@@ -1,19 +1,23 @@
-import {DatabaseLanguage} from "../../../../../DatabaseLanguage.tsx";
-import QueryTab from "../QueryTab.tsx";
-import TabWindow from "../../../Windows/TabWindow/TabWindow.tsx";
-import TranslatedQueryTab from "../TranslatedQueryTab/TranslatedQueryTab.tsx"
+import {DatabaseLanguage} from "../../../../DatabaseLanguage.tsx";
+import QueryTab from "./QueryTab.tsx";
+import TabWindow from "../../Windows/TabWindow/TabWindow.tsx";
+import TranslatedQueryTab from "./TranslatedQueryTab.tsx"
 
 class UserQueryTab extends QueryTab {
     translations: Record<DatabaseLanguage, TranslatedQueryTab> = {} as Record<DatabaseLanguage, TranslatedQueryTab>;
 
     constructor(
-        name: string,
-        language: DatabaseLanguage,
-        parent: TabWindow,
-        forceUpdate: () => Promise<void> = () => new Promise(() => {}),
-        updateCode: () => void = () => {},
+        name:           string,
+        language:       DatabaseLanguage,
+        parent:         TabWindow,
+        forceUpdate:    () => Promise<void> = () => new Promise(() => {}),
+        updateCode:     () => Promise<void> = () => new Promise(() => {})
     ) {
         super(name, language, parent, forceUpdate, updateCode);
+    }
+
+    override async load() {
+
     }
 
     createTranslationTab(language: DatabaseLanguage): TranslatedQueryTab {

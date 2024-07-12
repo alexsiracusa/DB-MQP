@@ -7,22 +7,24 @@ import type monaco from "monaco-editor";
 abstract class QueryTab extends Tab {
     language: DatabaseLanguage = "PL/pgSQL"
     locked: boolean = false;
-    query: string;
+    query: string = "";
+    loaded: boolean = true;
 
     updateCode: () => Promise<void>;
 
     protected constructor(
-        name: string,
-        language: DatabaseLanguage,
-        parent: TabWindow,
-        forceUpdate: () => Promise<void> = () => new Promise(() => {}),
-        updateCode: () => Promise<void> = () => new Promise(() => {})
+        name:           string,
+        language:       DatabaseLanguage,
+        parent:         TabWindow,
+        forceUpdate:    () => Promise<void> = () => new Promise(() => {}),
+        updateCode:     () => Promise<void> = () => new Promise(() => {})
     ) {
         super(name, parent, forceUpdate);
         this.language = language;
-        this.query = "";
         this.updateCode = updateCode;
     }
+
+    abstract load(): Promise<void>;
 
     override async select(update: boolean = true) {
         await super.select(update);

@@ -4,7 +4,6 @@ import WindowGroup from "../WindowGroup/WindowGroup.tsx";
 import {Direction, Position} from "../../WindowContainer.tsx";
 
 import NewTab from "../../Tabs/NewTab/NewTab.tsx";
-import UserQueryTab from "../../Tabs/QueryTab/UserQueryTab/UserQueryTab.tsx";
 import type monaco from "monaco-editor";
 
 export default class TabWindow extends Window {
@@ -21,11 +20,9 @@ export default class TabWindow extends Window {
         forceUpdate: () => Promise<void> = () => new Promise(() => {}),
     ) {
         super(parent, forceUpdate);
-        const tab1 = new NewTab("New Tab", this);
-        const tab2 = new UserQueryTab("Query Tab", "PL/pgSQL", this);
-
-        this.contents = [tab1, tab2];
-        this.selected = tab2;
+        const tab = new NewTab("New Tab", this);
+        this.contents = [tab];
+        this.selected = tab;
     }
 
     async addTab(

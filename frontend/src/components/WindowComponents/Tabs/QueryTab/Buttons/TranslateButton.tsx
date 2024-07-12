@@ -1,6 +1,6 @@
 import '../../../../../styles/QueryTabToolbar.css';
 
-import UserQueryTab from "../UserQueryTab/UserQueryTab.tsx";
+import UserQueryTab from "../UserQueryTab.tsx";
 import Dropdown from "../../../../Dropdown.tsx";
 import DropDownRow from "../../../../DropDownRow.tsx";
 import {databaseLanguages} from "../../../../../DatabaseLanguage.tsx";

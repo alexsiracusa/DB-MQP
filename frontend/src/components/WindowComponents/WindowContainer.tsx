@@ -28,7 +28,6 @@ const WindowContainer = (props: TabMockupProps) => {
     }
     const self = props.self
 
-    // console.log(self)
     self.forceUpdate = forceUpdate
 
     if (self instanceof TabWindow) {

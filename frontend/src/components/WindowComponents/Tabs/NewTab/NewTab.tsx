@@ -1,6 +1,6 @@
 import Tab from "../Tab.tsx";
 import TabWindow from "../../Windows/TabWindow/TabWindow.tsx";
-import UserQueryTab from "../QueryTab/UserQueryTab/UserQueryTab.tsx";
+import UserQueryTab from "../QueryTab/UserQueryTab.tsx";
 import {DatabaseLanguage} from "../../../../DatabaseLanguage.tsx";
 
 class NewTab extends Tab {
