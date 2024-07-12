@@ -40,6 +40,7 @@ class UserQueryTab extends QueryTab {
                     editor.setValue(result)
                 }
                 await this.updateToolbar();
+                await this.updateCode();
             }
         }
         catch (error) {

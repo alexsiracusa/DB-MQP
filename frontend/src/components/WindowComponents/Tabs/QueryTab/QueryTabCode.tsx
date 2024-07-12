@@ -49,7 +49,7 @@ const QueryTabCode = (props: QueryTabCodeProps) => {
                     renderLineHighlight: "all",
                     roundedSelection: false,
                     scrollBeyondLastLine: true,
-                    readOnly: self.locked,
+                    readOnly: self.locked || !self.loaded,
                     fixedOverflowWidgets: true
                 }}
             />

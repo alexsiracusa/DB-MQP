@@ -40,6 +40,7 @@ class TranslatedQueryTab extends QueryTab {
                     editor.setValue(result.code);
                 }
                 await this.updateToolbar();
+                await this.updateCode();
             }
         } catch (error) {
             this.loaded = false;
