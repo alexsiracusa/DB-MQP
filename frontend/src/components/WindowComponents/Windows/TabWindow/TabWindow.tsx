@@ -32,7 +32,7 @@ export default class TabWindow extends Window {
     ) {
         tab.parent = this;
         this.contents.push(tab);
-        this.selected = tab;
+        await tab.select(false);
         if (update) {
             await this.parent?.forceUpdate();
         }
