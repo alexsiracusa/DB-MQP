@@ -37,6 +37,7 @@ const LanguageButton = (props: LanguageButtonProps) => {
                     </>
                 }
                 className="dropdown-icon"
+                title="Language"
                 onChange={setValue}
             >
                 { databaseLanguages.map((language: string) => (

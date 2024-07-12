@@ -1,4 +1,4 @@
-import '../../../../../styles/TabDropdown.css'
+import '../../../../../styles/MenuButton.css'
 
 import TabWindow from "../TabWindow.tsx";
 import MenuIcon from "../../../../../assets/Icons/MenuIcon.svg";
@@ -43,17 +43,13 @@ const MenuButton = (props: TabDropdownProps) => {
     }
 
     return (
-        <div className="tab-dropdown">
+        <div className="menu-button">
             <Dropdown
                 icon={
-                    <div
-                        className="tab-dropdown-icon"
-                        title="Menu"
-                    >
-                        <img src={MenuIcon}/>
-                    </div>
+                    <img src={MenuIcon}/>
                 }
-                className="tab-dropdown-button"
+                className="menu-dropdown-button"
+                title={"Menu"}
                 onChange={setValue}
             >
                 <DropDownRow value={"pane-right"} className="row">
