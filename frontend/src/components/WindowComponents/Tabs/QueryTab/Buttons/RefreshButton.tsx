@@ -15,13 +15,12 @@ const RefreshButton = (props: RefreshButtonProps) => {
 
     // needed when moving tabs between windows because react reuses
     // states on the same level in the DOM tree
-    if (refreshing != self.shouldRefresh) {
-        setRefreshing(self.shouldRefresh)
+    if (refreshing != self.controller.shouldRefresh) {
+        setRefreshing(self.controller.shouldRefresh)
     }
 
     async function refresh() {
         setRefreshing(true);
-        console.log(self.original.query)
         try {
             await self.refresh();
         }
@@ -33,7 +32,7 @@ const RefreshButton = (props: RefreshButtonProps) => {
 
     function disabled(): boolean {
         return (
-            !self.loaded ||
+            !self.isLoaded() ||
             refreshing
         );
     }

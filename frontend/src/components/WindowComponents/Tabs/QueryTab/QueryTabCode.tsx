@@ -32,7 +32,7 @@ const QueryTabCode = (props: QueryTabCodeProps) => {
 
     return (
         <div className="tab-content editor-content">
-            {!self.loaded &&
+            {!self.isLoaded() &&
                 // https://loading.io/
                 // Cool loading icon maker (have to make free account)
                 <img src={LoadingIcon}/>
@@ -55,7 +55,7 @@ const QueryTabCode = (props: QueryTabCodeProps) => {
                     renderLineHighlight: "all",
                     roundedSelection: false,
                     scrollBeyondLastLine: true,
-                    readOnly: self.locked || !self.loaded,
+                    readOnly: self.locked || !self.isLoaded(),
                     fixedOverflowWidgets: true
                 }}
             />

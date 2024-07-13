@@ -29,7 +29,7 @@ const LockButton = (props: LockButtonProps) => {
 
     function disabled(): boolean {
         return (
-            !self.loaded ||
+            !self.isLoaded() ||
             (self instanceof TranslatedQueryTab)
         );
     }

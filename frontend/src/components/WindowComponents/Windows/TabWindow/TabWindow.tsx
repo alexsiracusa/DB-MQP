@@ -38,11 +38,14 @@ export default class TabWindow extends Window {
 
     async addTab(
         tab: Tab = new NewTab("New Tab", this),
-        update: boolean = true
+        update: boolean = true,
+        select: boolean = true
     ) {
         tab.parent = this;
         this.contents.push(tab);
-        await tab.select(false);
+        if (select) {
+            await tab.select(false);
+        }
         if (update) {
             await this.parent?.forceUpdate();
         }

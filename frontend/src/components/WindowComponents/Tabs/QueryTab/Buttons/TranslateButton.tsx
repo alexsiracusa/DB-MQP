@@ -19,7 +19,7 @@ const TranslateButton = (props: TranslateButtonProps) => {
     }
 
     function disabled(): boolean {
-        return !self.loaded;
+        return !self.isLoaded();
     }
 
     return (

@@ -1,11 +1,17 @@
 import {DatabaseLanguage} from "../../../../DatabaseLanguage.tsx";
 import QueryTab from "./QueryTab.tsx";
 import TabWindow from "../../Windows/TabWindow/TabWindow.tsx";
-import TranslatedQueryTab from "./TranslatedQueryTab.tsx"
 import Chatbot from "../../../../api/ChatbotInstance.ts";
+import TranslationController from "./TranslationController.tsx";
 
 class UserQueryTab extends QueryTab {
-    translations: Record<DatabaseLanguage, TranslatedQueryTab> = {} as Record<DatabaseLanguage, TranslatedQueryTab>;
+    translations: Record<DatabaseLanguage, TranslationController> = {} as Record<DatabaseLanguage, TranslationController>;
+
+    loaded: boolean = true;
+    loading: boolean = false;
+
+    override isLoaded(): boolean {return this.loaded}
+    override isLoading(): boolean {return this.loading}
 
     constructor(
         name:           string,
@@ -51,11 +57,11 @@ class UserQueryTab extends QueryTab {
         }
     }
 
-    createTranslationTab(language: DatabaseLanguage): TranslatedQueryTab {
-        const translationTab = new TranslatedQueryTab("Translation", language, this.parent, this);
-        this.translations[language] = translationTab;
-        translationTab.load();
-        return translationTab;
+    createTranslation(language: DatabaseLanguage): TranslationController {
+        const translationController = new TranslationController(this, language);
+        this.translations[language] = translationController;
+        translationController.load();
+        return translationController;
     }
 
     async translate(language: DatabaseLanguage) {
@@ -73,8 +79,9 @@ class UserQueryTab extends QueryTab {
             (sibling as TabWindow).contents = []
         }
         const window = (sibling as TabWindow);
-        const tab = this.createTranslationTab(language);
-        await window.addTab(tab, true);
+        const translation = this.createTranslation(language);
+        await window.addTab(translation.translatedQueryTab, true, true);
+        await window.addTab(translation.explanationTab, true, false);
     }
 }
 

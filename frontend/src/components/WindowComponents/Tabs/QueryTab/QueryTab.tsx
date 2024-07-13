@@ -9,11 +9,11 @@ abstract class QueryTab extends Tab {
     locked: boolean = false;
     query: string = "";
 
-    loaded: boolean = true;
-    loading: boolean = false;
-
     updateToolbar: () => Promise<void>;
     updateCode: () => Promise<void>;
+
+    abstract isLoaded(): boolean;
+    abstract isLoading(): boolean;
 
     protected constructor(
         name:           string,
@@ -22,8 +22,12 @@ abstract class QueryTab extends Tab {
     ) {
         super(name, parent);
         this.language = language;
-        this.updateToolbar = () => new Promise(() => {})
-        this.updateCode = () => new Promise(() => {});
+        this.updateToolbar = () => new Promise((_resolve, reject) => {
+            reject("updateToolbar for " + this.id + " not initialized");
+        })
+        this.updateCode = () => new Promise((_resolve, reject) => {
+            reject("updateCode for " + this.id + " not initialized");
+        });
     }
 
     // can throw errors

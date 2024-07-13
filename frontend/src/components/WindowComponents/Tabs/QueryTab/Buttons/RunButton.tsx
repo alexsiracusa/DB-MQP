@@ -11,7 +11,7 @@ const RunButton = (props: RunButtonProps) => {
     const self = props.self;
 
     function disabled(): boolean {
-        return !self.loaded;
+        return !self.isLoaded();
     }
 
     return (

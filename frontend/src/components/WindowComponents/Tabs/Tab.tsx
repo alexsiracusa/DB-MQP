@@ -13,7 +13,9 @@ abstract class Tab {
     ) {
         this.name = name;
         this.parent = parent;
-        this.forceUpdate = () => new Promise(() => {});
+        this.forceUpdate = () => new Promise((_resolve, reject) => {
+            reject("forceUpdate for " + this.id + " not initialized");
+        });
     }
 
     protected index(): number {
