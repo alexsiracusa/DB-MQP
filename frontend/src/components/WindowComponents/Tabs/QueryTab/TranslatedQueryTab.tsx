@@ -24,8 +24,8 @@ class TranslatedQueryTab extends QueryTab {
         try {
             // this definitely has concurrency bugs trying to use a regular
             // variable (self.loaded) as a lock
-            if (!this.loaded) {
-                this.loaded = true;
+            if (!this.loaded && !this.loading) {
+                this.loading = true;
 
                 const inputCode = this.original.query;
                 const inputLang = this.original.language;
@@ -33,6 +33,8 @@ class TranslatedQueryTab extends QueryTab {
                 const result = await Chatbot.translate(inputCode, inputLang, outputLang);
 
                 this.query = result.code;
+                this.loaded = true;
+                this.loading = false;
 
                 // update UI if needed
                 const editor = this.editor();
@@ -43,7 +45,7 @@ class TranslatedQueryTab extends QueryTab {
                 }
             }
         } catch (error) {
-            this.loaded = false;
+            this.loading = false;
             throw error;
         }
     }

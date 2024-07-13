@@ -8,7 +8,9 @@ abstract class QueryTab extends Tab {
     language: DatabaseLanguage = "PL/pgSQL"
     locked: boolean = false;
     query: string = "";
+
     loaded: boolean = true;
+    loading: boolean = false;
 
     updateToolbar: () => Promise<void>;
     updateCode: () => Promise<void>;

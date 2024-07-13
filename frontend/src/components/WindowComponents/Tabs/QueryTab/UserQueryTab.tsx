@@ -26,13 +26,15 @@ class UserQueryTab extends QueryTab {
         try {
             // this definitely has concurrency bugs trying to use a regular
             // variable (self.loaded) as a lock
-            if (!this.loaded) {
-                this.loaded = true;
+            if (!this.loaded && !this.loading) {
+                this.loading = true;
 
                 const language = this.language;
                 const result = await Chatbot.sampleQuery(language);
 
                 this.query = result
+                this.loaded = true;
+                this.loading = false;
 
                 // update UI if needed
                 const editor = this.editor();
@@ -44,7 +46,7 @@ class UserQueryTab extends QueryTab {
             }
         }
         catch (error) {
-            this.loaded = false;
+            this.loading = false;
             throw error
         }
     }
