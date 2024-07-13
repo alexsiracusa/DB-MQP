@@ -13,10 +13,21 @@ const RefreshButton = (props: RefreshButtonProps) => {
     const self = props.self;
     const [refreshing, setRefreshing] = useState(false)
 
-    async function toggle() {
+    // needed when moving tabs between windows because react reuses
+    // states on the same level in the DOM tree
+    if (refreshing != self.shouldRefresh) {
+        setRefreshing(self.shouldRefresh)
+    }
+
+    async function refresh() {
         setRefreshing(true);
         console.log(self.original.query)
-        await self.refresh();
+        try {
+            await self.refresh();
+        }
+        catch {
+            console.log("failed to refresh");
+        }
         setRefreshing(false);
     }
 
@@ -31,7 +42,7 @@ const RefreshButton = (props: RefreshButtonProps) => {
         <button
             className="refresh-button toolbar-button"
             title="Refresh"
-            onClick={toggle}
+            onClick={refresh}
             disabled={disabled()}
         >
             {

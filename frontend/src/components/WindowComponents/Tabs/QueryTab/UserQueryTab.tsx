@@ -54,6 +54,7 @@ class UserQueryTab extends QueryTab {
     createTranslationTab(language: DatabaseLanguage): TranslatedQueryTab {
         const translationTab = new TranslatedQueryTab("Translation", language, this.parent, this);
         this.translations[language] = translationTab;
+        translationTab.load();
         return translationTab;
     }
 
@@ -61,7 +62,7 @@ class UserQueryTab extends QueryTab {
         // if translation already exists, don't make a new one
         const existingTranslation = this.translations[language];
         if (existingTranslation !== undefined) {
-            await existingTranslation.select()
+            await existingTranslation.select();
             return;
         }
 
@@ -73,7 +74,7 @@ class UserQueryTab extends QueryTab {
         }
         const window = (sibling as TabWindow);
         const tab = this.createTranslationTab(language);
-        await window.addTab(tab, true)
+        await window.addTab(tab, true);
     }
 }
 

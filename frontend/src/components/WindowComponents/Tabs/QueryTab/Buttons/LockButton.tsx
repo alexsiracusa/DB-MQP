@@ -14,7 +14,8 @@ const LockButton = (props: LockButtonProps) => {
     const self = props.self;
     const [locked, setLocked] = useState(self.locked)
 
-    // needed when moving tabs between windows, no idea why
+    // needed when moving tabs between windows because react reuses
+    // states on the same level in the DOM tree
     if (locked != self.locked) {
         setLocked(self.locked)
     }

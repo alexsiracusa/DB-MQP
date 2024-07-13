@@ -115,6 +115,11 @@
     background-color: transparent;
 }
 
+.tab-toolbar .translate-button button,
+.tab-toolbar .language-button button {
+    justify-content: flex-start;
+}
+
 .tab-toolbar .lock-button {
     aspect-ratio: 1.0;
 }
@@ -133,4 +138,5 @@
     height: 60%;
     width: 60%;
 }
+
 
