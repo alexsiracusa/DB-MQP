@@ -3,7 +3,7 @@ import '../../../../styles/QueryTabCode.css'
 
 // Monaco Editor docs:
 // npm: https://www.npmjs.com/package/@monaco-editor/react#usage
-// github: https://github.com/react-monaco-editor/react-monaco-editor?tab=readme-ov-file
+// github: https://github.com/suren-atoyan/monaco-react
 // settings: https://microsoft.github.io/monaco-editor/docs.html#interfaces/editor.IStandaloneEditorConstructionOptions.html
 
 import Editor from '@monaco-editor/react';
@@ -23,7 +23,7 @@ const QueryTabCode = (props: QueryTabCodeProps) => {
 
     // @ts-expect-error: doesn't like event not being used
     function handleEditorChange(value: string | undefined, event) { // eslint-disable-line
-        self.query = value ? value : self.query;
+        self.query = value ? value : "";
     }
 
     function handleEditorDidMount(editor: monaco.editor.IStandaloneCodeEditor) {

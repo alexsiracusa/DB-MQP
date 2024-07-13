@@ -6,6 +6,7 @@ import Chatbot from "../../../../api/ChatbotInstance.ts";
 
 class TranslatedQueryTab extends QueryTab {
     original: UserQueryTab
+    shouldRefresh: boolean = false;
 
     constructor(
         name: string,
@@ -24,7 +25,7 @@ class TranslatedQueryTab extends QueryTab {
         try {
             // this definitely has concurrency bugs trying to use a regular
             // variable (self.loaded) as a lock
-            if (!this.loaded && !this.loading) {
+            if ((!this.loaded || this.shouldRefresh) && !this.loading) {
                 this.loading = true;
 
                 const inputCode = this.original.query;
@@ -35,6 +36,7 @@ class TranslatedQueryTab extends QueryTab {
                 this.query = result.code;
                 this.loaded = true;
                 this.loading = false;
+                this.shouldRefresh = false;
 
                 // update UI if needed
                 const editor = this.editor();
@@ -46,8 +48,14 @@ class TranslatedQueryTab extends QueryTab {
             }
         } catch (error) {
             this.loading = false;
+            this.shouldRefresh = false;
             throw error;
         }
+    }
+
+    async refresh() {
+        this.shouldRefresh = true;
+        await this.load()
     }
 
     override async delete(
