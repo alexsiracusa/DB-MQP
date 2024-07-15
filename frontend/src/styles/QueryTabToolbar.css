@@ -14,12 +14,9 @@
 }
 
 .tab-toolbar .file-path {
-    display: flex;
-    flex-direction: row;
-
     min-width: 0;
-    height: 100%;
 }
+
 
 .tab-toolbar .buttons {
     display: flex;
@@ -46,8 +43,8 @@
 }
 
 .tab-toolbar .toolbar-button img {
-    height: 60%;
-    width: 60%;
+    height: 80%;
+    width: 80%;
 }
 
 .tab-toolbar .toolbar-button .row {
@@ -64,14 +61,22 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: start;
+    justify-content: center;
+    padding: 0;
 
     border-radius: 0;
     height: 100%;
+
+    background-color: transparent;
 }
 
 .tab-toolbar button:hover {
     background-color: #00000025;
+}
+
+.tab-toolbar button:disabled p,
+.tab-toolbar button:disabled img {
+    opacity: 0.4;
 }
 
 .tab-toolbar p {
@@ -81,15 +86,10 @@
 
 .tab-toolbar .run-button {
     aspect-ratio: 1.0;
-    justify-content: center;
-    padding: 0;
-
-    background-color: transparent;
 }
 
-.tab-toolbar .run-button img {
-    height: 80%;
-    width: 80%;
+.tab-toolbar .refresh-button {
+    aspect-ratio: 1.0;
 }
 
 .tab-toolbar .translate-button {
@@ -108,26 +108,17 @@
     padding: 0 0.3em;
 }
 
-.tab-toolbar .translate-icon img {
-    width: 80%;
-    height: 80%;
-}
-
 .tab-toolbar .language-button {
     background-color: transparent;
 }
 
-.tab-toolbar .lock-button {
-    aspect-ratio: 1.0;
-    justify-content: center;
-    padding: 0;
-
-    background-color: transparent;
+.tab-toolbar .translate-button button,
+.tab-toolbar .language-button button {
+    justify-content: flex-start;
 }
 
-.tab-toolbar .lock-button img {
-    height: 80%;
-    width: 80%;
+.tab-toolbar .lock-button {
+    aspect-ratio: 1.0;
 }
 
 .tab-toolbar .dropdown-icon {
@@ -144,4 +135,5 @@
     height: 60%;
     width: 60%;
 }
+
 

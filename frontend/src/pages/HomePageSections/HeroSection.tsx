@@ -21,7 +21,7 @@ const HeroSection: React.FC = () => {
         <div className="hero">
             <div className="content">
                 <div className="pb-10">
-                    <h1 className="text-accP text-[80px] font-bold tracking-[.1em]">RELATIONAL REMODEL</h1>
+                    <h1 className="text-accP text-[80px] font-bold tracking-[.1em] break-words">RELATIONAL REMODEL</h1>
                     <label className="text-txtP text-[25px] font-Raleway">A database query translator and evaluation <br></br> tool powered by AI</label>
                 </div>
                 <div className="flex justify-center max-w-3xl mx-auto items-center gap-9 cursor-pointer group">

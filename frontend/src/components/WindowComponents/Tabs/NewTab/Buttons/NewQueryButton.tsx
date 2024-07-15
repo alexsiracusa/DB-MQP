@@ -12,7 +12,7 @@ const NewQueryButton = (props: NewQueryButtonProps) => {
     const self = props.self;
 
     async function makeQueryTab() {
-        await self.toQueryTab()
+        await self.toBlankQueryTab()
     }
 
     return (

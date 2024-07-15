@@ -1,6 +1,6 @@
 import Tab from "../Tab.tsx";
 import TabWindow from "../../Windows/TabWindow/TabWindow.tsx";
-import UserQueryTab from "../QueryTab/UserQueryTab/UserQueryTab.tsx";
+import UserQueryTab from "../QueryTab/UserQueryTab.tsx";
 import {DatabaseLanguage} from "../../../../DatabaseLanguage.tsx";
 
 class NewTab extends Tab {
@@ -15,10 +15,17 @@ class NewTab extends Tab {
         await tab.select()
     }
 
-    async toQueryTab(
+    async toBlankQueryTab(
         type: DatabaseLanguage = "PL/pgSQL"
     ) {
         const tab = new UserQueryTab("Query", type, this.parent);
+        await this.replaceWith(tab);
+    }
+
+    async toAIQueryTab(
+        type: DatabaseLanguage = "PL/pgSQL"
+    ) {
+        const tab = UserQueryTab.generatedQuery(type, this.parent);
         await this.replaceWith(tab);
     }
 

@@ -1,6 +1,6 @@
 import {useState, useEffect, useRef, useCallback} from "react";
 
-function useStateCallback<T>(
+export function useStateCallback<T>(
     initialState: T
 ): [T, (state: T, cb?: (state: T) => void) => void] {
     const [state, setState] = useState(initialState);
@@ -23,4 +23,12 @@ function useStateCallback<T>(
     return [state, setStateCallback];
 }
 
-export default useStateCallback;
+export function updateState<T>(updateState: (state: T, cb?: (state: T) => void) => void): () => Promise<void> {
+    return () => {
+        return new Promise((resolve) => {
+            updateState({} as T, () => {
+                resolve()
+            })
+        })
+    }
+}

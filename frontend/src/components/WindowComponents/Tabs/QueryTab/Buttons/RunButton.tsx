@@ -10,11 +10,18 @@ type RunButtonProps = {
 const RunButton = (props: RunButtonProps) => {
     const self = props.self;
 
+    function disabled(): boolean {
+        return !self.isLoaded();
+    }
+
     return (
-        <button className="run-button toolbar-button"
-                onClick={() => {
-                    console.log(self.id)
-                }}
+        <button
+            className="run-button toolbar-button"
+            title="Run"
+            disabled={disabled()}
+            onClick={() => {
+                console.log(self.id)
+            }}
         >
             <img src={RunIcon}/>
         </button>

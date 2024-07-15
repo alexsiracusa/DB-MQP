@@ -6,20 +6,20 @@ import React from "react";
 import WindowContainer from "../components/WindowComponents/WindowContainer.tsx";
 import TabWindow from "../components/WindowComponents/Windows/TabWindow/TabWindow.tsx";
 import WindowGroup from "../components/WindowComponents/Windows/WindowGroup/WindowGroup.tsx";
+import UserQueryTab from "../components/WindowComponents/Tabs/QueryTab/UserQueryTab.tsx";
 import {Panel, PanelGroup, PanelResizeHandle} from "react-resizable-panels";
 import {DragDropContext} from "@hello-pangea/dnd";
 
 
 const TranslatorMockup: React.FC = () => {
-
     const root = new WindowGroup(null, "horizontal")
-    // const windowGroup = new WindowGroup(root, "vertical");
 
     const tabWindow1 = new TabWindow(root);
-    const tabWindow2 = new TabWindow(root);
-    // const tabWindow3 = new TabWindow(windowGroup);
+    const tab = new UserQueryTab("Query Tab", "PL/pgSQL", tabWindow1);
+    tabWindow1.setContent([tab])
 
-    // windowGroup.children = [tabWindow2, tabWindow3]
+    const tabWindow2 = new TabWindow(root);
+
     root.children = [tabWindow1, tabWindow2]
 
     function getWindow(id: string): TabWindow | null {

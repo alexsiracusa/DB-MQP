@@ -1,39 +1,33 @@
 
-.tab-dropdown {
+.menu-button {
     height: 70%;
 }
 
-.tab-dropdown .tab-dropdown-icon {
+.menu-button .menu-dropdown-button {
     display: flex;
     align-items: center;
     justify-content: center;
 
+    padding: 0;
+    border-radius: 5px;
+
     height: 100%;
     aspect-ratio: 1.0;
-
-    padding: 0;
-    border-radius: 5px;
-}
-
-.tab-dropdown .tab-dropdown-icon img {
-    height: 80%;
-    width: 100%;
-}
-
-.tab-dropdown .tab-dropdown-button {
-    border-radius: 5px;
-    height: 100%;
-    padding: 0;
 
     background-color: transparent;
 }
 
-.tab-dropdown .row img {
+.menu-button .menu-dropdown-button img {
+    height: 80%;
+    width: 80%;
+}
+
+.menu-button .row img {
     height: 1em;
     width: 1em;
 }
 
-.tab-dropdown .row {
+.menu-button .row {
     display: flex;
     flex-direction: row;
     align-items: center;

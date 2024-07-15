@@ -3,12 +3,13 @@ import '../../../../styles/QueryTabCode.css'
 
 // Monaco Editor docs:
 // npm: https://www.npmjs.com/package/@monaco-editor/react#usage
-// github: https://github.com/react-monaco-editor/react-monaco-editor?tab=readme-ov-file
+// github: https://github.com/suren-atoyan/monaco-react
 // settings: https://microsoft.github.io/monaco-editor/docs.html#interfaces/editor.IStandaloneEditorConstructionOptions.html
 
 import Editor from '@monaco-editor/react';
 import QueryTab from "./QueryTab.tsx";
-import useStateCallback from "../../../../useStateCallback.tsx";
+import {useStateCallback, updateState} from "../../../../useStateCallback.tsx";
+import LoadingIcon from "../../../../assets/Icons/LoadingIcon.svg"
 import type monaco from 'monaco-editor';
 
 type QueryTabCodeProps = {
@@ -16,29 +17,29 @@ type QueryTabCodeProps = {
 }
 
 const QueryTabCode = (props: QueryTabCodeProps) => {
-    const [, updateState] = useStateCallback({});
-    function forceUpdate(): Promise<void> {
-        return new Promise((resolve) => {
-            updateState({}, () => {
-                resolve()
-            })
-        })
-    }
+    const [, setState] = useStateCallback({});
     const self = props.self;
+    self.updateCode = updateState(setState);
 
     // @ts-expect-error: doesn't like event not being used
     function handleEditorChange(value: string | undefined, event) { // eslint-disable-line
-        self.query = value ? value : self.query;
+        self.query = value ? value : "";
     }
 
     function handleEditorDidMount(editor: monaco.editor.IStandaloneCodeEditor) {
-        self.parent.windowEditor = editor;
+        self.parent.editor = editor;
+        if (self.query !== editor.getValue()) {
+            editor.setValue(self.query);
+        }
     }
 
-    self.updateCode = forceUpdate
-
     return (
-        <div className="tab-content">
+        <div className="tab-content editor-content">
+            {!self.isLoaded() &&
+                // https://loading.io/
+                // Cool loading icon maker (have to make free account)
+                <img src={LoadingIcon}/>
+            }
             <Editor
                 height="100%"
                 theme="light"
@@ -48,6 +49,7 @@ const QueryTabCode = (props: QueryTabCodeProps) => {
                 onChange={handleEditorChange}
                 onMount={handleEditorDidMount}
                 path={self.id} // needed for multi-editor functionality to work properly
+                key={self.parent.id} // needed for properly remounting
                 options={{
                     minimap: {
                         enabled: false
@@ -57,7 +59,7 @@ const QueryTabCode = (props: QueryTabCodeProps) => {
                     renderLineHighlight: "all",
                     roundedSelection: false,
                     scrollBeyondLastLine: true,
-                    readOnly: self.locked,
+                    readOnly: self.locked || !self.isLoaded(),
                     fixedOverflowWidgets: true
                 }}
             />

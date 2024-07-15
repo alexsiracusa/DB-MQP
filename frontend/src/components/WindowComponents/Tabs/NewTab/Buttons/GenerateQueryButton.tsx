@@ -12,7 +12,7 @@ const GenerateQueryButton = (props: GenerateQueryButtonProps) => {
     const self = props.self;
 
     async function generateQueryTab() {
-        await self.toQueryTab()
+        await self.toAIQueryTab()
     }
 
     return (

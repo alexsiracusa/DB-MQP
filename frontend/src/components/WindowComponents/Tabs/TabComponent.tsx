@@ -1,37 +1,27 @@
 import Tab from "./Tab.tsx";
 import NewTab from "./NewTab/NewTab.tsx";
-import UserQueryTab from "./QueryTab/UserQueryTab/UserQueryTab.tsx";
-import TranslatedQueryTab from "./QueryTab/TranslatedQueryTab/TranslatedQueryTab.tsx";
+import QueryTab from "./QueryTab/QueryTab.tsx";
+import ExplanationTab from "./ExplanationTab/ExplanationTab.tsx";
 import NewTabComponent from "./NewTab/NewTabComponent.tsx";
-import UserQueryTabComponent from "./QueryTab/UserQueryTab/UserQueryTabComponent.tsx";
-import TranslatedQueryTabComponent from "./QueryTab/TranslatedQueryTab/TranslatedQueryTabComponent.tsx";
-import useStateCallback from "../../../useStateCallback.tsx";
+import QueryTabComponent from "./QueryTab/QueryTabComponent.tsx";
+import {useStateCallback, updateState} from "../../../useStateCallback.tsx";
+import ExplanationTabComponent from "./ExplanationTab/ExplanationTabComponent.tsx";
 
 type TabContentComponentProps = {
     self: Tab
 }
 
 const TabComponent = (props: TabContentComponentProps) => {
-    const [, updateState] = useStateCallback({});
-    function forceUpdate(): Promise<void> {
-        return new Promise((resolve) => {
-            updateState({}, () => {
-                resolve()
-            })
-        })
-    }
-
+    const [, setState] = useStateCallback({});
     const self = props.self;
-
-    // update entire tab content
-    self.forceUpdate = forceUpdate
+    self.forceUpdate = updateState(setState);
 
     if (self instanceof NewTab) {
         return <NewTabComponent self={self}/>
-    } else if (self instanceof UserQueryTab) {
-        return <UserQueryTabComponent self={self}/>
-    } else if (self instanceof TranslatedQueryTab) {
-        return <TranslatedQueryTabComponent self={self}/>
+    } else if (self instanceof QueryTab) {
+        return <QueryTabComponent self={self}/>
+    } else if (self instanceof ExplanationTab) {
+        return <ExplanationTabComponent self={self}/>
     }
 }
 

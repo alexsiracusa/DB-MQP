@@ -4,7 +4,6 @@ import WindowGroup from "../WindowGroup/WindowGroup.tsx";
 import {Direction, Position} from "../../WindowContainer.tsx";
 
 import NewTab from "../../Tabs/NewTab/NewTab.tsx";
-import UserQueryTab from "../../Tabs/QueryTab/UserQueryTab/UserQueryTab.tsx";
 import type monaco from "monaco-editor";
 
 export default class TabWindow extends Window {
@@ -14,28 +13,40 @@ export default class TabWindow extends Window {
     // used for QueryTabs to update their code in special circumstances
     // is done on a per-window basis because monaco seems to reuse stuff
     // gets updated every time a new editor is mounted
-    windowEditor: monaco.editor.IStandaloneCodeEditor | null = null
+    editor: monaco.editor.IStandaloneCodeEditor | null = null;
+    editorOwner: Tab | null = null;
 
     constructor(
         parent: WindowGroup,
         forceUpdate: () => Promise<void> = () => new Promise(() => {}),
     ) {
         super(parent, forceUpdate);
-        const tab1 = new NewTab("New Tab", this);
-        const tab2 = new UserQueryTab("Query Tab", "PL/pgSQL", this);
+        const tab = new NewTab("New Tab", this);
+        this.contents = [tab];
+        this.selected = tab;
+        this.editorOwner = tab;
+    }
 
-        this.contents = [tab1, tab2];
-        this.selected = tab2;
+    setContent(content: Tab[], selected: Tab | null = null) {
+        if (content.length < 0) {
+            throw Error("can't set empty content")
+        }
+        this.contents = content
+        this.selected = (selected) ? selected : this.contents[0]
+        this.editorOwner = selected;
     }
 
     async addTab(
         tab: Tab = new NewTab("New Tab", this),
-        update: boolean = true
+        update: boolean = true,
+        select: boolean = true
     ) {
         tab.parent = this;
         this.contents.push(tab);
-        this.selected = tab;
-        if (update) {
+        if (select) {
+            await tab.select(update);
+        }
+        else if (update) {
             await this.parent?.forceUpdate();
         }
     }

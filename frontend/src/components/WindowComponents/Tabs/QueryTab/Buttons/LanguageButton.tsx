@@ -6,6 +6,7 @@ import Dropdown from "../../../../Dropdown.tsx";
 import DropDownRow from "../../../../DropDownRow.tsx";
 import {useState} from "react";
 import TriangleDown from "../../../../../assets/Icons/TriangleDown.svg";
+import TranslatedQueryTab from "../TranslatedQueryTab.tsx";
 
 
 type LanguageButtonProps = {
@@ -27,6 +28,13 @@ const LanguageButton = (props: LanguageButtonProps) => {
         await self.updateCode();
     }
 
+    function disabled(): boolean {
+        return (
+            !self.isLoaded() ||
+            (self instanceof TranslatedQueryTab)
+        );
+    }
+
     return (
         <div className="language-button toolbar-button">
             <Dropdown
@@ -37,6 +45,8 @@ const LanguageButton = (props: LanguageButtonProps) => {
                     </>
                 }
                 className="dropdown-icon"
+                title="Language"
+                disabled={disabled()}
                 onChange={setValue}
             >
                 { databaseLanguages.map((language: string) => (

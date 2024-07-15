@@ -1,0 +1,14 @@
+
+.editor-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.editor-content img {
+    position: absolute;
+    z-index: 1;
+    aspect-ratio: 1.0;
+    width: 45px;
+    height: 45px;
+}

@@ -1,6 +1,6 @@
 import '../../../../../styles/QueryTabToolbar.css';
 
-import UserQueryTab from "../UserQueryTab/UserQueryTab.tsx";
+import UserQueryTab from "../UserQueryTab.tsx";
 import Dropdown from "../../../../Dropdown.tsx";
 import DropDownRow from "../../../../DropDownRow.tsx";
 import {databaseLanguages} from "../../../../../DatabaseLanguage.tsx";
@@ -18,6 +18,10 @@ const TranslateButton = (props: TranslateButtonProps) => {
         await self.translate(newValue)
     }
 
+    function disabled(): boolean {
+        return !self.isLoaded();
+    }
+
     return (
         <div className="translate-button toolbar-button">
             <Dropdown
@@ -27,7 +31,9 @@ const TranslateButton = (props: TranslateButtonProps) => {
                         <p>Translate</p>
                     </>
                 }
+                title=""
                 className="translate-icon"
+                disabled={disabled()}
                 onChange={setValue}
             >
                 { databaseLanguages.map((language: string) => (
