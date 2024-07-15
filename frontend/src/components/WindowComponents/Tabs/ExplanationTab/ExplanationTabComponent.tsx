@@ -1,5 +1,6 @@
 import '../../../../styles/TabContent.css'
 import '../../../../styles/QueryTabToolbar.css'
+import '../../../../styles/ExplanationTab.css'
 
 import ExplanationTab from "./ExplanationTab.tsx";
 import React from "react";
@@ -38,7 +39,9 @@ const ExplanationTabComponent = (props: ExplanationTabComponentProps) => {
                 </div>
                 <div className="buttons"/>
             </div>
-            {self.explanation}
+            <div className="explanation">
+                {self.explanation}
+            </div>
         </div>
     )
 }
