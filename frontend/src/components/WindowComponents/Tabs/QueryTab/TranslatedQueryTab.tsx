@@ -2,14 +2,18 @@ import {DatabaseLanguage} from "../../../../DatabaseLanguage.tsx";
 import QueryTab from "./QueryTab.tsx";
 import TabWindow from "../../Windows/TabWindow/TabWindow.tsx";
 import TranslationController from "./TranslationController.tsx";
+import Tab from "../Tab.tsx";
 
 class TranslatedQueryTab extends QueryTab {
     controller: TranslationController;
-    deleted: boolean = false;
 
     override isLoaded(): boolean {return this.controller.loaded}
 
     override isLoading(): boolean {return this.controller.loading}
+
+    override tabPath(): Tab[] {
+        return [this.controller.original, this]
+    }
 
     constructor(
         name: string,
@@ -33,7 +37,6 @@ class TranslatedQueryTab extends QueryTab {
     override async delete(
         update: boolean = true
     ) {
-        this.deleted = true;
         await super.delete(update)
         await this.controller.delete(update)
     }

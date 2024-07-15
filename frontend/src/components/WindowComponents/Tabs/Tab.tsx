@@ -29,8 +29,8 @@ abstract class Tab {
         this.parent.editorOwner = null;
         if (update) {
             await this.parent.forceUpdate();
+            this.parent.editorOwner = this;
         }
-        this.parent.editorOwner = this;
     }
 
     async delete(

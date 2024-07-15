@@ -1,0 +1,35 @@
+.tab-file-path {
+    display: flex;
+    flex-direction: row;
+    padding: 0 4px;
+
+    height: 100%;
+}
+
+.tab-file-path div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    height: 100%;
+    width: fit-content;
+}
+
+.tab-file-path button {
+    height: 80%;
+
+    border-radius: 0.15em;
+    padding: 0 0.3em;
+}
+
+.tab-file-path button p {
+    opacity: 0.8;
+}
+
+.tab-file-path img {
+    aspect-ratio: 1.0;
+    margin-right: -0.2em;
+    margin-left: -0.2em;
+    height: 80%;
+    opacity: 0.8;
+}

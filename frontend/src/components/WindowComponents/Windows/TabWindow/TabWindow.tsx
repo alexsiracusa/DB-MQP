@@ -44,9 +44,9 @@ export default class TabWindow extends Window {
         tab.parent = this;
         this.contents.push(tab);
         if (select) {
-            await tab.select(false);
+            await tab.select(update);
         }
-        if (update) {
+        else if (update) {
             await this.parent?.forceUpdate();
         }
     }

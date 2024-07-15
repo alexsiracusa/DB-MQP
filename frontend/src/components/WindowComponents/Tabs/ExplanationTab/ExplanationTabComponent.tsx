@@ -1,7 +1,9 @@
 import '../../../../styles/TabContent.css'
+import '../../../../styles/QueryTabToolbar.css'
 
 import ExplanationTab from "./ExplanationTab.tsx";
 import React from "react";
+import TabFilePathComponent from "../TabFilePathComponent.tsx";
 
 
 type ExplanationTabComponentProps = {
@@ -27,6 +29,15 @@ const ExplanationTabComponent = (props: ExplanationTabComponentProps) => {
 
     return (
         <div className="tab-content-container">
+            <div className="tab-toolbar">
+                <div className="file-path">
+                    <TabFilePathComponent
+                        parentWindow={self.parent}
+                        path={self.tabPath()}
+                    />
+                </div>
+                <div className="buttons"/>
+            </div>
             {self.explanation}
         </div>
     )

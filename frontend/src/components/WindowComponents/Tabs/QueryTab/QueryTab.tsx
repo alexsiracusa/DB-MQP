@@ -8,12 +8,15 @@ abstract class QueryTab extends Tab {
     language: DatabaseLanguage = "PL/pgSQL"
     locked: boolean = false;
     query: string = "";
+    deleted: boolean = false;
 
     updateToolbar: () => Promise<void>;
     updateCode: () => Promise<void>;
 
     abstract isLoaded(): boolean;
     abstract isLoading(): boolean;
+
+    abstract tabPath(): Tab[];
 
     protected constructor(
         name:           string,
@@ -59,6 +62,11 @@ abstract class QueryTab extends Tab {
                 return "json"
             }
         }
+    }
+
+    override async delete(update: boolean = true): Promise<void> {
+        this.deleted = true;
+        await super.delete(update);
     }
 
 }

@@ -25,15 +25,15 @@ class TranslationController {
         this.explanationTab = new ExplanationTab("Explanation", this.original.parent, this);
     }
 
-    async addExplanationTab(update: boolean, select: boolean) {
+    async addExplanationTab(update: boolean) {
         if (this.explanationTab.deleted) {
             this.explanationTab.deleted = false;
-            await this.translatedQueryTab.parent.addTab(this.explanationTab, update, select);
+            await this.translatedQueryTab.parent.addTab(this.explanationTab, update, false);
         }
     }
 
     async select() {
-        await this.addExplanationTab(false, false);
+        await this.addExplanationTab(false);
         if (this.translatedQueryTab.parent === this.explanationTab.parent) {
             await this.translatedQueryTab.select()
         }
@@ -51,7 +51,7 @@ class TranslationController {
                 this.loading = true;
 
                 // add explanationTab if it was deleted
-                await this.addExplanationTab(true, false);
+                await this.addExplanationTab(true);
 
                 // get chatbot response
                 const inputCode = this.original.query;
@@ -74,6 +74,7 @@ class TranslationController {
 
                 const editor = this.translatedQueryTab.editor();
                 if (editor) {
+                    console.log("set value", result.code)
                     editor.setValue(result.code);
                     await this.translatedQueryTab.updateToolbar();
                     await this.translatedQueryTab.updateCode();

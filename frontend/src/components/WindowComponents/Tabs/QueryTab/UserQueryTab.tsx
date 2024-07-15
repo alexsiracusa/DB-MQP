@@ -1,4 +1,5 @@
 import {DatabaseLanguage} from "../../../../DatabaseLanguage.tsx";
+import Tab from "../Tab.tsx";
 import QueryTab from "./QueryTab.tsx";
 import TabWindow from "../../Windows/TabWindow/TabWindow.tsx";
 import Chatbot from "../../../../api/ChatbotInstance.ts";
@@ -12,6 +13,10 @@ class UserQueryTab extends QueryTab {
 
     override isLoaded(): boolean {return this.loaded}
     override isLoading(): boolean {return this.loading}
+
+    override tabPath(): Tab[] {
+        return [this]
+    }
 
     constructor(
         name:           string,

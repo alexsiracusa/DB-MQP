@@ -7,12 +7,11 @@ class ExplanationTab extends Tab {
     explanation: string = "";
     deleted: boolean = false;
 
-    loaded() {
-        return this.controller.loaded
-    }
+    loaded(): boolean { return this.controller.loaded }
+    loading(): boolean { return this.controller.loading }
 
-    loading() {
-        return this.controller.loading
+    tabPath(): Tab[] {
+        return [this.controller.original, this.controller.translatedQueryTab, this]
     }
 
     constructor(

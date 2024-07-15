@@ -14,12 +14,9 @@
 }
 
 .tab-toolbar .file-path {
-    display: flex;
-    flex-direction: row;
-
     min-width: 0;
-    height: 100%;
 }
+
 
 .tab-toolbar .buttons {
     display: flex;

@@ -8,6 +8,7 @@ import LanguageButton from "./Buttons/LanguageButton.tsx";
 import LockButton from "./Buttons/LockButton.tsx";
 import UserQueryTab from "./UserQueryTab.tsx";
 import TranslatedQueryTab from "./TranslatedQueryTab.tsx";
+import TabFilePathComponent from "../TabFilePathComponent.tsx";
 import {updateState, useStateCallback} from "../../../../useStateCallback.tsx";
 
 type QueryTabToolbarProps = {
@@ -22,7 +23,10 @@ const QueryTabToolbar = (props: QueryTabToolbarProps) => {
     return (
         <div className="tab-toolbar">
             <div className="file-path">
-
+                <TabFilePathComponent
+                    parentWindow={self.parent}
+                    path={self.tabPath()}
+                />
             </div>
             <div className="buttons">
                 <RunButton self={self}/>

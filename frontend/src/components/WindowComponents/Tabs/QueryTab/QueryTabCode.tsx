@@ -27,7 +27,11 @@ const QueryTabCode = (props: QueryTabCodeProps) => {
     }
 
     function handleEditorDidMount(editor: monaco.editor.IStandaloneCodeEditor) {
+        console.log("editor mounted for", self.name)
         self.parent.editor = editor;
+        if (self.query !== editor.getValue()) {
+            editor.setValue(self.query);
+        }
     }
 
     return (
@@ -46,6 +50,7 @@ const QueryTabCode = (props: QueryTabCodeProps) => {
                 onChange={handleEditorChange}
                 onMount={handleEditorDidMount}
                 path={self.id} // needed for multi-editor functionality to work properly
+                key={self.parent.id} // needed for properly remounting
                 options={{
                     minimap: {
                         enabled: false
