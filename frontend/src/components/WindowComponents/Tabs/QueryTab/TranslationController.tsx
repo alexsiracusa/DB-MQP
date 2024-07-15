@@ -70,11 +70,10 @@ class TranslationController {
 
                 // update UI if needed
                 try { await this.explanationTab.forceUpdate() }
-                catch (error) { console.log(error) }
+                catch (error) { /*console.log(error)*/ }
 
                 const editor = this.translatedQueryTab.editor();
                 if (editor) {
-                    console.log("set value", result.code)
                     editor.setValue(result.code);
                     await this.translatedQueryTab.updateToolbar();
                     await this.translatedQueryTab.updateCode();

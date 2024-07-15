@@ -32,7 +32,7 @@ const TabFilePathComponent = (props: TabFilePathComponentProps) => {
             {props.path.map((tab: Tab, index: number) => {
                 return (
                     <div
-                        className=""
+                        className="tab-file-path-group"
                         key={index}
                     >
                         <button onClick={() => {selectTab(tab)}}>

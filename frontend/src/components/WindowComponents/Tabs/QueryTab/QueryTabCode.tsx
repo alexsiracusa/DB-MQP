@@ -27,7 +27,6 @@ const QueryTabCode = (props: QueryTabCodeProps) => {
     }
 
     function handleEditorDidMount(editor: monaco.editor.IStandaloneCodeEditor) {
-        console.log("editor mounted for", self.name)
         self.parent.editor = editor;
         if (self.query !== editor.getValue()) {
             editor.setValue(self.query);
