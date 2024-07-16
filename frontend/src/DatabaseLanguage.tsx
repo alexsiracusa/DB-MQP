@@ -1,7 +1,7 @@
-export const databaseLanguages = ["PL/SQL", "PL/pgSQL", "MQL", "MongoDBCommand"]
+export const databaseLanguages = ["PL/SQL", "PL/pgSQL", "MQL", "Raw MQL"]
 export type DatabaseLanguage = typeof databaseLanguages[number]
 
-// "MongoDBCommand" language doesn't work with the chatbot. It's meant to be the
+// "Raw MQL" language doesn't work with the chatbot. It's meant to be the
 // raw mongodb query language, but I couldn't find a formal name
 
 // MongoDB Command docs:

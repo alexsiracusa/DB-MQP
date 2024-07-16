@@ -82,6 +82,7 @@
 .tab-toolbar p {
     font-family: "IBM Plex Sans", sans-serif;
     font-size: 0.7em;
+    white-space: nowrap;
 }
 
 .tab-toolbar .run-button {

@@ -58,7 +58,10 @@ abstract class QueryTab extends Tab {
             case "MQL": {
                 return "javascript"
             }
-            case "MongoDBCommand": {
+            case "Raw MQL": {
+                return "json"
+            }
+            default: {
                 return "json"
             }
         }
