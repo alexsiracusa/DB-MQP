@@ -1,4 +1,4 @@
-import '../styles/TranslatorMockup.css'
+import '../styles/TranslatorPage.css'
 import '../styles/Gutters.css'
 
 import Navbar from '../components/Navbar.tsx'
@@ -11,7 +11,7 @@ import {Panel, PanelGroup, PanelResizeHandle} from "react-resizable-panels";
 import {DragDropContext} from "@hello-pangea/dnd";
 
 
-const TranslatorMockup: React.FC = () => {
+const TranslatorPage: React.FC = () => {
     const root = new WindowGroup(null, "horizontal")
 
     const tabWindow1 = new TabWindow(root);
@@ -134,4 +134,4 @@ const TranslatorMockup: React.FC = () => {
     );
 }
 
-export default TranslatorMockup;
+export default TranslatorPage;
