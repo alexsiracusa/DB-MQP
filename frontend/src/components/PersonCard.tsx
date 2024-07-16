@@ -12,9 +12,9 @@ function PersonCard(props: PersonCardProps) {
         <div className="person-card-container">
             <img src={props.image} />
             <div className="about">
-                <h3>
+                <h4>
                     {props.name}
-                </h3>
+                </h4>
                 <p>
                     {props.description}
                 </p>
