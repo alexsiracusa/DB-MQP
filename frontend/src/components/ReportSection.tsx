@@ -1,3 +1,5 @@
+import "../styles/HomePage.css"
+
 import React from "react";
 import ReportPageCover from '../assets/ReportSectionAssets/ReportCoverPage.png'
 
@@ -9,22 +11,21 @@ interface ReportSectionInt {
     link: string;
 }
 
-const Report: React.FC<ReportSectionInt> = ({ altText, title, text, link }) => {
+const Report: React.FC<ReportSectionInt> = ({altText, title, text, link}) => {
 
     const handleClick = () => {
         window.open(link, '_blank');
     };
 
-    return(
-   <div className="report">     
-    <div className="container">
-        <img src={ReportPageCover} alt={altText} className="image" onClick={handleClick} style={{ cursor: 'pointer' }}/>
-        <div className="text-content" >
-        <h2 className="title">{title}</h2>
-        <p className="text">{text}</p> 
+    return (
+        <div className="report">
+            <img src={ReportPageCover} alt={altText} className="image" onClick={handleClick}
+                 style={{cursor: 'pointer'}}/>
+            <div className="text-content">
+                <h2 className="title">{title}</h2>
+                <p className="text">{text}</p>
+            </div>
         </div>
-    </div>
-    </div>
     )
 }
 

@@ -44,13 +44,14 @@ const TeamSection: React.FC = () => {
     return (
         <div className="team">
             <div className="content">
-                <h1>Meet The Team</h1>
+                <h2>Meet The Team</h2>
                 <div className="card-container">
                     <div className="column">
                         {
-                            left_column.map((person) => {
+                            left_column.map((person, index) => {
                                 return (
                                     <PersonCard
+                                        key={index}
                                         name={person.name}
                                         description={person.description}
                                         image={person.image}
@@ -61,9 +62,10 @@ const TeamSection: React.FC = () => {
                     </div>
                     <div className="column">
                         {
-                            right_column.map((person) => {
+                            right_column.map((person, index) => {
                                 return (
                                     <PersonCard
+                                        key={index}
                                         name={person.name}
                                         description={person.description}
                                         image={person.image}

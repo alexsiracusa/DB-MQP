@@ -8,7 +8,7 @@ const ReportSection: React.FC = () => {
     return (
         <div className="report">
             <div className="content">
-                <h2>Report Section</h2>
+                <h2>Read The Report</h2>
                 <Report
                     altText="Report Cover Page"
                     title="Link to Report"
