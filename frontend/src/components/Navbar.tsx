@@ -48,12 +48,6 @@ const Navbar: React.FC = () => {
             href="#"
             className="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-gray-400 items-center justify-center hover:bg-gray-900 hover:text-white"
           >
-            <span>Run Code</span>
-          </a>
-          <a
-            href="#"
-            className="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-gray-400 items-center justify-center hover:bg-gray-900 hover:text-white"
-          >
             <span>Documentation</span>
           </a>
           <a
