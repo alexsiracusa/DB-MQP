@@ -42,7 +42,7 @@ const Navbar: React.FC = () => {
             href="#"
             className="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white items-center justify-center hover:bg-gray-900 hover:text-white"
           >
-            <span>Documentation</span>
+            <span onClick={() => handleNavigation('/Documentation')}>Documentation</span>
           </a>
           <a
             href="#"
