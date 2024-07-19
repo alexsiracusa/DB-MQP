@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import MenuIcon from '@mui/icons-material/Menu';
 
 const Navbar: React.FC = () => {
 
@@ -22,12 +23,7 @@ const Navbar: React.FC = () => {
         <span className="text-xl text-white font-bold uppercase tracking-wide" onClick={() => handleNavigation('/')}
           >Relational Remodel MQP</span>
       </a>
-      <button
-        className="text-white inline-flex p-3 hover:bg-gray-900 rounded lg:hidden ml-auto hover:text-white outline-none nav-toggler"
-        data-target="#navigation"
-      >
-        <i className="material-icons">Menu</i>
-      </button>
+
       <div
         className="hidden top-navbar w-full lg:inline-flex lg:flex-grow lg:w-auto"
         id="navigation"
