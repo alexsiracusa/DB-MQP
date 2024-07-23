@@ -2,105 +2,145 @@ import UserQueryTab from "./UserQueryTab.tsx";
 import TranslatedQueryTab from "./TranslatedQueryTab.tsx";
 import ExplanationTab from "../ExplanationTab/ExplanationTab.tsx";
 import Chatbot from "../../../../api/ChatbotInstance.ts";
-import {DatabaseLanguage} from "../../../../DatabaseLanguage.tsx";
+import {DatabaseLanguage, databaseLanguages} from "../../../../DatabaseLanguage.tsx";
+import TabWindow from "../../Windows/TabWindow/TabWindow.tsx";
+
+type TranslationState = {
+    translation: string;
+    explanation: string;
+
+    loaded: boolean;
+    loading: boolean;
+    shouldRefresh: boolean;
+}
 
 class TranslationController {
     original: UserQueryTab;
-    language: DatabaseLanguage;
-
-    loaded: boolean = false;
-    loading: boolean = false;
-    shouldRefresh: boolean = false;
-
-    translatedQueryTab: TranslatedQueryTab;
+    translationTab: TranslatedQueryTab;
     explanationTab: ExplanationTab;
 
-    constructor(
+    translations: Record<DatabaseLanguage, TranslationState> = {} as Record<DatabaseLanguage, TranslationState>;
+
+    private constructor(
         original: UserQueryTab,
-        langauge: DatabaseLanguage,
     ) {
         this.original = original;
-        this.language = langauge
-        this.translatedQueryTab = new TranslatedQueryTab("Translation", this.language, this.original.parent, this);
-        this.explanationTab = new ExplanationTab("Explanation", this.original.parent, this);
+        this.translationTab = new TranslatedQueryTab("-", "", original.parent, this);
+        this.explanationTab = new ExplanationTab("-", "", original.parent, this)
+
+        for (const language of databaseLanguages) {
+            this.initializeTranslationState(language);
+        }
     }
 
-    async addExplanationTab(update: boolean) {
-        if (this.explanationTab.deleted) {
-            this.explanationTab.deleted = false;
-            await this.translatedQueryTab.parent.addTab(this.explanationTab, update, false);
-        }
+    static async create(
+        original: UserQueryTab,
+        initialLanguage: DatabaseLanguage
+    ): Promise<TranslationController> {
+        const controller = new TranslationController(original);
+
+        const translationWindow = await controller.getSibling(controller.original.parent) as TabWindow;
+        const explanationWindow = await controller.getSibling(translationWindow) as TabWindow;
+
+        controller.translationTab = new TranslatedQueryTab("Trans. " + original.name, initialLanguage, translationWindow, controller);
+        controller.explanationTab = new ExplanationTab("Exp. " + original.name, initialLanguage, explanationWindow, controller);
+
+        await translationWindow.addTab(controller.translationTab, true, true);
+        await explanationWindow.addTab(controller.explanationTab, true, true);
+
+        controller.load(initialLanguage);
+
+        return controller;
     }
 
     async select() {
-        await this.addExplanationTab(false);
-        if (this.translatedQueryTab.parent === this.explanationTab.parent) {
-            await this.translatedQueryTab.select()
-        }
-        else {
-            await this.translatedQueryTab.select()
-            await this.explanationTab.select()
-        }
+        await this.explanationTab.select(true, false)
+        await this.translationTab.select(true, false)
+        await this.original.select(true, false)
     }
 
-    async load() {
+    // assumes "this.translations" has a record for the given language
+    async load(language: DatabaseLanguage) {
+        const translationState = this.translations[language];
+
         try {
             // this definitely has concurrency bugs trying to use a regular
             // variable (self.loaded) as a lock
-            if ((!this.loaded || this.shouldRefresh) && !this.loading) {
-                this.loading = true;
-
-                // add explanationTab if it was deleted
-                await this.addExplanationTab(true);
+            if ((!translationState.loaded || translationState.shouldRefresh) && !translationState.loading) {
+                translationState.loading = true;
 
                 // get chatbot response
                 const inputCode = this.original.query;
                 const inputLang = this.original.language;
-                const outputLang = this.translatedQueryTab.language;
+                const outputLang = language;
                 const result = await Chatbot.translate(inputCode, inputLang, outputLang);
 
                 // set values
-                this.translatedQueryTab.query = result.code;
-                this.explanationTab.explanation = result.explanation;
+                translationState.translation = result.code;
+                translationState.explanation = result.explanation;
 
                 // set loading to be complete
-                this.loading = false;
-                this.shouldRefresh = false;
-                this.loaded = true;
+                translationState.loading = false;
+                translationState.shouldRefresh = false;
+                translationState.loaded = true;
 
                 // update UI if needed
-                try { await this.explanationTab.forceUpdate() }
-                catch (error) { /*console.log(error)*/ }
+                if (this.translationTab.language === language) {
+                    this.translationTab.query = result.code;
+                    this.explanationTab.explanation = result.explanation;
 
-                const editor = this.translatedQueryTab.editor();
-                if (editor) {
-                    editor.setValue(result.code);
-                    await this.translatedQueryTab.updateToolbar();
-                    await this.translatedQueryTab.updateCode();
+                    try {
+                        await this.explanationTab.forceUpdate()
+                    } catch (error) { /*console.log(error)*/ }
+
+                    const editor = this.translationTab.editor();
+                    if (editor) {
+                        editor.setValue(result.code);
+                        await this.translationTab.updateToolbar();
+                        await this.translationTab.updateCode();
+                    }
                 }
             }
         } catch (error) {
-            this.loading = false;
-            this.shouldRefresh = false;
+            translationState.loading = false;
+            translationState.shouldRefresh = false;
             throw error;
         }
     }
 
-    async refresh() {
-        this.shouldRefresh = true;
-        await this.load()
+    async refresh(language: DatabaseLanguage) {
+        const translationState = this.translations[language];
+        translationState.shouldRefresh = true;
+        await this.load(language);
     }
 
-    async delete(
-        update: boolean = true
-    ) {
-        if (!this.translatedQueryTab.deleted) {
-            await this.translatedQueryTab.delete(update);
+    async setLanguage(language: DatabaseLanguage) {
+        await this.translationTab.setLanguage(language);
+    }
+
+    languageExists(language: DatabaseLanguage) {
+        const state = this.translations[language]
+        return state.loaded || state.loading;
+    }
+
+    private initializeTranslationState(language: DatabaseLanguage) {
+        this.translations[language] = {
+            translation: "",
+            explanation: "",
+
+            loaded: false,
+            loading: false,
+            shouldRefresh: false
+        };
+    }
+
+    private async getSibling(from: TabWindow) {
+        let sibling = from.sibling("horizontal", "after");
+        if (!(sibling instanceof TabWindow)) {
+            sibling = await from.addSibling("horizontal", "after", true);
+            (sibling as TabWindow).contents = []
         }
-        if (!this.explanationTab.deleted) {
-            await this.explanationTab.delete(update)
-        }
-        delete this.original.translations[this.language]
+        return sibling;
     }
 }
 

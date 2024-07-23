@@ -15,8 +15,8 @@ const RefreshButton = (props: RefreshButtonProps) => {
 
     // needed when moving tabs between windows because react reuses
     // states on the same level in the DOM tree
-    if (refreshing != self.controller.shouldRefresh) {
-        setRefreshing(self.controller.shouldRefresh)
+    if (refreshing != self.controller.translations[self.language].shouldRefresh) {
+        setRefreshing(self.controller.translations[self.language].shouldRefresh)
     }
 
     async function refresh() {

@@ -8,7 +8,6 @@ abstract class QueryTab extends Tab {
     language: DatabaseLanguage = "PL/pgSQL"
     locked: boolean = false;
     query: string = "";
-    deleted: boolean = false;
 
     updateToolbar: () => Promise<void>;
     updateCode: () => Promise<void>;
@@ -40,13 +39,20 @@ abstract class QueryTab extends Tab {
         await super.select(update);
         const editor = this.editor();
         if (editor && editor.getValue() !== this.query) {
-            editor.setValue(this.query)
+            editor.setValue(this.query);
         }
     }
 
     editor(): monaco.editor.IStandaloneCodeEditor | null {
         // only return the editor if it is the selected tab
-        return (this.parent.editorOwner === this) ? this.parent.editor : null
+        return (this.parent.editorOwner === this) ? this.parent.editor : null;
+    }
+
+    setEditorValue(value: string) {
+        const editor = this.editor();
+        if (editor) {
+            editor.setValue(value);
+        }
     }
 
     editorLanguage() {
@@ -65,11 +71,6 @@ abstract class QueryTab extends Tab {
                 return "json"
             }
         }
-    }
-
-    override async delete(update: boolean = true): Promise<void> {
-        this.deleted = true;
-        await super.delete(update);
     }
 
 }

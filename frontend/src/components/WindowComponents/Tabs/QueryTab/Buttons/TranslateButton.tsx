@@ -3,7 +3,7 @@ import '../../../../../styles/QueryTabToolbar.css';
 import UserQueryTab from "../UserQueryTab.tsx";
 import Dropdown from "../../../../Dropdown.tsx";
 import DropDownRow from "../../../../DropDownRow.tsx";
-import {databaseLanguages} from "../../../../../DatabaseLanguage.tsx";
+import {databaseFromLanguage, databaseLanguages} from "../../../../../DatabaseLanguage.tsx";
 // import TranslateIcon from "../../../../../assets/Icons/TranslateIcon.svg";
 
 
@@ -37,8 +37,8 @@ const TranslateButton = (props: TranslateButtonProps) => {
                 onChange={setValue}
             >
                 { databaseLanguages.map((language: string) => (
-                    <DropDownRow value={language} className="row" key={language}>
-                        <p>{language}</p>
+                    <DropDownRow value={language} className="language-row" key={language}>
+                        <p>{language + ` (${databaseFromLanguage[language]})`}</p>
                     </DropDownRow>
                 ))}
             </Dropdown>

@@ -18,7 +18,7 @@ class NewTab extends Tab {
     async toBlankQueryTab(
         type: DatabaseLanguage = "PL/pgSQL"
     ) {
-        const tab = new UserQueryTab("Query", type, this.parent);
+        const tab = new UserQueryTab(null, type, this.parent);
         await this.replaceWith(tab);
     }
 

@@ -1,6 +1,6 @@
 import '../../../../../styles/QueryTabToolbar.css';
 
-import {databaseLanguages} from "../../../../../DatabaseLanguage.tsx";
+import {DatabaseLanguage, databaseFromLanguage, databaseLanguages} from "../../../../../DatabaseLanguage.tsx";
 import QueryTab from "../QueryTab.tsx";
 import Dropdown from "../../../../Dropdown.tsx";
 import DropDownRow from "../../../../DropDownRow.tsx";
@@ -23,16 +23,28 @@ const LanguageButton = (props: LanguageButtonProps) => {
     }
 
     async function setValue(newValue: string) {
-        props.self.language = newValue
         setLanguage(newValue)
-        await self.updateCode();
+
+        if (self instanceof TranslatedQueryTab) {
+            await self.setLanguage(newValue);
+        }
+        else {
+            props.self.language = newValue;
+            await self.updateCode();
+        }
     }
 
     function disabled(): boolean {
         return (
-            !self.isLoaded() ||
-            (self instanceof TranslatedQueryTab)
+            !self.isLoaded()
         );
+    }
+
+    function rowExists(forLang: DatabaseLanguage): boolean {
+        if (self instanceof TranslatedQueryTab) {
+            return self.controller.languageExists(forLang);
+        }
+        return true;
     }
 
     return (
@@ -50,8 +62,12 @@ const LanguageButton = (props: LanguageButtonProps) => {
                 onChange={setValue}
             >
                 { databaseLanguages.map((language: string) => (
-                    <DropDownRow value={language} className="row" key={language}>
-                        <p>{language}</p>
+                    <DropDownRow
+                        value={language}
+                        className={ rowExists(language) ? "language-row" : "language-row opacity"}
+                        key={language}
+                    >
+                        <p>{language + ` (${databaseFromLanguage[language]})`}</p>
                     </DropDownRow>
                 ))}
             </Dropdown>
