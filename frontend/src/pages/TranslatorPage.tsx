@@ -18,9 +18,10 @@ const TranslatorPage: React.FC = () => {
     const tab = new UserQueryTab(null, "PL/pgSQL", tabWindow1);
     tabWindow1.setContent([tab])
 
-    const tabWindow2 = new TabWindow(root);
+    // const tabWindow2 = new TabWindow(root);
 
-    root.children = [tabWindow1, tabWindow2]
+    // root.children = [tabWindow1, tabWindow2]
+    root.children = [tabWindow1]
 
     function getWindow(id: string): TabWindow | null {
         function getWindowFrom(from: WindowGroup, id: string): TabWindow | null {
