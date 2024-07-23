@@ -23,15 +23,20 @@ const LanguageButton = (props: LanguageButtonProps) => {
     }
 
     async function setValue(newValue: string) {
-        props.self.language = newValue
         setLanguage(newValue)
-        await self.updateCode();
+
+        if (self instanceof TranslatedQueryTab) {
+            await self.setLanguage(newValue);
+        }
+        else {
+            props.self.language = newValue;
+            await self.updateCode();
+        }
     }
 
     function disabled(): boolean {
         return (
-            !self.isLoaded() ||
-            (self instanceof TranslatedQueryTab)
+            !self.isLoaded()
         );
     }
 

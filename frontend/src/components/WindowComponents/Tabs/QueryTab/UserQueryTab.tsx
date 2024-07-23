@@ -6,7 +6,7 @@ import Chatbot from "../../../../api/ChatbotInstance.ts";
 import TranslationController from "./TranslationController.tsx";
 
 class UserQueryTab extends QueryTab {
-    translations: Record<DatabaseLanguage, TranslationController> = {} as Record<DatabaseLanguage, TranslationController>;
+    translationController: TranslationController | undefined = undefined;
 
     loaded: boolean = true;
     loading: boolean = false;
@@ -62,31 +62,28 @@ class UserQueryTab extends QueryTab {
         }
     }
 
-    createTranslation(language: DatabaseLanguage): TranslationController {
-        const translationController = new TranslationController(this, language);
-        this.translations[language] = translationController;
-        translationController.load();
-        return translationController;
+    async translate(language: DatabaseLanguage) {
+        if (!this.translationController) {
+            this.translationController = await TranslationController.create(this, language);
+        }
+        else {
+            await this.translationController.setLanguage(language);
+        }
     }
 
-    async translate(language: DatabaseLanguage) {
-        // if translation already exists, don't make a new one
-        const existingTranslation = this.translations[language];
-        if (existingTranslation !== undefined) {
-            await existingTranslation.select();
-            return;
+    override async select(
+        update: boolean = true,
+        primary: boolean = true
+    ): Promise<void> {
+        if (primary) {
+            await this.translationController?.select();
         }
+        await super.select(update);
+    }
 
-        // otherwise create translation
-        let sibling = this.parent.sibling("horizontal", "after");
-        if (!(sibling instanceof TabWindow)) {
-            sibling = await this.parent.addSibling("horizontal", "after", true);
-            (sibling as TabWindow).contents = []
-        }
-        const window = (sibling as TabWindow);
-        const translation = this.createTranslation(language);
-        await window.addTab(translation.translatedQueryTab, true, true);
-        await window.addTab(translation.explanationTab, true, false);
+    override async delete(update: boolean = true): Promise<void> {
+        await super.delete(update);
+        await this.translationController?.explanationTab.delete();
     }
 }
 
