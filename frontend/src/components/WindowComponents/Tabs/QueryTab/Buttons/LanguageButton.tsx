@@ -1,6 +1,6 @@
 import '../../../../../styles/QueryTabToolbar.css';
 
-import {databaseLanguages} from "../../../../../DatabaseLanguage.tsx";
+import {DatabaseLanguage, databaseFromLanguage, databaseLanguages} from "../../../../../DatabaseLanguage.tsx";
 import QueryTab from "../QueryTab.tsx";
 import Dropdown from "../../../../Dropdown.tsx";
 import DropDownRow from "../../../../DropDownRow.tsx";
@@ -40,6 +40,13 @@ const LanguageButton = (props: LanguageButtonProps) => {
         );
     }
 
+    function rowExists(forLang: DatabaseLanguage): boolean {
+        if (self instanceof TranslatedQueryTab) {
+            return self.controller.languageExists(forLang);
+        }
+        return true;
+    }
+
     return (
         <div className="language-button toolbar-button">
             <Dropdown
@@ -55,8 +62,12 @@ const LanguageButton = (props: LanguageButtonProps) => {
                 onChange={setValue}
             >
                 { databaseLanguages.map((language: string) => (
-                    <DropDownRow value={language} className="row" key={language}>
-                        <p>{language}</p>
+                    <DropDownRow
+                        value={language}
+                        className={ rowExists(language) ? "language-row" : "language-row opacity"}
+                        key={language}
+                    >
+                        <p>{language + ` (${databaseFromLanguage[language]})`}</p>
                     </DropDownRow>
                 ))}
             </Dropdown>

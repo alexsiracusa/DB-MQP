@@ -6,6 +6,8 @@ import Chatbot from "../../../../api/ChatbotInstance.ts";
 import TranslationController from "./TranslationController.tsx";
 
 class UserQueryTab extends QueryTab {
+    static nextNum = 0;
+
     translationController: TranslationController | undefined = undefined;
 
     loaded: boolean = true;
@@ -19,15 +21,15 @@ class UserQueryTab extends QueryTab {
     }
 
     constructor(
-        name:           string,
+        name:           string | null,
         language:       DatabaseLanguage,
         parent:         TabWindow,
     ) {
-        super(name, language, parent);
+        super((name) ? name : `Query${UserQueryTab.nextNum++}`, language, parent);
     }
 
     static generatedQuery(language: DatabaseLanguage, parent: TabWindow): UserQueryTab {
-        const userQueryTab = new UserQueryTab("AI Query", language, parent)
+        const userQueryTab = new UserQueryTab(null, language, parent)
         userQueryTab.loaded = false;
         return userQueryTab;
     }

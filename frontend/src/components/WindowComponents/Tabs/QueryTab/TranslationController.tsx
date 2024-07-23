@@ -25,8 +25,8 @@ class TranslationController {
         original: UserQueryTab,
     ) {
         this.original = original;
-        this.translationTab = new TranslatedQueryTab("undefined", "", original.parent, this);
-        this.explanationTab = new ExplanationTab("undefined", "", original.parent, this)
+        this.translationTab = new TranslatedQueryTab("-", "", original.parent, this);
+        this.explanationTab = new ExplanationTab("-", "", original.parent, this)
 
         for (const language of databaseLanguages) {
             this.initializeTranslationState(language);
@@ -42,8 +42,8 @@ class TranslationController {
         const translationWindow = await controller.getSibling(controller.original.parent) as TabWindow;
         const explanationWindow = await controller.getSibling(translationWindow) as TabWindow;
 
-        controller.translationTab = new TranslatedQueryTab("Translation", initialLanguage, translationWindow, controller);
-        controller.explanationTab = new ExplanationTab("Explanation", initialLanguage, explanationWindow, controller);
+        controller.translationTab = new TranslatedQueryTab("Trans. " + original.name, initialLanguage, translationWindow, controller);
+        controller.explanationTab = new ExplanationTab("Exp. " + original.name, initialLanguage, explanationWindow, controller);
 
         await translationWindow.addTab(controller.translationTab, true, true);
         await explanationWindow.addTab(controller.explanationTab, true, true);
@@ -116,6 +116,11 @@ class TranslationController {
 
     async setLanguage(language: DatabaseLanguage) {
         await this.translationTab.setLanguage(language);
+    }
+
+    languageExists(language: DatabaseLanguage) {
+        const state = this.translations[language]
+        return state.loaded || state.loading;
     }
 
     private initializeTranslationState(language: DatabaseLanguage) {

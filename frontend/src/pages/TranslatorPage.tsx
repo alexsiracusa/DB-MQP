@@ -15,7 +15,7 @@ const TranslatorPage: React.FC = () => {
     const root = new WindowGroup(null, "horizontal")
 
     const tabWindow1 = new TabWindow(root);
-    const tab = new UserQueryTab("Query Tab", "PL/pgSQL", tabWindow1);
+    const tab = new UserQueryTab(null, "PL/pgSQL", tabWindow1);
     tabWindow1.setContent([tab])
 
     const tabWindow2 = new TabWindow(root);
