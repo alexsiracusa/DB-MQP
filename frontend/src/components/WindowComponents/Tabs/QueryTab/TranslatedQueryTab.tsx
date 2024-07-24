@@ -50,7 +50,7 @@ class TranslatedQueryTab extends QueryTab {
         // load if needed
         if (!this.isLoaded()) {
             this.query = "";
-            this.setEditorValue("");
+            this.editor()?.setValue("")
             this.controller.explanationTab.explanation = "";
 
             // set loading UI
@@ -65,7 +65,7 @@ class TranslatedQueryTab extends QueryTab {
         this.controller.explanationTab.explanation = this.controller.translations[this.language].explanation;
 
         // update UI
-        this.setEditorValue(this.query);
+        this.editor()?.setValue(this.query)
         await this.updateToolbar();
         await this.updateCode();
         await this.controller.explanationTab.forceUpdate();

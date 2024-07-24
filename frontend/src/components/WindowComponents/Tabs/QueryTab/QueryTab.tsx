@@ -48,13 +48,6 @@ abstract class QueryTab extends Tab {
         return (this.parent.editorOwner === this) ? this.parent.editor : null;
     }
 
-    setEditorValue(value: string) {
-        const editor = this.editor();
-        if (editor) {
-            editor.setValue(value);
-        }
-    }
-
     editorLanguage() {
         switch (this.language) {
             case "PL/SQL":
