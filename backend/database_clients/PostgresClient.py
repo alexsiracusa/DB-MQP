@@ -31,7 +31,7 @@ class PostgresClient:
             except Exception as e:
                 print(e)
 
-    async def fetch_rows(self, query: str):
+    async def execute(self, query: str):
         if not self._connection_pool:
             await self.connect()
         else:

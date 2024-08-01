@@ -20,7 +20,8 @@ async def execute_query(
     query: Query
 ):
     try:
-        result = await request.app.state.admin_db.fetch_rows(query.query)
+        db = request.app.state.admin_db
+        result = await db.execute(query.query)
         return {"result": result}
     except Exception as error:
         response.status_code = status.HTTP_400_BAD_REQUEST

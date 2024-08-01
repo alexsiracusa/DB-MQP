@@ -30,12 +30,9 @@ async def execute_query(
         db = request.app.state.mongo_client.get_database("mongodb")
         result = db.cursor_command(query)
         return {"result": json.loads(json_util.dumps(result))}
-    except pymongo.errors.OperationFailure as e:
-        response.status_code = status.HTTP_400_BAD_REQUEST
-        return {"error": str(e)}
     except Exception as error:
         response.status_code = status.HTTP_400_BAD_REQUEST
-        return {"error": error}
+        return {"error": str(error)}
 
 
 # required imports for this function
