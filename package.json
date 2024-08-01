@@ -4,7 +4,7 @@
   },
   "scripts": {
     "build": "cd frontend && npm run build",
-    "dev": "npm run build && concurrently \"cd backend && pipenv run python manage.py runserver\" \"cd frontend && npm run dev\""
+    "dev": "npm run build && concurrently \"cd backend && pipenv run fastapi dev main.py\n\" \"cd frontend && npm run dev\""
   },
   "dependencies": {
     "@google/generative-ai": "^0.12.0",
