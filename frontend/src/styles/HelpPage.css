@@ -25,30 +25,22 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-
+    
     height: 100%;
 
     background-color: #F6F6F6;
 }
 
+
 .help-page .sidebar a {
     font-family: Inter;
     font-weight: bold;
     color: black;
+    display: block;
 }
 
 .help-page .sidebar a:hover{
     color:#BDE3FF;
-}
-.help-page .content {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-
-    overflow-y: auto;
-    overflow-x: hidden;
-
-    height: 100%;
 }
 
 .help-page .content {
@@ -84,11 +76,17 @@
 
 .help-page .content-header{
     font-family: Raleway;
-    font-size: 40px;
     font-weight: bold;
     text-align: center;
 }
 
+.help-page .content-header h1{
+    font-size: 100px;
+}
+
+.help-page .content-header p{
+    font-size: 40px;
+}
 
 /*Set Gutter Colors*/
 .help-page .page-content .gutter {
