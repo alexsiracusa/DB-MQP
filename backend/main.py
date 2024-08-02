@@ -1,6 +1,6 @@
 from fastapi import FastAPI
-from backend.database_clients import PostgresClient, MongoClient
-import backend.database_clients as clients
+from backend.clients import PostgresClient, MongoClient
+import backend.clients as clients
 from .routers import postgres
 from .routers import mongodb
 from .routers import auth

@@ -1,4 +1,4 @@
-from ..config import Settings
+from backend.config import Settings
 import pymongo
 
 

@@ -1,3 +1,3 @@
 from .PostgresClient import *
 from .MongoClient import *
-from .clients import *
+from .client_instances import *

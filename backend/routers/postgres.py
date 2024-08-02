@@ -1,6 +1,6 @@
-from fastapi import APIRouter, Request, Response, status
+from fastapi import APIRouter, Response, status
 from pydantic import BaseModel
-import backend.database_clients as clients
+import backend.clients as clients
 
 
 class Query(BaseModel):
@@ -22,6 +22,7 @@ async def execute_query(
     try:
         result = await clients.postgres_client.fetch(query.query)
         return {"result": result}
+
     except Exception as error:
         response.status_code = status.HTTP_400_BAD_REQUEST
         return {"error": str(error)}
