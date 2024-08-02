@@ -45,9 +45,7 @@ const HelpPage = () => {
                     >
                         
 
-                        <PanelResizeHandle className={"gutter gutter-vertical"}/>
-
-                        <Panel>
+                        
                             <div className='page-content'>
                                 <div className="content-header">
                                     Help Page <br></br><br></br>
@@ -69,13 +67,13 @@ const HelpPage = () => {
                                     <p>A dropdown menu with the query languages available for translation will appear, and you can chose the one you want.</p>
                                     <img src={Translating2} alt="Translating a Query 2"></img>
                                     <br></br>
-                                    <p>Two new tabs will open, and you will be able to see the translated query with in-line comments, as well as a tab explaining the translation process.</p>
+                                    <p>Two new tabs will open, and you will be able to see the translated query with in-line comments, as well as a tab explaining the translation</p>
                                     <img src={Translating3} alt="Translating a Query 3"></img>
                                     <br></br>
                                 </div>
 
                             </div>
-                        </Panel>
+                        
                     </PanelGroup>
                 </Panel>
 

@@ -65,25 +65,28 @@
     background-color: #ffffff;
 }
 
+.help-page .content-section{
+
+}
+
 .help-page .content-section h1{
     font-family: Raleway;
     font-size: 40px;
     font-weight: bold;
-    align-items: center;
+    text-align: center;
 }
 
-.help-page.content-section p{
+.help-page .content-section p{
     font-family: Inter;
     font-size: 20px;
     font-weight: light;
 }
 
-
 .help-page .content-header{
     font-family: Raleway;
     font-size: 40px;
     font-weight: bold;
-    align-items: center;
+    text-align: center;
 }
 
 
