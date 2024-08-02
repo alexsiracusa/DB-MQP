@@ -9,6 +9,10 @@ import Translating2 from "../assets/HelpPageScreenshots/Translating2.png"
 import Translating3 from "../assets/HelpPageScreenshots/Translating3.png"
 import InsertingTab1 from "../assets/HelpPageScreenshots/InsertingTab1.png"
 import InsertingTab2 from "../assets/HelpPageScreenshots/InsertingTab2.png"
+import InsertingTabRight from "../assets/HelpPageScreenshots/InsertingTabRight.png"
+import InsertingTabLeft from "../assets/HelpPageScreenshots/InsertingTabLeft.png"
+import InsertingTabUp from "../assets/HelpPageScreenshots/InsertingTabUp.png"
+import InsertingTabDown from "../assets/HelpPageScreenshots/InsertingTabDown.png"
 
 const HelpPage = () => {
     return (
@@ -23,10 +27,12 @@ const HelpPage = () => {
                 <Panel
                     defaultSize={15}
                 >
+                    
+                    <div className="content-header">
+                    <a href="#Head">Sections</a>
+                    </div>
+
                     <div className='sidebar'>
-                        <div className="content-section">
-                        <h1>Sections</h1>
-                        </div>
                         <a href="#NewQuery">
                             Create a new query
                         </a>
@@ -43,14 +49,13 @@ const HelpPage = () => {
 
                 <Panel>
                     <PanelGroup
-                        className="help-content"
                         direction={"vertical"}
                     >
                         
 
                         
                             <div className='page-content'>
-                                <div className="content-header">
+                                <div className="content-header" id="Head">
                                 <br></br>
                                 <br></br>
                                 <br></br>
@@ -104,6 +109,17 @@ const HelpPage = () => {
                                     <p>A dropdown menu with the options for inserting new windows will appear, and you may select how you would like to insert a new window</p>
                                     <img src={InsertingTab2} alt="Inserting New Window 2"></img>
                                     <br></br>
+                                    <p>Inserting a window to the right will look like this:</p>
+                                    <img src={InsertingTabRight} alt="Inserting New Window on right"></img>
+                                    <br></br>
+                                    <p>Inserting a window to the left will look like this:</p>
+                                    <img src={InsertingTabLeft} alt="Inserting New Window on left"></img>
+                                    <br></br>
+                                    <p>Inserting a window up will look like this:</p>
+                                    <img src={InsertingTabUp} alt="Inserting New Window up"></img>
+                                    <br></br>
+                                    <p>Finally, inserting a window down will look like this:</p>
+                                    <img src={InsertingTabDown} alt="Inserting New Window down"></img>
                                 </div>
                             
 

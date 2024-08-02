@@ -12,7 +12,7 @@
 .help-page .page-content {
     display: flex;
     flex-direction: column;
-
+    align-items: ;
     overflow-y: auto;
     overflow-x: hidden;
 
@@ -36,11 +36,16 @@
     font-family: Inter;
     font-weight: bold;
     color: black;
-    display: block;
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 12px;
+    transition: background-color 0.3s, box-shadow 0.3s;
 }
 
 .help-page .sidebar a:hover{
-    color:#BDE3FF;
+    color:#ffffff;
+    background-color: #000000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .help-page .content {
@@ -74,17 +79,28 @@
     font-weight: light;
 }
 
-.help-page .content-header{
+.help-page .content-header a{
     font-family: Raleway;
     font-weight: bold;
+    color: black;
+    font-size: 40px;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    
+    height: 100%;
+
+    background-color: #F6F6F6;
 }
 
 .help-page .content-header h1{
     font-size: 100px;
+    text-align: center;
 }
 
 .help-page .content-header p{
+    text-align: center;
     font-size: 40px;
 }
 
@@ -96,7 +112,6 @@
 .help-page .content .gutter {
     background-color: #ffffff;
 }
-
 
 /*Default Button Settings*/
 .help-page .button {
