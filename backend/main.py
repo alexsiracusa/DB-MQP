@@ -1,5 +1,4 @@
 from fastapi import FastAPI
-from backend.clients import PostgresClient, MongoClient
 import backend.clients as clients
 from .routers import postgres
 from .routers import mongodb
@@ -13,6 +12,6 @@ app.include_router(auth.router)
 
 @app.on_event("startup")
 async def startup():
-    clients.postgres_client = PostgresClient()
-    clients.mongo_client = MongoClient()
+    clients.postgres_client = clients.PostgresClient()
+    clients.mongo_client = clients.MongoClient()
 
