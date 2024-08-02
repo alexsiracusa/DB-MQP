@@ -31,13 +31,25 @@ class PostgresClient:
             except Exception as e:
                 print(e)
 
-    async def execute(self, query: str):
+    async def fetch(self, query: str, *args):
+        async def fetch():
+            return await self.con.fetch(query, *args)
+
+        return await self._execute(fetch)
+
+    async def fetch_row(self, query: str, *args):
+        async def fetch_row():
+            return await self.con.fetchrow(query, *args)
+
+        return await self._execute(fetch_row)
+
+    async def _execute(self, get_result):
         if not self._connection_pool:
             await self.connect()
         else:
             self.con = await self._connection_pool.acquire()
             try:
-                result = await self.con.fetch(query)
+                result = await get_result()
                 return result
             except Exception:
                 raise

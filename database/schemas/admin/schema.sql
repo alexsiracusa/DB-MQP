@@ -1,5 +1,5 @@
 -- ===================================
--- SNAPT - Summer MQP '24
+-- SNAPT - Summer '24 MQP
 -- Lucas Lamenha, Gabe Olafsson, Ashleigh Perez, Alex Siracusa, Hanna Trinh
 --
 -- Admin Database Schema

@@ -11,6 +11,7 @@ psycopg2 = "*"
 jsonfield = "*"
 pymongo = "*"
 asyncpg = "*"
+bcrypt = "*"
 
 [dev-packages]
 
