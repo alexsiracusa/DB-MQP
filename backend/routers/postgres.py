@@ -1,7 +1,6 @@
 from fastapi import APIRouter, Request, Response, status
 from pydantic import BaseModel
-from typing import cast
-from ..database_clients import PostgresClient
+import backend.database_clients as clients
 
 
 class Query(BaseModel):
@@ -17,14 +16,12 @@ router = APIRouter(
 
 @router.post("/execute/")
 async def execute_query(
-    request: Request,
     response: Response,
     query: Query
 ):
     try:
-        db = cast(PostgresClient, request.app.state.admin_db)
-        result = await db.fetch(query.query)
+        result = await clients.postgres_client.fetch(query.query)
         return {"result": result}
     except Exception as error:
         response.status_code = status.HTTP_400_BAD_REQUEST
-        return {"error": error}
+        return {"error": str(error)}

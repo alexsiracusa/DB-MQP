@@ -1,6 +1,6 @@
-import pymongo.errors
 from fastapi import APIRouter, Request, Response, status
 from pydantic import BaseModel
+import backend.database_clients as clients
 from bson import json_util, ObjectId
 import json
 
@@ -18,7 +18,6 @@ router = APIRouter(
 
 @router.post("/execute/")
 async def execute_query(
-    request: Request,
     response: Response,
     query: Query
 ):
@@ -27,7 +26,7 @@ async def execute_query(
         if isinstance(query, str):
             query = json.loads(query)
 
-        db = request.app.state.mongo_client.get_database("mongodb")
+        db = clients.mongo_client.get_database("mongodb")
         result = db.cursor_command(query)
         return {"result": json.loads(json_util.dumps(result))}
     except Exception as error:

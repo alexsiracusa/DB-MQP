@@ -1,8 +1,7 @@
 from fastapi import APIRouter, Request, Response, status
 from pydantic import BaseModel
+import backend.database_clients as clients
 import bcrypt
-from typing import cast
-from ..database_clients import PostgresClient
 
 
 class AccountInfo(BaseModel):
@@ -19,19 +18,16 @@ router = APIRouter(
 
 @router.post("/register/")
 async def register(
-    request: Request,
     response: Response,
     account: AccountInfo
 ):
     try:
-        db = cast(PostgresClient, request.app.state.admin_db)
-
         # hashing password
         data = account.password.encode('utf-8')
         salt = bcrypt.gensalt()
         password_hash = bcrypt.hashpw(data, salt)
 
-        await db.fetch("""
+        await clients.postgres_client.fetch("""
             INSERT INTO Account (email, password_hash) VALUES ($1, $2);
         """, account.email, password_hash.decode('utf-8'))
 
@@ -58,10 +54,8 @@ async def login(
         _ = bcrypt.checkpw("".encode('utf-8'), dummy.encode('utf-8'))
 
     try:
-        db = cast(PostgresClient, request.app.state.admin_db)
-
         # get stored hash value from database
-        record = await db.fetch_row("""
+        record = await clients.postgres_client.fetch_row("""
             SELECT password_hash FROM Account WHERE lower(email)=lower($1)
         """, account.email)
 

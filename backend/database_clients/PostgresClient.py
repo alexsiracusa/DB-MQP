@@ -46,12 +46,12 @@ class PostgresClient:
     async def _execute(self, get_result):
         if not self._connection_pool:
             await self.connect()
-        else:
-            self.con = await self._connection_pool.acquire()
-            try:
-                result = await get_result()
-                return result
-            except Exception:
-                raise
-            finally:
-                await self._connection_pool.release(self.con)
+
+        self.con = await self._connection_pool.acquire()
+        try:
+            result = await get_result()
+            return result
+        except Exception:
+            raise
+        finally:
+            await self._connection_pool.release(self.con)
