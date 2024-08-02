@@ -1,0 +1,128 @@
+
+/*html, body {margin: 0; height: 100%; overflow: hidden}*/
+
+.help-page {
+    display: flex;
+    flex-direction: column;
+
+    width: 100vw;
+    height: 100vh;
+}
+
+.page-content {
+    display: flex;
+    flex-direction: row;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    height: 100%;
+
+    background-color: #E0EEFF;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    height: 100%;
+
+    background-color: #F6F6F6;
+}
+
+.sidebar a {
+    font-family: Inter;
+    font-weight: bold;
+    color: black;
+}
+
+.sidebar a:hover{
+    color:#BDE3FF;
+}
+.help-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    height: 100%;
+}
+
+.tab-container {
+    display: flex;
+    padding: 6px;
+    background-color: #E0EEFF;
+
+    width: 100%;
+    height: 100%;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    width: 100%;
+    height: 100%;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    background-color: #ffffff;
+}
+
+.content-section h1{
+    font-family: Raleway;
+    font-size: 40px;
+    font-weight: bold;
+    align-items: center;
+}
+
+.content-section p{
+    font-family: Inter;
+    font-size: 20px;
+    font-weight: light;
+}
+
+
+.content-header{
+    font-family: Raleway;
+    font-size: 40px;
+    font-weight: bold;
+    align-items: center;
+}
+
+
+/*Set Gutter Colors*/
+.page-content .gutter {
+    background-color: #F6F6F6;
+}
+
+.help-content .gutter {
+    background-color: #ffffff;
+}
+
+
+/*Default Button Settings*/
+.help-page button {
+    font-family: "IBM Plex Sans", sans-serif;
+
+    border-radius: 5px;
+    padding: 0 0.5em;
+    border: none;
+
+    background-color: transparent;
+}
+
+.help-page button:hover {
+    background-color: #F6F6F6;
+}
+
+.help-page button:focus,
+.help-page button:focus-visible {
+    outline: none;
+}
+
