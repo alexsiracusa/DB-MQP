@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Response, status
 from pydantic import BaseModel
 import backend.clients as clients
-from bson import json_util, ObjectId
+from bson import json_util, ObjectId  # <- ObjectId import is needed for proper json parsing of mongodb results
 import json
 
 
