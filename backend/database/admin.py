@@ -44,7 +44,7 @@ async def _create_session(account_id: int, host):
     return session_id
 
 
-async def register(account: AccountInfo):
+async def register(account: AccountInfo, host):
     # hash password
     password_hash = _hash_bcrypt_2b(account.password)
 
@@ -53,7 +53,7 @@ async def register(account: AccountInfo):
         VALUES ($1, $2) RETURNING id;
     """, account.email, password_hash)
 
-    return record
+    return await _create_session(record.get("id"), host)
 
 
 async def login(account: AccountInfo, host):
