@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import HelpIcon from "../assets/Icons/HelpIcon.svg"
+// import HelpIcon from "../assets/Icons/HelpIcon.svg"
 import '../styles/MenuButton.css'
 
 //<img src={HelpIcon} alt="Help" className="menu-button" />
