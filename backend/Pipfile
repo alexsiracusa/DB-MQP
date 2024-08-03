@@ -4,14 +4,14 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-djangorestframework = "*"
-django-jsonfield = "*"
+fastapi = "*"
 python-dotenv = "*"
-psycopg2 = "*"
-django-cors-headers = "*"
-jsonfield = "*"
 psycopg = "*"
+psycopg2 = "*"
+jsonfield = "*"
 pymongo = "*"
+asyncpg = "*"
+bcrypt = "*"
 
 [dev-packages]
 
