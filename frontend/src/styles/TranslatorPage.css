@@ -52,10 +52,6 @@
     height: 100%;
 }
 
-.tab-container .gutter {
-    background-color: #E0EEFF;
-}
-
 .translator-page .console {
     display: flex;
     flex-direction: column;
@@ -77,6 +73,10 @@
 
 .translator-page .code-content .gutter {
     background-color: #ffffff;
+}
+
+.translator-page .tab-container .gutter {
+    background-color: #E0EEFF;
 }
 
 
