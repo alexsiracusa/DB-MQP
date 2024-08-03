@@ -1,9 +1,12 @@
 from pydantic import BaseModel
+from fastapi import Request
 import backend.clients as clients
 from datetime import datetime, timedelta, timezone
 import hashlib
 import bcrypt
 import uuid
+
+# https://medium.com/@marcnealer/fastapi-http-authentication-f1bb2e8c3433
 
 
 class AccountInfo(BaseModel):
@@ -78,13 +81,35 @@ async def login(account: AccountInfo, host):
     return await _create_session(record.get("id"), host)
 
 
-async def authenticate(session_id):
+def set_session_cookie(response, session_id):
+    response.set_cookie(
+        key='session_id',
+        value=session_id,
+        max_age=timedelta(hours=24).total_seconds(),
+        expires=timedelta(hours=8).total_seconds(),
+        path='/',
+        secure=False,
+        httponly=True,
+        samesite="strict",
+    )
+
+
+async def authenticate(request: Request):
+    session_id = request.cookies.get('session_id')
+    if not session_id:
+        raise InvalidCredentials()
+
     account_info = await clients.postgres_client.fetch_row("""
-        SELECT id, email
-        FROM (
-            SELECT account_id FROM Session 
-            WHERE id = encode(digest($1, 'sha3-256'), 'hex')
+        WITH User_Session AS (
+            UPDATE Session SET last_activity = CURRENT_TIMESTAMP
+            WHERE (
+                id = encode(digest($1, 'sha3-256'), 'hex') AND
+                session_valid(expires_at::TIMESTAMP, last_activity::TIMESTAMP, timeout_duration::INTERVAL)
+            )
+            RETURNING account_id
         )
+        SELECT id, email 
+        FROM User_Session
         JOIN Account ON id = account_id;
     """, session_id)
 
