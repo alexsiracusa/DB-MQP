@@ -49,7 +49,8 @@ async def register(account: AccountInfo):
     password_hash = _hash_bcrypt_2b(account.password)
 
     record = await clients.postgres_client.fetch_row("""
-        INSERT INTO Account (email, password_hash) VALUES ($1, $2) RETURNING id;
+        INSERT INTO Account (email, password_hash) 
+        VALUES ($1, $2) RETURNING id;
     """, account.email, password_hash)
 
     return record
@@ -58,7 +59,9 @@ async def register(account: AccountInfo):
 async def login(account: AccountInfo, host):
     # get stored hash value from database
     record = await clients.postgres_client.fetch_row("""
-        SELECT id, password_hash FROM Account WHERE lower(email)=lower($1)
+        SELECT id, password_hash 
+        FROM Account 
+        WHERE lower(email)=lower($1)
     """, account.email)
 
     # check if account exists
@@ -74,3 +77,18 @@ async def login(account: AccountInfo, host):
 
     return await _create_session(record.get("id"), host)
 
+
+async def authenticate(session_id):
+    account_info = await clients.postgres_client.fetch_row("""
+        SELECT id, email
+        FROM (
+            SELECT account_id FROM Session 
+            WHERE id = encode(digest($1, 'sha3-256'), 'hex')
+        )
+        JOIN Account ON id = account_id;
+    """, session_id)
+
+    if account_info is None:
+        raise InvalidCredentials()
+
+    return account_info
