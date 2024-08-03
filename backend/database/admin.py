@@ -100,14 +100,16 @@ async def authenticate(request: Request):
         raise InvalidCredentials()
 
     account_info = await clients.postgres_client.fetch_row("""
-        SELECT id, email
-        FROM (
-            SELECT account_id FROM Session 
+        WITH User_Session AS (
+            UPDATE Session SET last_activity = CURRENT_TIMESTAMP
             WHERE (
                 id = encode(digest($1, 'sha3-256'), 'hex') AND
                 session_valid(expires_at::TIMESTAMP, last_activity::TIMESTAMP, timeout_duration::INTERVAL)
             )
+            RETURNING account_id
         )
+        SELECT id, email 
+        FROM User_Session
         JOIN Account ON id = account_id;
     """, session_id)
 
