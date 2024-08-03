@@ -18,13 +18,13 @@ CREATE TABLE Account (
 CREATE UNIQUE INDEX ON Account ((lower(email)));
 
 CREATE TABLE Session (
-    id                  TEXT        PRIMARY KEY,    --This is the bcrypt hash of a uuid
-    ip_address          INET        NOT NULL,
-    account_id          INT         REFERENCES Account(id),
-    session_start       TIMESTAMP   NOT NULL,
-    expires_at          TIMESTAMP   NOT NULL,
-    last_activity       TIMESTAMP   NOT NULL,
-    timeout_duration    INTERVAL    NOT NULL
+    id                  TEXT            PRIMARY KEY,    --This is the bcrypt hash of a uuid
+    ip_address          INET            NOT NULL,
+    account_id          INT             REFERENCES Account(id),
+    session_start       TIMESTAMPTZ     NOT NULL,
+    expires_at          TIMESTAMPTZ     NOT NULL,
+    last_activity       TIMESTAMPTZ     NOT NULL,
+    timeout_duration    INTERVAL        NOT NULL
 );
 
 CREATE INDEX session_account_b_tree_index ON Session USING BTREE (account_id);

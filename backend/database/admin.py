@@ -1,6 +1,9 @@
 from pydantic import BaseModel
 import backend.clients as clients
+from datetime import datetime, timedelta, timezone
+import hashlib
 import bcrypt
+import uuid
 
 
 class AccountInfo(BaseModel):
@@ -13,20 +16,46 @@ class InvalidCredentials(Exception):
         super().__init__("Invalid username or password")
 
 
+def _hash_bcrypt_2b(value):
+    data = value.encode('utf-8')
+    salt = bcrypt.gensalt(prefix=b'2b')
+    return bcrypt.hashpw(data, salt).decode('utf-8')
+
+
+def _hash_sha3_256(value):
+    sha = hashlib.sha3_256()
+    sha.update(value.encode('utf-8'))
+    return sha.hexdigest()
+
+
+async def _create_session(account_id: int, host):
+    session_id = str(uuid.uuid4())
+    session_hash = _hash_sha3_256(session_id)
+    session_start = datetime.now(timezone.utc)
+    expires_at = session_start + timedelta(hours=24)
+    last_activity = session_start
+    timout_duration = timedelta(hours=8)
+
+    await clients.postgres_client.fetch_row("""
+        INSERT INTO Session (id, ip_address, account_id, session_start, expires_at, last_activity, timeout_duration)
+        VALUES ($1, $2, $3, $4, $5, $6, $7)
+    """, session_hash, host, account_id, session_start, expires_at, last_activity, timout_duration)
+
+    return session_id
+
+
 async def register(account: AccountInfo):
-    # hashing password
-    data = account.password.encode('utf-8')
-    salt = bcrypt.gensalt()
-    password_hash = bcrypt.hashpw(data, salt)
+    # hash password
+    password_hash = _hash_bcrypt_2b(account.password)
 
     record = await clients.postgres_client.fetch_row("""
         INSERT INTO Account (email, password_hash) VALUES ($1, $2) RETURNING id;
-    """, account.email, password_hash.decode('utf-8'))
+    """, account.email, password_hash)
 
     return record
 
 
-async def login(account: AccountInfo):
+async def login(account: AccountInfo, host):
     # get stored hash value from database
     record = await clients.postgres_client.fetch_row("""
         SELECT id, password_hash FROM Account WHERE lower(email)=lower($1)
@@ -43,5 +72,5 @@ async def login(account: AccountInfo):
     if not password_correct:
         raise InvalidCredentials()
 
-    return record
+    return await _create_session(record.get("id"), host)
 

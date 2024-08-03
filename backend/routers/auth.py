@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Response, status
+from fastapi import APIRouter, Response, Request, status
 from ..database import AccountInfo, InvalidCredentials, admin
 
 
@@ -25,13 +25,14 @@ async def register(
 
 @router.post("/login/")
 async def login(
+    request: Request,
     response: Response,
     account: AccountInfo
 ):
     try:
-        record = await admin.login(account)
+        session_id = await admin.login(account, request.client.host)
         response.status_code = status.HTTP_200_OK
-        return {"result": record.get("id")}
+        return {"session_id": session_id}
 
     except InvalidCredentials as error:
         response.status_code = status.HTTP_401_UNAUTHORIZED
