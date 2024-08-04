@@ -21,18 +21,15 @@ const HelpPage = () => {
                 <Navbar></Navbar>
                 
                 <PanelGroup
-                className="page-content"
+                
                 direction={"horizontal"}
             >
-                <Panel
-                    defaultSize={15}
-                >
+                
                     
-                    <div className="content-header">
-                    <a href="#Head">Sections</a>
-                    </div>
+                   
 
                     <div className='sidebar'>
+                        <a href="#Head" id="sidebar-header">Sections</a>
                         <a href="#NewQuery">
                             Create a new query
                         </a>
@@ -43,8 +40,7 @@ const HelpPage = () => {
                             Inserting New Windows
                         </a>
                     </div>
-                    
-                </Panel>
+                
 
 
                 <Panel>
