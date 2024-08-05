@@ -107,11 +107,13 @@ async def authenticate(request: Request):
     if not session_id:
         raise InvalidCredentials()
 
+    session_id_hash = util.hash_sha3_256(session_id)
+
     account_info = await clients.postgres_client.fetch_row("""
         WITH Account_Session AS (
             UPDATE Session SET last_activity = CURRENT_TIMESTAMP
             WHERE (
-                id = encode(digest($1, 'sha3-256'), 'hex') AND
+                id = $1 AND
                 session_valid(expires_at::TIMESTAMP, last_activity::TIMESTAMP, timeout_duration::INTERVAL)
             )
             RETURNING account_id
@@ -119,7 +121,7 @@ async def authenticate(request: Request):
         SELECT id, email 
         FROM Account_Session
         JOIN Account ON id = account_id;
-    """, session_id)
+    """, session_id_hash)
 
     if account_info is None:
         raise InvalidCredentials()
