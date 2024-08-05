@@ -1,5 +1,6 @@
-from fastapi import APIRouter, Response, status
+from fastapi import APIRouter, Response, Request, status
 from pydantic import BaseModel
+from ..exceptions import NotLoggedIn
 import backend.clients as clients
 
 
@@ -16,11 +17,17 @@ router = APIRouter(
 
 @router.post("/execute/")
 async def execute_query(
+    request: Request,
     response: Response,
     query: Query
 ):
     try:
-        result = await clients.postgres_client.fetch(query.query)
+        account_info = request.user
+        if account_info is None:
+            raise NotLoggedIn()
+
+        con = clients.UserConnection(account_info.get("id"))
+        result = await con.execute_postgres(query.query)
         return {"result": result}
 
     except Exception as error:

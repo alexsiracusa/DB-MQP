@@ -13,7 +13,11 @@ app.include_router(auth.router)
 
 @app.on_event("startup")
 async def startup():
-    clients.postgres_client = clients.PostgresClient()
+    # Server for storing account data
+    clients.admin_client = clients.AdminClient()
+
+    # Servers for storing account databases
+    clients.postgres_client = clients.PostgresClient
     clients.mongo_client = clients.MongoClient()
 
 

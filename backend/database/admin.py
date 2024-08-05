@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 from fastapi import Request
 from datetime import datetime, timedelta, timezone
+from ..exceptions import InvalidCredentials
 import uuid
 
 import backend.database.util as util
@@ -14,11 +15,6 @@ class AccountInfo(BaseModel):
     password: str
 
 
-class InvalidCredentials(Exception):
-    def __init__(self):
-        super().__init__("Invalid username or password")
-
-
 async def _create_session(account_id: int, host):
     session_id = str(uuid.uuid4())
     session_hash = util.hash_sha3_256(session_id)
@@ -27,7 +23,7 @@ async def _create_session(account_id: int, host):
     last_activity = session_start
     timout_duration = timedelta(hours=8)
 
-    await clients.postgres_client.fetch_row("""
+    await clients.admin_client.fetch_row("""
         INSERT INTO Session (id, ip_address, account_id, session_start, expires_at, last_activity, timeout_duration)
         VALUES ($1, $2, $3, $4, $5, $6, $7)
     """, session_hash, host, account_id, session_start, expires_at, last_activity, timout_duration)
@@ -35,7 +31,7 @@ async def _create_session(account_id: int, host):
     return session_id
 
 
-async def _create_account_database(account_id):
+async def _create_postgres_db_for(account_id):
     account_name = util.database_account_name_for(account_id)
     db_name = util.database_name_for(account_id)
 
@@ -52,24 +48,38 @@ async def _create_account_database(account_id):
     """)
 
 
+async def _create_mongo_db_for(account_id):
+    pass
+
+    # Do something with this:
+    # db.createUser({
+    #     user: "testUser",
+    #     pwd: "password",
+    #     roles: [
+    #         {role: "readWrite", db: "<your_database>"}
+    #     ]
+    # })
+
+
 async def register(account: AccountInfo, host):
     # hash password
     password_hash = util.hash_bcrypt_2b(account.password)
 
-    record = await clients.postgres_client.fetch_row("""
+    record = await clients.admin_client.fetch_row("""
         INSERT INTO Account (email, password_hash) 
         VALUES ($1, $2) RETURNING id;
     """, account.email, password_hash)
 
     account_id = record.get("id")
-    await _create_account_database(account_id)
+    await _create_postgres_db_for(account_id)
+    await _create_mongo_db_for(account_id)
 
     return await _create_session(account_id, host)
 
 
 async def login(account: AccountInfo, host):
     # get stored hash value from database
-    record = await clients.postgres_client.fetch_row("""
+    record = await clients.admin_client.fetch_row("""
         SELECT id, password_hash 
         FROM Account 
         WHERE lower(email)=lower($1)
@@ -89,19 +99,6 @@ async def login(account: AccountInfo, host):
     return await _create_session(record.get("id"), host)
 
 
-def set_session_cookie(response, session_id):
-    response.set_cookie(
-        key='session_id',
-        value=session_id,
-        max_age=timedelta(hours=24).total_seconds(),
-        expires=timedelta(hours=8).total_seconds(),
-        path='/',
-        secure=False,
-        httponly=True,
-        samesite="strict",
-    )
-
-
 async def authenticate(request: Request):
     session_id = request.cookies.get('session_id')
     if not session_id:
@@ -109,7 +106,7 @@ async def authenticate(request: Request):
 
     session_id_hash = util.hash_sha3_256(session_id)
 
-    account_info = await clients.postgres_client.fetch_row("""
+    account_info = await clients.admin_client.fetch_row("""
         WITH Account_Session AS (
             UPDATE Session SET last_activity = CURRENT_TIMESTAMP
             WHERE (
@@ -127,3 +124,16 @@ async def authenticate(request: Request):
         raise InvalidCredentials()
 
     return account_info
+
+
+def set_session_cookie(response, session_id):
+    response.set_cookie(
+        key='session_id',
+        value=session_id,
+        max_age=timedelta(hours=24).total_seconds(),
+        expires=timedelta(hours=8).total_seconds(),
+        path='/',
+        secure=False,
+        httponly=True,
+        samesite="strict",
+    )

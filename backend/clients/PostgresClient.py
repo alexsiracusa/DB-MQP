@@ -58,3 +58,6 @@ class PostgresClient:
             raise
         finally:
             await self._connection_pool.release(self.con)
+
+
+postgres_client: PostgresClient = None
