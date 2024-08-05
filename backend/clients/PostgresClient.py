@@ -34,14 +34,17 @@ class PostgresClient:
     async def fetch(self, query: str, *args):
         async def fetch():
             return await self.con.fetch(query, *args)
-
         return await self._execute(fetch)
 
     async def fetch_row(self, query: str, *args):
         async def fetch_row():
             return await self.con.fetchrow(query, *args)
-
         return await self._execute(fetch_row)
+
+    async def execute(self, query: str, *args):
+        async def execute():
+            return await self.con.execute(query, *args)
+        return await self._execute(execute)
 
     async def _execute(self, get_result):
         if not self._connection_pool:

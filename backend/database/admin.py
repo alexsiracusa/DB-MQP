@@ -1,10 +1,10 @@
 from pydantic import BaseModel
 from fastapi import Request
-import backend.clients as clients
 from datetime import datetime, timedelta, timezone
-import hashlib
-import bcrypt
 import uuid
+
+import backend.database.util as util
+import backend.clients as clients
 
 # https://medium.com/@marcnealer/fastapi-http-authentication-f1bb2e8c3433
 
@@ -19,21 +19,9 @@ class InvalidCredentials(Exception):
         super().__init__("Invalid username or password")
 
 
-def _hash_bcrypt_2b(value):
-    data = value.encode('utf-8')
-    salt = bcrypt.gensalt(prefix=b'2b')
-    return bcrypt.hashpw(data, salt).decode('utf-8')
-
-
-def _hash_sha3_256(value):
-    sha = hashlib.sha3_256()
-    sha.update(value.encode('utf-8'))
-    return sha.hexdigest()
-
-
 async def _create_session(account_id: int, host):
     session_id = str(uuid.uuid4())
-    session_hash = _hash_sha3_256(session_id)
+    session_hash = util.hash_sha3_256(session_id)
     session_start = datetime.now(timezone.utc)
     expires_at = session_start + timedelta(hours=24)
     last_activity = session_start
@@ -47,16 +35,36 @@ async def _create_session(account_id: int, host):
     return session_id
 
 
+async def _create_account_database(account_id):
+    account_name = util.database_account_name_for(account_id)
+    db_name = util.database_name_for(account_id)
+
+    await clients.postgres_client.execute(f"""
+        CREATE USER {account_name};
+    """)
+
+    await clients.postgres_client.execute(f"""
+        CREATE DATABASE {db_name} OWNER {account_name};
+    """)
+
+    await clients.postgres_client.execute(f"""
+        REVOKE ALL ON DATABASE {db_name} FROM PUBLIC;
+    """)
+
+
 async def register(account: AccountInfo, host):
     # hash password
-    password_hash = _hash_bcrypt_2b(account.password)
+    password_hash = util.hash_bcrypt_2b(account.password)
 
     record = await clients.postgres_client.fetch_row("""
         INSERT INTO Account (email, password_hash) 
         VALUES ($1, $2) RETURNING id;
     """, account.email, password_hash)
 
-    return await _create_session(record.get("id"), host)
+    account_id = record.get("id")
+    await _create_account_database(account_id)
+
+    return await _create_session(account_id, host)
 
 
 async def login(account: AccountInfo, host):
@@ -73,7 +81,7 @@ async def login(account: AccountInfo, host):
 
     # validate password
     password_hash = record.get('password_hash')
-    password_correct = bcrypt.checkpw(account.password.encode('utf-8'), password_hash.encode('utf-8'))
+    password_correct = util.check_password(account.password, password_hash)
 
     if not password_correct:
         raise InvalidCredentials()
@@ -100,7 +108,7 @@ async def authenticate(request: Request):
         raise InvalidCredentials()
 
     account_info = await clients.postgres_client.fetch_row("""
-        WITH User_Session AS (
+        WITH Account_Session AS (
             UPDATE Session SET last_activity = CURRENT_TIMESTAMP
             WHERE (
                 id = encode(digest($1, 'sha3-256'), 'hex') AND
@@ -109,7 +117,7 @@ async def authenticate(request: Request):
             RETURNING account_id
         )
         SELECT id, email 
-        FROM User_Session
+        FROM Account_Session
         JOIN Account ON id = account_id;
     """, session_id)
 
