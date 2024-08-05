@@ -11,3 +11,6 @@ def MongoClient():
         serverSelectionTimeoutMS=1,
         maxPoolSize=5
     )
+
+
+mongo_client: MongoClient = None

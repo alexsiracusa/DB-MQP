@@ -17,6 +17,7 @@ CREATE TABLE Account (
 
 CREATE UNIQUE INDEX ON Account ((lower(email)));
 
+
 CREATE TABLE Session (
     id                  TEXT            PRIMARY KEY,    --This is the bcrypt hash of a uuid
     ip_address          INET            NOT NULL,

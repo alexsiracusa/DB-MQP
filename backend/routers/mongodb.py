@@ -1,5 +1,6 @@
-from fastapi import APIRouter, Response, status
+from fastapi import APIRouter, Response, Request, status
 from pydantic import BaseModel
+from ..exceptions import NotLoggedIn
 import backend.clients as clients
 from bson import json_util, ObjectId  # <- ObjectId import is needed for proper json parsing of mongodb results
 import json
@@ -18,16 +19,21 @@ router = APIRouter(
 
 @router.post("/execute/")
 async def execute_query(
+    request: Request,
     response: Response,
     query: Query
 ):
     try:
+        account_info = request.user
+        if account_info is None:
+            raise NotLoggedIn()
+
         query = query.query
         if isinstance(query, str):
             query = json.loads(query)
 
-        db = clients.mongo_client.get_database("mongodb")
-        result = db.cursor_command(query)
+        con = clients.UserConnection(account_info.get("id"))
+        result = await con.execute_mongo(query)
         return {"result": json.loads(json_util.dumps(result))}
 
     except Exception as error:
