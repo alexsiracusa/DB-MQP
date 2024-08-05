@@ -10,7 +10,7 @@ const Navbar: React.FC = () => {
   };
 
     return(
-      <nav className="flex items-center bg-blue-800 p-3 flex-wrap">
+      <nav className="flex items-center bg-blue-800 p-3 flex-wrap z-10">
       <a href="#" className="p-2 mr-4 inline-flex items-center">
         <svg
           viewBox="0 0 24 24"
