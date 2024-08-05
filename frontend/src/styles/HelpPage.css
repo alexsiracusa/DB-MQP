@@ -7,7 +7,6 @@
 }
 
 .help-page .page-content {
-    display: flex;
     flex-direction: column;
     overflow-y: auto;
     overflow-x: hidden;
@@ -20,6 +19,7 @@
 
 .help-page .sidebar {
     display: flex;
+    z-index: 5;
     flex-direction: column;
     align-items: flex-start;
     width: 15em;
@@ -36,20 +36,40 @@
     font-family: Inter;
     font-weight: bold;
     font-size: 1em;
+    text-align: left;
     color: black;
     display: inline-block;
+    margin-left: 0.1em;
     padding: 0.5em 1em;
     border-radius: 0.6em;
     transition: background-color 0.3s, box-shadow 0.3s;
 }
 
 .help-page .sidebar a:hover{
-    color:#ffffff;
-    background-color: #000000;
+    color:black;
+    background-color: lightgray;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-left: 0.2em;
+    padding: 0.5em 0.75em;
+    
 }
 
-/* .help-page .content {
+#sidebar-header{
+    font-family: Raleway;
+    font-weight: bold;
+    color: black;
+    font-size: 2em;
+    text-align: left;
+    padding: 0.5em;
+    margin-left: 0;
+    background-color: #F6F6F6;
+}
+#sidebar-header:hover{
+    border:none;
+    box-shadow: none;
+}
+
+.help-page .content {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -61,7 +81,7 @@
     overflow-x: hidden;
 
     background-color: #ffffff;
-} */
+}
 
 .help-page .page-content .content-section{
     margin-bottom: 4em;
@@ -99,21 +119,14 @@
     max-height: 150em;
 }
 
-#sidebar-header{
-    font-family: Raleway;
-    font-weight: bold;
-    color: black;
-    font-size: 2em;
-    text-align: center;
-    display: flex;
-    align-items: flex-start;
-    margin-left: 0px;
 
-    background-color: #F6F6F6;
-}
-#sidebar-header:hover{
-    border:none;
-    box-shadow: none;
+.help-page .page-content .content-header{
+    height: 100vh;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .help-page .page-content .content-header a{
@@ -137,8 +150,10 @@
 }
 
 .help-page .content-header p{
-    text-align: center;
+    font-family: Inter;
     font-size: 1em;
+    font-weight: light;
+    padding-left: 2em;
 }
 
 /*Set Gutter Colors*/

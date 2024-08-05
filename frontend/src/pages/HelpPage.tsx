@@ -1,6 +1,5 @@
 import Navbar from "../components/Navbar.tsx";
 import {Panel, PanelGroup} from "react-resizable-panels";
-import '../styles/Gutters.css';
 import '../styles/HelpPage.css'
 import NewQuery1 from "../assets/HelpPageScreenshots/NewQuery1.png"
 import NewQuery2 from "../assets/HelpPageScreenshots/NewQuery2.png"
@@ -52,29 +51,14 @@ const HelpPage = () => {
                         
                             <div className='page-content'>
                                 <div className="content-header" id="Head">
-                                <br></br>
-                                <br></br>
-                                <br></br>
-                                <br></br>
-                                <br></br>
-                                <br></br>
-                                <br></br>
+                               
                                     <h1>Help Page</h1> 
                                     <br></br><br></br><br></br>
                                     <p>Welcome to our Help Page. <br></br><br></br>This is where you can learn how to use our application to its fullest potential :)
                                     <br></br><br></br>
                                     Refer to our sections on the sidebar or scroll down and look through our tutorials</p>
                                     <br></br>
-                                    <br></br>
-                                    <br></br>
-                                    <br></br>
-                                    <br></br>
-                                    <br></br>
-                                    <br></br>
-                                    <br></br>
-                                    <br></br>
-                                    <br></br>
-                                    <br></br>
+                                 
                                 </div>
                                 <div id="NewQuery" className="content-section">
                                     <h1>Create a new query</h1><br></br>
