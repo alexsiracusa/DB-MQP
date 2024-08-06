@@ -1,7 +1,7 @@
 import '../styles/TranslatorPage.css'
 import '../styles/Gutters.css'
 
-import Navbar from '../components/Navbar.tsx'
+import TopNavBar from "../components/TopNavBar.tsx";
 import React from "react";
 import WindowContainer from "../components/WindowComponents/WindowContainer.tsx";
 import TabWindow from "../components/WindowComponents/Windows/TabWindow/TabWindow.tsx";
@@ -88,7 +88,7 @@ const TranslatorPage: React.FC = () => {
 
     return (
         <div className='translator-page'>
-            <Navbar/>
+            <TopNavBar/>
 
             <PanelGroup
                 className="page-content"
