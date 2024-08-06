@@ -1,3 +1,4 @@
+import "../../styles/Console.css"
 
 import Console from "./Console.tsx";
 import {updateState, useStateCallback} from "../../useStateCallback.tsx";
@@ -12,9 +13,9 @@ function ConsoleComponent(props: ConsoleComponentProps) {
     self.forceUpdate = updateState(setState);
 
     return (
-        <>
+        <div className="query-console">
             {self.content}
-        </>
+        </div>
     )
 }
 
