@@ -48,7 +48,7 @@
 .help-page .sidebar a:hover{
     color:black;
     background-color: lightgray;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
     margin-left: 1em;
     padding: 0.5em 0.75em;
     transition: background-color 0.3s, box-shadow 0.3s;
