@@ -35,14 +35,17 @@ async def _create_postgres_db_for(account_id):
     account_name = util.database_account_name_for(account_id)
     db_name = util.database_name_for(account_id)
 
+    print("aaaaaaaaaa")
     await clients.postgres_client.execute(f"""
         CREATE USER {account_name};
     """)
 
+    print("aaaaaaaaaa")
     await clients.postgres_client.execute(f"""
         CREATE DATABASE {db_name} OWNER {account_name};
     """)
 
+    print("aaaaaaaaaa")
     await clients.postgres_client.execute(f"""
         REVOKE ALL ON DATABASE {db_name} FROM PUBLIC;
     """)

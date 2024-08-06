@@ -30,7 +30,7 @@ async def startup():
     clients.admin_client = clients.AdminClient()
 
     # Servers for storing account databases
-    clients.postgres_client = clients.PostgresClient
+    clients.postgres_client = clients.PostgresClient()
     clients.mongo_client = clients.MongoClient()
 
 

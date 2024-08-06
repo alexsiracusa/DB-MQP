@@ -5,6 +5,7 @@ import {useState} from "react";
 
 function AccountIcon() {
     const [loginPopup, setLoginPopup] = useState(false);
+    const [letter, setLetter] = useState('A')
 
     function closeModal() {
         setLoginPopup(false);
@@ -18,13 +19,16 @@ function AccountIcon() {
                     setLoginPopup(!loginPopup)
                 }}
             >
-                ?
+                {letter}
             </button>
 
             {loginPopup &&
                 <>
                     <div className="login-modal-container">
-                        <LoginModal close={closeModal}/>
+                        <LoginModal
+                            close={closeModal}
+                            setIcon={setLetter}
+                        />
                     </div>
 
                     <div
