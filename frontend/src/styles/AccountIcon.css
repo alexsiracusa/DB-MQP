@@ -4,12 +4,13 @@
     width: fit-content;
 }
 
-.account-icon-container button {
+.account-icon-container .icon {
     padding: 0;
     border: none;
 }
 
-.account-icon-container button:hover {
+.account-icon-container .icon:hover {
+    background-color: #429195;
     border: none;
 }
 
@@ -38,7 +39,7 @@
     min-height: 300px;
     border-radius: 10px;
 
-    z-index: 2;
+    z-index: 3;
     background-color: white;
     box-shadow: 0 0 16px rgba(0, 0, 0, 0.2);
 }
@@ -51,5 +52,5 @@
     left: 0;
     opacity: 0.2;
     background-color: black;
-    z-index: 1;
+    z-index: 2;
 }
