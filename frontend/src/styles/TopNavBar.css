@@ -2,6 +2,8 @@
 .nav-container {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    gap: 0.5em;
 
     width: 100%;
     padding: 1rem;
@@ -46,4 +48,8 @@
 
 .nav-container .links span:hover {
     background-color: #121826;
+}
+
+.nav-container .account-icon {
+    width: fit-content;
 }

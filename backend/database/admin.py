@@ -135,5 +135,5 @@ def set_session_cookie(response, session_id):
         path='/',
         secure=False,
         httponly=True,
-        samesite="strict",
+        samesite='strict'
     )
