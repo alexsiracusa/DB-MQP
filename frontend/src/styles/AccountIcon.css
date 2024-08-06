@@ -35,8 +35,8 @@
     left: 50%;
     transform: translate(-50%, -50%);
 
-    min-width: 300px;
-    min-height: 300px;
+    width: fit-content;
+    height: fit-content;
     border-radius: 10px;
 
     z-index: 3;

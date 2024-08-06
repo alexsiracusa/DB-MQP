@@ -1,4 +1,5 @@
 from fastapi import FastAPI, Request
+from fastapi.middleware.cors import CORSMiddleware
 import backend.clients as clients
 from .database import admin, InvalidCredentials
 from .routers import postgres
@@ -9,6 +10,18 @@ app = FastAPI()
 app.include_router(postgres.router)
 app.include_router(mongodb.router)
 app.include_router(auth.router)
+
+origins = [
+    "http://localhost:5173"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.on_event("startup")
