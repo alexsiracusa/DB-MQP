@@ -1,22 +1,32 @@
-import {Navbar, Nav} from "react-bootstrap";
-import {Link} from "react-router-dom";
 import "../styles/TopNavBar.css";
+import Logo from "../assets/Icons/NavbarStack.png";
+import {useNavigate} from 'react-router-dom';
+
 
 const TopNavBar = () => {
+    const navigate = useNavigate();
+
+    const handleNavigation = (path: string) => {
+        navigate(path);
+    };
+
     return (
-        <>
-            <Navbar expand="md" sticky="top" className={"pl-5 pr-2 navbar-custom"}>
-                <Navbar.Brand href="/">Logo</Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav"/>
-                <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="ml-auto">
-                        <Nav.Link as={Link} to="/home">Home</Nav.Link>
-                        <Nav.Link as={Link} to="/document">Document</Nav.Link>
-                    </Nav>
-                </Navbar.Collapse>
-            </Navbar>
-        </>
-    );
+        <nav className="nav-container">
+            <div
+                className="logo"
+                onClick={() => handleNavigation('/')}
+            >
+                <img src={Logo}/>
+                Relational Remodel
+            </div>
+
+            <div className="links">
+                <span onClick={() => handleNavigation('/translator')}>Translator</span>
+                <span onClick={() => handleNavigation('/documentation')}>Documentation</span>
+                <span onClick={() => handleNavigation('/help')}>Help</span>
+            </div>
+        </nav>
+    )
 }
 
 export default TopNavBar;

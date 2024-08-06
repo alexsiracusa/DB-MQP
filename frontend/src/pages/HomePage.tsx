@@ -1,4 +1,4 @@
-import Navbar from '../components/Navbar.tsx';
+import Navbar from '../components/TopNavBar.tsx';
 import '../styles/HomePage.css'
 import HeroSection from "./HomePageSections/HeroSection.tsx";
 import QueriesSection from "./HomePageSections/QueriesSection.tsx";
