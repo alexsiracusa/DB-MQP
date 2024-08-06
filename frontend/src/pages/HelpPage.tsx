@@ -6,12 +6,12 @@ import QueryEmpty from "../assets/HelpPageScreenshots/QueryEmpty.png"
 import Query from "../assets/HelpPageScreenshots/Query.png"
 import QueryWTranslate from "../assets/HelpPageScreenshots/Query+Translate.png"
 import FullTranslation from "../assets/HelpPageScreenshots/FullTranslation.png"
-import InsertingTab1 from "../assets/HelpPageScreenshots/InsertingTab1.png"
-import InsertingTab2 from "../assets/HelpPageScreenshots/InsertingTab2.png"
+import InsertingTab from "../assets/HelpPageScreenshots/InsertingTab.png"
 import InsertingTabRight from "../assets/HelpPageScreenshots/InsertingTabRight.png"
 import InsertingTabLeft from "../assets/HelpPageScreenshots/InsertingTabLeft.png"
 import InsertingTabUp from "../assets/HelpPageScreenshots/InsertingTabUp.png"
 import InsertingTabDown from "../assets/HelpPageScreenshots/InsertingTabDown.png"
+import Inserting2Tabs from "../assets/HelpPageScreenshots/Inserting2Tabs.png"
 
 const HelpPage = () => {
     return (
@@ -85,13 +85,13 @@ const HelpPage = () => {
                                 </div>
                                 <div id="InsertingWindows" className="content-section">
                                     <h1>Inserting New Windows</h1><br></br>
-                                    <p>To insert a new window, press the menu button on the top right area of your
+                                    <p>To insert a new window, press the menu button (...) on the top right area of your
                                         window. </p>
-                                    <img src={InsertingTab1} alt="Inserting New Window 1"></img>
+                                    <img src={Query} alt="Query"></img>
                                     <br></br>
                                     <p>A dropdown menu with the options for inserting new windows will appear, and you
                                         may select how you would like to insert a new window</p>
-                                    <img src={InsertingTab2} alt="Inserting New Window 2"></img>
+                                    <img src={InsertingTab} alt="InsertingTab"></img>
                                     <br></br>
                                     <p>Inserting a window to the right will look like this:</p>
                                     <img src={InsertingTabRight} alt="Inserting New Window on right"></img>
@@ -104,6 +104,9 @@ const HelpPage = () => {
                                     <br></br>
                                     <p>Finally, inserting a window down will look like this:</p>
                                     <img src={InsertingTabDown} alt="Inserting New Window down"></img>
+                                    <br></br>
+                                    <p>It is also possible to combine these options to insert multiple tabs</p>
+                                    <img src={Inserting2Tabs} alt="Inserting2Tabs"></img>
                                 </div>
 
 
