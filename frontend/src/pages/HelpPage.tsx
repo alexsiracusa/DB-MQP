@@ -1,11 +1,11 @@
 import Navbar from "../components/TopNavBar.tsx";
 import {Panel, PanelGroup} from "react-resizable-panels";
 import '../styles/HelpPage.css'
-import NewQuery1 from "../assets/HelpPageScreenshots/NewQuery1.png"
-import NewQuery2 from "../assets/HelpPageScreenshots/NewQuery2.png"
-import Translating1 from "../assets/HelpPageScreenshots/Translating1.png"
-import Translating2 from "../assets/HelpPageScreenshots/Translating2.png"
-import Translating3 from "../assets/HelpPageScreenshots/Translating3.png"
+import NewTab from "../assets/HelpPageScreenshots/NewTab.png"
+import QueryEmpty from "../assets/HelpPageScreenshots/QueryEmpty.png"
+import Query from "../assets/HelpPageScreenshots/Query.png"
+import QueryWTranslate from "../assets/HelpPageScreenshots/Query+Translate.png"
+import FullTranslation from "../assets/HelpPageScreenshots/FullTranslation.png"
 import InsertingTab1 from "../assets/HelpPageScreenshots/InsertingTab1.png"
 import InsertingTab2 from "../assets/HelpPageScreenshots/InsertingTab2.png"
 import InsertingTabRight from "../assets/HelpPageScreenshots/InsertingTabRight.png"
@@ -62,25 +62,25 @@ const HelpPage = () => {
                                     <h1>Create a new query</h1><br></br>
                                     <p>To create a new query, press the "New Query" button upon reaching the Translator
                                         page </p>
-                                    <img src={NewQuery1} alt="Create New Query 1"></img>
+                                    <img src={NewTab} alt="Create New Query 1"></img>
                                     <br></br>
                                     <p>After that, a new tab where you can write your query will open. </p>
-                                    <img src={NewQuery2} alt="Create New Query 2"></img>
+                                    <img src={QueryEmpty} alt="Create New Query 2"></img>
                                     <br></br>
                                 </div>
                                 <div id="Translating" className="content-section">
                                     <h1>Translating Queries</h1><br></br>
                                     <p>To translate a query, press the Translate button on the top right corner of your
                                         chosen tab. </p>
-                                    <img src={Translating1} alt="Translating a Query 1"></img>
+                                    <img src={Query} alt="Translating a Query 1"></img>
                                     <br></br>
                                     <p>A dropdown menu with the query languages available for translation will appear,
                                         and you can chose the one you want.</p>
-                                    <img src={Translating2} alt="Translating a Query 2"></img>
+                                    <img src={QueryWTranslate} alt="Translating a Query 2"></img>
                                     <br></br>
                                     <p>Two new windows will open, and you will be able to see the translated query with
                                         in-line comments, as well as a window explaining the translation</p>
-                                    <img src={Translating3} alt="Translating a Query 3"></img>
+                                    <img src={FullTranslation} alt="Translating a Query 3"></img>
                                     <br></br>
                                 </div>
                                 <div id="InsertingWindows" className="content-section">
