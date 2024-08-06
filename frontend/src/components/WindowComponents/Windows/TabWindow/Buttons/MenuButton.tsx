@@ -49,7 +49,7 @@ const MenuButton = (props: TabDropdownProps) => {
                     <img src={MenuIcon}/>
                 }
                 className="menu-dropdown-button"
-                title={"Menu"}
+                title={"Add Window Panes"}
                 disabled={false}
                 onChange={setValue}
             >
