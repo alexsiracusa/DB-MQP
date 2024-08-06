@@ -32,6 +32,7 @@ const LanguageButton = (props: LanguageButtonProps) => {
             props.self.language = newValue;
             await self.updateCode();
         }
+        await self.updateToolbar();
     }
 
     function disabled(): boolean {

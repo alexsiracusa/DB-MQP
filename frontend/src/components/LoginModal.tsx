@@ -4,6 +4,7 @@ import {useState} from "react";
 
 type LoginModalProps = {
     close: () => void;
+    setIcon: (arg0: any) => void;
 }
 
 
@@ -18,21 +19,20 @@ function LoginModal(props: LoginModalProps) {
             password: password
         };
 
-        await fetch('http://localhost:8000/auth/login/', {
+        const response = await fetch('http://localhost:8000/auth/login/', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(body),
             credentials: 'include'
         })
-            .then(function (response) {
-                console.log(response);
-                if (response.status === 200) {
-                    props.close()
-                } else {
-                    console.log(response)
-                    alert('Incorrect username or password.');
-                }
-            });
+
+        if (response.status === 200) {
+            props.close()
+            props.setIcon(email.charAt(0).toUpperCase())
+        } else {
+            console.log(response)
+            alert('Incorrect username or password.');
+        }
     }
 
     function canSubmit(): boolean {
