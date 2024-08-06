@@ -9,7 +9,7 @@
     height: 100vh;
 }
 
-.page-content {
+.translator-page .page-content {
     display: flex;
     flex-direction: row;
 
@@ -21,7 +21,7 @@
     background-color: #E0EEFF;
 }
 
-.sidebar {
+.translator-page .sidebar {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -32,7 +32,7 @@
     background-color: #F6F6F6;
 }
 
-.code-content {
+.translator-page .code-content {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
@@ -43,7 +43,7 @@
     height: 100%;
 }
 
-.tab-container {
+.translator-page .tab-container {
     display: flex;
     padding: 6px;
     background-color: #E0EEFF;
@@ -52,7 +52,7 @@
     height: 100%;
 }
 
-.console {
+.translator-page .console {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -67,12 +67,16 @@
 }
 
 /*Set Gutter Colors*/
-.page-content .gutter {
+.translator-page .page-content .gutter {
     background-color: #F6F6F6;
 }
 
-.code-content .gutter {
+.translator-page .code-content .gutter {
     background-color: #ffffff;
+}
+
+.translator-page .tab-container .gutter {
+    background-color: #E0EEFF;
 }
 
 

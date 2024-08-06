@@ -10,7 +10,7 @@ const Navbar: React.FC = () => {
   };
 
     return(
-      <nav className="flex items-center bg-blue-800 p-3 flex-wrap">
+      <nav className="flex items-center bg-blue-800 p-3 flex-wrap z-10">
       <a href="#" className="p-2 mr-4 inline-flex items-center">
         <svg
           viewBox="0 0 24 24"
@@ -48,6 +48,13 @@ const Navbar: React.FC = () => {
             className="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white items-center justify-center hover:bg-gray-900 hover:text-white"
           >
             <span>Contact Us</span>
+          </a>
+          <a
+            href="#"
+            className="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white items-center justify-center hover:bg-gray-900 hover:text-white"
+          >
+            
+            <span onClick={() => handleNavigation('/help')}>Help</span>
           </a>
         </div>
       </div>

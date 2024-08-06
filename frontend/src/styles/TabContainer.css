@@ -1,8 +1,4 @@
 
-.tab-container .gutter {
-    background-color: #E0EEFF;
-}
-
 .tab-split-container-horizontal {
     display: flex;
     flex-direction: row;

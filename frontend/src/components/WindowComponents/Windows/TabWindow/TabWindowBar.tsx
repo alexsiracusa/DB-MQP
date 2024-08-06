@@ -6,7 +6,6 @@ import TabButton from "./Buttons/TabButton.tsx";
 import PlusButton from "./Buttons/PlusButton.tsx";
 import {Droppable} from "@hello-pangea/dnd";
 
-
 type TabWindowBarProps = {
     self: TabWindow;
 }
@@ -48,6 +47,7 @@ const TabWindowBar = (props: TabWindowBarProps) => {
                 <div className="buttons-right">
                     <MenuButton self={self}/>
                 </div>
+
             </div>
         </div>
     )
