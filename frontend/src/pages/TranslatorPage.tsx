@@ -3,12 +3,17 @@ import '../styles/Gutters.css'
 
 import TopNavBar from "../components/TopNavBar.tsx";
 import React from "react";
+import {createContext} from 'react';
 import WindowContainer from "../components/WindowComponents/WindowContainer.tsx";
 import TabWindow from "../components/WindowComponents/Windows/TabWindow/TabWindow.tsx";
 import WindowGroup from "../components/WindowComponents/Windows/WindowGroup/WindowGroup.tsx";
 import UserQueryTab from "../components/WindowComponents/Tabs/QueryTab/UserQueryTab.tsx";
+import Console from "../components/Console/Console.tsx";
+import ConsoleComponent from "../components/Console/ConsoleComponent.tsx";
 import {Panel, PanelGroup, PanelResizeHandle} from "react-resizable-panels";
 import {DragDropContext} from "@hello-pangea/dnd";
+
+export const ConsoleContext = createContext(new Console());
 
 
 const TranslatorPage: React.FC = () => {
@@ -17,11 +22,9 @@ const TranslatorPage: React.FC = () => {
     const tabWindow1 = new TabWindow(root);
     const tab = new UserQueryTab(null, "PL/pgSQL", tabWindow1);
     tabWindow1.setContent([tab])
-
-    // const tabWindow2 = new TabWindow(root);
-
-    // root.children = [tabWindow1, tabWindow2]
     root.children = [tabWindow1]
+
+    const queryConsole = new Console()
 
     function getWindow(id: string): TabWindow | null {
         function getWindowFrom(from: WindowGroup, id: string): TabWindow | null {
@@ -31,8 +34,7 @@ const TranslatorPage: React.FC = () => {
                     if (result) {
                         return result;
                     }
-                }
-                else if (tabObject instanceof TabWindow && tabObject.id == id) {
+                } else if (tabObject instanceof TabWindow && tabObject.id == id) {
                     return tabObject
                 }
             }
@@ -43,7 +45,7 @@ const TranslatorPage: React.FC = () => {
     }
 
     function onDragEnd(result: any): void { // eslint-disable-line
-        const { source, destination } = result;
+        const {source, destination} = result;
 
         // dropped outside the list
         if (!destination) {
@@ -71,8 +73,7 @@ const TranslatorPage: React.FC = () => {
             const selected = sourceWindow.selected === removed;
             if (sourceWindow.contents.length === 0) {
                 sourceWindow.deleteSelf();
-            }
-            else if (selected) {
+            } else if (selected) {
                 sourceWindow.selected = sourceWindow.contents[Math.max(0, source.index - 1)];
                 sourceWindow.forceUpdate()
             }
@@ -90,47 +91,49 @@ const TranslatorPage: React.FC = () => {
         <div className='translator-page'>
             <TopNavBar/>
 
-            <PanelGroup
-                className="page-content"
-                direction={"horizontal"}
-            >
-                <Panel
-                    defaultSize={20}
+            <ConsoleContext.Provider value={queryConsole}>
+                <PanelGroup
+                    className="page-content"
+                    direction={"horizontal"}
                 >
-                    <div className='sidebar'>
-                        sidebar
-                    </div>
-                </Panel>
-
-                <PanelResizeHandle className={"gutter gutter-horizontal"}/>
-
-                <Panel>
-                    <PanelGroup
-                        className="code-content"
-                        direction={"vertical"}
+                    <Panel
+                        defaultSize={20}
                     >
-                        <Panel
-                            defaultSize={70}
+                        <div className='sidebar'>
+                            sidebar
+                        </div>
+                    </Panel>
+
+                    <PanelResizeHandle className={"gutter gutter-horizontal"}/>
+
+                    <Panel>
+                        <PanelGroup
+                            className="code-content"
+                            direction={"vertical"}
                         >
-                            <div className={"tab-container"}>
-                                <DragDropContext onDragEnd={onDragEnd}>
-                                    <WindowContainer
-                                        self={root}
-                                    />
-                                </DragDropContext>
-                            </div>
-                        </Panel>
+                            <Panel
+                                defaultSize={70}
+                            >
+                                <div className={"tab-container"}>
+                                    <DragDropContext onDragEnd={onDragEnd}>
+                                        <WindowContainer
+                                            self={root}
+                                        />
+                                    </DragDropContext>
+                                </div>
+                            </Panel>
 
-                        <PanelResizeHandle className={"gutter gutter-vertical"}/>
+                            <PanelResizeHandle className={"gutter gutter-vertical"}/>
 
-                        <Panel>
-                            <div className='console'>
-                                console
-                            </div>
-                        </Panel>
-                    </PanelGroup>
-                </Panel>
-            </PanelGroup>
+                            <Panel>
+                                <div className='console-container'>
+                                    <ConsoleComponent self={queryConsole}/>
+                                </div>
+                            </Panel>
+                        </PanelGroup>
+                    </Panel>
+                </PanelGroup>
+            </ConsoleContext.Provider>
         </div>
     );
 }
