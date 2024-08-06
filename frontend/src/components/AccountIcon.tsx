@@ -1,5 +1,6 @@
 import "../styles/AccountIcon.css"
 
+import LoginModal from "./LoginModal.tsx";
 import {useState} from "react";
 
 function AccountIcon() {
@@ -18,8 +19,8 @@ function AccountIcon() {
 
             {loginPopup &&
                 <>
-                    <div className="login-popup">
-
+                    <div className="login-modal-container">
+                        <LoginModal/>
                     </div>
 
                     <div
@@ -30,7 +31,6 @@ function AccountIcon() {
                     ></div>
                 </>
             }
-
         </div>
     );
 }
