@@ -47,6 +47,14 @@
 
 
 /*
+    Hero Section
+*/
+.sections .hero {
+    min-height: 100vh;
+}
+
+
+/*
     Team Section
 */
 .team .card-container {
