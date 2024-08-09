@@ -30,9 +30,9 @@ The build should take around 2-5 minutes to complete.
 
 
 ## Step 4 - Run the Docker Container
-Run a container using the image from step 3 with the following command:
+Run a container using the image from step 3 with the command below.
 
-`docker run -d --name oracle19.3 -e ORACLE_PWD=password -p 1521:1521 oracle/database:19.3.0-ee `
+`docker run -d --name oracle19c -e ORACLE_PWD=password -p 1521:1521 oracle/database:19.3.0-ee `
 
 The flags in the command do the following:
 - `-d` makes the process run in the background.
@@ -42,6 +42,8 @@ The flags in the command do the following:
 - `oracle/database:19.3.0-ee` specifies the image name to create the container from (i.e. the image we just made).
 
 The full documentation on the command line arguments can be found on the GitHub `README.md` [here](https://github.com/oracle/docker-images/tree/main/OracleDatabase/SingleInstance#how-to-build-and-run). 
+
+The container will take 5-10 minutes to start before you can connect to the database. Progress can be viewed in Docker Desktop by clicking on the container and viewing the logs. `DATABASE IS READY TO USE!` will be printed when it is done.
 
 
 ## Appendix: Connection Parameters
