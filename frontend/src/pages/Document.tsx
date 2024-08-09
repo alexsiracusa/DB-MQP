@@ -11,26 +11,19 @@ const Document = () => {
                 <Navbar></Navbar>
 
                 <div className={styles.pageContainer}>
-                    <div>
-                        <h1 className={"justify-content-center"}>This is the document page!</h1>
-                    </div>
-                    <div className={"mt-5 px-5"}>
-                        <p> just some example text here</p>
-
-                    </div>
-                    <div className={"px-5 py-1"}>
-                        <DocumentQueryContainer languagesArr={["SQL", "NoSQL"]} codeOptionsArr={[
-                            <DocumentCodeSnippet codeArr={["line 1", "line 2"]}/>,
-                            <DocumentCodeSnippet codeArr={["line 3", "line 4"]}/>
-                        ]}/>
-                    </div>
-                    <div className={"px-5 py-1"}>
-                        <DocumentQueryContainer languagesArr={["MySQL", "MongoDB", "PostgreSQL"]} codeOptionsArr={[
-                            <DocumentCodeSnippet codeArr={["line 1", "line 2"]}/>,
-                            <DocumentCodeSnippet codeArr={["line 3", "line 4"]}/>,
-                            <DocumentCodeSnippet codeArr={["line 3", "line 4", "line 4", "line 4", "line 4"]}/>
-                        ]}/>
-                    </div>
+                    <h1 className={styles.title}> Title One </h1>
+                    <p className={styles.text}> just some example text here</p>
+                    <DocumentQueryContainer languagesArr={["SQL", "NoSQL"]} codeOptionsArr={[
+                        ["DROP TABLE *;"],
+                        ["Drop the tables for me.", "Pretty please?"],
+                    ]}/>
+                    <h1 className={styles.title}> Title TWO </h1>
+                    <p className={styles.text}> A much better example with much more words which is really how you can tell if something is good. If there were not as many words it would not be as good. Simple as that. Really not all that complicated when you think about it.</p>
+                    <DocumentQueryContainer languagesArr={["MySQL", "MongoDB", "PostgreSQL"]} codeOptionsArr={[
+                        ["this is a very very very very very very very very very very very very long piece of code to show the numbering of line", "this", "is", "many", "lines", "od", "code", "to", "show", "double", "digits"],
+                        ["line 33333333333333333333333333333 33333333333333333333 333333333 33333333333333 333333333333333 33333333", "line 4"],
+                        ["line 3", "line 4", "line 4", "line 4", "line 4", "line 4", "line 4", "line 4", "line 4", "line 4", "line 4", "line 4", "line 4"]
+                    ]}/>
                 </div>
             </div>
         </>
