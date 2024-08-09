@@ -1,13 +1,15 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import DocumentQueryContainer from "../components/DocumentQueryContainer.tsx";
 import styles from "../styles/Document.module.css";
-import Navbar from "../components/Navbar.tsx";
+import DocumentCodeSnippet from "../components/DocumentCodeSnippet.tsx";
+import Navbar from "../components/TopNavBar.tsx";
 
 const Document = () => {
     return (
         <>
-            <div>
+            <div className="DocumentPage">
                 <Navbar></Navbar>
+
                 <div className={styles.pageContainer}>
                     <h1 className={styles.title}> Title One </h1>
                     <p className={styles.text}> just some example text here</p>

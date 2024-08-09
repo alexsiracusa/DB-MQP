@@ -2,6 +2,7 @@
 .tab-window-bar {
     display: flex;
     flex-direction: row;
+    justify-content: flex-end;
     align-items: center;
 
     height: 1.75em;
@@ -52,6 +53,7 @@
     flex-direction: row;
     justify-content: left;
     align-items: center;
+    gap: 4px;
 
     min-width: 0;
     height: 100%;
@@ -62,6 +64,7 @@
     flex-direction: row;
     justify-content: right;
     align-items: center;
+    gap: 4px;
 
     flex-grow: 1;
 
@@ -70,16 +73,9 @@
 }
 
 .tab-window-bar button {
-    border: none;
     border-radius: 0;
-    background-color: transparent;
 }
 
 .tab-window-bar button:hover {
     background-color: #ffffff;
-}
-
-.tab-window-bar button:focus,
-.tab-window-bar button:focus-visible {
-    outline: none;
 }

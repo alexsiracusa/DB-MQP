@@ -1,0 +1,144 @@
+
+.tab-toolbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+    width: 100%;
+    height: 1.5em;
+    min-height: 1.5em;
+
+    border-bottom: #f2f3f4;
+    border-bottom-width: 1px;
+    border-style: inset;
+}
+
+.tab-toolbar .file-path {
+    min-width: 0;
+}
+
+
+.tab-toolbar .buttons {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    gap: 0.2em;
+
+    align-items: center;
+    justify-content: flex-end;
+
+    height: 100%;
+    min-width: max-content;
+    padding: 0 0.15em;
+}
+
+.tab-toolbar .toolbar-button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    height: 80%;
+    min-width: fit-content;
+    border-radius: 0.15em;
+}
+
+.tab-toolbar .toolbar-button img {
+    height: 80%;
+    width: 80%;
+}
+
+.tab-toolbar .toolbar-button .language-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 15px;
+
+    height: 1.5em;
+}
+
+.tab-toolbar .toolbar-button .language-row.opacity {
+    opacity: 0.4;
+}
+
+.tab-toolbar button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+
+    border-radius: 0;
+    height: 100%;
+
+    background-color: transparent;
+}
+
+.tab-toolbar button:hover {
+    background-color: #00000025;
+}
+
+.tab-toolbar button:disabled p,
+.tab-toolbar button:disabled img {
+    opacity: 0.4;
+}
+
+.tab-toolbar p {
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: 0.7em;
+    white-space: nowrap;
+}
+
+.tab-toolbar .run-button {
+    aspect-ratio: 1.0;
+}
+
+.tab-toolbar .refresh-button {
+    aspect-ratio: 1.0;
+}
+
+.tab-toolbar .translate-button {
+    background-color: transparent;
+}
+
+.tab-toolbar .translate-icon {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+
+    height: 100%;
+    border-radius: 0.15em;
+    padding: 0 0.3em;
+}
+
+.tab-toolbar .language-button {
+    background-color: transparent;
+}
+
+.tab-toolbar .translate-button button,
+.tab-toolbar .language-button button {
+    justify-content: flex-start;
+}
+
+.tab-toolbar .lock-button {
+    aspect-ratio: 1.0;
+}
+
+.tab-toolbar .dropdown-icon {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    height: 100%;
+    border-radius: 0.15em;
+    padding: 0 0.3em;
+}
+
+.tab-toolbar .dropdown-icon img {
+    height: 60%;
+    width: 60%;
+}
+
+

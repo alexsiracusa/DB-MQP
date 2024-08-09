@@ -1,0 +1,202 @@
+.help-page {
+    display: flex;
+    flex-direction: column;
+
+    width: 100vw;
+    height: 100vh;
+}
+
+.help-page .page-content {
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-left: 15em;
+
+    height: 100%;
+
+    background-color: #E0EEFF;
+}
+
+.help-page .sidebar {
+    display: flex;
+    z-index: 1;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 15em;
+    height: 100vh;
+    color: white;
+    position:fixed;
+
+
+    background-color: #F6F6F6;
+}
+
+
+.help-page .sidebar a {
+    font-family: Inter;
+    font-weight: bold;
+    font-size: 1em;
+    text-align: left;
+    color: black;
+    display: inline-block;
+    margin-left: 0.1em;
+    padding: 0.5em 1em;
+    border-radius: 0.6em;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.help-page .sidebar a:hover{
+    color:black;
+    background-color: lightgray;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-left: 0.2em;
+    padding: 0.5em 0.75em;
+    
+}
+
+#sidebar-header{
+    font-family: Raleway;
+    font-weight: bold;
+    color: black;
+    font-size: 2em;
+    text-align: left;
+    padding: 0.5em;
+    margin-left: 0;
+    background-color: #F6F6F6;
+}
+#sidebar-header:hover{
+    border:none;
+    box-shadow: none;
+}
+
+.help-page .content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    width: 100%;
+    height: 100%;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    background-color: #ffffff;
+}
+
+.help-page .page-content .content-section{
+    margin-bottom: 4em;
+}
+
+.help-page .page-content .content-section::after {
+    content:"";
+    position: absolute;
+    bottom: 0;
+    left: 50%; 
+    transform: translateX(-50%);
+    width: 80%;
+    height: 0.1em;
+    background-color: #022f50;
+    border-radius: 3em;
+}
+
+.help-page .page-content .content-section h1{
+    font-family: Raleway;
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+}
+
+.help-page .page-content .content-section p{
+    font-family: Inter;
+    font-size: 1em;
+    font-weight: light;
+    padding-left: 2em;
+}
+
+.help-page .page-content .content-section img{
+    padding: 2em;
+    max-width: cal(90vw-15em);
+    max-height: 150em;
+}
+
+
+.help-page .page-content .content-header{
+    height: 100vh;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.help-page .page-content .content-header a{
+    font-family: Raleway;
+    font-weight: bold;
+    color: black;
+    font-size: 2em;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    height: 100%;
+
+    background-color: #F6F6F6;
+}
+
+.help-page .content-header h1{
+    font-size: 4em;
+    text-align: center;
+}
+
+.help-page .content-header p{
+    font-family: Inter;
+    font-size: 1em;
+    font-weight: light;
+    padding-left: 2em;
+}
+
+/*Set Gutter Colors*/
+.help-page .page-content .gutter {
+    background-color: #F6F6F6;
+}
+
+.help-page .content .gutter {
+    background-color: #ffffff;
+}
+
+/*Default Button Settings*/
+.help-page .button {
+    font-family: "IBM Plex Sans", sans-serif;
+
+    border-radius: 5px;
+    padding: 0 0.5em;
+    border: none;
+
+    background-color: transparent;
+}
+
+.help-page .button:hover {
+    background-color: #F6F6F6;
+}
+
+.help-page .button:focus,
+.help-page .button:focus-visible {
+    outline: none;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+@media (max-width: 768px) {
+    .help-page .sidebar {
+        transform: translateX(-300%); /* Moves the sidebar out of view */
+    }
+    .help-page .sidebar-header{
+        transform: translateX(-300%);
+    }
+    .help-page .page-content{
+        margin-left:0px
+    }
+}

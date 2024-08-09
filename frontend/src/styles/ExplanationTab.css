@@ -1,0 +1,12 @@
+
+.explanation {
+    padding: 10px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    text-align: left;
+
+    overflow-y: scroll;
+    flex-grow: 1;
+
+    font-size: 1em;
+}

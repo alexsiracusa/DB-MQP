@@ -1,0 +1,52 @@
+
+.new-tab-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    padding: 10px 10px;
+    width: 100%;
+    height: 100%;
+
+    overflow-y: scroll;
+}
+
+.new-tab-content button {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    font-size: 0.9em;
+
+    height: 2.1em;
+    width: 100%;
+}
+
+.new-tab-content button .left {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.4em;
+
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+
+    flex-grow: 1;
+}
+
+.new-tab-content button .right {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+
+    min-width: fit-content;
+}
+
+.new-tab-content button img {
+    aspect-ratio: 1.0;
+    height: 1.2em;
+}

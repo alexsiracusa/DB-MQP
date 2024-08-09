@@ -10,6 +10,10 @@
 }
 
 .dropdown-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
     position: absolute;
     top: 100%;
     margin-top: 5px;
@@ -19,11 +23,12 @@
 .dropdown-content {
     display: flex;
     flex-direction: column;
+    position: fixed;
 
     border-radius: 6px;
-    overflow: hidden;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     z-index: 1;
+    overflow: hidden;
 
     background-color: #F6F6F6;
 }
@@ -34,8 +39,6 @@
 
     border-radius: 0;
     padding: 0;
-
-    background-color: transparent;
 }
 
 .dropdown-content button:hover {
