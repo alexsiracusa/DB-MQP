@@ -12,12 +12,12 @@ const TeamSection: React.FC = () => {
     const people = [
         {
             name: "Lucas Lamenha",
-            description: "Lorem ipsum dolor sit amet. Aut voluptatem molestiae et ratione praesentium qui iusto quaerat hic doloribus dolores est veniam quidem.",
+            description: "A junior Computer Science major at Worcester Polytechnic Institute from Recife, Brazil. Passionate about learning new languages, playing musical instruments and complex coding problems.",
             image: Luke
         },
         {
             name: "Gabe Olafsson",
-            description: "Lorem ipsum dolor sit amet. Aut voluptatem molestiae et ratione praesentium qui iusto quaerat hic doloribus dolores est veniam quidem.",
+            description: "A junior at Worcester Polytechnic Institute studying Computer Science with a passion for Networking and Web Dev. Loves to dive into the nitty gritty of what hes working on to understand his work better.",
             image: Gabe
         },
         {
@@ -32,7 +32,7 @@ const TeamSection: React.FC = () => {
         },
         {
             name: "Hanna Trinh",
-            description: "Lorem ipsum dolor sit amet. Aut voluptatem molestiae et ratione praesentium qui iusto quaerat hic doloribus dolores est veniam quidem.",
+            description: "A senior Computer science major at Worcester Polytechnic Institute from Ho Chi Minh City, Vietnam. I’m passionate about solving complex problems and bringing innovative ideas to life.",
             image: Hanna
         }
     ]
