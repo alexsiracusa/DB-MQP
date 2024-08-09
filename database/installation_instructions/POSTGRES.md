@@ -1,4 +1,4 @@
-# Set-up Instructions for Postgres
+# Installation Instructions for Postgres
 
 This guide explains how to set up a local Postgres server on macOS using Postgres.app
 
@@ -9,9 +9,11 @@ Download the latest version of Postgres.app from the [here](https://postgresapp.
 
 That's it, you're done.
 
+The application will show icons for a few default databases it has created. Double-click any of them to open it in the terminal where you can query the database directly.
+
 The official instructions also include how to optionally add command line tools to your `$PATH` environment variable.
 
-## Default Database Settings
+## Appendix: Connection Parameters
 ```
 HOST:       localhost
 PORT:       5432
