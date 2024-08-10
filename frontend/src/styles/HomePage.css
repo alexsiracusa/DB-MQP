@@ -151,8 +151,9 @@
 
 .queries .content .images .image3 {
     position: relative;
-    width: 50%;
+    width: 40%;
     border-radius: 10px 0 10px 10px;
+    margin-left: 10%;
 }
 
 

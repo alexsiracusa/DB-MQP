@@ -39,9 +39,9 @@ const QueriesSection: React.FC = () => {
                     </button>
                 </div>
                 <div className="images">
-                    <img className="image1" src={Screenshot3} alt="IDE"/>
+                    <img className="image1" src={Screenshot1} alt="IDE"/>
                     <img className="image2" src={Screenshot2} alt="IDE"/>
-                    <img className="image3" src={Screenshot1} alt="IDE"/>
+                    <img className="image3" src={Screenshot3} alt="IDE"/>
                 </div>
                 </div>
             </div>
