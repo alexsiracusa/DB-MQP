@@ -1,7 +1,7 @@
 import "../styles/TopNavBar.css";
 
 import AccountIcon from "./AccountIcon.tsx";
-import Logo from "../assets/Icons/NavbarStack.png";
+import Logo from "../assets/Icons/NavbarStack.svg";
 import {useNavigate} from 'react-router-dom';
 
 
