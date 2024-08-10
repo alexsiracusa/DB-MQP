@@ -1,10 +1,10 @@
 import {Route, Routes} from 'react-router-dom';
 import './styles/App.css'
 
-import Document from './pages/Document.tsx';
 import TranslatorPage from "./pages/TranslatorPage.tsx";
 import HomePage from './pages/HomePage.tsx';
 import HelpPage from './pages/HelpPage.tsx';
+import Document from './pages/Document.tsx';
 
 function App() {
     return (
