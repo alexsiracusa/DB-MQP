@@ -52,7 +52,7 @@
     height: 100%;
 }
 
-.translator-page .console {
+.translator-page .console-container {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
