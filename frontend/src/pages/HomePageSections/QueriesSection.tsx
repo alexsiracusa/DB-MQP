@@ -1,6 +1,9 @@
 import React from "react";
 import '../../styles/HomePage.css'
 import {Link} from "react-router-dom";
+import Screenshot1 from "../../assets/QueriesSectionScreenshots/FullTranslation.png";
+import Screenshot2 from "../../assets/QueriesSectionScreenshots/NewTab-Query.png";
+import Screenshot3 from "../../assets/QueriesSectionScreenshots/Query-over-NewTab.png";
 
 const QueriesSection: React.FC = () => {
 
@@ -10,8 +13,9 @@ const QueriesSection: React.FC = () => {
                 <div className="top-text">
                     <h2>Explore and Develop Queries</h2>
                     <p>
-                        Using our IDE you can write long sentences that fill space and look cool if your a big enough
-                        nerd for this kinda stuff. <br/> Bet you think this is cool. Nerd.
+                        Using our IDE you can translate between different SQL and NoSQL technologies seamlessly!
+                        <br/> Evaluate the queries you run using our in-built databases!
+                        <br/> Bet you think this is cool. Nerd.
                     </p>
                 </div>
                 <div className="buttons">
@@ -27,12 +31,21 @@ const QueriesSection: React.FC = () => {
                             style={{color: 'inherit', textDecoration: 'inherit'}}
                         >Documentation</Link>
                     </button>
+                    <button className="documentation">
+                        <Link
+                            to="/help"
+                            style={{color: 'inherit', textDecoration: 'inherit'}}
+                        >Help</Link>
+                    </button>
                 </div>
                 <div className="images">
-                    <img src="https://via.placeholder.com/250" alt="IDE"/>
+                    <img className="image1" src={Screenshot3} alt="IDE"/>
+                    <img className="image2" src={Screenshot2} alt="IDE"/>
+                    <img className="image3" src={Screenshot1} alt="IDE"/>
+                </div>
                 </div>
             </div>
-        </div>
+
     );
 }
 
