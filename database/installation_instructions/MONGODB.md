@@ -1,6 +1,6 @@
-# Set-up Instructions for MongoDB Community Edition
+# Installation Instructions for MongoDB Community Edition
 
-This guide explains how to set up a MongoDB cluster to run on macOS without homebrew or other installers.  
+This guide explains how to set up a MongoDB cluster to run on macOS. While other more streamlined approaches may use homebrew or other installers, a secondary aim of this guide is to provide an understanding of MongoDB itself and how it works.  
 
 While macOS specifically is used, the only things that would change for unix/linux based operating systems are which files to download from the mongodb website and file path names.
 
@@ -202,6 +202,14 @@ Now you have a database created and running, and can run queries such as `db.my_
 ## Step 8 - Install MongoDB Compass (Optional)
 You may want to download MongoDB Compass found [here](https://www.mongodb.com/try/download/compass). It allows you to edit, create, and query your databases using a GUI instead of terminal commands.
 
+
+## Appendix: Connection Parameters
+By default, a MongoDB server has no authentication set, although it can be turned on. As such there is no username/password needed to connect.
+
+```
+Port:           27017
+Database Name:  my_db_name
+```
 
 
 
