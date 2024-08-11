@@ -164,6 +164,12 @@
     text-align: left;
 }
 
+.report .subtitle {
+    font-size: 1rem;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
 .report .text {
     font-size: 1.1rem;
     line-height: 1.6;
