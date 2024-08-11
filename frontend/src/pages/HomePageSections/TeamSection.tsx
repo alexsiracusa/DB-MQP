@@ -22,7 +22,7 @@ const TeamSection: React.FC = () => {
         },
         {
             name: "Ashleigh Perez",
-            description: "Lorem ipsum dolor sit amet. Aut voluptatem molestiae et ratione praesentium qui iusto quaerat hic doloribus dolores est veniam quidem.",
+            description: "A senior Computer Science and Data Science double major at Worcester Polytechnic Institute with a passion for full-stack software development and learning about its applications within data analytics. Very design-oriented and has a passion for pursuing personal growth.",
             image: Ashleigh
         },
         {
