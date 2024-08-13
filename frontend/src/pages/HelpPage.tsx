@@ -51,7 +51,7 @@ const HelpPage = () => {
                                     <h1>Help Page</h1>
                                     <br></br><br></br><br></br>
                                     <p>Welcome to our Help Page. <br></br><br></br>This is where you can learn how to
-                                        use our application to its fullest potential :)
+                                        use our application to its fullest potential
                                         <br></br><br></br>
                                         Refer to our sections on the sidebar or scroll down and look through our
                                         tutorials</p>
