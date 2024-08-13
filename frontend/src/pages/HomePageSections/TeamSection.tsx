@@ -27,7 +27,7 @@ const TeamSection: React.FC = () => {
         },
         {
             name: "Alex Siracusa",
-            description: "Lorem ipsum dolor sit amet. Aut voluptatem molestiae et ratione praesentium qui iusto quaerat hic doloribus dolores est veniam quidem.",
+            description: "A junior pursuing a BS in Computer Science and an MS in Data Science at Worcester Polytechnic Institute. Alex has a strong interest in database management systems and their applications. He also likes making iOS apps.",
             image: Alex
         },
         {
