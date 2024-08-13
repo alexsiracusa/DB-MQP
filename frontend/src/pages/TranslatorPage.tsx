@@ -96,13 +96,7 @@ const TranslatorPage: React.FC = () => {
                     className="page-content"
                     direction={"horizontal"}
                 >
-                    <Panel
-                        defaultSize={20}
-                    >
-                        <div className='sidebar'>
-                            sidebar
-                        </div>
-                    </Panel>
+                    
 
                     <PanelResizeHandle className={"gutter gutter-horizontal"}/>
 
