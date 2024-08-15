@@ -12,7 +12,7 @@ jsonfield = "*"
 pymongo = "*"
 asyncpg = "*"
 bcrypt = "*"
-cx-oracle = "*"
+oracledb = "*"
 
 [dev-packages]
 

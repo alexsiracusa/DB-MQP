@@ -1,4 +1,3 @@
-import cx_Oracle
 from fastapi import APIRouter, Response, Request, status
 from pydantic import BaseModel
 from ..exceptions import NotLoggedIn
@@ -28,8 +27,8 @@ async def execute_query(
             raise NotLoggedIn()
 
         con = clients.UserConnection(account_info.get("id"))
-        # result = await con.execute_postgres(query.query)
-        return {"result": "result"}
+        result = await clients.oracle_client.execute(query.query)
+        return {"result": result}
 
     except Exception as error:
         response.status_code = status.HTTP_400_BAD_REQUEST
