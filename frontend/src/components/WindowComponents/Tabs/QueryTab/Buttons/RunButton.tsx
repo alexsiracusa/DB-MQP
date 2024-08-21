@@ -25,6 +25,9 @@ const RunButton = (props: RunButtonProps) => {
             case "Raw MQL": {
                 return "mongodb"
             }
+            case "PL/SQL": {
+                return "oracle"
+            }
             default: {
                 return null;
             }

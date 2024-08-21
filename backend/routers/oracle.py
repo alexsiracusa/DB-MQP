@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Response, Request, status
 from pydantic import BaseModel
-from ..exceptions import NotLoggedIn
+from ..exceptions import NotLoggedIn, EmptyOracleQuery
 import backend.clients as clients
 
 
@@ -25,6 +25,9 @@ async def execute_query(
         account_info = request.user
         if account_info is None:
             raise NotLoggedIn()
+
+        if query.query == "":
+            raise EmptyOracleQuery()
 
         con = clients.UserConnection(account_info.get("id"))
         result = await con.execute_oracle(query.query)
