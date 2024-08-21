@@ -33,7 +33,7 @@ class OracleClient:
 
     async def execute(self, query: str, *args):
         async def execute():
-            return self._cursor.execute(query.rstrip(";"), *args)
+            return self._cursor.execute(query.rstrip().rstrip(";"), *args)
 
         return await self._execute(execute)
 
@@ -45,9 +45,12 @@ class OracleClient:
         self._cursor = self.con.cursor()
         try:
             cursor = await get_result()
-            columns = [col[0] for col in cursor.description]
-            cursor.rowfactory = lambda *args: dict(zip(columns, args))
-            return cursor.fetchall()
+            if cursor is not None:
+                columns = [col[0] for col in cursor.description]
+                cursor.rowfactory = lambda *args: dict(zip(columns, args))
+                return cursor.fetchall()
+            else:
+                return []
         except Exception:
             raise
         finally:

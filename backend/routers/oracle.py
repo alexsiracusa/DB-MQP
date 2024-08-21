@@ -27,7 +27,7 @@ async def execute_query(
             raise NotLoggedIn()
 
         con = clients.UserConnection(account_info.get("id"))
-        result = await clients.oracle_client.execute(query.query)
+        result = await con.execute_oracle(query.query)
         return {"result": result}
 
     except Exception as error:

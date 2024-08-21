@@ -62,3 +62,10 @@ async def authentication_middleware(request: Request, call_next):
     response = await call_next(request)
     return response
 
+
+@app.post("/test")
+async def test(request: Request):
+    try:
+        print("test")
+    except Exception as e:
+        print(e)

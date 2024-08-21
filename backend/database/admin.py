@@ -62,7 +62,27 @@ async def _create_mongo_db_for(account_id):
 
 
 async def _create_oracle_db_for(account_id):
-    pass
+    # ALTER SYSTEM SET DB_CREATE_FILE_DEST = '/opt/oracle/oradata/';
+    await clients.oracle_client.execute(f"""
+        CREATE PLUGGABLE DATABASE pdb{account_id}
+            ADMIN USER admin IDENTIFIED BY password
+            ROLES = (dba)
+            DEFAULT TABLESPACE user_tables;
+    """)
+    await clients.oracle_client.execute(f"""
+        ALTER PLUGGABLE DATABASE pdb{account_id} 
+            OPEN READ WRITE FORCE;
+    """)
+
+    await clients.oracle_client.execute(f"""
+        ALTER SESSION SET container=pdb{account_id};
+     """)
+
+    await clients.oracle_client.execute(f"""
+    ALTER USER admin
+        QUOTA 128M on user_tables
+        CONTAINER=CURRENT;
+    """)
 
 
 async def register(account: AccountInfo, host):
@@ -77,6 +97,7 @@ async def register(account: AccountInfo, host):
     account_id = record.get("id")
     await _create_postgres_db_for(account_id)
     await _create_mongo_db_for(account_id)
+    await _create_oracle_db_for(account_id)
 
     return await _create_session(account_id, host)
 
