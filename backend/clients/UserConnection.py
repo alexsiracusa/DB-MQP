@@ -1,7 +1,9 @@
 import asyncpg
 import pymongo
+import oracledb
 from ..database.util import database_account_name_for, database_name_for
 from ..config import Settings
+import backend.clients as clients
 
 
 class UserConnection:
@@ -27,6 +29,13 @@ class UserConnection:
             password="",
             serverSelectionTimeoutMS=1,
             maxPoolSize=1
+        )
+
+    async def _connect_oracle(self):
+        return oracledb.connect(
+            user="admin",
+            password="password",
+            dsn=f"{Settings.ORACLE_HOST}:{Settings.ORACLE_PORT}/pdb{self.account_id}",
         )
 
     async def execute_postgres(self, query):
@@ -56,6 +65,23 @@ class UserConnection:
             raise
         finally:
             client.close()
+
+    async def execute_oracle(self, query):
+        con = await self._connect_oracle()
+
+        try:
+            cursor = con.cursor()
+            cursor = cursor.execute(query.rstrip(";"))
+            con.commit()  # need to commit changes for oracle
+            if cursor is None:
+                return []
+            columns = [col[0] for col in cursor.description]
+            cursor.rowfactory = lambda *args: dict(zip(columns, args))
+            return cursor.fetchall()
+        except Exception:
+            raise
+        finally:
+            con.close()
 
 
 
