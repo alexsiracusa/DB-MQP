@@ -46,19 +46,9 @@ const HelpPage = () => {
 
 
                             <div className='page-content'>
-                                <div className="content-header" id="Head">
-
-                                    <h1>Help Page</h1>
-                                    <br></br><br></br><br></br>
-                                    <p>Welcome to our Help Page. <br></br><br></br>This is where you can learn how to
-                                        use our application to its fullest potential
-                                        <br></br><br></br>
-                                        Refer to our sections on the sidebar or scroll down and look through our
-                                        tutorials</p>
-                                    <br></br>
-
-                                </div>
+                               
                                 <div id="NewQuery" className="content-section">
+                                    <br></br>
                                     <h1>Create a new query</h1><br></br>
                                     <p>To create a new query, press the "New Query" button upon reaching the Translator
                                         page </p>
@@ -69,6 +59,7 @@ const HelpPage = () => {
                                     <br></br>
                                 </div>
                                 <div id="Translating" className="content-section">
+                                <br></br>
                                     <h1>Translating Queries</h1><br></br>
                                     <p>To translate a query, press the Translate button on the top right corner of your
                                         chosen tab. </p>
@@ -84,6 +75,7 @@ const HelpPage = () => {
                                     <br></br>
                                 </div>
                                 <div id="InsertingWindows" className="content-section">
+                                <br></br>
                                     <h1>Inserting New Windows</h1><br></br>
                                     <p>To insert a new window, press the menu button (...) on the top right area of your
                                         window. </p>
