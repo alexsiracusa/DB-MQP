@@ -28,8 +28,8 @@ class PostgresClient:
                     database=self.database,
                 )
 
-            except Exception as e:
-                print(e)
+            except Exception:
+                raise
 
     async def fetch(self, query: str, *args):
         async def fetch():
