@@ -93,38 +93,27 @@ const TranslatorPage: React.FC = () => {
 
             <ConsoleContext.Provider value={queryConsole}>
                 <PanelGroup
-                    className="page-content"
-                    direction={"horizontal"}
+                    className="code-content"
+                    direction={"vertical"}
                 >
-                    
+                    <Panel
+                        defaultSize={70}
+                    >
+                        <div className={"tab-container"}>
+                            <DragDropContext onDragEnd={onDragEnd}>
+                                <WindowContainer
+                                    self={root}
+                                />
+                            </DragDropContext>
+                        </div>
+                    </Panel>
 
-                    <PanelResizeHandle className={"gutter gutter-horizontal"}/>
+                    <PanelResizeHandle className={"gutter gutter-vertical"}/>
 
                     <Panel>
-                        <PanelGroup
-                            className="code-content"
-                            direction={"vertical"}
-                        >
-                            <Panel
-                                defaultSize={70}
-                            >
-                                <div className={"tab-container"}>
-                                    <DragDropContext onDragEnd={onDragEnd}>
-                                        <WindowContainer
-                                            self={root}
-                                        />
-                                    </DragDropContext>
-                                </div>
-                            </Panel>
-
-                            <PanelResizeHandle className={"gutter gutter-vertical"}/>
-
-                            <Panel>
-                                <div className='console-container'>
-                                    <ConsoleComponent self={queryConsole}/>
-                                </div>
-                            </Panel>
-                        </PanelGroup>
+                        <div className='console-container'>
+                            <ConsoleComponent self={queryConsole}/>
+                        </div>
                     </Panel>
                 </PanelGroup>
             </ConsoleContext.Provider>
