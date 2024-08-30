@@ -129,12 +129,34 @@
 }
 
 .queries .content .images {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 20px;
-    padding-top: 20px;
+    position: relative;
+    width: 100%; /* Adjusts the container size to fit the images */
+    align-items: left;
+    margin-top: 7vh;
 }
+
+.queries .content .images .image1 {
+    position: relative;
+    width: 50%;
+    border-radius: 10px 10px 0 10px;
+}
+
+.queries .content .images .image2 {
+    position: relative;
+    margin-left: 50%;
+    width: 50%;
+    border-radius: 0 10px 10px 0;
+
+}
+
+.queries .content .images .image3 {
+    position: relative;
+    width: 40%;
+    border-radius: 10px 0 10px 10px;
+    margin-left: 10%;
+}
+
+
 
 
 /*
