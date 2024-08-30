@@ -2,8 +2,8 @@ import React from "react";
 import '../../styles/HomePage.css'
 import {Link} from "react-router-dom";
 import Screenshot1 from "../../assets/QueriesSectionScreenshots/FullTranslation.png";
-import Screenshot2 from "../../assets/QueriesSectionScreenshots/NewTab-Query.png";
-import Screenshot3 from "../../assets/QueriesSectionScreenshots/Query-over-NewTab.png";
+import Screenshot2 from "../../assets/QueriesSectionScreenshots/Screenshot2.png";
+import Screenshot3 from "../../assets/QueriesSectionScreenshots/Screenshot3.jpg";
 
 const QueriesSection: React.FC = () => {
 
