@@ -37,21 +37,21 @@ class Console {
         }, {} as Record<string, number>);
 
         // Create a helper function to pad text with dashes
-        const padWithDashes = (text: string, width: number): string => {
+        const padWithSpaces = (text: string, width: number): string => {
             const textLength = text.length;
             if (textLength >= width) return text;
-            return text + '-'.repeat(width - textLength);
+            return text + ' '.repeat(width - textLength);
         };
 
         // Format header row
-        const headerRow = headers.map(header => padWithDashes(header, columnWidths[header])).join(' | ');
+        const headerRow = headers.map(header => padWithSpaces(header, columnWidths[header])).join(' | ');
 
         // Format separator line
         const separator = headers.map(header => '-'.repeat(columnWidths[header])).join('-|-');
 
         // Format each row
         const rows = data.map(item =>
-            headers.map(header => padWithDashes((item[header] || '').toString(), columnWidths[header])).join(' | ')
+            headers.map(header => padWithSpaces((item[header] || '').toString(), columnWidths[header])).join(' | ')
         );
 
         // Combine everything
