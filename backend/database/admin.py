@@ -64,6 +64,10 @@ async def _create_mongo_db_for(account_id):
 async def _create_oracle_db_for(account_id):
     # ALTER SYSTEM SET DB_CREATE_FILE_DEST = '/opt/oracle/oradata/';
     await clients.oracle_client.execute(f"""
+        ALTER SESSION SET container=cdb$root;
+    """)
+
+    await clients.oracle_client.execute(f"""
         CREATE PLUGGABLE DATABASE pdb{account_id}
             ADMIN USER admin IDENTIFIED BY password
             ROLES = (dba)
