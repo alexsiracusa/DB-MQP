@@ -122,6 +122,18 @@
     justify-content: flex-start;
 }
 
+.tab-toolbar .translate-icon p {
+    font-style: italic;
+}
+
+.tab-toolbar .translate-arrow {
+    aspect-ratio: 1.0;
+    height: 64%;
+
+    margin-right: -0.2em;
+    margin-left: -0.2em;
+}
+
 .tab-toolbar .lock-button {
     aspect-ratio: 1.0;
 }

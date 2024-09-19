@@ -1,4 +1,5 @@
 import '../../../../styles/QueryTabToolbar.css'
+import TranslateArrow from "../../../../assets/Icons/TranslateArrow.svg";
 
 import QueryTab from "./QueryTab.tsx";
 import RunButton from "./Buttons/RunButton.tsx";
@@ -30,14 +31,19 @@ const QueryTabToolbar = (props: QueryTabToolbarProps) => {
             </div>
             <div className="buttons">
                 <RunButton self={self}/>
-                { (self instanceof TranslatedQueryTab) &&
+                {(self instanceof TranslatedQueryTab) &&
                     <RefreshButton self={self}/>
                 }
-                { (self instanceof UserQueryTab) &&
-                    <TranslateButton self={self}/>
-                }
                 <LanguageButton self={self}/>
-                <LockButton self={self}/>
+
+                {(self instanceof UserQueryTab) &&
+                    <>
+                        <img src={TranslateArrow} className="translate-arrow"/>
+                        <TranslateButton self={self}/>
+                    </>
+            }
+
+            <LockButton self={self}/>
             </div>
         </div>
     )
